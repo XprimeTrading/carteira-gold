@@ -306,7 +306,7 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
   </section>
 
   <footer style="display:flex;flex-direction:column;gap:6px">
-    <p class="note">Dados lidos do terminal MT5 da conta em <b data-v="exportado" data-f="quando">—</b> (UTC); último preço em <b data-v="ultimo_preco" data-f="quando">—</b>, horário do servidor. Início em <b data-v="inicio" data-f="quando">—</b>. Os números são exportados e publicados a cada 15 minutos, enquanto o computador da carteira está ligado; a página relê os dados sozinha.</p>
+    <p class="note">Dados lidos do terminal MT5 da conta em <b data-v="exportado" data-f="quando">—</b> (UTC); último preço em <b data-v="ultimo_preco" data-f="quando">—</b>, horário do servidor. Início em <b data-v="inicio" data-f="quando">—</b>. Os números são exportados e publicados a cada 6 minutos, enquanto o computador da carteira está ligado; a página relê os dados sozinha.</p>
     <p class="note" data-so="conta" hidden>Travas usadas: perda diária de <span data-r="dia">—</span> sobre o saldo do início do pregão do servidor e perda total de <span data-r="total">—</span> do saldo inicial. Conta sem meta de lucro: o objetivo é deixar só os robôs trabalharem.</p>
   </footer>
   </div>
@@ -495,7 +495,7 @@ function carregar(id){
   ABA=id;
   document.querySelectorAll(".abas [data-aba]").forEach(b=>b.setAttribute("aria-selected",String(b.dataset.aba===id)));
   document.getElementById("conteudo").setAttribute("aria-labelledby","aba-"+id);
-  const pega=n=>fetch(`dados/${id}/${n}.json`,{cache:"no-store"}).then(r=>{if(!r.ok)throw new Error(n);return r.json()});
+  const pega=n=>fetch(`dados/${id}/${n}.json?t=${Date.now()}`,{cache:"no-store"}).then(r=>{if(!r.ok)throw new Error(n);return r.json()});
   const extra=[];
   Promise.all([...["conta","curva","dias","robos","estat"].map(pega),...extra])
     .then(([conta,curva,dias,robos,est,fech,ativos])=>{if(ABA!==id)return;
@@ -510,9 +510,9 @@ document.querySelectorAll(".abas [data-aba]").forEach(b=>b.addEventListener("cli
 document.querySelector(".abas")?.addEventListener("keydown",e=>{if(e.key!=="ArrowRight"&&e.key!=="ArrowLeft")return;
   const bs=[...document.querySelectorAll(".abas [data-aba]")],i=bs.findIndex(b=>b.dataset.aba===ABA),n=bs[(i+(e.key==="ArrowRight"?1:bs.length-1))%bs.length];n.focus();n.click()});
 carregar("xm");
-// os dados são republicados a cada 15 min; a página relê sem recarregar a cena 3D
-setInterval(()=>{if(!document.hidden)carregar(ABA)},15*60e3);
-document.addEventListener("visibilitychange",()=>{if(!document.hidden&&XT.V&&Date.now()-Date.parse(XT.V.exportado)>16*60e3)carregar(ABA)});
+// os dados são publicados a cada 6 min; a página relê a cada 2 min, sem recarregar a cena 3D
+setInterval(()=>{if(!document.hidden)carregar(ABA)},2*60e3);
+document.addEventListener("visibilitychange",()=>{if(!document.hidden&&XT.V&&Date.now()-Date.parse(XT.V.exportado)>2*60e3)carregar(ABA)});
 let rt=0;new ResizeObserver(()=>{clearTimeout(rt);rt=setTimeout(desenhar,120)}).observe(document.querySelector(".wrap"));
 const mq=matchMedia("(prefers-color-scheme: dark)");mq.addEventListener&&mq.addEventListener("change",desenhar);
 new MutationObserver(desenhar).observe(document.documentElement,{attributes:true,attributeFilter:["data-theme"]});
