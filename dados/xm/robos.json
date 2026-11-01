@@ -1,0 +1,26 @@
+[
+ {
+  "robo": "robo_x1",
+  "nome": "Robo X1",
+  "magic": null,
+  "status": "parado",
+  "resultado": 0,
+  "fechadas": 0,
+  "ganhos": 0,
+  "abertas": 0,
+  "flutuante": 0,
+  "ultima": null
+ },
+ {
+  "robo": "robo_x2",
+  "nome": "Robo X2",
+  "magic": null,
+  "status": "parado",
+  "resultado": 0,
+  "fechadas": 0,
+  "ganhos": 0,
+  "abertas": 0,
+  "flutuante": 0,
+  "ultima": null
+ }
+]

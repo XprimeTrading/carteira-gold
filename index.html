@@ -1,0 +1,762 @@
+<!doctype html>
+<html lang="pt-BR">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Carteira Gold</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:ital@1&display=swap">
+<style>
+/* layout: números do desafio em cima, curva e limites no meio, as duas salas 3D da sede embaixo */
+/* sempre escuro: fundo preto e letras brancas, em qualquer tema do visitante */
+:root,:root[data-theme="light"],:root[data-theme="dark"]{
+  --bg:#000000;--surface:#111312;--ink:#ffffff;--muted:#b9c1bc;--line:#2a2f2c;--grid:#1d211f;
+  --gold:#e0a940;--teal:#4cc9a6;--violet:#a59cf0;--pos:#4cc9a6;--neg:#f08d68;--warn:#e0a940;color-scheme:dark;
+  --display:"Sora",system-ui,sans-serif;--body:"IBM Plex Sans",system-ui,sans-serif;--mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font:15px/1.6 var(--body)}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 56px;display:flex;flex-direction:column;gap:28px}
+h1,h2,h3{font-family:var(--display);font-weight:600;text-wrap:balance;margin:0}
+h1{font-size:clamp(26px,5vw,38px);letter-spacing:-.01em}
+h2{font-size:19px}
+h3{font-size:15px}
+.logo{display:block;width:min(230px,60vw);height:auto;margin-bottom:14px}
+.logo .neutro{stroke:var(--ink)}.logo .vazado{stroke:var(--bg)}.logo .nome{fill:var(--ink)}.logo .sub{fill:var(--muted)}
+.abas{display:flex;gap:6px;flex-wrap:wrap;margin-top:14px;border-bottom:1px solid var(--line)}
+.abas button{border:1px solid transparent;border-bottom:none;border-radius:8px 8px 0 0;background:transparent;color:var(--muted);font:500 13.5px var(--body);padding:8px 14px;margin-bottom:-1px}
+.abas button[aria-selected="true"]{background:var(--surface);border-color:var(--line);color:var(--ink)}
+.conteudo{display:flex;flex-direction:column;gap:28px}
+.aviso{margin:0;padding:18px 20px;background:var(--surface);border:1px dashed var(--line);border-radius:12px;color:var(--muted);max-width:70ch}
+.eyebrow{font:500 11px/1.4 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+.lede{color:var(--muted);max-width:70ch;margin:6px 0 0}
+.lede b{color:var(--ink);font-weight:500;font-family:var(--mono)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:12px}
+.tile,.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;min-width:0}
+.tile{padding:14px 16px;display:flex;flex-direction:column;gap:6px}
+.card{padding:16px 18px;display:flex;flex-direction:column;gap:10px}
+.k{font:500 11px var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin:0}
+.v{font:500 26px/1.15 var(--mono);font-variant-numeric:tabular-nums;margin:0}
+.s{font-size:13px;color:var(--muted);margin:0}
+.s b,.note b{font-family:var(--mono);font-weight:500;color:var(--ink)}
+.pos{color:var(--pos)!important}.neg{color:var(--neg)!important}
+.pill{align-self:flex-start;font:500 11px var(--mono);padding:2px 8px;border-radius:999px;border:1px solid currentColor}
+.pill.ok{color:var(--pos)}.pill.warn{color:var(--warn)}.pill.bad{color:var(--neg)}.pill.mudo{color:var(--muted);border-style:dashed}
+.trilho{height:8px;border-radius:999px;background:var(--grid);overflow:hidden}
+.enche{height:100%;width:0;border-radius:999px;background:var(--pos);transition:width .6s ease}
+.enche.neg{background:var(--neg)}
+.note{font-size:12.5px;color:var(--muted);margin:0}
+.duas{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:12px}
+.lim{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:4px 14px;font-size:13.5px;align-items:baseline}
+.lim .h{font:500 11px var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.lim .n{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums}
+.lim .casa{color:var(--muted)}
+.chart{position:relative;min-height:300px}
+.chart.baixo{min-height:220px}
+.chart svg{display:block;overflow:visible}
+.tip{position:absolute;pointer-events:none;background:var(--surface);border:1px solid var(--line);border-radius:8px;box-shadow:0 6px 18px rgba(0,0,0,.18);padding:4px 8px;font-size:12px;white-space:nowrap;z-index:3}
+.tip span{display:block;color:var(--muted)}.tip b{font-family:var(--mono);font-weight:500}
+/* palco 3D, no mesmo visual da sede */
+.stage{position:relative;height:clamp(380px,62vw,560px);border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#07090a;touch-action:none}
+.stage canvas{display:block;width:100%;height:100%}
+.tags{position:absolute;inset:0;pointer-events:none}
+.tag{position:absolute;transform:translate(-50%,-100%);font:500 11px/1.2 var(--mono);background:rgba(8,10,10,.72);color:#eef1ee;border:1px solid rgba(255,255,255,.18);border-radius:6px;padding:3px 6px;white-space:nowrap;pointer-events:auto;cursor:pointer}
+.tag.on{border-color:#e0a940;color:#e0a940}
+.placar{position:absolute;top:10px;right:10px;z-index:2;max-width:60%;text-align:right;font:500 11.5px/1.45 var(--mono);color:#eef1ee;background:rgba(8,10,10,.72);border:1px solid rgba(255,255,255,.18);border-radius:8px;padding:6px 9px;pointer-events:none}
+.placar b{color:#4cc9a6;font-weight:500}.placar i{font-style:normal;color:#e0a940}.placar .n{color:#f08d68}
+.cap{position:absolute;left:10px;bottom:10px;max-width:min(76%,440px);background:rgba(8,10,10,.8);color:#eef1ee;border:1px solid rgba(255,255,255,.16);border-radius:10px;padding:8px 12px;z-index:2;pointer-events:none}
+.cap b{display:block;font:600 15px var(--display)}.cap span{font-size:12.5px;color:#b9c2bd}
+.sem3d{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:16px;color:#b9c2bd;text-align:center}
+.hint{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;font-size:12px;color:var(--muted)}
+button{font:500 12px var(--body);color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:6px 10px;cursor:pointer}
+button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.salas{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:12px}
+.sala{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.sala[data-sala]{cursor:pointer}
+.sala.on{border-color:var(--gold)}
+.sala h3{display:flex;justify-content:space-between;gap:8px;align-items:baseline}
+.num{font:500 11px var(--mono);color:var(--muted)}
+.kv{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 12px;margin:4px 0 0;font-size:13px;border-top:1px solid var(--line);padding-top:8px}
+.kv dt{color:var(--muted)}.kv dd{margin:0;text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums}
+@media (prefers-reduced-motion:reduce){.enche{transition:none}}
+@media (max-width:560px){.placar{max-width:70%}}
+/* padrão do Monitor do AlgoMaker: barra no topo, abas sublinhadas, escopo em chips, blocos numerados */
+.barra{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.marca{display:flex;align-items:center;gap:10px}
+.barra .logo{width:min(150px,40vw);margin:0}
+.sufixo{font:500 12px var(--mono);color:var(--muted);letter-spacing:.14em;text-transform:uppercase}
+.vivo{display:flex;align-items:center;gap:8px;font:500 12px var(--mono);color:var(--muted)}
+.vivo i{width:8px;height:8px;border-radius:50%;background:var(--pos);box-shadow:0 0 8px var(--pos)}
+.abas{gap:22px;margin-top:-14px;border-bottom:1px solid var(--line)}
+.abas button{border:none;border-bottom:2px solid transparent;border-radius:0;background:transparent;padding:8px 0 10px;margin-bottom:-1px;font-size:14px}
+.abas button[aria-selected="true"]{background:transparent;color:var(--ink);border-bottom-color:var(--gold)}
+.titulo{display:flex;justify-content:space-between;align-items:baseline;gap:8px 16px;flex-wrap:wrap}
+.titulo .eyebrow{color:var(--muted)}
+.periodo{display:flex;align-items:center;flex-wrap:wrap;gap:10px 14px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 14px}
+.rot{font:500 11px var(--mono);color:var(--gold);letter-spacing:.14em;text-transform:uppercase}
+.rot2{font:500 10.5px var(--mono);color:var(--muted);letter-spacing:.12em;text-transform:uppercase;margin-left:8px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:5px 12px;font-size:12.5px;background:transparent;border:1px solid var(--line);color:var(--ink)}
+.chip i{width:8px;height:8px;border-radius:50%}
+.chip[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:#111;font-weight:600}
+.chip[aria-pressed="true"] i{display:none}
+.bloco{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.bloco.ouro{border-color:rgba(224,169,64,.45);background:linear-gradient(180deg,rgba(224,169,64,.07),var(--surface) 180px)}
+.cab{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
+.sec{font:500 11px var(--mono);color:var(--muted);letter-spacing:.14em;text-transform:uppercase;margin:0 0 4px}
+.sec b{color:var(--gold);font-weight:500;margin-left:6px}
+.bloco h2{font-size:clamp(20px,3.4vw,26px)}
+.bloco h2 em,.titulo h1 em{font:italic 400 1.12em "Instrument Serif",Georgia,serif;color:var(--gold);letter-spacing:0}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:10px}
+.kpi{background:rgba(255,255,255,.025);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.kpi .v{font-size:21px}
+.kpi .v small{font-size:12.5px;margin-left:4px}
+.dica{margin:0;font-size:12.5px;color:var(--muted);border:1px solid var(--line);border-radius:8px;padding:7px 10px}
+.dica b{color:var(--ink);font-weight:500}
+.chart{min-height:340px}
+.chart .vazio{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:13px;text-align:center;padding:16px}
+.legenda{display:flex;flex-wrap:wrap;gap:6px 16px;font:500 11.5px var(--mono);color:var(--muted)}
+.legenda span{display:inline-flex;align-items:center;gap:6px}.legenda i{width:10px;height:10px;border-radius:2px}
+.sub2{border-top:1px solid var(--line);padding-top:14px;display:flex;flex-direction:column;gap:10px}
+.nums{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:14px 18px}
+.nums>div{min-width:0}
+.v2{font:500 17px/1.3 var(--mono);font-variant-numeric:tabular-nums;margin:2px 0 0}
+.rolar{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.tab{width:100%;border-collapse:collapse;font-size:13px;white-space:nowrap}
+.tab th{font:500 10.5px var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.08em;text-align:left;padding:6px 10px;border-bottom:1px solid var(--line)}
+.tab td{padding:8px 10px;border-bottom:1px solid var(--grid);font-family:var(--mono);font-variant-numeric:tabular-nums}
+.tab td:first-child{font-family:var(--body)}
+.tab .n{text-align:right}
+.tab tbody tr[data-esc]{cursor:pointer}
+.tab tbody tr[data-esc]:hover td{background:rgba(255,255,255,.03)}
+.tab tbody tr.on td{background:rgba(224,169,64,.08)}
+.tab tr.total td{font-weight:600;border-top:1px solid var(--line)}
+.no-ar{font:600 9.5px var(--mono);letter-spacing:.08em;color:var(--pos);border:1px solid currentColor;border-radius:999px;padding:1px 6px;margin-left:6px}
+.disj{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.warn{color:var(--warn)}
+.ativos{display:flex;flex-direction:column;gap:6px;font:500 12.5px var(--mono)}
+.ativos .l{display:grid;grid-template-columns:72px minmax(0,1fr) 92px;gap:10px;align-items:center}
+.ativos .b{height:10px;border-radius:3px}
+.ativos .val{text-align:right;font-variant-numeric:tabular-nums}
+.ativos hr{border:none;border-top:1px dashed var(--line);margin:4px 0;width:100%}
+@media (max-width:560px){.disj{grid-template-columns:1fr 1fr}.bloco{padding:14px}}
+</style>
+
+<div class="wrap">
+  <header class="barra">
+    <div class="marca">
+      <svg class="logo" viewBox="0 0 540 120" role="img" aria-label="XPrime Trading">
+        <g transform="translate(8,10)">
+          <line class="neutro" x1="20" y1="20" x2="80" y2="80" stroke-width="15" stroke-linecap="square"/>
+          <line class="vazado" x1="20" y1="80" x2="66" y2="34" stroke-width="27" stroke-linecap="butt"/>
+          <line x1="20" y1="80" x2="64" y2="36" stroke="#FFB35C" stroke-width="15" stroke-linecap="square"/>
+          <polygon points="56,14 86,14 86,44" fill="#FFB35C"/>
+        </g>
+        <text class="nome" x="128" y="76" font-family="Sora, 'Segoe UI', Arial, sans-serif" font-weight="700" font-size="62" letter-spacing="2"><tspan fill="#FFB35C">X</tspan>PRIME</text>
+        <text class="sub" x="132" y="104" font-family="'IBM Plex Mono', Consolas, monospace" font-weight="500" font-size="17" letter-spacing="10.5">TRADING</text>
+      </svg>
+      <span class="sufixo">· carteira</span>
+    </div>
+    <div class="vivo"><i></i><span data-v="corretora">—</span> · dados de <span data-v="exportado" data-f="hora">—</span></div>
+  </header>
+
+  <p class="aviso" id="aviso" hidden></p>
+  <div class="conteudo" id="conteudo" role="tabpanel">
+  <div class="titulo">
+    <h1>Carteira Gold</h1>
+    <div class="eyebrow"><span data-v="corretora">—</span> · <span data-v="programa">—</span></div>
+  </div>
+
+  <div class="periodo">
+    <span class="rot">◇ Escopo</span>
+    <div class="chips" id="chips" role="group" aria-label="Escopo dos números"></div>
+    <span class="note" id="per-nota">—</span>
+  </div>
+
+  <section class="bloco ouro" id="geral">
+    <div class="cab">
+      <div>
+        <p class="sec">01 <b>A conta</b></p>
+        <h2>Estatística geral <em id="esc-nome">da conta</em></h2>
+        <p class="s" id="geral-sub">—</p>
+      </div>
+    </div>
+    <div class="kpis">
+      <div class="kpi"><p class="k">Resultado</p><p class="v"><span data-e="resultado" data-f="usdS">—</span> <small data-e="pct" data-f="pctS">—</small></p><p class="s">realizado, sem aportes · <span data-e="dias" data-f="dias">—</span></p></div>
+      <div class="kpi"><p class="k">Fechamentos</p><p class="v" data-e="fechamentos" data-f="int">—</p><p class="s">acerto <b data-e="acerto" data-f="pct0">—</b> · <span data-e="ganhos_n" data-f="int">—</span> no lucro</p></div>
+      <div class="kpi"><p class="k">Fator de lucro</p><p class="v" data-e="fl" data-f="num">—</p><p class="s">payoff <b data-e="payoff" data-f="num">—</b> · <span data-e="por_fech" data-f="usdS">—</span> por fechamento</p></div>
+      <div class="kpi"><p class="k">Queda máxima</p><p class="v"><span data-e="queda" data-f="usdS">—</span> <small data-e="queda_pct" data-f="pctS">—</small></p><p class="s">do pico ao fundo do realizado</p></div>
+    </div>
+    <p class="dica">Passe o dedo ou o mouse na curva para ler o ponto; <b>arraste</b> para medir um trecho em US$ e %.</p>
+    <div class="chart" id="g-curva"></div>
+    <div class="legenda" id="legenda"></div>
+
+    <div class="sub2">
+      <h3>Números do período</h3>
+      <div class="nums">
+        <div><p class="k">Resultado por dia</p><p class="v2" data-e="media_dia" data-f="usdS">—</p><p class="s"><span data-e="media_pct" data-f="pctS">—</span> · <span data-e="dias" data-f="dias">—</span></p></div>
+        <div><p class="k">Dias no lucro</p><p class="v2"><span data-e="dias_lucro" data-f="int">—</span> de <span data-e="dias_operados" data-f="int">—</span></p><p class="s">dias com fechamento</p></div>
+        <div><p class="k">Ganhos · perdas</p><p class="v2"><span data-e="soma_ganhos" data-f="usdS">—</span> · <span data-e="soma_perdas" data-f="usdS">—</span></p><p class="s">somas dos fechamentos</p></div>
+        <div><p class="k">Melhor dia</p><p class="v2" data-e="melhor_v" data-f="usdS">—</p><p class="s" data-e="melhor_dia" data-f="dia">—</p></div>
+        <div><p class="k">Pior dia</p><p class="v2" data-e="pior_v" data-f="usdS">—</p><p class="s" data-e="pior_dia" data-f="dia">—</p></div>
+        <div><p class="k">Maior ganho · perda</p><p class="v2"><span data-e="maior_ganho" data-f="usdS">—</span> · <span data-e="maior_perda" data-f="usdS">—</span></p><p class="s">num fechamento</p></div>
+        <div><p class="k">Taxas pagas</p><p class="v2" data-e="taxas" data-f="usd">—</p><p class="s">comissões, já descontadas</p></div>
+        <div><p class="k">Capital da conta</p><p class="v2" data-v="saldo_inicial" data-f="usd">—</p><p class="s">no 1º dia<span data-nom hidden> · operada como <b data-v="nominal" data-f="usd">—</b></span></p></div>
+      </div>
+    </div>
+
+    <div class="sub2">
+      <h3>Robô a robô <span class="rot2">toque para filtrar</span></h3>
+      <div class="rolar">
+        <table class="tab" id="tab-escopos">
+          <thead><tr><th>Escopo</th><th>Período</th><th class="n">Dias</th><th class="n">Resultado</th><th class="n">%</th><th class="n">Fech.</th><th class="n">Acerto</th><th class="n">FL</th><th class="n">Taxas</th><th class="n">Queda</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <p class="note">Curva = soma dos fechamentos (lucro, comissões e swap), sem aportes e saques; o que está aberto fica de fora e aparece em "Agora". % sobre <b data-v="base_pct" data-f="usd">—</b><span data-nom hidden>, o capital com que os robôs operam</span>.</p>
+    </div>
+  </section>
+
+  <section class="bloco" id="agora">
+    <div class="cab"><div><p class="sec">02 <b>Agora</b></p><h2>Conta <em>agora</em></h2></div></div>
+    <div class="kpis">
+      <div class="kpi"><p class="k">Patrimônio</p><p class="v" data-v="patrimonio" data-f="usd">—</p><p class="s"><span data-v="resultado_pct" data-f="pctS">—</span> desde o início · <span data-v="flutuante" data-f="usdS">—</span> em aberto</p></div>
+      <div class="kpi"><p class="k">P&amp;L de hoje</p><p class="v" data-v="resultado_dia" data-f="usdS">—</p><p class="s"><span data-v="resultado_dia_pct" data-f="pctS">—</span> · <span data-v="fech_hoje" data-f="int">—</span> fechamento(s) hoje</p></div>
+      <div class="kpi" data-so="desafio"><p class="k">Meta da fase 1</p><p class="v" data-v="progresso_meta" data-f="pct1">—</p><div class="trilho"><div class="enche" id="barra"></div></div><p class="s">patrimônio de <b data-v="meta" data-f="usd">—</b> (+<span data-r="meta">—</span>)</p></div>
+      <div class="kpi" data-so="desafio"><p class="k">Dias com lucro</p><p class="v"><span data-v="dias_lucro" data-f="int">—</span> de <span data-r="diasLucro">—</span></p><p class="s">a fase só aprova com o mínimo</p></div>
+    </div>
+    <div class="duas">
+      <section class="card" id="risco">
+        <h3>Risco do dia <span class="rot2">disjuntor</span></h3>
+        <div class="disj">
+          <div><p class="k">Limite do dia</p><p class="v2" data-v="perda_dia" data-f="usd">—</p><p class="s"><span data-r="dia">—</span><span data-nom hidden> de <span data-v="nominal" data-f="usd">—</span></span></p></div>
+          <div><p class="k">Perda hoje</p><p class="v2" data-v="perda_hoje_pct" data-f="pct1">—</p><p class="s">do limite do dia</p></div>
+          <div data-grupo="folga_dia_pct"><p class="k">Estado</p>
+            <p class="v2"><span class="pos" data-estado="ok" hidden>livre</span><span class="warn" data-estado="warn" hidden>atenção</span><span class="neg" data-estado="bad" hidden>travado</span></p>
+            <p class="s">folga <b data-v="folga_dia" data-f="usd">—</b></p></div>
+        </div>
+        <div class="trilho"><div class="enche neg" id="barra-dia"></div></div>
+        <p class="note">Piso do dia em <b data-v="piso_dia" data-f="usd">—</b>, a partir do saldo do início do pregão do servidor.</p>
+      </section>
+      <section class="card" id="limites">
+        <h3>Limites lado a lado</h3>
+        <div class="lim">
+          <span class="h">Linha</span><span class="h n">Nível</span><span class="h n">Folga</span>
+          <span data-so="desafio">Meta da fase 1 (+<span data-r="meta">—</span>)</span><span class="n" data-so="desafio" data-v="meta" data-f="usd">—</span><span class="n" data-so="desafio" data-v="falta_meta" data-f="usd">—</span>
+          <span class="casa" data-so="desafio">Trava diária da casa (<span data-r="casaDia">—</span>)</span><span class="n casa" data-so="desafio" data-v="piso_casa_dia" data-f="usd">—</span><span class="n casa" data-so="desafio" data-v="folga_casa_dia" data-f="usd">—</span>
+          <span>Perda diária <span data-v="casa">—</span> (<span data-r="dia">—</span><span data-nom hidden> de <span data-v="nominal" data-f="usd">—</span></span>)</span><span class="n" data-v="piso_dia" data-f="usd">—</span><span class="n" data-v="folga_dia" data-f="usd">—</span>
+          <span class="casa" data-so="desafio">Trava total da casa (<span data-r="casaTotal">—</span>)</span><span class="n casa" data-so="desafio" data-v="piso_casa_total" data-f="usd">—</span><span class="n casa" data-so="desafio" data-v="folga_casa_total" data-f="usd">—</span>
+          <span>Perda total <span data-v="casa">—</span> (<span data-r="total">—</span><span data-nom hidden> de <span data-v="nominal" data-f="usd">—</span></span>)</span><span class="n" data-v="piso_total" data-f="usd">—</span><span class="n" data-v="folga_total" data-f="usd">—</span>
+        </div>
+      </section>
+    </div>
+  </section>
+
+
+  <section class="bloco" id="salas">
+    <div>
+      <p class="sec">03 <b>Salas</b></p>
+      <h2>Salas de <em>operação</em></h2>
+      <p class="note" style="margin-top:4px">Uma sala para cada robô e o agente humano no corredor, de olho nas duas. Robô operando fica sentado na estação; parado, fica de pé ao lado dela.</p>
+    </div>
+    <div class="stage" id="stage">
+      <canvas id="cv" aria-label="Salas de operação em 3D: duas salas com um robô cada e o agente humano no corredor"></canvas>
+      <div class="tags" id="tags"></div>
+      <div class="placar" id="placar">—</div>
+      <div class="cap" id="cap" hidden></div>
+      <div class="sem3d" id="sem3d" hidden>A cena 3D não carregou neste aparelho. As salas estão nos cartões abaixo.</div>
+    </div>
+    <div class="hint"><button id="spin" type="button">Pausar giro</button><span>Arraste para girar, pinça ou roda para zoom, toque numa sala ou numa etiqueta.</span></div>
+    <div class="salas">
+      <article class="sala" data-sala="robo_x1" tabindex="0">
+        <h3><span>Robo X1</span><span class="num">Sala 1</span></h3>
+        <span class="pill ok" data-estado="operando" hidden>Operando</span>
+        <span class="pill warn" data-estado="ativo" hidden>Operou, sem posição aberta</span>
+        <span class="pill mudo" data-estado="parado" hidden>Parado: sem operações nesta conta</span>
+        <dl class="kv">
+          <dt>Realizado</dt><dd data-rb="resultado" data-f="usdS">—</dd>
+          <dt>Em aberto</dt><dd data-rb="flutuante" data-f="usdS">—</dd>
+          <dt>Operações fechadas</dt><dd data-rb="fechadas" data-f="int">—</dd>
+          <dt>Posições abertas</dt><dd data-rb="abertas" data-f="int">—</dd>
+          <dt>Última operação</dt><dd data-rb="ultima" data-f="quando">—</dd>
+        </dl>
+      </article>
+      <article class="sala" data-sala="robo_x2" tabindex="0">
+        <h3><span>Robo X2</span><span class="num">Sala 2</span></h3>
+        <span class="pill ok" data-estado="operando" hidden>Operando</span>
+        <span class="pill warn" data-estado="ativo" hidden>Operou, sem posição aberta</span>
+        <span class="pill mudo" data-estado="parado" hidden>Parado: sem operações nesta conta</span>
+        <dl class="kv">
+          <dt>Realizado</dt><dd data-rb="resultado" data-f="usdS">—</dd>
+          <dt>Em aberto</dt><dd data-rb="flutuante" data-f="usdS">—</dd>
+          <dt>Operações fechadas</dt><dd data-rb="fechadas" data-f="int">—</dd>
+          <dt>Posições abertas</dt><dd data-rb="abertas" data-f="int">—</dd>
+          <dt>Última operação</dt><dd data-rb="ultima" data-f="quando">—</dd>
+        </dl>
+      </article>
+      <article class="sala" data-sala="agente" tabindex="0" data-grupo="folga_dia_pct">
+        <h3><span>Agente humano</span><span class="num">Corredor</span></h3>
+        <span class="pill ok" data-estado="ok" hidden>Conta dentro dos limites</span>
+        <span class="pill warn" data-estado="warn" hidden>Mais da metade do limite do dia usada</span>
+        <span class="pill bad" data-estado="bad" hidden>Limite do dia atingido</span>
+        <p class="s">Monitora as duas salas e a conta inteira. O pregão está em <span data-v="resultado_dia" data-f="usdS">—</span>, com <b data-v="folga_dia" data-f="usd">—</b> de folga até o limite diário.</p>
+      </article>
+    </div>
+  </section>
+
+  <footer style="display:flex;flex-direction:column;gap:6px">
+    <p class="note">Dados lidos do terminal MT5 da conta em <b data-v="exportado" data-f="quando">—</b> (UTC); último preço em <b data-v="ultimo_preco" data-f="quando">—</b>, horário do servidor. Início em <b data-v="inicio" data-f="quando">—</b>. Os números são exportados e publicados a cada 15 minutos, enquanto o computador da carteira está ligado; a página relê os dados sozinha.</p>
+    <p class="note" data-so="conta" hidden>Travas usadas: perda diária de <span data-r="dia">—</span> sobre o saldo do início do pregão do servidor e perda total de <span data-r="total">—</span> do saldo inicial. Conta sem meta de lucro: o objetivo é deixar só os robôs trabalharem.</p>
+  </footer>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/shaders/CopyShader.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/shaders/LuminosityHighPassShader.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/EffectComposer.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/RenderPass.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/ShaderPass.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/UnrealBloomPass.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/utils/SkeletonUtils.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/RGBELoader.js"></script>
+
+<script>
+// ---------- números do desafio ----------
+let REGRA={meta:.10,meta2:.05,dia:.05,total:.10,casaDia:.025,casaTotal:.08,diasLucro:3};
+const XT={V:null,robos:[],ouvintes:[],sel:null};
+const parseT=s=>new Date(String(s).replace(" ","T")+(/[zZ]|[+-]\d\d:\d\d$/.test(String(s))?"":"Z"));
+const n2=v=>Math.abs(v).toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2});
+const FMT={
+  usd:v=>(v<0?"−":"")+"US$ "+n2(v),
+  usdS:v=>(v>0?"+":v<0?"−":"")+"US$ "+n2(v),
+  pct1:v=>(v*100).toFixed(1)+"%",
+  pctS:v=>(v>0?"+":v<0?"−":"")+Math.abs(v*100).toFixed(2)+"%",
+  int:v=>String(Math.round(v)),
+  quando:v=>{const d=parseT(v);return isNaN(d)?"—":d.toISOString().slice(8,10)+"/"+d.toISOString().slice(5,7)+"/"+d.toISOString().slice(0,4)+" "+d.toISOString().slice(11,16)},
+  txt:v=>String(v),
+  hora:v=>{const d=parseT(v);return isNaN(d)?"—":d.toISOString().slice(8,10)+"/"+d.toISOString().slice(5,7)+" "+d.toISOString().slice(11,16)+" UTC"},
+  dia:v=>String(v).slice(8,10)+"/"+String(v).slice(5,7),
+  pct0:v=>Math.round(v*100)+"%",
+  num:v=>v.toFixed(2),
+  dias:v=>v<1?Math.max(1,Math.round(v*24))+" h":Math.round(v)+" dias corridos",
+};
+const pctR=v=>String(+(v*100).toFixed(1)).replace(".",",")+"%";
+const sinal=(el,v,f)=>{if(f==="usdS"||f==="pctS"){el.classList.toggle("pos",v>0);el.classList.toggle("neg",v<0)}};
+const estadoDe=v=>v==null?null:v<=0?"bad":v<.5?"warn":"ok";
+
+function situacao(conta,dias){
+  const c=conta[0];if(!c)return null;
+  if(c.regras)REGRA=c.regras;
+  const q=(f,v)=>v==null?null:f(v);
+  const ini=+c.saldo_inicial,pat=+c.patrimonio,sal=+c.saldo,ult=dias[dias.length-1];
+  const base=ult&&ult.dia===String(c.ultimo_preco).slice(0,10)?+ult.saldo_inicio:Math.max(sal,pat),res=pat-ini;
+  // capital nominal: conta operada como se tivesse mais do que o depositado; metas e limites em US$ saem dele
+  const N=c.nominal?+c.nominal:null,bD=N||base,bT=N||ini;
+  return{modo:"conta",...c,inicial:ini,nominal:N,resultado:res,resultado_pct:res/bT,
+    meta:q(m=>ini+bT*m,REGRA.meta),falta_meta:q(m=>Math.max(0,ini+bT*m-pat),REGRA.meta),progresso_meta:q(m=>res/(bT*m),REGRA.meta),base_dia:base,perda_dia:bD*REGRA.dia,piso_dia:base-bD*REGRA.dia,folga_dia:pat-base+bD*REGRA.dia,
+    folga_dia_pct:(pat-base+bD*REGRA.dia)/(bD*REGRA.dia),piso_total:ini-bT*REGRA.total,folga_total:pat-ini+bT*REGRA.total,
+    folga_total_pct:(pat-ini+bT*REGRA.total)/(bT*REGRA.total),piso_casa_dia:q(k=>base-bD*k,REGRA.casaDia),folga_casa_dia:q(k=>pat-base+bD*k,REGRA.casaDia),
+    piso_casa_total:q(k=>ini-bT*k,REGRA.casaTotal),folga_casa_total:q(k=>pat-ini+bT*k,REGRA.casaTotal),resultado_dia:pat-base,resultado_dia_pct:(pat-base)/bD,
+    dias_lucro:dias.filter(d=>+d.realizado>0).length,dias_operados:dias.length,base_pct:bT,
+    fech_hoje:ult&&ult.dia===String(c.ultimo_preco).slice(0,10)?+ult.fechadas:0,perda_hoje_pct:Math.max(0,base-pat)/(bD*REGRA.dia)};
+}
+
+function preencher(V,robos){
+  document.querySelectorAll("[data-so]").forEach(el=>el.hidden=el.dataset.so!==V.modo);
+  document.querySelectorAll("[data-nom]").forEach(el=>el.hidden=!V.nominal);
+  document.querySelectorAll("[data-r]").forEach(el=>{const v=REGRA[el.dataset.r];el.textContent=v==null?"—":el.dataset.r==="diasLucro"?String(v):pctR(v)});
+  document.querySelectorAll("[data-v]").forEach(el=>{const v=V[el.dataset.v],f=el.dataset.f||"txt";
+    el.textContent=v==null||(typeof v==="number"&&!isFinite(v))?"—":FMT[f](f==="txt"||f==="quando"||f==="hora"?v:+v);sinal(el,+v,f)});
+  document.querySelectorAll("[data-grupo]").forEach(g=>{const e=estadoDe(V[g.dataset.grupo]);g.querySelectorAll("[data-estado]").forEach(s=>s.hidden=s.dataset.estado!==e)});
+  document.getElementById("barra-dia").style.width=Math.min(1,V.perda_hoje_pct||0)*100+"%";
+  const p=V.progresso_meta||0,b=document.getElementById("barra");b.style.width=Math.max(0,Math.min(1,Math.abs(p)))*100+"%";b.classList.toggle("neg",p<0);
+  document.querySelectorAll(".sala[data-sala]").forEach(card=>{const r=robos.find(x=>x.robo===card.dataset.sala);if(!r)return;
+    card.querySelectorAll("[data-rb]").forEach(el=>{const v=r[el.dataset.rb],f=el.dataset.f||"txt";el.textContent=v==null?"—":FMT[f](f==="txt"||f==="quando"?v:+v);sinal(el,+v,f)});
+    card.querySelectorAll("[data-estado]").forEach(s=>s.hidden=s.dataset.estado!==r.status)});
+}
+
+// gráficos (d3), redesenhados quando a largura muda
+const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const fy=v=>(v<0?"−":"")+"US$ "+d3.format(",")(Math.abs(Math.round(v)));
+function medir(svg,t,size=12){const n=svg.append("text").style("font-size",size+"px").text(t);const w=n.node().getComputedTextLength();n.remove();return w}
+function dica(el){let t=el.querySelector(".tip");if(!t){t=document.createElement("div");t.className="tip";t.hidden=true;el.appendChild(t)}return t}
+
+// escopo (conta inteira e cada robô): chips, tabela e bloco 01
+const COR_ESC=["--gold","#5aa9ff","#4cc9a6","#c98bff"],corEsc=i=>{const c=COR_ESC[i]||"#9aa49f";return c.startsWith("--")?css(c):c};
+let EST=null;
+function escolherEscopo(id){
+  if(!EST)return;const i=Math.max(0,EST.escopos.findIndex(s=>s.id===id)),S=EST.escopos[i];XT.esc=S.id;
+  document.querySelectorAll("#chips .chip").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.esc===S.id)));
+  document.querySelectorAll("#tab-escopos tr[data-esc]").forEach(r=>r.classList.toggle("on",r.dataset.esc===S.id));
+  document.getElementById("esc-nome").textContent=S.tipo==="conta"?"da conta":"do "+S.nome;
+  const V=XT.V;
+  document.getElementById("geral-sub").textContent=S.tipo==="conta"
+    ?`Desde ${FMT.dia(String(V.inicio||S.inicio||"").slice(0,10))} com ${FMT.usd(V.saldo_inicial)} · ${EST.escopos.filter(s=>s.tipo==="robo").length} robôs · patrimônio agora ${FMT.usd(V.patrimonio)}`
+    :S.fechamentos?`${S.fechamentos} fechamento(s) de ${FMT.dia(S.inicio.slice(0,10))} a ${FMT.dia(S.fim.slice(0,10))}`:"Sem fechamentos nesta conta ainda.";
+  document.getElementById("per-nota").textContent=`fechamentos da corretora · ${S.inicio?FMT.dia(S.inicio.slice(0,10)):"—"} → agora`;
+  const E={...S,media_pct:S.media_dia==null?null:S.media_dia/EST.base,melhor_v:S.melhor_dia&&S.melhor_dia.v,melhor_dia:S.melhor_dia&&S.melhor_dia.dia,pior_v:S.pior_dia&&S.pior_dia.v,pior_dia:S.pior_dia&&S.pior_dia.dia};
+  document.querySelectorAll("[data-e]").forEach(el=>{const v=E[el.dataset.e],f=el.dataset.f||"txt";
+    el.textContent=v==null||(typeof v==="number"&&!isFinite(v))?"—":FMT[f](f==="txt"||f==="dia"?v:+v);el.classList.remove("pos","neg");if(v!=null)sinal(el,+v,f)});
+  desenhar();
+}
+function montarEscopos(){
+  const chips=document.getElementById("chips");chips.textContent="";
+  const tb=document.querySelector("#tab-escopos tbody");tb.textContent="";
+  EST.escopos.forEach((S,i)=>{
+    const b=document.createElement("button");b.type="button";b.className="chip";b.dataset.esc=S.id;b.setAttribute("aria-pressed","false");
+    const dot=document.createElement("i");dot.style.background=corEsc(i);b.append(dot,document.createTextNode(S.nome));b.addEventListener("click",()=>escolherEscopo(S.id));chips.append(b);
+    const tr=document.createElement("tr");tr.dataset.esc=S.id;if(S.tipo==="conta")tr.className="total";tr.tabIndex=0;
+    const r=XT.robos.find(x=>x.robo===S.id),per=S.fechamentos?`${FMT.dia(S.inicio.slice(0,10))} → ${FMT.dia(S.fim.slice(0,10))}`:"—";
+    const cel=[S.nome,per,S.dias==null?"—":Math.round(S.dias)+" d",FMT.usdS(S.resultado),FMT.pctS(S.pct),String(S.fechamentos),S.acerto==null?"—":FMT.pct0(S.acerto),S.fl==null?"—":FMT.num(S.fl),FMT.usd(S.taxas),FMT.usdS(S.queda)];
+    cel.forEach((t,j)=>{const td=document.createElement("td");td.textContent=t;if(j>1)td.className="n";
+      if(j===3||j===4)sinal(td,S.resultado,"usdS");if(j===9&&S.queda<0)td.classList.add("neg");
+      if(j===0){const d=document.createElement("i");d.style.cssText=`display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:8px;background:${corEsc(i)}`;td.prepend(d);
+        if(r&&r.status==="operando"){const s=document.createElement("span");s.className="no-ar";s.textContent="NO AR";td.append(s)}}
+      tr.append(td)});
+    tr.addEventListener("click",()=>escolherEscopo(S.id));tr.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();escolherEscopo(S.id)}});
+    tb.append(tr)});
+  escolherEscopo(EST.escopos.some(s=>s.id===XT.esc)?XT.esc:"conta");
+}
+
+// curva do realizado com barras por dia; passar o mouse lê o ponto, arrastar mede o trecho
+function graficoCurva(el,S,V){
+  el.querySelectorAll("svg,.vazio").forEach(s=>s.remove());
+  const leg=document.getElementById("legenda");leg.textContent="";
+  const i=EST.escopos.indexOf(S),cor=corEsc(i),base=EST.base;
+  const t0=parseT(S.inicio||V.inicio),pts=[{t:t0,r:0},...S.curva.map(d=>({t:parseT(d.quando),r:+d.r}))];
+  if(pts.length<2){const v=document.createElement("div");v.className="vazio";v.textContent=S.tipo==="robo"?"Este robô ainda não fechou operações nesta conta. A curva aparece no primeiro fechamento.":"Sem fechamentos ainda.";el.append(v);return}
+  const agoraT=parseT(V.ultimo_preco);if(agoraT>pts[pts.length-1].t)pts.push({t:agoraT,r:pts[pts.length-1].r,fim:1});
+  const refs=S.tipo==="conta"?[{v:REGRA.meta==null?null:base*REGRA.meta,lab:"Meta",c:"--pos"},{v:-base*REGRA.total,lab:"Limite total",c:"--neg"},{v:REGRA.casaTotal==null?null:-base*REGRA.casaTotal,lab:"Trava total da casa",c:"--muted",tr:1}]
+    // só as linhas que cabem na escala da curva: a meta de 10% de 100K achataria tudo
+    .filter(f=>f.v!=null&&Math.abs(f.v)<=2.5*Math.max(d3.max(S.curva,d=>Math.abs(+d.r))||0,base*.01)):[];
+  const W=Math.max(280,el.clientWidth),H=340,hB=64,gap=14,mB=22,yTop=8,yBot=H-mB-hB-gap;
+  const lo=Math.min(0,d3.min(pts,d=>d.r),...refs.map(f=>f.v)),hi=Math.max(0,d3.max(pts,d=>d.r),...refs.map(f=>f.v)),pad=(hi-lo||1)*.06;
+  const y=d3.scaleLinear([lo-pad,hi+pad],[yBot,yTop]),ticks=y.ticks(5);
+  const svg=d3.select(el).append("svg").attr("width","100%").attr("viewBox",`0 0 ${W} ${H}`).attr("role","img").attr("aria-label","Curva do realizado de "+S.nome).style("font-family","var(--mono)").style("touch-action","pan-y");
+  const fp=v=>(v>0?"+":v<0?"−":"")+Math.abs(v/base*100).toFixed(1)+"%";
+  const mL=Math.ceil(d3.max(ticks,t=>medir(svg,fy(t),11)))+10,mR=Math.ceil(d3.max(ticks,t=>medir(svg,fp(t),11)))+10;
+  const ext=d3.extent(pts,d=>d.t);if(+ext[0]===+ext[1])ext[1]=new Date(+ext[0]+36e5);
+  const x=d3.scaleUtc(ext,[mL,W-mR]),mesmo=d3.utcDay.floor(ext[0])-d3.utcDay.floor(ext[1])===0,fx=d3.utcFormat(mesmo?"%H:%M":"%d/%m");
+  svg.append("g").selectAll("line").data(ticks).join("line").attr("x1",mL).attr("x2",W-mR).attr("y1",y).attr("y2",y).style("stroke",css("--grid"));
+  svg.append("g").selectAll("text").data(ticks).join("text").attr("x",mL-8).attr("y",y).attr("dy",".32em").attr("text-anchor","end").style("font-size","11px").style("fill",css("--muted")).text(fy);
+  svg.append("g").selectAll("text").data(ticks).join("text").attr("x",W-mR+8).attr("y",y).attr("dy",".32em").style("font-size","11px").style("fill",css("--muted")).text(fp);
+  const xt=x.ticks(Math.max(2,Math.floor((W-mL-mR)/110)));
+  svg.append("g").selectAll("text").data(xt).join("text").attr("x",x).attr("y",H-6).attr("text-anchor","middle").style("font-size","11px").style("fill",css("--muted")).text(fx);
+  svg.append("line").attr("x1",mL).attr("x2",W-mR).attr("y1",y(0)).attr("y2",y(0)).style("stroke",css("--muted")).style("stroke-dasharray","2 3");
+  for(const f of refs){if(f.v<y.domain()[0]||f.v>y.domain()[1])continue;
+    svg.append("line").attr("x1",mL).attr("x2",W-mR).attr("y1",y(f.v)).attr("y2",y(f.v)).style("stroke",css(f.c)).style("stroke-width",1.2).style("stroke-dasharray",f.tr?"5 4":null).style("opacity",.85);
+    svg.append("text").attr("x",mL+6).attr("y",y(f.v)-5).style("font-size","10.5px").style("fill",css("--muted")).text(`${f.lab} · ${fy(f.v)}`)}
+  const gid="g"+Math.random().toString(36).slice(2),gr=svg.append("defs").append("linearGradient").attr("id",gid).attr("x1",0).attr("x2",0).attr("y1",0).attr("y2",1);
+  gr.append("stop").attr("offset","0%").attr("stop-color",cor).attr("stop-opacity",.28);gr.append("stop").attr("offset","100%").attr("stop-color",cor).attr("stop-opacity",0);
+  svg.append("path").datum(pts).attr("fill",`url(#${gid})`).attr("d",d3.area().x(d=>x(d.t)).y0(y(0)).y1(d=>y(d.r)).curve(d3.curveStepAfter));
+  svg.append("path").datum(pts).style("fill","none").style("stroke",cor).style("stroke-width",2).style("stroke-linejoin","round").attr("d",d3.line().x(d=>x(d.t)).y(d=>y(d.r)).curve(d3.curveStepAfter));
+  const fim=pts[pts.length-1];svg.append("circle").attr("cx",x(fim.t)).attr("cy",y(fim.r)).attr("r",4.5).style("fill",cor).style("stroke",css("--surface")).style("stroke-width",2);
+  // barras: fechamentos por dia
+  const yb0=H-mB-hB,bars=S.barras.map(b=>({t:parseT(b.dia+" 00:00:00"),v:+b.v,n:b.n,dia:b.dia})),mx=d3.max(bars,b=>Math.abs(b.v))||1;
+  const yb=d3.scaleLinear([-mx,mx],[yb0+hB,yb0]),bw=Math.max(3,Math.min(26,(W-mL-mR)/Math.max(1,(ext[1]-ext[0])/864e5)*.6));
+  svg.append("text").attr("x",mL-8).attr("y",yb0+6).attr("text-anchor","end").style("font-size","10.5px").style("fill",css("--muted")).text("±"+fy(mx).replace("US$ ",""));
+  svg.append("line").attr("x1",mL).attr("x2",W-mR).attr("y1",yb(0)).attr("y2",yb(0)).style("stroke",css("--grid"));
+  svg.append("g").selectAll("rect").data(bars).join("rect").attr("x",b=>Math.min(W-mR-bw,Math.max(mL,x(d3.utcHour.offset(b.t,12))-bw/2))).attr("width",bw)
+    .attr("y",b=>Math.min(yb(0),yb(b.v))).attr("height",b=>Math.max(1,Math.abs(yb(b.v)-yb(0)))).attr("rx",2).style("fill",b=>css(b.v>=0?"--pos":"--neg")).style("opacity",.8);
+  // leitura e medição
+  const tip=dica(el),bis=d3.bisector(d=>d.t).left,em=(px)=>{const k=Math.max(0,Math.min(pts.length-1,bis(pts,x.invert(px))-1));const a=pts[k],b=pts[k+1];return b&&Math.abs(x(b.t)-px)<Math.abs(x(a.t)-px)?k+1:k};
+  const vline=svg.append("line").attr("y1",yTop).attr("y2",H-mB).style("stroke",css("--muted")).style("stroke-dasharray","3 3").style("display","none");
+  const dot=svg.append("circle").attr("r",4).style("fill",cor).style("stroke",css("--surface")).style("stroke-width",2).style("display","none");
+  const sel=svg.append("rect").attr("y",yTop).attr("height",yBot-yTop).style("fill",css("--gold")).style("opacity",.1).style("display","none");
+  const fd=d3.utcFormat("%d/%m %H:%M");let ini=null;
+  const mostra=(html,px,py)=>{tip.hidden=false;tip.innerHTML="";html.forEach(([t,b])=>{const s=document.createElement(b?"b":"span");s.textContent=t;tip.append(s)});
+    const bx=el.getBoundingClientRect(),k=bx.width/W;tip.style.left=Math.max(0,Math.min(bx.width-tip.offsetWidth,px*k+12))+"px";tip.style.top=Math.max(0,py*k-56)+"px"};
+  svg.append("rect").attr("x",mL).attr("y",0).attr("width",W-mL-mR).attr("height",H-mB).style("fill","transparent").style("cursor","crosshair")
+    .on("pointerdown",ev=>{ini=em(d3.pointer(ev)[0]);ev.currentTarget.setPointerCapture&&ev.currentTarget.setPointerCapture(ev.pointerId)})
+    .on("pointermove",ev=>{const[px]=d3.pointer(ev),k=em(px),d=pts[k];vline.style("display",null).attr("x1",x(d.t)).attr("x2",x(d.t));dot.style("display",null).attr("cx",x(d.t)).attr("cy",y(d.r));
+      if(ini!=null&&k!==ini){const a=Math.min(ini,k),b=Math.max(ini,k),A=pts[a],B=pts[b],dv=B.r-A.r;let pk=A.r,dd=0;for(let j=a;j<=b;j++){pk=Math.max(pk,pts[j].r);dd=Math.min(dd,pts[j].r-pk)}
+        sel.style("display",null).attr("x",x(A.t)).attr("width",Math.max(1,x(B.t)-x(A.t)));
+        mostra([[`${fd(A.t)} → ${fd(B.t)} · ${b-a} fechamento(s)`],[`${FMT.usdS(dv)} (${FMT.pctS(dv/base)})`,1],[`queda no trecho ${FMT.usdS(dd)}`]],x(d.t),y(d.r))}
+      else mostra([[d.fim?fd(d.t)+" · agora":d===pts[0]?fd(d.t)+" · início":fd(d.t)],[`${FMT.usdS(d.r)} (${FMT.pctS(d.r/base)})`,1]],x(d.t),y(d.r))})
+    .on("pointerup",()=>{ini=null})
+    .on("pointerleave",()=>{if(ini==null){tip.hidden=true;dot.style("display","none");vline.style("display","none")}})
+    .on("dblclick",()=>{sel.style("display","none")});
+  const it=(c,t)=>{const s=document.createElement("span"),q=document.createElement("i");q.style.background=c;s.append(q,document.createTextNode(t));leg.append(s)};
+  it(cor,`${S.nome}: ${FMT.usdS(S.resultado)} ${FMT.pctS(S.pct)}`);it(css("--pos"),"barras: fechamentos por dia");
+  if(refs.length)it(css("--neg"),"linhas: limites e meta da conta");
+}
+
+let DADOS=null;
+function desenhar(){if(!DADOS||!window.d3||!EST)return;const S=EST.escopos.find(s=>s.id===XT.esc)||EST.escopos[0];graficoCurva(document.getElementById("g-curva"),S,XT.V)}
+
+const AVISO={xm:"Os dados da conta real XM não carregaram. Recarregue a página."};
+let ABA=null;
+function carregar(id){
+  ABA=id;
+  document.querySelectorAll(".abas [data-aba]").forEach(b=>b.setAttribute("aria-selected",String(b.dataset.aba===id)));
+  document.getElementById("conteudo").setAttribute("aria-labelledby","aba-"+id);
+  const pega=n=>fetch(`dados/${id}/${n}.json`,{cache:"no-store"}).then(r=>{if(!r.ok)throw new Error(n);return r.json()});
+  const extra=[];
+  Promise.all([...["conta","curva","dias","robos","estat"].map(pega),...extra])
+    .then(([conta,curva,dias,robos,est,fech,ativos])=>{if(ABA!==id)return;
+      document.getElementById("aviso").hidden=true;document.getElementById("conteudo").hidden=false;
+      DADOS={conta,curva,dias,robos};XT.V=situacao(conta,dias);XT.robos=robos;EST=est[0];
+      preencher(XT.V,robos);montarEscopos();XT.ouvintes.forEach(f=>f())})
+    .catch(e=>{if(ABA!==id)return;console.warn("dados não carregaram",e);
+      const a=document.getElementById("aviso");a.textContent=AVISO[id];a.hidden=false;document.getElementById("conteudo").hidden=true});
+}
+document.querySelectorAll(".abas [data-aba]").forEach(b=>b.addEventListener("click",()=>{if(b.dataset.aba===ABA)return;
+  try{history.replaceState(null,"","#"+b.dataset.aba)}catch(e){}carregar(b.dataset.aba)}));
+document.querySelector(".abas")?.addEventListener("keydown",e=>{if(e.key!=="ArrowRight"&&e.key!=="ArrowLeft")return;
+  const bs=[...document.querySelectorAll(".abas [data-aba]")],i=bs.findIndex(b=>b.dataset.aba===ABA),n=bs[(i+(e.key==="ArrowRight"?1:bs.length-1))%bs.length];n.focus();n.click()});
+carregar("xm");
+// os dados são republicados a cada 15 min; a página relê sem recarregar a cena 3D
+setInterval(()=>{if(!document.hidden)carregar(ABA)},15*60e3);
+document.addEventListener("visibilitychange",()=>{if(!document.hidden&&XT.V&&Date.now()-Date.parse(XT.V.exportado)>16*60e3)carregar(ABA)});
+let rt=0;new ResizeObserver(()=>{clearTimeout(rt);rt=setTimeout(desenhar,120)}).observe(document.querySelector(".wrap"));
+const mq=matchMedia("(prefers-color-scheme: dark)");mq.addEventListener&&mq.addEventListener("change",desenhar);
+new MutationObserver(desenhar).observe(document.documentElement,{attributes:true,attributeFilter:["data-theme"]});
+
+// cartões das salas: tocar destaca a sala na cena
+XT.escolher=id=>{XT.sel=XT.sel===id?null:id;document.querySelectorAll(".sala[data-sala]").forEach(c=>c.classList.toggle("on",c.dataset.sala===XT.sel));XT.aoEscolher&&XT.aoEscolher(XT.sel)};
+document.querySelectorAll(".sala[data-sala]").forEach(c=>{c.addEventListener("click",()=>XT.escolher(c.dataset.sala));
+  c.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();XT.escolher(c.dataset.sala)}})});
+</script>
+
+<script>
+// ---------- salas 3D, no motor e com os modelos da sede ----------
+const stage=document.getElementById("stage"),cv=document.getElementById("cv"),tagsEl=document.getElementById("tags");
+if(window.THREE&&THREE.OrbitControls){
+  const PI=Math.PI,FW=PI/2,FE=-PI/2;
+  let W=stage.clientWidth,H=stage.clientHeight;
+  const lowEnd=W<560||matchMedia("(pointer: coarse)").matches,calm=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const R=new THREE.WebGLRenderer({canvas:cv,antialias:!lowEnd,powerPreference:"high-performance"});
+  R.setPixelRatio(Math.min(devicePixelRatio,lowEnd?1.4:2));R.setSize(W,H,false);
+  const S=new THREE.Scene();S.background=new THREE.Color(0x07090a);S.fog=new THREE.Fog(0x07090a,26,60);
+  const C=new THREE.PerspectiveCamera(40,W/H,.1,200);const far=W<520?1.55:1;C.position.set(6*far,9.5*far,13.5*far);
+  S.add(new THREE.HemisphereLight(0xb8c8da,0x1a1a1a,1.05));
+  const key=new THREE.DirectionalLight(0xdfe8ff,.6);key.position.set(-12,30,18);S.add(key);
+  {const p=new THREE.PointLight(0xff8a3d,1.2,12,2);p.position.set(0,2.6,1.2);S.add(p)}
+  const O=new THREE.OrbitControls(C,R.domElement);O.target.set(0,.6,0);O.enableDamping=true;O.maxPolarAngle=1.3;O.minDistance=4;O.maxDistance=34;O.autoRotate=!calm;O.autoRotateSpeed=.45;O.enablePan=false;
+
+  const MC={},BOX=new THREE.BoxGeometry(1,1,1),CYL=new THREE.CylinderGeometry(1,1,1,8),SPH=new THREE.SphereGeometry(1,12,10);
+  const mat=(c,o=1,glow=false)=>{const k=c+"|"+o+"|"+glow;return MC[k]||(MC[k]=glow
+    ?new THREE.MeshBasicMaterial({color:c,transparent:o<1,opacity:o,fog:true})
+    :new THREE.MeshLambertMaterial({color:c,transparent:o<1,opacity:o,depthWrite:o>=.5}))};
+  const mesh=(geo,c,sx,sy,sz,x,y,z,par=S,o=1,glow=false)=>{const m=new THREE.Mesh(geo,mat(c,o,glow));m.scale.set(sx,sy,sz);m.position.set(x,y,z);par.add(m);return m};
+  const B=(w,h,d,x,y,z,c,o=1,glow=false)=>mesh(BOX,c,w,h,d,x,y,z,S,o,glow);
+  const P=(g,w,h,d,x,y,z,c,o=1,glow=false)=>mesh(BOX,c,w,h,d,x,y,z,g,o,glow);
+
+  const floor=new THREE.Mesh(new THREE.PlaneGeometry(30,20),new THREE.MeshStandardMaterial({color:0x101315,roughness:.36,metalness:.35}));
+  floor.rotation.x=-PI/2;floor.position.set(0,-.01,0);S.add(floor);
+  const NEON=0xff7a1a;
+  B(3,.06,8.6,0,.03,0,0x1a1e21);B(.06,.04,8.6,-1.45,.08,0,NEON,1,true);B(.06,.04,8.6,1.45,.08,0,NEON,1,true);
+
+  const CH=0x24282c,DK=0x3a3f45,SCR=0x2b5cab;
+  const chair=(g,o,z,c=CH)=>{P(g,.5,.08,.5,0,.45,z,c,o);P(g,.5,.5,.07,0,.72,z+.25,c,o)};
+  const FUR={
+    est:(g,o,m=1,op={})=>{const w=op.w||1.3,tela=[];P(g,w,.06,.65,0,.74,0,DK,o);P(g,w,.02,.65,0,.775,0,0x3a3f45,o);
+      for(let i=0;i<m;i++){P(g,.38,.27,.03,(i-(m-1)/2)*.4,1.0,-.21,0x0d0f10,o);tela.push(P(g,.34,.23,.01,(i-(m-1)/2)*.4,1.0,-.19,SCR,o,true))}chair(g,o,.55,op.c);return tela},
+    rack:(g,o)=>{P(g,.7,1.9,.7,0,.95,0,0x141618,o);const led=[];for(let k=0;k<6;k++)led.push(P(g,.02,.03,.4,-.36,.4+k*.25,0,k%2?0x3cff9e:0x39b6ff,o,true));return led}
+  };
+  const SK=[0xf1c7a3,0xd9a47e],HR=[0x15100c,0x3b2a1e];
+  function pessoa(o){
+    const g=new THREE.Group(),A={robot:o.robot};
+    const skin=o.robot?0x8b949c:o.skin,shirt=o.robot?0x5c656e:o.shirt,pants=o.robot?0x3b4249:0x22262b;
+    const head=(par,y)=>{A.head=new THREE.Group();A.head.position.set(0,y,-.02);par.add(A.head);
+      if(o.robot){mesh(BOX,skin,.22,.22,.22,0,0,0,A.head);mesh(BOX,0x39d0ff,.18,.05,.01,0,.02,-.115,A.head,1,true);mesh(CYL,skin,.01,.12,.01,0,.17,0,A.head)}
+      else{mesh(SPH,skin,.11,.13,.115,0,0,0,A.head);mesh(SPH,o.hair,.118,.075,.122,0,.065,.015,A.head)}};
+    if(o.seated){
+      mesh(BOX,pants,.34,.14,.32,0,.52,0,g);
+      for(const s of[-1,1]){mesh(BOX,pants,.13,.12,.44,s*.09,.55,-.22,g);mesh(BOX,pants,.12,.44,.12,s*.09,.33,-.42,g);mesh(BOX,0x0e0e0e,.13,.06,.22,s*.09,.08,-.48,g)}
+      A.torso=new THREE.Group();A.torso.position.set(0,.6,.02);g.add(A.torso);mesh(CYL,shirt,.17,.48,.13,0,.24,0,A.torso);head(A.torso,.6);
+    }else{
+      for(const s of[-1,1]){const hip=new THREE.Group();hip.position.set(s*.09,.9,0);g.add(hip);mesh(CYL,pants,.065,.86,.065,0,-.43,0,hip);mesh(BOX,0x0e0e0e,.12,.06,.24,0,-.86,-.05,hip)}
+      A.torso=new THREE.Group();A.torso.position.set(0,.9,0);g.add(A.torso);mesh(BOX,pants,.34,.14,.24,0,.02,0,A.torso);mesh(CYL,shirt,.17,.55,.13,0,.33,0,A.torso);head(A.torso,.76);
+    }
+    return{g,A,o}}
+  function canvasTex(w,h,draw,bg="#0d1110"){const c=document.createElement("canvas");c.width=w;c.height=h;const g=c.getContext("2d");
+    if(bg){g.fillStyle=bg;g.fillRect(0,0,w,h)}draw(g);const t=new THREE.CanvasTexture(c);t.anisotropy=4;return t}
+  function neon(txt,cor){const hex="#"+new THREE.Color(cor).getHexString();return canvasTex(512,96,g=>{
+    g.font="600 46px system-ui";g.textAlign="center";g.textBaseline="middle";g.shadowColor=hex;g.shadowBlur=18;g.fillStyle=hex;
+    g.fillText(txt.toUpperCase(),256,50);g.shadowBlur=0;g.fillStyle="#ffffff";g.globalAlpha=.55;g.fillText(txt.toUpperCase(),256,50)},null)}
+  const fmtT=v=>(v>0?"+":v<0?"−":"")+Math.abs(v).toFixed(2);
+  const corV=v=>v>0?"#4cc9a6":v<0?"#f08d68":"#eef1ee";
+  const STATUS={operando:["OPERANDO","#4cc9a6"],ativo:["OPEROU · SEM POSIÇÃO","#e0a940"],parado:["PARADO · SEM OPERAÇÕES NESTA CONTA","#9aa49f"]};
+  function telaSala(s){const r=XT.robos.find(x=>x.robo===s.id);return canvasTex(900,200,g=>{
+    g.fillStyle="#9aa49f";g.font="500 26px system-ui";g.fillText((s.n+" · "+s.nome+" · resultado na "+(XT.V?XT.V.corretora:"")).toUpperCase(),30,42);
+    if(!r){g.fillStyle="#9aa49f";g.font="600 64px ui-monospace,Consolas,monospace";g.fillText("carregando",30,130);return}
+    g.fillStyle=corV(+r.resultado);g.font="600 88px ui-monospace,Consolas,monospace";g.fillText(fmtT(+r.resultado),30,136);
+    const st=STATUS[r.status]||STATUS.parado;g.fillStyle=st[1];g.font="600 24px system-ui";g.fillText(st[0],30,180);
+    g.fillStyle="#eef1ee";g.font="500 24px system-ui";g.textAlign="right";g.fillText(`${r.fechadas} fechadas · ${r.abertas} abertas · aberto ${fmtT(+r.flutuante)}`,870,180)})}
+
+  const WH=1.7,WT=.06,GAP=1.4,GLASS=0x8fb3c7,FRAME=0x16191c;
+  function pane(w,x,z,horiz,o){if(w<=.05)return;
+    horiz?B(w,WH,.03,x,WH/2,z,GLASS,o*.12):B(.03,WH,w,x,WH/2,z,GLASS,o*.12);
+    horiz?B(w,.06,WT,x,WH,z,FRAME,o):B(WT,.06,w,x,WH,z,FRAME,o);
+    horiz?B(w,.08,WT,x,.04,z,FRAME,o):B(WT,.08,w,x,.04,z,FRAME,o)}
+  const wallH=(x0,x1,z,o)=>pane(x1-x0,(x0+x1)/2,z,true,o);
+  function wallV(z0,z1,x,gz,o){if(gz==null){pane(z1-z0,x,(z0+z1)/2,false,o);return}
+    const a=gz-GAP/2,b=gz+GAP/2;pane(a-z0,x,(z0+a)/2,false,o);pane(z1-b,x,(b+z1)/2,false,o)}
+
+  // duas salas de frente para o corredor; o telão fica na parede do fundo de cada uma
+  const SALAS=[
+    {id:"robo_x1",n:"Sala 1",nome:"Robo X1",x:[-8,-1.5],z:[-3.5,3.5],door:"e",cor:0x5146b0},
+    {id:"robo_x2",n:"Sala 2",nome:"Robo X2",x:[1.5,8],z:[-3.5,3.5],door:"w",cor:0x6a5fd0}];
+  const FURG=[],TELAS=[],tags=[];
+  for(const s of SALAS){
+    const[x0,x1]=s.x,[z0,z1]=s.z,w=x1-x0,d=z1-z0,cx=(x0+x1)/2,cz=(z0+z1)/2,oeste=s.door==="e";
+    const tint=new THREE.Color(s.cor).lerp(new THREE.Color(0x0e1012),.55);
+    s.piso=B(w-.1,.12,d-.1,cx,.06,cz,tint.getHex());s.piso.material=s.piso.material.clone();s.tint=tint.clone();
+    wallH(x0,x1,z0,1);wallH(x0,x1,z1,1);wallV(z0,z1,x0,oeste?null:cz,1);wallV(z0,z1,x1,oeste?cz:null,1);
+    s.lamp=new THREE.PointLight(new THREE.Color(s.cor).lerp(new THREE.Color(0xffffff),.55),1.25,Math.max(w,d)+2,2);s.lamp.position.set(cx,2.3,cz);S.add(s.lamp);
+    const sg=new THREE.Mesh(new THREE.PlaneGeometry(2.4,.45),new THREE.MeshBasicMaterial({map:neon(s.nome,s.cor),transparent:true,depthWrite:false}));
+    sg.position.set(oeste?x1+.04:x0-.04,2.05,cz);sg.rotation.y=oeste?PI/2:-PI/2;S.add(sg);
+    // telão na parede oposta à porta
+    const tx=oeste?x0:x1,sd=oeste?1:-1;
+    B(WT,1.3,d-1.4,tx+sd*.12,1.5,cz,0x0b0d0e);
+    const tl=new THREE.Mesh(new THREE.PlaneGeometry(d-1.6,1.15),new THREE.MeshBasicMaterial({map:telaSala(s)}));
+    tl.position.set(tx+sd*.17,1.5,cz);tl.rotation.y=oeste?PI/2:-PI/2;S.add(tl);TELAS.push({tl,s});
+    s.faixa=B(.02,.03,d-1.4,tx+sd*.17,.85,cz,s.cor,1,true);
+    // estação do robô voltada para o telão, e rack no canto
+    const g=new THREE.Group();g.position.set(tx+sd*2.6,.12,cz);g.rotation.y=oeste?FW:FE;S.add(g);
+    s.telas=FUR.est(g,1,3,{w:1.5});FURG.push({g,t:"est",n:g.children.length,op:{w:1.5}});s.est=g;
+    const rk=new THREE.Group();rk.position.set(oeste?x0+.6:x1-.6,.12,z0+.7);S.add(rk);s.leds=FUR.rack(rk,1);
+    s.vasos=[[oeste?x0+.5:x1-.5,z1-.5],[oeste?x1-.5:x0+.5,z0+.5]];
+    // boneco simples até o modelo carregar
+    s.boneco=pessoa({seated:true,robot:true});s.boneco.g.position.set(0,0,.55);g.add(s.boneco.g);
+    s.robo=null;
+    const el=document.createElement("button");el.type="button";el.className="tag";el.textContent=s.n+" · "+s.nome;
+    el.addEventListener("click",()=>XT.escolher(s.id));tagsEl.appendChild(el);tags.push({id:s.id,el,v:new THREE.Vector3(cx,2.6,cz)});
+  }
+  // estação do agente humano no corredor, com duas telas
+  const AG={pos:[0,2.0]};
+  {const g=new THREE.Group();g.position.set(0,.06,AG.pos[1]);S.add(g);AG.telas=FUR.est(g,1,2,{w:1.3});FURG.push({g,t:"est",n:g.children.length,op:{w:1.3}});AG.est=g;
+   AG.boneco=pessoa({seated:true,shirt:0x2c4aa0,skin:SK[0],hair:HR[1]});AG.boneco.g.position.set(0,0,.55);g.add(AG.boneco.g);
+   const el=document.createElement("button");el.type="button";el.className="tag";el.textContent="Agente humano";
+   el.addEventListener("click",()=>XT.escolher("agente"));tagsEl.appendChild(el);tags.push({id:"agente",el,v:new THREE.Vector3(0,2.2,AG.pos[1])})}
+
+  // logotipo da XPrime Trading: painel no fundo do corredor e no piso da entrada, como na sede
+  function logoTex(neutro,brilho){return canvasTex(1080,240,g=>{const k=2.1,ox=18,oy=15,A="#FFB35C";
+    const L=(x1,y1,x2,y2,c,w,cap)=>{g.beginPath();g.lineCap=cap;g.lineWidth=w*k;g.strokeStyle=c;g.moveTo(ox+x1*k,oy+y1*k);g.lineTo(ox+x2*k,oy+y2*k);g.stroke()};
+    L(20,20,80,80,neutro,15,"square");
+    g.globalCompositeOperation="destination-out";L(20,80,66,34,"#000",27,"butt");g.globalCompositeOperation="source-over";
+    if(brilho){g.shadowColor=A;g.shadowBlur=26}
+    L(20,80,64,36,A,15,"square");g.fillStyle=A;g.beginPath();g.moveTo(ox+56*k,oy+14*k);g.lineTo(ox+86*k,oy+14*k);g.lineTo(ox+86*k,oy+44*k);g.closePath();g.fill();
+    g.font="700 128px Sora, 'Segoe UI', Arial, sans-serif";g.textBaseline="alphabetic";g.fillStyle=A;g.fillText("X",270,158);
+    const wx=g.measureText("X").width;g.shadowBlur=brilho?10:0;g.shadowColor=neutro;g.fillStyle=neutro;g.fillText("PRIME",270+wx+4,158);
+    g.shadowBlur=0;g.font="500 34px 'IBM Plex Mono', Consolas, monospace";g.fillStyle=brilho?"#c9d2cd":neutro;
+    [..."TRADING"].forEach((c,i)=>g.fillText(c,276+i*46,214))},null)}
+  {B(2.9,.82,.06,0,2.0,-3.62,0x0b0d0e);B(2.9,.03,.03,0,1.58,-3.58,0xffb35c,1,true);B(2.9,.03,.03,0,2.42,-3.58,0xffb35c,1,true);
+   const fach=new THREE.Mesh(new THREE.PlaneGeometry(2.7,.6),new THREE.MeshBasicMaterial({map:logoTex("#EEF1EE",true),transparent:true,depthWrite:false}));
+   fach.position.set(0,2.0,-3.58);S.add(fach);
+   const piso=new THREE.Mesh(new THREE.PlaneGeometry(2.5,.56),new THREE.MeshBasicMaterial({map:logoTex("#d9dfdb",false),transparent:true,opacity:.92,depthWrite:false}));
+   piso.rotation.x=-PI/2;piso.position.set(0,.075,3.7);S.add(piso);
+   // as fontes da web chegam depois do primeiro quadro: redesenha o logotipo quando estiverem prontas
+   document.fonts&&document.fonts.ready.then(()=>[[fach,"#EEF1EE",true],[piso,"#d9dfdb",false]].forEach(([m,c,b])=>{
+     m.material.map.dispose();m.material.map=logoTex(c,b);m.material.needsUpdate=true}))}
+
+  // estado vindo dos dados: robô operando senta e acende a sala; parado fica de pé ao lado da estação
+  function aplicar(){
+    for(const s of SALAS){const r=XT.robos.find(x=>x.robo===s.id),st=r?r.status:"parado",vivo=st!=="parado";
+      s.status=st;s.lamp.intensity=vivo?1.35:.55;
+      s.piso.material.color.copy(s.tint).lerp(new THREE.Color(st==="operando"?0x1f8f6e:st==="ativo"?0x8a6a1e:0x0e1012),vivo?.35:.25);
+      s.telas.forEach(m=>m.material=mat(vivo?0x3f8fe0:0x1b2733,1,true));s.leds.forEach((m,i)=>m.visible=vivo||i%3===0);
+      posRobo(s)}
+    for(const t of TELAS){const old=t.tl.material.map;t.tl.material.map=telaSala(t.s);t.tl.material.needsUpdate=true;old&&old.dispose()}
+    const V=XT.V;if(V){const e=estadoDe(V.folga_dia_pct),cor={ok:0x4cc9a6,warn:0xe0a940,bad:0xf08d68}[e]||SCR;AG.telas.forEach(m=>m.material=mat(cor,1,true))}
+    placar()}
+  function posRobo(s){
+    const sentado=s.status!=="parado";
+    if(s.robo){if(sentado){s.robo.g.position.set(0,.28,.45);s.robo.g.rotation.y=0;s.robo.atual=null;s.robo.tocar("sentado",0);s.robo.mixer.update(1)}
+      else{s.robo.g.position.set(.95,-.06,.15);s.robo.g.rotation.y=-.5;s.robo.tocar("parado",.3)}}
+    else{s.boneco.g.position.set(sentado?0:.95,0,sentado?.55:.15)}}
+  function placar(){const V=XT.V,el=document.getElementById("placar");if(!V){el.textContent="carregando os dados da conta";return}
+    const op=SALAS.filter(s=>s.status&&s.status!=="parado").length;
+    el.innerHTML="";const l1=document.createElement("div"),l2=document.createElement("div");
+    l1.append("Patrimônio ");const b=document.createElement("b");b.textContent=FMT.usd(V.patrimonio);l1.append(b);
+    l2.textContent=`${op} de 2 robôs operando · folga do dia ${FMT.usd(V.folga_dia)}`;el.append(l1,l2)}
+  XT.ouvintes.push(aplicar);if(XT.V)aplicar();else placar();
+
+  // seleção: destaca a etiqueta e mostra a legenda
+  const cap=document.getElementById("cap");
+  XT.aoEscolher=id=>{tags.forEach(t=>t.el.classList.toggle("on",t.id===id));
+    if(!id){cap.hidden=true;return}
+    cap.innerHTML="";const b=document.createElement("b"),sp=document.createElement("span");
+    if(id==="agente"){b.textContent="Agente humano";sp.textContent="Acompanha as duas salas e os limites da conta. Levanta de tempos em tempos para olhar cada sala de perto."}
+    else{const s=SALAS.find(x=>x.id===id),r=XT.robos.find(x=>x.robo===id);b.textContent=s.n+" · "+s.nome;
+      sp.textContent=r?`${(STATUS[r.status]||STATUS.parado)[0].toLowerCase()} · realizado ${FMT.usdS(+r.resultado)}`:"carregando"}
+    cap.append(b,sp);cap.hidden=false};
+
+  // modelos da sede (robô e pessoa do Mixamo, móveis do Poly Haven e luz HDR); até carregarem, valem os bonecos simples
+  const MOD={},MIXERS=[];
+  function instancia(tipo){
+    const src=tipo==="robo"?MOD.robo:MOD.pessoa,raiz=THREE.SkeletonUtils.clone(src.scene),g=new THREE.Group(),inner=new THREE.Group();
+    inner.rotation.y=PI;inner.scale.setScalar(tipo==="robo"?.19:1);inner.add(raiz);g.add(inner);raiz.traverse(o=>{if(o.isMesh)o.frustumCulled=false});
+    const mixer=new THREE.AnimationMixer(raiz),acts={},clips=tipo==="robo"?src.animations:MOD.clips;
+    const nomes=tipo==="robo"?{andar:"Walking",parado:"Idle",sentado:"Sitting"}:{andar:"Walk",parado:"Idle",sentado:"Sitting",digitar:"Typing"};
+    for(const[n,c]of Object.entries(nomes)){const cl=clips.find(a=>a.name===c);if(cl)acts[n]=mixer.clipAction(cl)}
+    if(tipo==="robo"&&acts.sentado){acts.sentado.setLoop(THREE.LoopOnce);acts.sentado.clampWhenFinished=true}
+    const m={g,mixer,acts,atual:null,tocar(n,f=.25){const a=acts[n]||acts.parado;if(!a||m.atual===a)return;a.reset();a.fadeIn(f).play();if(m.atual)m.atual.fadeOut(f);m.atual=a}};
+    MIXERS.push(m);return m}
+  function mobiliar(gl){const M={};(gl.scene.getObjectByName("moveis")||gl.scene).children.forEach(c=>M[c.name]=c);
+    const por=(id,sx,sy,sz,x,y,z,ry,par=S)=>{if(!M[id])return;const o=M[id].clone();o.scale.set(sx,sy,sz);o.position.set(x,y,z);o.rotation.y=ry;
+      o.traverse(m=>{if(m.isMesh)m.material.envMapIntensity=.7});par.add(o);return o};
+    for(const f of FURG){const g=f.g,n=f.n,w=f.op.w||1.3;[0,1,n-2,n-1].forEach(i=>g.children[i]&&(g.children[i].visible=false));
+      por("metal_office_desk",w/2,.775/.79,.65/.95,0,0,0,0,g);por("modern_arm_chair_01",.68,.68,.68,0,0,.6,PI,g)}
+    for(const s of SALAS)for(const[x,z]of s.vasos)por("potted_plant_04",3,3,3,x,.12,z,(x*7+z)%6);
+    por("modern_ceiling_lamp_01",.8,.8,.8,0,1.7,AG.pos[1],0)}
+  const get=u=>fetch(u).then(r=>r.json()).then(j=>{const bin=atob(j.glb),buf=new Uint8Array(bin.length);for(let i=0;i<bin.length;i++)buf[i]=bin.charCodeAt(i);
+    const ld=new THREE.GLTFLoader();return new Promise((ok,er)=>ld.parse(buf.buffer,"",ok,er))});
+  if(THREE.GLTFLoader&&THREE.SkeletonUtils)setTimeout(()=>{
+    get("modelos/moveis.json").then(mobiliar).catch(e=>console.warn("móveis 3D não carregaram",e));
+    if(THREE.RGBELoader)fetch("modelos/hdr_neon.json").then(r=>r.json()).then(j=>{const bin=atob(j.hdr),buf=new Uint8Array(bin.length);
+      for(let i=0;i<bin.length;i++)buf[i]=bin.charCodeAt(i);const url=URL.createObjectURL(new Blob([buf]));
+      new THREE.RGBELoader().load(url,tex=>{const pm=new THREE.PMREMGenerator(R);S.environment=pm.fromEquirectangular(tex).texture;tex.dispose();pm.dispose();URL.revokeObjectURL(url)})})
+      .catch(e=>console.warn("HDR não carregou",e));
+    Promise.all(["robo","anims","p_Josh"].map(n=>get(`modelos/${n}.json`))).then(([robo,anims,pes])=>{MOD.robo=robo;MOD.clips=anims.animations;MOD.pessoa=pes;
+      for(const s of SALAS){s.robo=instancia("robo");s.est.add(s.robo.g);s.boneco.g.visible=false;posRobo(s)}
+      AG.sentado=instancia("pessoa");AG.sentado.g.position.set(0,.02,.5);AG.est.add(AG.sentado.g);AG.sentado.tocar("digitar",0);AG.boneco.g.visible=false;
+      AG.andando=instancia("pessoa");AG.andando.g.visible=false;S.add(AG.andando.g);
+      stage.dataset.modelos="ok"}).catch(e=>{stage.dataset.modelos="falhou";console.warn("modelos 3D não carregaram; seguem os bonecos simples",e)})},300);
+
+  // ronda do agente: levanta, olha a sala 1 pela porta, depois a sala 2, e volta a digitar
+  const RONDA=[{p:[.75,2.6]},{p:[-.95,.1],olhar:[-4.8,0],esp:5},{p:[.95,.1],olhar:[4.8,0],esp:5},{p:[.75,2.6],fim:true}];
+  const ronda={fase:"sentado",espera:12,i:0,pos:[.75,2.6]};
+  function rondar(dt){
+    if(!AG.andando)return;
+    if(ronda.fase==="sentado"){ronda.espera-=dt;if(ronda.espera<=0){ronda.fase="andar";ronda.i=1;ronda.pos=[...RONDA[0].p];AG.sentado.g.visible=false;AG.andando.g.visible=true}return}
+    const m=AG.andando,alvo=RONDA[ronda.i];
+    if(ronda.fase==="andar"){const dx=alvo.p[0]-ronda.pos[0],dz=alvo.p[1]-ronda.pos[1],d=Math.hypot(dx,dz);
+      if(d<.03){if(alvo.fim){ronda.fase="sentado";ronda.espera=18+Math.random()*14;m.g.visible=false;AG.sentado.g.visible=true;AG.sentado.atual=null;AG.sentado.tocar("digitar",0);return}
+        ronda.fase="olhar";ronda.espera=alvo.esp}
+      else{const st=Math.min(d,dt*1.05);ronda.pos[0]+=dx/d*st;ronda.pos[1]+=dz/d*st;m.g.rotation.y=Math.atan2(-dx,-dz);m.tocar("andar")}}
+    else if(ronda.fase==="olhar"){const o=alvo.olhar;m.g.rotation.y=Math.atan2(-(o[0]-ronda.pos[0]),-(o[1]-ronda.pos[1]));m.tocar("parado");
+      ronda.espera-=dt;if(ronda.espera<=0){ronda.fase="andar";ronda.i++}}
+    m.g.position.set(ronda.pos[0],.06,ronda.pos[1])}
+
+  let comp=null;
+  if(THREE.EffectComposer&&THREE.RenderPass&&THREE.UnrealBloomPass){comp=new THREE.EffectComposer(R);comp.addPass(new THREE.RenderPass(S,C));
+    comp.addPass(new THREE.UnrealBloomPass(new THREE.Vector2(W,H),lowEnd?.5:.6,.4,.68))}
+  let visible=true;new IntersectionObserver(es=>{visible=es[0].isIntersecting},{root:document}).observe(stage);
+  const clock=new THREE.Clock(),v=new THREE.Vector3();let ultimo=0;
+  (function loop(){requestAnimationFrame(loop);if(!visible||document.hidden)return;
+    const t=clock.getElapsedTime(),dt=Math.min(.05,t-ultimo);ultimo=t;O.update();
+    if(!calm){rondar(dt);for(const s of SALAS)if(s.status&&s.status!=="parado")s.leds.forEach((m,i)=>m.visible=Math.sin(t*4+i*1.7)>-.4);
+      if(!AG.sentado){const A=AG.boneco.A;A.head.rotation.y=Math.sin(t*.45)*.5}}
+    for(const m of MIXERS)if(m.g.visible&&m.g.parent)m.mixer.update(calm?0:dt);
+    comp?comp.render():R.render(S,C);
+    for(const tg of tags){v.copy(tg.v).project(C);tg.el.style.left=((v.x+1)/2*W)+"px";tg.el.style.top=((-v.y+1)/2*H)+"px";tg.el.hidden=v.z>1}
+  })();
+  new ResizeObserver(()=>{W=stage.clientWidth;H=stage.clientHeight;R.setSize(W,H,false);comp&&comp.setSize(W,H);C.aspect=W/H;C.updateProjectionMatrix()}).observe(stage);
+  const sp=document.getElementById("spin");if(calm)sp.textContent="Girar";
+  sp.addEventListener("click",()=>{O.autoRotate=!O.autoRotate;sp.textContent=O.autoRotate?"Pausar giro":"Girar"});
+  R.domElement.addEventListener("pointerdown",()=>{if(O.autoRotate){O.autoRotate=false;sp.textContent="Girar"}});
+  // toque numa sala no chão também a escolhe
+  const ray=new THREE.Raycaster(),pt=new THREE.Vector2();let down=null;
+  R.domElement.addEventListener("pointerdown",e=>{down=[e.clientX,e.clientY]});
+  R.domElement.addEventListener("pointerup",e=>{if(!down||Math.hypot(e.clientX-down[0],e.clientY-down[1])>5)return;const b=R.domElement.getBoundingClientRect();
+    pt.set((e.clientX-b.left)/b.width*2-1,-(e.clientY-b.top)/b.height*2+1);ray.setFromCamera(pt,C);
+    const hit=ray.intersectObjects(SALAS.map(s=>s.piso))[0];if(hit){const s=SALAS.find(x=>x.piso===hit.object);XT.escolher(s.id)}});
+}else{document.getElementById("sem3d").hidden=false;document.getElementById("placar").hidden=true}
+</script>

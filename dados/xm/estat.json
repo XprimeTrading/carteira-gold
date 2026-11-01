@@ -1,0 +1,114 @@
+[
+ {
+  "base": 2000.0,
+  "escopos": [
+   {
+    "id": "conta",
+    "nome": "Conta inteira",
+    "tipo": "conta",
+    "inicio": "2026-11-01 20:23:23",
+    "fim": "2026-11-01 20:23:23",
+    "dias": 0.0,
+    "resultado": -0.15,
+    "pct": -7.5e-05,
+    "fechamentos": 1,
+    "ganhos_n": 0,
+    "acerto": 0.0,
+    "soma_ganhos": 0,
+    "soma_perdas": -0.15,
+    "fl": 0.0,
+    "payoff": null,
+    "por_fech": -0.15,
+    "maior_ganho": null,
+    "maior_perda": -0.15,
+    "queda": -0.15,
+    "queda_pct": -7.5e-05,
+    "taxas": 0.0,
+    "media_dia": -3.6,
+    "dias_operados": 1,
+    "dias_lucro": 0,
+    "melhor_dia": {
+     "dia": "2026-11-01",
+     "v": -0.15
+    },
+    "pior_dia": {
+     "dia": "2026-11-01",
+     "v": -0.15
+    },
+    "curva": [
+     {
+      "quando": "2026-11-01 20:23:23",
+      "r": -0.15
+     }
+    ],
+    "barras": [
+     {
+      "dia": "2026-11-01",
+      "v": -0.15,
+      "n": 1
+     }
+    ]
+   },
+   {
+    "id": "robo_x1",
+    "nome": "Robo X1",
+    "tipo": "robo",
+    "inicio": "2026-11-01 19:42:46",
+    "fim": null,
+    "dias": 0.0,
+    "resultado": 0.0,
+    "pct": 0.0,
+    "fechamentos": 0,
+    "ganhos_n": 0,
+    "acerto": null,
+    "soma_ganhos": 0,
+    "soma_perdas": 0,
+    "fl": null,
+    "payoff": null,
+    "por_fech": null,
+    "maior_ganho": null,
+    "maior_perda": null,
+    "queda": -0.0,
+    "queda_pct": -0.0,
+    "taxas": 0,
+    "media_dia": 0.0,
+    "dias_operados": 0,
+    "dias_lucro": 0,
+    "melhor_dia": null,
+    "pior_dia": null,
+    "curva": [],
+    "barras": []
+   },
+   {
+    "id": "robo_x2",
+    "nome": "Robo X2",
+    "tipo": "robo",
+    "inicio": "2026-11-01 19:42:46",
+    "fim": null,
+    "dias": 0.0,
+    "resultado": 0.0,
+    "pct": 0.0,
+    "fechamentos": 0,
+    "ganhos_n": 0,
+    "acerto": null,
+    "soma_ganhos": 0,
+    "soma_perdas": 0,
+    "fl": null,
+    "payoff": null,
+    "por_fech": null,
+    "maior_ganho": null,
+    "maior_perda": null,
+    "queda": -0.0,
+    "queda_pct": -0.0,
+    "taxas": 0,
+    "media_dia": 0.0,
+    "dias_operados": 0,
+    "dias_lucro": 0,
+    "melhor_dia": null,
+    "pior_dia": null,
+    "curva": [],
+    "barras": []
+   }
+  ]
+ }
+]
