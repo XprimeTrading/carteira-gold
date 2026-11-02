@@ -258,7 +258,7 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
     <div>
       <p class="sec">03 <b>Salas</b></p>
       <h2>Salas de <em>operação</em></h2>
-      <p class="note" style="margin-top:4px">Uma sala para cada robô e o agente humano no corredor, de olho nas duas. Robô operando fica sentado na estação; parado, fica de pé ao lado dela.</p>
+      <p class="note" style="margin-top:4px">Uma sala para cada robô e o agente humano no corredor, de olho nas duas. Robô ligado fica sentado na estação, trabalhando; desligado, fica de pé ao lado dela.</p>
     </div>
     <div class="stage" id="stage">
       <canvas id="cv" aria-label="Salas de operação em 3D: duas salas com um robô cada e o agente humano no corredor"></canvas>
@@ -273,7 +273,8 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
         <h3><span>Robo X1</span><span class="num">Sala 1</span></h3>
         <span class="pill ok" data-estado="operando" hidden>Operando</span>
         <span class="pill warn" data-estado="ativo" hidden>Operou, sem posição aberta</span>
-        <span class="pill mudo" data-estado="parado" hidden>Parado: sem operações nesta conta</span>
+        <span class="pill ok" data-estado="ligado" hidden>Ligado, aguardando sinal</span>
+        <span class="pill mudo" data-estado="parado" hidden>Desligado no terminal</span>
         <dl class="kv">
           <dt>Realizado</dt><dd data-rb="resultado" data-f="usdS">—</dd>
           <dt>Em aberto</dt><dd data-rb="flutuante" data-f="usdS">—</dd>
@@ -286,7 +287,8 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
         <h3><span>Robo X2</span><span class="num">Sala 2</span></h3>
         <span class="pill ok" data-estado="operando" hidden>Operando</span>
         <span class="pill warn" data-estado="ativo" hidden>Operou, sem posição aberta</span>
-        <span class="pill mudo" data-estado="parado" hidden>Parado: sem operações nesta conta</span>
+        <span class="pill ok" data-estado="ligado" hidden>Ligado, aguardando sinal</span>
+        <span class="pill mudo" data-estado="parado" hidden>Desligado no terminal</span>
         <dl class="kv">
           <dt>Realizado</dt><dd data-rb="resultado" data-f="usdS">—</dd>
           <dt>Em aberto</dt><dd data-rb="flutuante" data-f="usdS">—</dd>
@@ -582,7 +584,7 @@ if(window.THREE&&THREE.OrbitControls){
     g.fillText(txt.toUpperCase(),256,50);g.shadowBlur=0;g.fillStyle="#ffffff";g.globalAlpha=.55;g.fillText(txt.toUpperCase(),256,50)},null)}
   const fmtT=v=>(v>0?"+":v<0?"−":"")+Math.abs(v).toFixed(2);
   const corV=v=>v>0?"#4cc9a6":v<0?"#f08d68":"#eef1ee";
-  const STATUS={operando:["OPERANDO","#4cc9a6"],ativo:["OPEROU · SEM POSIÇÃO","#e0a940"],parado:["PARADO · SEM OPERAÇÕES NESTA CONTA","#9aa49f"]};
+  const STATUS={operando:["OPERANDO","#4cc9a6"],ativo:["OPEROU · SEM POSIÇÃO","#e0a940"],ligado:["LIGADO · AGUARDANDO SINAL","#4cc9a6"],parado:["DESLIGADO","#9aa49f"]};
   function telaSala(s){const r=XT.robos.find(x=>x.robo===s.id);return canvasTex(900,200,g=>{
     g.fillStyle="#9aa49f";g.font="500 26px system-ui";g.fillText((s.n+" · "+s.nome+" · resultado na "+(XT.V?XT.V.corretora:"")).toUpperCase(),30,42);
     if(!r){g.fillStyle="#9aa49f";g.font="600 64px ui-monospace,Consolas,monospace";g.fillText("carregando",30,130);return}
@@ -656,11 +658,11 @@ if(window.THREE&&THREE.OrbitControls){
    document.fonts&&document.fonts.ready.then(()=>[[fach,"#EEF1EE",true],[piso,"#d9dfdb",false]].forEach(([m,c,b])=>{
      m.material.map.dispose();m.material.map=logoTex(c,b);m.material.needsUpdate=true}))}
 
-  // estado vindo dos dados: robô operando senta e acende a sala; parado fica de pé ao lado da estação
+  // estado vindo dos dados: robô ligado senta, trabalha e acende a sala; desligado fica de pé ao lado da estação
   function aplicar(){
     for(const s of SALAS){const r=XT.robos.find(x=>x.robo===s.id),st=r?r.status:"parado",vivo=st!=="parado";
       s.status=st;s.lamp.intensity=vivo?1.35:.55;
-      s.piso.material.color.copy(s.tint).lerp(new THREE.Color(st==="operando"?0x1f8f6e:st==="ativo"?0x8a6a1e:0x0e1012),vivo?.35:.25);
+      s.piso.material.color.copy(s.tint).lerp(new THREE.Color(st==="operando"?0x1f8f6e:st==="ativo"?0x8a6a1e:st==="ligado"?0x1f6f8f:0x0e1012),vivo?.35:.25);
       s.telas.forEach(m=>m.material=mat(vivo?0x3f8fe0:0x1b2733,1,true));s.leds.forEach((m,i)=>m.visible=vivo||i%3===0);
       posRobo(s)}
     for(const t of TELAS){const old=t.tl.material.map;t.tl.material.map=telaSala(t.s);t.tl.material.needsUpdate=true;old&&old.dispose()}
@@ -669,13 +671,13 @@ if(window.THREE&&THREE.OrbitControls){
   function posRobo(s){
     const sentado=s.status!=="parado";
     if(s.robo){if(sentado){s.robo.g.position.set(0,.28,.45);s.robo.g.rotation.y=0;s.robo.atual=null;s.robo.tocar("sentado",0);s.robo.mixer.update(1)}
-      else{s.robo.g.position.set(.95,-.06,.15);s.robo.g.rotation.y=-.5;s.robo.tocar("parado",.3)}}
+      else{s.robo.g.position.set(.95,-.06,.15);s.robo.g.rotation.set(0,-.5,0);s.robo.tocar("parado",.3)}}
     else{s.boneco.g.position.set(sentado?0:.95,0,sentado?.55:.15)}}
   function placar(){const V=XT.V,el=document.getElementById("placar");if(!V){el.textContent="carregando os dados da conta";return}
     const op=SALAS.filter(s=>s.status&&s.status!=="parado").length;
     el.innerHTML="";const l1=document.createElement("div"),l2=document.createElement("div");
     l1.append("Patrimônio ");const b=document.createElement("b");b.textContent=FMT.usd(V.patrimonio);l1.append(b);
-    l2.textContent=`${op} de 2 robôs operando · folga do dia ${FMT.usd(V.folga_dia)}`;el.append(l1,l2)}
+    l2.textContent=`${op} de 2 robôs ligados · folga do dia ${FMT.usd(V.folga_dia)}`;el.append(l1,l2)}
   XT.ouvintes.push(aplicar);if(XT.V)aplicar();else placar();
 
   // seleção: destaca a etiqueta e mostra a legenda
@@ -743,7 +745,8 @@ if(window.THREE&&THREE.OrbitControls){
   (function loop(){requestAnimationFrame(loop);if(!visible||document.hidden)return;
     const t=clock.getElapsedTime(),dt=Math.min(.05,t-ultimo);ultimo=t;O.update();
     if(!calm){rondar(dt);for(const s of SALAS)if(s.status&&s.status!=="parado")s.leds.forEach((m,i)=>m.visible=Math.sin(t*4+i*1.7)>-.4);
-      if(!AG.sentado){const A=AG.boneco.A;A.head.rotation.y=Math.sin(t*.45)*.5}}
+      if(!AG.sentado){const A=AG.boneco.A;A.head.rotation.y=Math.sin(t*.45)*.5}
+      SALAS.forEach((s,i)=>{if(s.robo&&s.status&&s.status!=="parado"){const g=s.robo.g;g.rotation.y=Math.sin(t*.7+i*2)*.28;g.rotation.x=.06+Math.sin(t*2.3+i)*.03}})}
     for(const m of MIXERS)if(m.g.visible&&m.g.parent)m.mixer.update(calm?0:dt);
     comp?comp.render():R.render(S,C);
     for(const tg of tags){v.copy(tg.v).project(C);tg.el.style.left=((v.x+1)/2*W)+"px";tg.el.style.top=((-v.y+1)/2*H)+"px";tg.el.hidden=v.z>1}
