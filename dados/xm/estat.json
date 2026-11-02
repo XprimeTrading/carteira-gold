@@ -7,18 +7,18 @@
     "nome": "Conta inteira",
     "tipo": "conta",
     "inicio": "2026-11-01 20:23:23",
-    "fim": "2026-11-02 07:35:57",
-    "dias": 0.5,
+    "fim": "2026-11-02 09:33:50",
+    "dias": 0.6,
     "resultado": -10.91,
     "pct": -0.005455,
-    "fechamentos": 2,
+    "fechamentos": 3,
     "ganhos_n": 0,
     "acerto": 0.0,
     "soma_ganhos": 0,
     "soma_perdas": -10.91,
     "fl": 0.0,
     "payoff": null,
-    "por_fech": -5.455,
+    "por_fech": -3.6366666666666667,
     "maior_ganho": null,
     "maior_perda": -10.76,
     "queda": -10.91,
@@ -43,6 +43,10 @@
      {
       "quando": "2026-11-02 07:35:57",
       "r": -10.91
+     },
+     {
+      "quando": "2026-11-02 09:33:50",
+      "r": -10.91
      }
     ],
     "barras": [
@@ -54,7 +58,7 @@
      {
       "dia": "2026-11-02",
       "v": -10.76,
-      "n": 1
+      "n": 2
      }
     ]
    },
