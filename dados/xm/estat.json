@@ -7,24 +7,24 @@
     "nome": "Conta inteira",
     "tipo": "conta",
     "inicio": "2026-11-01 20:23:23",
-    "fim": "2026-11-02 09:33:50",
+    "fim": "2026-11-02 09:43:41",
     "dias": 0.6,
-    "resultado": -10.91,
-    "pct": -0.005455,
-    "fechamentos": 3,
+    "resultado": -19.51,
+    "pct": -0.009755,
+    "fechamentos": 4,
     "ganhos_n": 0,
     "acerto": 0.0,
     "soma_ganhos": 0,
-    "soma_perdas": -10.91,
+    "soma_perdas": -19.51,
     "fl": 0.0,
     "payoff": null,
-    "por_fech": -3.6366666666666667,
+    "por_fech": -4.8774999999999995,
     "maior_ganho": null,
     "maior_perda": -10.76,
-    "queda": -10.91,
-    "queda_pct": -0.005455,
+    "queda": -19.51,
+    "queda_pct": -0.009755,
     "taxas": 0.0,
-    "media_dia": -10.91,
+    "media_dia": -19.509999999999998,
     "dias_operados": 2,
     "dias_lucro": 0,
     "melhor_dia": {
@@ -33,7 +33,7 @@
     },
     "pior_dia": {
      "dia": "2026-11-02",
-     "v": -10.76
+     "v": -19.36
     },
     "curva": [
      {
@@ -47,6 +47,10 @@
      {
       "quando": "2026-11-02 09:33:50",
       "r": -10.91
+     },
+     {
+      "quando": "2026-11-02 09:43:41",
+      "r": -19.51
      }
     ],
     "barras": [
@@ -57,8 +61,8 @@
      },
      {
       "dia": "2026-11-02",
-      "v": -10.76,
-      "n": 2
+      "v": -19.36,
+      "n": 3
      }
     ]
    },
@@ -66,31 +70,48 @@
     "id": "robo_x1",
     "nome": "Robo X1",
     "tipo": "robo",
-    "inicio": "2026-11-01 19:42:46",
-    "fim": null,
-    "dias": 0.6,
-    "resultado": 0.0,
-    "pct": 0.0,
-    "fechamentos": 0,
+    "inicio": "2026-11-02 09:43:41",
+    "fim": "2026-11-02 09:43:41",
+    "dias": 0.0,
+    "resultado": -8.6,
+    "pct": -0.0043,
+    "fechamentos": 1,
     "ganhos_n": 0,
-    "acerto": null,
+    "acerto": 0.0,
     "soma_ganhos": 0,
-    "soma_perdas": 0,
-    "fl": null,
+    "soma_perdas": -8.6,
+    "fl": 0.0,
     "payoff": null,
-    "por_fech": null,
+    "por_fech": -8.6,
     "maior_ganho": null,
-    "maior_perda": null,
-    "queda": -0.0,
-    "queda_pct": -0.0,
-    "taxas": 0,
-    "media_dia": 0.0,
-    "dias_operados": 0,
+    "maior_perda": -8.6,
+    "queda": -8.6,
+    "queda_pct": -0.0043,
+    "taxas": 0.0,
+    "media_dia": -8.6,
+    "dias_operados": 1,
     "dias_lucro": 0,
-    "melhor_dia": null,
-    "pior_dia": null,
-    "curva": [],
-    "barras": []
+    "melhor_dia": {
+     "dia": "2026-11-02",
+     "v": -8.6
+    },
+    "pior_dia": {
+     "dia": "2026-11-02",
+     "v": -8.6
+    },
+    "curva": [
+     {
+      "quando": "2026-11-02 09:43:41",
+      "r": -8.6
+     }
+    ],
+    "barras": [
+     {
+      "dia": "2026-11-02",
+      "v": -8.6,
+      "n": 1
+     }
+    ]
    },
    {
     "id": "robo_x2",
