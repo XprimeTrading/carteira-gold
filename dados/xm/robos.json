@@ -3,13 +3,13 @@
   "robo": "robo_x1",
   "nome": "Robo X1",
   "magic": null,
-  "status": "ligado",
+  "status": "operando",
   "resultado": 0,
   "fechadas": 0,
   "ganhos": 0,
-  "abertas": 0,
-  "flutuante": 0,
-  "ultima": null
+  "abertas": 2,
+  "flutuante": 0.51,
+  "ultima": "2026-11-02 07:45:00"
  },
  {
   "robo": "robo_x2",
