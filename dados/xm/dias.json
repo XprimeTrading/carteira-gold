@@ -1,23 +1,23 @@
 [
  {
   "dia": "2026-11-01",
-  "saldo_inicio": 100000.0,
-  "realizado": -15.0,
-  "saldo_fim": 99985.0,
+  "saldo_inicio": 1000.0,
+  "realizado": -0.15,
+  "saldo_fim": 999.85,
   "fechadas": 1
  },
  {
   "dia": "2026-11-02",
-  "saldo_inicio": 99985.0,
-  "realizado": -4100.0,
-  "saldo_fim": 95885.0,
+  "saldo_inicio": 999.85,
+  "realizado": -41.0,
+  "saldo_fim": 958.85,
   "fechadas": 7
  },
  {
   "dia": "2026-11-03",
-  "saldo_inicio": 95885.0,
-  "realizado": 4191.0,
-  "saldo_fim": 100076.0,
+  "saldo_inicio": 958.85,
+  "realizado": 41.91,
+  "saldo_fim": 1000.76,
   "fechadas": 9
  }
 ]
