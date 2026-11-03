@@ -278,6 +278,7 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
         <span class="pill mudo" data-estado="parado" hidden>Desligado no terminal</span>
         <dl class="kv">
           <dt>Realizado</dt><dd data-rb="resultado" data-f="usdS">—</dd>
+          <dt>Hoje</dt><dd data-rb="hoje" data-f="usdS">—</dd>
           <dt>Em aberto</dt><dd data-rb="flutuante" data-f="usdS">—</dd>
           <dt>Operações fechadas</dt><dd data-rb="fechadas" data-f="int">—</dd>
           <dt>Posições abertas</dt><dd data-rb="abertas" data-f="int">—</dd>
@@ -292,6 +293,7 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
         <span class="pill mudo" data-estado="parado" hidden>Desligado no terminal</span>
         <dl class="kv">
           <dt>Realizado</dt><dd data-rb="resultado" data-f="usdS">—</dd>
+          <dt>Hoje</dt><dd data-rb="hoje" data-f="usdS">—</dd>
           <dt>Em aberto</dt><dd data-rb="flutuante" data-f="usdS">—</dd>
           <dt>Operações fechadas</dt><dd data-rb="fechadas" data-f="int">—</dd>
           <dt>Posições abertas</dt><dd data-rb="abertas" data-f="int">—</dd>
@@ -592,9 +594,12 @@ if(window.THREE&&THREE.OrbitControls){
   function telaSala(s){const r=XT.robos.find(x=>x.robo===s.id);return canvasTex(900,200,g=>{
     g.fillStyle="#9aa49f";g.font="500 26px system-ui";g.fillText((s.n+" · "+s.nome+" · resultado na "+(XT.V?XT.V.corretora:"")).toUpperCase(),30,42);
     if(!r){g.fillStyle="#9aa49f";g.font="600 64px ui-monospace,Consolas,monospace";g.fillText("carregando",30,130);return}
-    g.fillStyle=corV(+r.resultado);g.font="600 88px ui-monospace,Consolas,monospace";g.fillText(fmtT(+r.resultado),30,136);
-    const st=STATUS[r.status]||STATUS.parado;g.fillStyle=st[1];g.font="600 24px system-ui";g.fillText(st[0],30,180);
-    g.fillStyle="#eef1ee";g.font="500 24px system-ui";g.textAlign="right";g.fillText(`${r.fechadas} fechadas · ${r.abertas} abertas · aberto ${fmtT(+r.flutuante)}`,870,180)})}
+    // dois números: o acumulado desde o início e o resultado de hoje
+    g.fillStyle="#9aa49f";g.font="600 22px system-ui";g.fillText("ACUMULADO · US$",30,80);g.fillText("HOJE · US$",480,80);
+    g.font="600 70px ui-monospace,Consolas,monospace";
+    g.fillStyle=corV(+r.resultado);g.fillText(fmtT(+r.resultado),30,146);g.fillStyle=corV(+r.hoje||0);g.fillText(fmtT(+r.hoje||0),480,146);
+    const st=STATUS[r.status]||STATUS.parado;g.fillStyle=st[1];g.font="600 22px system-ui";g.fillText(st[0],30,186);
+    g.fillStyle="#eef1ee";g.font="500 22px system-ui";g.textAlign="right";g.fillText(`${r.fechadas} fechadas · ${r.abertas} abertas · aberto ${fmtT(+r.flutuante)}`,870,186)})}
 
   const WH=1.7,WT=.06,GAP=1.4,GLASS=0x8fb3c7,FRAME=0x16191c;
   function pane(w,x,z,horiz,o){if(w<=.05)return;
