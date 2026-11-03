@@ -158,7 +158,7 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
       </svg>
       <span class="sufixo">· carteira</span>
     </div>
-    <div class="vivo"><i></i><span data-v="corretora">—</span> · dados de <span data-v="exportado" data-f="hora">—</span></div>
+    <div class="vivo"><i></i><span data-v="corretora">—</span><span data-cent hidden> · conta cent</span> · dados de <span data-v="exportado" data-f="hora">—</span></div>
   </header>
 
   <p class="aviso" id="aviso" hidden></p>
@@ -166,6 +166,7 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
   <div class="titulo">
     <h1>Carteira Gold</h1>
     <div class="eyebrow"><span data-v="corretora">—</span> · <span data-v="programa">—</span></div>
+    <p class="note" data-cent hidden style="margin-top:6px"><b>Conta cent.</b> Na corretora o saldo é em centavos de dólar (USC). Aqui tudo está convertido para US$: 100 USC = US$ 1.</p>
   </div>
 
   <div class="periodo">
@@ -385,6 +386,7 @@ function situacao(conta,dias){
 function preencher(V,robos){
   document.querySelectorAll("[data-so]").forEach(el=>el.hidden=el.dataset.so!==V.modo);
   document.querySelectorAll("[data-nom]").forEach(el=>el.hidden=!V.nominal);
+  document.querySelectorAll("[data-cent]").forEach(el=>el.hidden=!V.cent);
   document.querySelectorAll("[data-r]").forEach(el=>{const v=REGRA[el.dataset.r];el.textContent=v==null?"—":el.dataset.r==="diasLucro"?String(v):pctR(v)});
   document.querySelectorAll("[data-v]").forEach(el=>{const v=V[el.dataset.v],f=el.dataset.f||"txt";
     el.textContent=v==null||(typeof v==="number"&&!isFinite(v))?"—":FMT[f](f==="txt"||f==="quando"||f==="hora"?v:+v);sinal(el,+v,f)});
