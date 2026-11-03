@@ -24,7 +24,7 @@
     "queda": -56.55,
     "queda_pct": -0.028275,
     "taxas": 0.0,
-    "media_dia": -37.6235502015603,
+    "media_dia": -37.51952323815331,
     "dias_operados": 3,
     "dias_lucro": 0,
     "melhor_dia": {
@@ -105,7 +105,7 @@
     "tipo": "robo",
     "inicio": "2026-11-02 09:43:41",
     "fim": "2026-11-02 09:48:11",
-    "dias": 0.9,
+    "dias": 1.0,
     "resultado": -13.19,
     "pct": -0.006595,
     "fechamentos": 2,
