@@ -91,36 +91,6 @@
     "pior_dia": null,
     "curva": [],
     "barras": []
-   },
-   {
-    "id": "robo_x3",
-    "nome": "Robo X3",
-    "tipo": "robo",
-    "inicio": "2026-11-03 20:02:30",
-    "fim": null,
-    "dias": 0.1,
-    "resultado": 0.0,
-    "pct": 0.0,
-    "fechamentos": 0,
-    "ganhos_n": 0,
-    "acerto": null,
-    "soma_ganhos": 0,
-    "soma_perdas": 0,
-    "fl": null,
-    "payoff": null,
-    "por_fech": null,
-    "maior_ganho": null,
-    "maior_perda": null,
-    "queda": -0.0,
-    "queda_pct": -0.0,
-    "taxas": 0,
-    "media_dia": 0.0,
-    "dias_operados": 0,
-    "dias_lucro": 0,
-    "melhor_dia": null,
-    "pior_dia": null,
-    "curva": [],
-    "barras": []
    }
   ]
  }

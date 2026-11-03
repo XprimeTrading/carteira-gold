@@ -22,17 +22,5 @@
   "abertas": 0,
   "flutuante": 0,
   "ultima": null
- },
- {
-  "robo": "robo_x3",
-  "nome": "Robo X3",
-  "magic": null,
-  "status": "parado",
-  "resultado": 0,
-  "fechadas": 0,
-  "ganhos": 0,
-  "abertas": 0,
-  "flutuante": 0,
-  "ultima": null
  }
 ]

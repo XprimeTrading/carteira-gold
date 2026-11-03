@@ -259,10 +259,10 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
     <div>
       <p class="sec">03 <b>Salas</b></p>
       <h2>Salas de <em>operação</em></h2>
-      <p class="note" style="margin-top:4px">Robo X1 na sala 1, Robo X2 e Robo X3 juntos na sala 2 e o agente humano no corredor, de olho nas duas. Robô ligado fica sentado na estação, trabalhando; desligado, fica de pé ao lado dela.</p>
+      <p class="note" style="margin-top:4px">Uma sala para cada robô e o agente humano no corredor, de olho nas duas. Robô ligado fica sentado na estação, trabalhando; desligado, fica de pé ao lado dela.</p>
     </div>
     <div class="stage" id="stage">
-      <canvas id="cv" aria-label="Salas de operação em 3D: duas salas, a 2 com dois robôs, e o agente humano no corredor"></canvas>
+      <canvas id="cv" aria-label="Salas de operação em 3D: duas salas com um robô cada e o agente humano no corredor"></canvas>
       <div class="tags" id="tags"></div>
       <div class="placar" id="placar">—</div>
       <div class="cap" id="cap" hidden></div>
@@ -286,20 +286,6 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
       </article>
       <article class="sala" data-sala="robo_x2" tabindex="0">
         <h3><span>Robo X2</span><span class="num">Sala 2</span></h3>
-        <span class="pill ok" data-estado="operando" hidden>Operando</span>
-        <span class="pill warn" data-estado="ativo" hidden>Operou, sem posição aberta</span>
-        <span class="pill ok" data-estado="ligado" hidden>Ligado, aguardando sinal</span>
-        <span class="pill mudo" data-estado="parado" hidden>Desligado no terminal</span>
-        <dl class="kv">
-          <dt>Realizado</dt><dd data-rb="resultado" data-f="usdS">—</dd>
-          <dt>Em aberto</dt><dd data-rb="flutuante" data-f="usdS">—</dd>
-          <dt>Operações fechadas</dt><dd data-rb="fechadas" data-f="int">—</dd>
-          <dt>Posições abertas</dt><dd data-rb="abertas" data-f="int">—</dd>
-          <dt>Última operação</dt><dd data-rb="ultima" data-f="quando">—</dd>
-        </dl>
-      </article>
-      <article class="sala" data-sala="robo_x3" tabindex="0">
-        <h3><span>Robo X3</span><span class="num">Sala 2</span></h3>
         <span class="pill ok" data-estado="operando" hidden>Operando</span>
         <span class="pill warn" data-estado="ativo" hidden>Operou, sem posição aberta</span>
         <span class="pill ok" data-estado="ligado" hidden>Ligado, aguardando sinal</span>
@@ -620,8 +606,7 @@ if(window.THREE&&THREE.OrbitControls){
   // duas salas de frente para o corredor; o telão fica na parede oposta à porta. Robô com "sala" divide a sala daquele robô
   const SALAS=[
     {id:"robo_x1",n:"Sala 1",nome:"Robo X1",x:[-8,-1.5],z:[-3.5,3.5],door:"e",cor:0x5146b0},
-    {id:"robo_x2",n:"Sala 2",nome:"Robo X2",x:[1.5,8],z:[-3.5,3.5],door:"w",cor:0x6a5fd0},
-    {id:"robo_x3",n:"Sala 2",nome:"Robo X3",sala:"robo_x2"}];
+    {id:"robo_x2",n:"Sala 2",nome:"Robo X2",x:[1.5,8],z:[-3.5,3.5],door:"w",cor:0x6a5fd0}];
   const FURG=[],TELAS=[],tags=[];
   for(const s of SALAS){if(s.sala)continue;
     const[x0,x1]=s.x,[z0,z1]=s.z,w=x1-x0,d=z1-z0,cx=(x0+x1)/2,cz=(z0+z1)/2,oeste=s.door==="e";
