@@ -1,0 +1,32 @@
+[
+ {
+  "conta": null,
+  "servidor": null,
+  "programa": "Conta real (USDT)",
+  "moeda": "USD",
+  "alavancagem": "1:0",
+  "inicio": "2026-10-10 06:30:35",
+  "saldo_inicial": 6990.4,
+  "saldo": 7882.32,
+  "patrimonio": 7882.32,
+  "flutuante": 0,
+  "margem": 0.0,
+  "abertas": 0,
+  "fechadas": 1308,
+  "ultimo_preco": "2026-11-03 21:00:24",
+  "exportado": "2026-11-03T21:37:09+00:00",
+  "modo": "conta",
+  "casa": "da casa",
+  "corretora": "Bybit",
+  "nominal": null,
+  "regras": {
+   "meta": null,
+   "meta2": null,
+   "dia": null,
+   "total": null,
+   "casaDia": null,
+   "casaTotal": null,
+   "diasLucro": null
+  }
+ }
+]

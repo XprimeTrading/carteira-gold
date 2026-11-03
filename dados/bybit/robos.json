@@ -1,0 +1,28 @@
+[
+ {
+  "robo": "robo_x1",
+  "nome": "Fase 1",
+  "magic": null,
+  "status": "ativo",
+  "resultado": 597.64,
+  "fechadas": 967,
+  "hoje": 0,
+  "ganhos": 448,
+  "abertas": 0,
+  "flutuante": 0,
+  "ultima": "2026-10-27 16:19:52"
+ },
+ {
+  "robo": "robo_x2",
+  "nome": "Fase 2",
+  "magic": null,
+  "status": "ativo",
+  "resultado": 257.76,
+  "fechadas": 340,
+  "hoje": 14.97,
+  "ganhos": 191,
+  "abertas": 0,
+  "flutuante": 0,
+  "ultima": "2026-11-03 20:13:15"
+ }
+]
