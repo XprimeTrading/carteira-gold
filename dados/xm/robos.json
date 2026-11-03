@@ -22,5 +22,17 @@
   "abertas": 0,
   "flutuante": 0,
   "ultima": "2026-11-03 14:00:00"
+ },
+ {
+  "robo": "robo_x3",
+  "nome": "Robo X3",
+  "magic": null,
+  "status": "ativo",
+  "resultado": -4.5,
+  "fechadas": 1,
+  "ganhos": 0,
+  "abertas": 0,
+  "flutuante": 0,
+  "ultima": "2026-11-03 04:10:06"
  }
 ]
