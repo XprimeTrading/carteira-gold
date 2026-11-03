@@ -15,7 +15,7 @@
   "robo": "robo_x2",
   "nome": "Robo X2",
   "magic": null,
-  "status": "ligado",
+  "status": "parado",
   "resultado": 0,
   "fechadas": 0,
   "ganhos": 0,
