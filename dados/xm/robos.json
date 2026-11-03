@@ -15,12 +15,12 @@
   "robo": "robo_x2",
   "nome": "Robo X2",
   "magic": null,
-  "status": "parado",
-  "resultado": 0,
-  "fechadas": 0,
-  "ganhos": 0,
+  "status": "ativo",
+  "resultado": 21.88,
+  "fechadas": 9,
+  "ganhos": 4,
   "abertas": 0,
   "flutuante": 0,
-  "ultima": null
+  "ultima": "2026-11-03 14:00:00"
  }
 ]
