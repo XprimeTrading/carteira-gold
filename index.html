@@ -258,10 +258,10 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
     <div>
       <p class="sec">03 <b>Salas</b></p>
       <h2>Salas de <em>operação</em></h2>
-      <p class="note" style="margin-top:4px">Uma sala para cada robô e o agente humano no corredor, de olho nas duas. Robô ligado fica sentado na estação, trabalhando; desligado, fica de pé ao lado dela.</p>
+      <p class="note" style="margin-top:4px">Uma sala para cada robô e o agente humano no corredor, de olho em todas. Robô ligado fica sentado na estação, trabalhando; desligado, fica de pé ao lado dela.</p>
     </div>
     <div class="stage" id="stage">
-      <canvas id="cv" aria-label="Salas de operação em 3D: duas salas com um robô cada e o agente humano no corredor"></canvas>
+      <canvas id="cv" aria-label="Salas de operação em 3D: três salas com um robô cada e o agente humano no corredor"></canvas>
       <div class="tags" id="tags"></div>
       <div class="placar" id="placar">—</div>
       <div class="cap" id="cap" hidden></div>
@@ -297,12 +297,26 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
           <dt>Última operação</dt><dd data-rb="ultima" data-f="quando">—</dd>
         </dl>
       </article>
+      <article class="sala" data-sala="robo_x3" tabindex="0">
+        <h3><span>Robo X3</span><span class="num">Sala 3</span></h3>
+        <span class="pill ok" data-estado="operando" hidden>Operando</span>
+        <span class="pill warn" data-estado="ativo" hidden>Operou, sem posição aberta</span>
+        <span class="pill ok" data-estado="ligado" hidden>Ligado, aguardando sinal</span>
+        <span class="pill mudo" data-estado="parado" hidden>Desligado no terminal</span>
+        <dl class="kv">
+          <dt>Realizado</dt><dd data-rb="resultado" data-f="usdS">—</dd>
+          <dt>Em aberto</dt><dd data-rb="flutuante" data-f="usdS">—</dd>
+          <dt>Operações fechadas</dt><dd data-rb="fechadas" data-f="int">—</dd>
+          <dt>Posições abertas</dt><dd data-rb="abertas" data-f="int">—</dd>
+          <dt>Última operação</dt><dd data-rb="ultima" data-f="quando">—</dd>
+        </dl>
+      </article>
       <article class="sala" data-sala="agente" tabindex="0" data-grupo="folga_dia_pct">
         <h3><span>Agente humano</span><span class="num">Corredor</span></h3>
         <span class="pill ok" data-estado="ok" hidden>Conta dentro dos limites</span>
         <span class="pill warn" data-estado="warn" hidden>Mais da metade do limite do dia usada</span>
         <span class="pill bad" data-estado="bad" hidden>Limite do dia atingido</span>
-        <p class="s">Monitora as duas salas e a conta inteira. O pregão está em <span data-v="resultado_dia" data-f="usdS">—</span>, com <b data-v="folga_dia" data-f="usd">—</b> de folga até o limite diário.</p>
+        <p class="s">Monitora as três salas e a conta inteira. O pregão está em <span data-v="resultado_dia" data-f="usdS">—</span>, com <b data-v="folga_dia" data-f="usd">—</b> de folga até o limite diário.</p>
       </article>
     </div>
   </section>
@@ -358,7 +372,7 @@ function situacao(conta,dias){
   const ini=+c.saldo_inicial,pat=+c.patrimonio,sal=+c.saldo,ult=dias[dias.length-1];
   const base=ult&&ult.dia===String(c.ultimo_preco).slice(0,10)?+ult.saldo_inicio:Math.max(sal,pat),res=pat-ini;
   // capital nominal: conta operada como se tivesse mais do que o depositado; metas e limites em US$ saem dele
-  const N=c.nominal?+c.nominal:null,bD=N||base,bT=N||ini;
+  const N=c.nominal?+c.nominal:null,bD=N||(c.modo==="conta"?ini:base),bT=N||ini;  // conta própria: o dia também sobre o depósito; mesa: sobre o saldo de abertura do dia
   return{modo:"conta",...c,inicial:ini,nominal:N,resultado:res,resultado_pct:res/bT,
     meta:q(m=>ini+bT*m,REGRA.meta),falta_meta:q(m=>Math.max(0,ini+bT*m-pat),REGRA.meta),progresso_meta:q(m=>res/(bT*m),REGRA.meta),base_dia:base,perda_dia:bD*REGRA.dia,piso_dia:base-bD*REGRA.dia,folga_dia:pat-base+bD*REGRA.dia,
     folga_dia_pct:(pat-base+bD*REGRA.dia)/(bD*REGRA.dia),piso_total:ini-bT*REGRA.total,folga_total:pat-ini+bT*REGRA.total,
@@ -535,11 +549,11 @@ if(window.THREE&&THREE.OrbitControls){
   const R=new THREE.WebGLRenderer({canvas:cv,antialias:!lowEnd,powerPreference:"high-performance"});
   R.setPixelRatio(Math.min(devicePixelRatio,lowEnd?1.4:2));R.setSize(W,H,false);
   const S=new THREE.Scene();S.background=new THREE.Color(0x07090a);S.fog=new THREE.Fog(0x07090a,26,60);
-  const C=new THREE.PerspectiveCamera(40,W/H,.1,200);const far=W<520?1.55:1;C.position.set(6*far,9.5*far,13.5*far);
+  const C=new THREE.PerspectiveCamera(40,W/H,.1,200);const far=W<520?1.55:1;C.position.set(7*far,12*far,13*far);
   S.add(new THREE.HemisphereLight(0xb8c8da,0x1a1a1a,1.05));
   const key=new THREE.DirectionalLight(0xdfe8ff,.6);key.position.set(-12,30,18);S.add(key);
   {const p=new THREE.PointLight(0xff8a3d,1.2,12,2);p.position.set(0,2.6,1.2);S.add(p)}
-  const O=new THREE.OrbitControls(C,R.domElement);O.target.set(0,.6,0);O.enableDamping=true;O.maxPolarAngle=1.3;O.minDistance=4;O.maxDistance=34;O.autoRotate=!calm;O.autoRotateSpeed=.45;O.enablePan=false;
+  const O=new THREE.OrbitControls(C,R.domElement);O.target.set(0,.6,-3.2);O.enableDamping=true;O.maxPolarAngle=1.3;O.minDistance=4;O.maxDistance=34;O.autoRotate=!calm;O.autoRotateSpeed=.45;O.enablePan=false;
 
   const MC={},BOX=new THREE.BoxGeometry(1,1,1),CYL=new THREE.CylinderGeometry(1,1,1,8),SPH=new THREE.SphereGeometry(1,12,10);
   const mat=(c,o=1,glow=false)=>{const k=c+"|"+o+"|"+glow;return MC[k]||(MC[k]=glow
@@ -549,10 +563,10 @@ if(window.THREE&&THREE.OrbitControls){
   const B=(w,h,d,x,y,z,c,o=1,glow=false)=>mesh(BOX,c,w,h,d,x,y,z,S,o,glow);
   const P=(g,w,h,d,x,y,z,c,o=1,glow=false)=>mesh(BOX,c,w,h,d,x,y,z,g,o,glow);
 
-  const floor=new THREE.Mesh(new THREE.PlaneGeometry(30,20),new THREE.MeshStandardMaterial({color:0x101315,roughness:.36,metalness:.35}));
-  floor.rotation.x=-PI/2;floor.position.set(0,-.01,0);S.add(floor);
+  const floor=new THREE.Mesh(new THREE.PlaneGeometry(30,30),new THREE.MeshStandardMaterial({color:0x101315,roughness:.36,metalness:.35}));
+  floor.rotation.x=-PI/2;floor.position.set(0,-.01,-4);S.add(floor);
   const NEON=0xff7a1a;
-  B(3,.06,8.6,0,.03,0,0x1a1e21);B(.06,.04,8.6,-1.45,.08,0,NEON,1,true);B(.06,.04,8.6,1.45,.08,0,NEON,1,true);
+  B(3,.06,15.6,0,.03,-3.5,0x1a1e21);B(.06,.04,15.6,-1.45,.08,-3.5,NEON,1,true);B(.06,.04,15.6,1.45,.08,-3.5,NEON,1,true);
 
   const CH=0x24282c,DK=0x3a3f45,SCR=0x2b5cab;
   const chair=(g,o,z,c=CH)=>{P(g,.5,.08,.5,0,.45,z,c,o);P(g,.5,.5,.07,0,.72,z+.25,c,o)};
@@ -601,10 +615,11 @@ if(window.THREE&&THREE.OrbitControls){
   function wallV(z0,z1,x,gz,o){if(gz==null){pane(z1-z0,x,(z0+z1)/2,false,o);return}
     const a=gz-GAP/2,b=gz+GAP/2;pane(a-z0,x,(z0+a)/2,false,o);pane(z1-b,x,(b+z1)/2,false,o)}
 
-  // duas salas de frente para o corredor; o telão fica na parede do fundo de cada uma
+  // salas de frente para o corredor (a 3 no fundo dele); o telão fica na parede oposta à porta
   const SALAS=[
     {id:"robo_x1",n:"Sala 1",nome:"Robo X1",x:[-8,-1.5],z:[-3.5,3.5],door:"e",cor:0x5146b0},
-    {id:"robo_x2",n:"Sala 2",nome:"Robo X2",x:[1.5,8],z:[-3.5,3.5],door:"w",cor:0x6a5fd0}];
+    {id:"robo_x2",n:"Sala 2",nome:"Robo X2",x:[1.5,8],z:[-3.5,3.5],door:"w",cor:0x6a5fd0},
+    {id:"robo_x3",n:"Sala 3",nome:"Robo X3",x:[-8,-1.5],z:[-11,-4.3],door:"e",cor:0x8a52c0}];
   const FURG=[],TELAS=[],tags=[];
   for(const s of SALAS){
     const[x0,x1]=s.x,[z0,z1]=s.z,w=x1-x0,d=z1-z0,cx=(x0+x1)/2,cz=(z0+z1)/2,oeste=s.door==="e";
@@ -649,9 +664,9 @@ if(window.THREE&&THREE.OrbitControls){
     const wx=g.measureText("X").width;g.shadowBlur=brilho?10:0;g.shadowColor=neutro;g.fillStyle=neutro;g.fillText("PRIME",270+wx+4,158);
     g.shadowBlur=0;g.font="500 34px 'IBM Plex Mono', Consolas, monospace";g.fillStyle=brilho?"#c9d2cd":neutro;
     [..."TRADING"].forEach((c,i)=>g.fillText(c,276+i*46,214))},null)}
-  {B(2.9,.82,.06,0,2.0,-3.62,0x0b0d0e);B(2.9,.03,.03,0,1.58,-3.58,0xffb35c,1,true);B(2.9,.03,.03,0,2.42,-3.58,0xffb35c,1,true);
+  {B(2.9,.82,.06,0,2.0,-11.32,0x0b0d0e);B(2.9,.03,.03,0,1.58,-11.28,0xffb35c,1,true);B(2.9,.03,.03,0,2.42,-11.28,0xffb35c,1,true);
    const fach=new THREE.Mesh(new THREE.PlaneGeometry(2.7,.6),new THREE.MeshBasicMaterial({map:logoTex("#EEF1EE",true),transparent:true,depthWrite:false}));
-   fach.position.set(0,2.0,-3.58);S.add(fach);
+   fach.position.set(0,2.0,-11.28);S.add(fach);
    const piso=new THREE.Mesh(new THREE.PlaneGeometry(2.5,.56),new THREE.MeshBasicMaterial({map:logoTex("#d9dfdb",false),transparent:true,opacity:.92,depthWrite:false}));
    piso.rotation.x=-PI/2;piso.position.set(0,.075,3.7);S.add(piso);
    // as fontes da web chegam depois do primeiro quadro: redesenha o logotipo quando estiverem prontas
@@ -677,7 +692,7 @@ if(window.THREE&&THREE.OrbitControls){
     const op=SALAS.filter(s=>s.status&&s.status!=="parado").length;
     el.innerHTML="";const l1=document.createElement("div"),l2=document.createElement("div");
     l1.append("Patrimônio ");const b=document.createElement("b");b.textContent=FMT.usd(V.patrimonio);l1.append(b);
-    l2.textContent=`${op} de 2 robôs ligados · folga do dia ${FMT.usd(V.folga_dia)}`;el.append(l1,l2)}
+    l2.textContent=`${op} de ${SALAS.length} robôs ligados · folga do dia ${FMT.usd(V.folga_dia)}`;el.append(l1,l2)}
   XT.ouvintes.push(aplicar);if(XT.V)aplicar();else placar();
 
   // seleção: destaca a etiqueta e mostra a legenda
@@ -685,7 +700,7 @@ if(window.THREE&&THREE.OrbitControls){
   XT.aoEscolher=id=>{tags.forEach(t=>t.el.classList.toggle("on",t.id===id));
     if(!id){cap.hidden=true;return}
     cap.innerHTML="";const b=document.createElement("b"),sp=document.createElement("span");
-    if(id==="agente"){b.textContent="Agente humano";sp.textContent="Acompanha as duas salas e os limites da conta. Levanta de tempos em tempos para olhar cada sala de perto."}
+    if(id==="agente"){b.textContent="Agente humano";sp.textContent="Acompanha as três salas e os limites da conta. Levanta de tempos em tempos para olhar cada sala de perto."}
     else{const s=SALAS.find(x=>x.id===id),r=XT.robos.find(x=>x.robo===id);b.textContent=s.n+" · "+s.nome;
       sp.textContent=r?`${(STATUS[r.status]||STATUS.parado)[0].toLowerCase()} · realizado ${FMT.usdS(+r.resultado)}`:"carregando"}
     cap.append(b,sp);cap.hidden=false};
@@ -723,7 +738,7 @@ if(window.THREE&&THREE.OrbitControls){
       stage.dataset.modelos="ok"}).catch(e=>{stage.dataset.modelos="falhou";console.warn("modelos 3D não carregaram; seguem os bonecos simples",e)})},300);
 
   // ronda do agente: levanta, olha a sala 1 pela porta, depois a sala 2, e volta a digitar
-  const RONDA=[{p:[.75,2.6]},{p:[-.95,.1],olhar:[-4.8,0],esp:5},{p:[.95,.1],olhar:[4.8,0],esp:5},{p:[.75,2.6],fim:true}];
+  const RONDA=[{p:[.75,2.6]},{p:[-.95,.1],olhar:[-4.8,0],esp:5},{p:[.95,.1],olhar:[4.8,0],esp:5},{p:[-.95,-7.6],olhar:[-4.8,-7.6],esp:5},{p:[.75,2.6],fim:true}];
   const ronda={fase:"sentado",espera:12,i:0,pos:[.75,2.6]};
   function rondar(dt){
     if(!AG.andando)return;
