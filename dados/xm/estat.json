@@ -7,29 +7,29 @@
     "nome": "Conta inteira",
     "tipo": "conta",
     "inicio": "2026-11-01 20:23:23",
-    "fim": "2026-11-03 14:00:00",
+    "fim": "2026-11-03 14:46:18",
     "dias": 1.8,
-    "resultado": 13.33,
-    "pct": 0.013329999999999995,
-    "fechamentos": 16,
-    "ganhos_n": 5,
-    "acerto": 0.3125,
-    "soma_ganhos": 69.88,
+    "resultado": 16.29,
+    "pct": 0.016289999999999995,
+    "fechamentos": 17,
+    "ganhos_n": 6,
+    "acerto": 0.35294117647058826,
+    "soma_ganhos": 72.84,
     "soma_perdas": -56.55,
-    "fl": 1.2357206012378426,
-    "payoff": 2.4714412024756856,
-    "por_fech": 0.8331249999999997,
+    "fl": 1.2880636604774538,
+    "payoff": 2.146772767462423,
+    "por_fech": 0.9582352941176469,
     "maior_ganho": 29.75,
     "maior_perda": -10.9,
     "queda": -56.55,
     "queda_pct": -0.05655,
     "taxas": 0.0,
-    "media_dia": 7.550088341099378,
+    "media_dia": 9.20489557561865,
     "dias_operados": 3,
     "dias_lucro": 1,
     "melhor_dia": {
      "dia": "2026-11-03",
-     "v": 54.48
+     "v": 57.44
     },
     "pior_dia": {
      "dia": "2026-11-02",
@@ -99,6 +99,10 @@
      {
       "quando": "2026-11-03 14:00:00",
       "r": 13.33
+     },
+     {
+      "quando": "2026-11-03 14:46:18",
+      "r": 16.29
      }
     ],
     "barras": [
@@ -114,8 +118,8 @@
      },
      {
       "dia": "2026-11-03",
-      "v": 54.48,
-      "n": 7
+      "v": 57.44,
+      "n": 8
      }
     ]
    },
@@ -141,7 +145,7 @@
     "queda": -13.19,
     "queda_pct": -0.01319,
     "taxas": 0.0,
-    "media_dia": 3.27332684138326,
+    "media_dia": 3.2620875484541108,
     "dias_operados": 2,
     "dias_lucro": 1,
     "melhor_dia": {
@@ -201,7 +205,7 @@
     "queda": -30.85,
     "queda_pct": -0.030850000000000002,
     "taxas": 0.0,
-    "media_dia": 16.850444451954502,
+    "media_dia": 16.796526583302185,
     "dias_operados": 2,
     "dias_lucro": 1,
     "melhor_dia": {
