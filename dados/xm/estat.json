@@ -1,96 +1,275 @@
 [
  {
-  "base": 1000.76,
+  "base": 100000.0,
   "escopos": [
    {
     "id": "conta",
     "nome": "Conta inteira",
     "tipo": "conta",
-    "inicio": "2026-11-03 20:02:30",
-    "fim": null,
-    "dias": 0.1,
-    "resultado": 0.0,
-    "pct": 0.0,
-    "fechamentos": 0,
-    "ganhos_n": 0,
-    "acerto": null,
-    "soma_ganhos": 0,
-    "soma_perdas": 0,
-    "fl": null,
-    "payoff": null,
-    "por_fech": null,
-    "maior_ganho": null,
-    "maior_perda": null,
-    "queda": -0.0,
-    "queda_pct": -0.0,
-    "taxas": 0,
-    "media_dia": 0.0,
-    "dias_operados": 0,
-    "dias_lucro": 0,
-    "melhor_dia": null,
-    "pior_dia": null,
-    "curva": [],
-    "barras": []
+    "inicio": "2026-11-01 20:23:23",
+    "fim": "2026-11-03 15:28:52",
+    "dias": 2.1,
+    "resultado": 76.0,
+    "pct": 0.00076,
+    "fechamentos": 18,
+    "ganhos_n": 6,
+    "acerto": 0.3333333333333333,
+    "soma_ganhos": 7284.0,
+    "soma_perdas": -7208.0,
+    "fl": 1.0105438401775804,
+    "payoff": 1.852663706992231,
+    "por_fech": 4.222222222222222,
+    "maior_ganho": 2975.0,
+    "maior_perda": -1553.0,
+    "queda": -5655.0,
+    "queda_pct": -0.05655,
+    "taxas": 0.0,
+    "media_dia": 36.489588181976075,
+    "dias_operados": 3,
+    "dias_lucro": 1,
+    "melhor_dia": {
+     "dia": "2026-11-03",
+     "v": 4191.0
+    },
+    "pior_dia": {
+     "dia": "2026-11-02",
+     "v": -4100.0
+    },
+    "curva": [
+     {
+      "quando": "2026-11-01 20:23:23",
+      "r": -15.0
+     },
+     {
+      "quando": "2026-11-02 07:35:57",
+      "r": -1091.0
+     },
+     {
+      "quando": "2026-11-02 09:33:50",
+      "r": -1091.0
+     },
+     {
+      "quando": "2026-11-02 09:43:41",
+      "r": -1951.0
+     },
+     {
+      "quando": "2026-11-02 09:48:11",
+      "r": -2410.0
+     },
+     {
+      "quando": "2026-11-02 09:48:11",
+      "r": -3319.0
+     },
+     {
+      "quando": "2026-11-02 09:48:11",
+      "r": -4095.0
+     },
+     {
+      "quando": "2026-11-02 10:20:00",
+      "r": -4105.0
+     },
+     {
+      "quando": "2026-11-02 15:00:00",
+      "r": -4115.0
+     },
+     {
+      "quando": "2026-11-03 04:10:06",
+      "r": -4565.0
+     },
+     {
+      "quando": "2026-11-03 04:10:14",
+      "r": -5655.0
+     },
+     {
+      "quando": "2026-11-03 08:46:35",
+      "r": -3940.0
+     },
+     {
+      "quando": "2026-11-03 10:07:55",
+      "r": -2737.0
+     },
+     {
+      "quando": "2026-11-03 10:56:26",
+      "r": 238.0
+     },
+     {
+      "quando": "2026-11-03 12:45:00",
+      "r": 615.0
+     },
+     {
+      "quando": "2026-11-03 14:00:00",
+      "r": 1333.0
+     },
+     {
+      "quando": "2026-11-03 14:46:18",
+      "r": 1629.0
+     },
+     {
+      "quando": "2026-11-03 15:28:52",
+      "r": 76.0
+     }
+    ],
+    "barras": [
+     {
+      "dia": "2026-11-01",
+      "v": -15.0,
+      "n": 1
+     },
+     {
+      "dia": "2026-11-02",
+      "v": -4100.0,
+      "n": 8
+     },
+     {
+      "dia": "2026-11-03",
+      "v": 4191.0,
+      "n": 9
+     }
+    ]
    },
    {
     "id": "robo_x1",
     "nome": "Robo X1",
     "tipo": "robo",
-    "inicio": "2026-11-03 20:02:30",
-    "fim": null,
-    "dias": 0.1,
-    "resultado": 0.0,
-    "pct": 0.0,
-    "fechamentos": 0,
-    "ganhos_n": 0,
-    "acerto": null,
-    "soma_ganhos": 0,
-    "soma_perdas": 0,
-    "fl": null,
-    "payoff": null,
-    "por_fech": null,
-    "maior_ganho": null,
-    "maior_perda": null,
-    "queda": -0.0,
-    "queda_pct": -0.0,
-    "taxas": 0,
-    "media_dia": 0.0,
-    "dias_operados": 0,
-    "dias_lucro": 0,
-    "melhor_dia": null,
-    "pior_dia": null,
-    "curva": [],
-    "barras": []
+    "inicio": "2026-11-02 09:43:41",
+    "fim": "2026-11-03 08:46:35",
+    "dias": 1.5,
+    "resultado": 396.0,
+    "pct": 0.00396,
+    "fechamentos": 3,
+    "ganhos_n": 1,
+    "acerto": 0.3333333333333333,
+    "soma_ganhos": 1715.0,
+    "soma_perdas": -1319.0,
+    "fl": 1.3002274450341167,
+    "payoff": 2.6004548900682334,
+    "por_fech": 132.0,
+    "maior_ganho": 1715.0,
+    "maior_perda": -860.0,
+    "queda": -1319.0,
+    "queda_pct": -0.01319,
+    "taxas": 0.0,
+    "media_dia": 259.3282843526411,
+    "dias_operados": 2,
+    "dias_lucro": 1,
+    "melhor_dia": {
+     "dia": "2026-11-03",
+     "v": 1715.0
+    },
+    "pior_dia": {
+     "dia": "2026-11-02",
+     "v": -1319.0
+    },
+    "curva": [
+     {
+      "quando": "2026-11-02 09:43:41",
+      "r": -860.0
+     },
+     {
+      "quando": "2026-11-02 09:48:11",
+      "r": -1319.0
+     },
+     {
+      "quando": "2026-11-03 08:46:35",
+      "r": 396.0
+     }
+    ],
+    "barras": [
+     {
+      "dia": "2026-11-02",
+      "v": -1319.0,
+      "n": 2
+     },
+     {
+      "dia": "2026-11-03",
+      "v": 1715.0,
+      "n": 1
+     }
+    ]
    },
    {
     "id": "robo_x2",
     "nome": "Robo X2",
     "tipo": "robo",
-    "inicio": "2026-11-03 20:02:30",
-    "fim": null,
-    "dias": 0.1,
-    "resultado": 0.0,
-    "pct": 0.0,
-    "fechamentos": 0,
-    "ganhos_n": 0,
-    "acerto": null,
-    "soma_ganhos": 0,
-    "soma_perdas": 0,
-    "fl": null,
-    "payoff": null,
-    "por_fech": null,
-    "maior_ganho": null,
-    "maior_perda": null,
-    "queda": -0.0,
-    "queda_pct": -0.0,
-    "taxas": 0,
-    "media_dia": 0.0,
-    "dias_operados": 0,
-    "dias_lucro": 0,
-    "melhor_dia": null,
-    "pior_dia": null,
-    "curva": [],
-    "barras": []
+    "inicio": "2026-11-02 07:35:57",
+    "fim": "2026-11-03 14:00:00",
+    "dias": 1.6,
+    "resultado": 2188.0,
+    "pct": 0.02188,
+    "fechamentos": 9,
+    "ganhos_n": 4,
+    "acerto": 0.4444444444444444,
+    "soma_ganhos": 5273.0,
+    "soma_perdas": -3085.0,
+    "fl": 1.7092382495948135,
+    "payoff": 1.7092382495948135,
+    "por_fech": 243.11111111111111,
+    "maior_ganho": 2975.0,
+    "maior_perda": -1090.0,
+    "queda": -3085.0,
+    "queda_pct": -0.03085,
+    "taxas": 0.0,
+    "media_dia": 1354.1902385496146,
+    "dias_operados": 2,
+    "dias_lucro": 1,
+    "melhor_dia": {
+     "dia": "2026-11-03",
+     "v": 4183.0
+    },
+    "pior_dia": {
+     "dia": "2026-11-02",
+     "v": -1995.0
+    },
+    "curva": [
+     {
+      "quando": "2026-11-02 07:35:57",
+      "r": -1076.0
+     },
+     {
+      "quando": "2026-11-02 09:33:50",
+      "r": -1076.0
+     },
+     {
+      "quando": "2026-11-02 09:48:11",
+      "r": -1985.0
+     },
+     {
+      "quando": "2026-11-02 10:20:00",
+      "r": -1995.0
+     },
+     {
+      "quando": "2026-11-03 04:10:14",
+      "r": -3085.0
+     },
+     {
+      "quando": "2026-11-03 10:07:55",
+      "r": -1882.0
+     },
+     {
+      "quando": "2026-11-03 10:56:26",
+      "r": 1093.0
+     },
+     {
+      "quando": "2026-11-03 12:45:00",
+      "r": 1470.0
+     },
+     {
+      "quando": "2026-11-03 14:00:00",
+      "r": 2188.0
+     }
+    ],
+    "barras": [
+     {
+      "dia": "2026-11-02",
+      "v": -1995.0,
+      "n": 4
+     },
+     {
+      "dia": "2026-11-03",
+      "v": 4183.0,
+      "n": 5
+     }
+    ]
    }
   ]
  }

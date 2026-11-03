@@ -1,1 +1,23 @@
-[]
+[
+ {
+  "dia": "2026-11-01",
+  "saldo_inicio": 100000.0,
+  "realizado": -15.0,
+  "saldo_fim": 99985.0,
+  "fechadas": 1
+ },
+ {
+  "dia": "2026-11-02",
+  "saldo_inicio": 99985.0,
+  "realizado": -4100.0,
+  "saldo_fim": 95885.0,
+  "fechadas": 7
+ },
+ {
+  "dia": "2026-11-03",
+  "saldo_inicio": 95885.0,
+  "realizado": 4191.0,
+  "saldo_fim": 100076.0,
+  "fechadas": 9
+ }
+]

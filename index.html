@@ -166,7 +166,7 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
   <div class="titulo">
     <h1>Carteira Gold</h1>
     <div class="eyebrow"><span data-v="corretora">—</span> · <span data-v="programa">—</span></div>
-    <p class="note" data-cent hidden style="margin-top:6px"><b>Conta cent.</b> Na corretora o saldo é em centavos de dólar (USC). Aqui tudo está convertido para US$: 100 USC = US$ 1.</p>
+    <p class="note" data-cent hidden style="margin-top:6px"><b>Conta cent.</b> Valores em centavos de dólar (USC): 100 USC = US$ 1. As operações de 01 a 03/11 foram feitas numa conta em dólar e estão convertidas para USC.</p>
   </div>
 
   <div class="periodo">
@@ -189,7 +189,7 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
       <div class="kpi"><p class="k">Fator de lucro</p><p class="v" data-e="fl" data-f="num">—</p><p class="s">payoff <b data-e="payoff" data-f="num">—</b> · <span data-e="por_fech" data-f="usdS">—</span> por fechamento</p></div>
       <div class="kpi"><p class="k">Queda máxima</p><p class="v"><span data-e="queda" data-f="usdS">—</span> <small data-e="queda_pct" data-f="pctS">—</small></p><p class="s">do pico ao fundo do realizado</p></div>
     </div>
-    <p class="dica">Passe o dedo ou o mouse na curva para ler o ponto; <b>arraste</b> para medir um trecho em US$ e %.</p>
+    <p class="dica">Passe o dedo ou o mouse na curva para ler o ponto; <b>arraste</b> para medir um trecho em valor e %.</p>
     <div class="chart" id="g-curva"></div>
     <div class="legenda" id="legenda"></div>
 
@@ -332,11 +332,12 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
 // ---------- números do desafio ----------
 let REGRA={meta:.10,meta2:.05,dia:.05,total:.10,casaDia:.025,casaTotal:.08,diasLucro:3};
 const XT={V:null,robos:[],ouvintes:[],sel:null};
+let MOEDA="US$ ";  // prefixo dos valores: US$, ou USC na conta cent
 const parseT=s=>new Date(String(s).replace(" ","T")+(/[zZ]|[+-]\d\d:\d\d$/.test(String(s))?"":"Z"));
 const n2=v=>Math.abs(v).toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2});
 const FMT={
-  usd:v=>(v<0?"−":"")+"US$ "+n2(v),
-  usdS:v=>(v>0?"+":v<0?"−":"")+"US$ "+n2(v),
+  usd:v=>(v<0?"−":"")+MOEDA+n2(v),
+  usdS:v=>(v>0?"+":v<0?"−":"")+MOEDA+n2(v),
   pct1:v=>(v*100).toFixed(1)+"%",
   pctS:v=>(v>0?"+":v<0?"−":"")+Math.abs(v*100).toFixed(2)+"%",
   int:v=>String(Math.round(v)),
@@ -386,7 +387,7 @@ function preencher(V,robos){
 
 // gráficos (d3), redesenhados quando a largura muda
 const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
-const fy=v=>(v<0?"−":"")+"US$ "+d3.format(",")(Math.abs(Math.round(v)));
+const fy=v=>(v<0?"−":"")+MOEDA+d3.format(",")(Math.abs(Math.round(v)));
 function medir(svg,t,size=12){const n=svg.append("text").style("font-size",size+"px").text(t);const w=n.node().getComputedTextLength();n.remove();return w}
 function dica(el){let t=el.querySelector(".tip");if(!t){t=document.createElement("div");t.className="tip";t.hidden=true;el.appendChild(t)}return t}
 
@@ -463,7 +464,7 @@ function graficoCurva(el,S,V){
   // barras: fechamentos por dia
   const yb0=H-mB-hB,bars=S.barras.map(b=>({t:parseT(b.dia+" 00:00:00"),v:+b.v,n:b.n,dia:b.dia})),mx=d3.max(bars,b=>Math.abs(b.v))||1;
   const yb=d3.scaleLinear([-mx,mx],[yb0+hB,yb0]),bw=Math.max(3,Math.min(26,(W-mL-mR)/Math.max(1,(ext[1]-ext[0])/864e5)*.6));
-  svg.append("text").attr("x",mL-8).attr("y",yb0+6).attr("text-anchor","end").style("font-size","10.5px").style("fill",css("--muted")).text("±"+fy(mx).replace("US$ ",""));
+  svg.append("text").attr("x",mL-8).attr("y",yb0+6).attr("text-anchor","end").style("font-size","10.5px").style("fill",css("--muted")).text("±"+fy(mx).replace(MOEDA,""));
   svg.append("line").attr("x1",mL).attr("x2",W-mR).attr("y1",yb(0)).attr("y2",yb(0)).style("stroke",css("--grid"));
   svg.append("g").selectAll("rect").data(bars).join("rect").attr("x",b=>Math.min(W-mR-bw,Math.max(mL,x(d3.utcHour.offset(b.t,12))-bw/2))).attr("width",bw)
     .attr("y",b=>Math.min(yb(0),yb(b.v))).attr("height",b=>Math.max(1,Math.abs(yb(b.v)-yb(0)))).attr("rx",2).style("fill",b=>css(b.v>=0?"--pos":"--neg")).style("opacity",.8);
@@ -504,6 +505,7 @@ function carregar(id){
   Promise.all([...["conta","curva","dias","robos","estat"].map(pega),...extra])
     .then(([conta,curva,dias,robos,est,fech,ativos])=>{if(ABA!==id)return;
       document.getElementById("aviso").hidden=true;document.getElementById("conteudo").hidden=false;
+      MOEDA=conta[0].moeda==="USC"?"USC ":"US$ ";
       DADOS={conta,curva,dias,robos};XT.V=situacao(conta,dias);XT.robos=robos;EST=est[0];
       preencher(XT.V,robos);montarEscopos();XT.ouvintes.forEach(f=>f())})
     .catch(e=>{if(ABA!==id)return;console.warn("dados não carregaram",e);
