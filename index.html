@@ -161,6 +161,11 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
     <div class="vivo"><i></i><span data-v="corretora">—</span><span data-cent hidden> · conta cent</span> · dados de <span data-v="exportado" data-f="hora">—</span></div>
   </header>
 
+  <nav class="abas" role="tablist" aria-label="Contas da carteira">
+    <button type="button" role="tab" id="aba-xm" data-aba="xm" aria-selected="true">Carteira Xprime · Exness</button>
+    <button type="button" role="tab" id="aba-bybit" data-aba="bybit" aria-selected="false">Carteira Xcrypto · Bybit</button>
+  </nav>
+
   <p class="aviso" id="aviso" hidden></p>
   <div class="conteudo" id="conteudo" role="tabpanel">
   <div class="titulo">
@@ -311,7 +316,7 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
   </section>
 
   <footer style="display:flex;flex-direction:column;gap:6px">
-    <p class="note">Dados lidos do terminal MT5 da conta em <b data-v="exportado" data-f="quando">—</b> (UTC); último preço em <b data-v="ultimo_preco" data-f="quando">—</b>, horário do servidor. Início em <b data-v="inicio" data-f="quando">—</b>. Os números são exportados e publicados a cada 6 minutos, enquanto o computador da carteira está ligado; a página relê os dados sozinha.</p>
+    <p class="note">Dados lidos da corretora em <b data-v="exportado" data-f="quando">—</b> (UTC); último preço em <b data-v="ultimo_preco" data-f="quando">—</b>, horário do servidor. Início em <b data-v="inicio" data-f="quando">—</b>. Os números são exportados e publicados a cada 6 minutos, enquanto o computador da carteira está ligado; a página relê os dados sozinha.</p>
     <p class="note" data-so="conta" hidden>Travas usadas: perda diária de <span data-r="dia">—</span> sobre o saldo do início do pregão do servidor e perda total de <span data-r="total">—</span> do saldo inicial. Conta sem meta de lucro: o objetivo é deixar só os robôs trabalharem.</p>
   </footer>
   </div>
@@ -376,6 +381,8 @@ function preencher(V,robos){
   document.querySelectorAll("[data-so]").forEach(el=>el.hidden=el.dataset.so!==V.modo);
   document.querySelectorAll("[data-nom]").forEach(el=>el.hidden=!V.nominal);
   document.querySelectorAll("[data-cent]").forEach(el=>el.hidden=!V.cent);
+  // conta sem limites definidos (Xcrypto): sem os cartões de risco e limites
+  ["risco","limites"].forEach(id=>document.getElementById(id).hidden=REGRA.dia==null);
   document.querySelectorAll("[data-r]").forEach(el=>{const v=REGRA[el.dataset.r];el.textContent=v==null?"—":el.dataset.r==="diasLucro"?String(v):pctR(v)});
   document.querySelectorAll("[data-v]").forEach(el=>{const v=V[el.dataset.v],f=el.dataset.f||"txt";
     el.textContent=v==null||(typeof v==="number"&&!isFinite(v))?"—":FMT[f](f==="txt"||f==="quando"||f==="hora"?v:+v);sinal(el,+v,f)});
@@ -403,7 +410,7 @@ function escolherEscopo(id){
   document.getElementById("esc-nome").textContent=S.tipo==="conta"?"da conta":"do "+S.nome;
   const V=XT.V;
   document.getElementById("geral-sub").textContent=S.tipo==="conta"
-    ?`Desde ${FMT.dia(String(V.inicio||S.inicio||"").slice(0,10))} com ${FMT.usd(V.saldo_inicial)} · ${EST.escopos.filter(s=>s.tipo==="robo").length} robôs · patrimônio agora ${FMT.usd(V.patrimonio)}`
+    ?`Desde ${FMT.dia(String(V.inicio||S.inicio||"").slice(0,10))} com ${FMT.usd(V.saldo_inicial)} · ${EST.escopos.filter(s=>s.tipo==="robo").length} ${ABA==="bybit"?"fases":"robôs"} · patrimônio agora ${FMT.usd(V.patrimonio)}`
     :S.fechamentos?`${S.fechamentos} fechamento(s) de ${FMT.dia(S.inicio.slice(0,10))} a ${FMT.dia(S.fim.slice(0,10))}`:"Sem fechamentos nesta conta ainda.";
   document.getElementById("per-nota").textContent=`fechamentos da corretora · ${S.inicio?FMT.dia(S.inicio.slice(0,10)):"—"} → agora`;
   const E={...S,media_pct:S.media_dia==null?null:S.media_dia/EST.base,melhor_v:S.melhor_dia&&S.melhor_dia.v,melhor_dia:S.melhor_dia&&S.melhor_dia.dia,pior_v:S.pior_dia&&S.pior_dia.v,pior_dia:S.pior_dia&&S.pior_dia.dia};
@@ -438,7 +445,7 @@ function graficoCurva(el,S,V){
   const t0=parseT(S.inicio||V.inicio),pts=[{t:t0,r:0},...S.curva.map(d=>({t:parseT(d.quando),r:+d.r}))];
   if(pts.length<2){const v=document.createElement("div");v.className="vazio";v.textContent=S.tipo==="robo"?"Este robô ainda não fechou operações nesta conta. A curva aparece no primeiro fechamento.":"Sem fechamentos ainda.";el.append(v);return}
   const agoraT=parseT(V.ultimo_preco);if(agoraT>pts[pts.length-1].t)pts.push({t:agoraT,r:pts[pts.length-1].r,fim:1});
-  const refs=S.tipo==="conta"?[{v:REGRA.meta==null?null:base*REGRA.meta,lab:"Meta",c:"--pos"},{v:-base*REGRA.total,lab:"Limite total",c:"--neg"},{v:REGRA.casaTotal==null?null:-base*REGRA.casaTotal,lab:"Trava total da casa",c:"--muted",tr:1}]
+  const refs=S.tipo==="conta"?[{v:REGRA.meta==null?null:base*REGRA.meta,lab:"Meta",c:"--pos"},{v:REGRA.total==null?null:-base*REGRA.total,lab:"Limite total",c:"--neg"},{v:REGRA.casaTotal==null?null:-base*REGRA.casaTotal,lab:"Trava total da casa",c:"--muted",tr:1}]
     // só as linhas que cabem na escala da curva: a meta de 10% de 100K achataria tudo
     .filter(f=>f.v!=null&&Math.abs(f.v)<=2.5*Math.max(d3.max(S.curva,d=>Math.abs(+d.r))||0,base*.01)):[];
   const W=Math.max(280,el.clientWidth),H=340,hB=64,gap=14,mB=22,yTop=8,yBot=H-mB-hB-gap;
@@ -496,7 +503,8 @@ function graficoCurva(el,S,V){
 let DADOS=null;
 function desenhar(){if(!DADOS||!window.d3||!EST)return;const S=EST.escopos.find(s=>s.id===XT.esc)||EST.escopos[0];graficoCurva(document.getElementById("g-curva"),S,XT.V)}
 
-const AVISO={xm:"Os dados da conta real XM não carregaram. Recarregue a página."};
+const AVISO={xm:"Os dados da Carteira Xprime não carregaram. Recarregue a página.",
+  bybit:"Os dados da Carteira Xcrypto não carregaram. Recarregue a página."};
 let ABA=null;
 function carregar(id){
   ABA=id;
@@ -507,6 +515,7 @@ function carregar(id){
   Promise.all([...["conta","curva","dias","robos","estat"].map(pega),...extra])
     .then(([conta,curva,dias,robos,est,fech,ativos])=>{if(ABA!==id)return;
       document.getElementById("aviso").hidden=true;document.getElementById("conteudo").hidden=false;
+      document.getElementById("salas").hidden=id!=="xm";
       MOEDA=conta[0].moeda==="USC"?"USC ":"US$ ";
       DADOS={conta,curva,dias,robos};XT.V=situacao(conta,dias);XT.robos=robos;EST=est[0];
       preencher(XT.V,robos);montarEscopos();XT.ouvintes.forEach(f=>f())})
@@ -517,7 +526,7 @@ document.querySelectorAll(".abas [data-aba]").forEach(b=>b.addEventListener("cli
   try{history.replaceState(null,"","#"+b.dataset.aba)}catch(e){}carregar(b.dataset.aba)}));
 document.querySelector(".abas")?.addEventListener("keydown",e=>{if(e.key!=="ArrowRight"&&e.key!=="ArrowLeft")return;
   const bs=[...document.querySelectorAll(".abas [data-aba]")],i=bs.findIndex(b=>b.dataset.aba===ABA),n=bs[(i+(e.key==="ArrowRight"?1:bs.length-1))%bs.length];n.focus();n.click()});
-carregar("xm");
+carregar(location.hash==="#bybit"?"bybit":"xm");
 // os dados são publicados a cada 6 min; a página relê a cada 2 min, sem recarregar a cena 3D
 setInterval(()=>{if(!document.hidden)carregar(ABA)},2*60e3);
 document.addEventListener("visibilitychange",()=>{if(!document.hidden&&XT.V&&Date.now()-Date.parse(XT.V.exportado)>2*60e3)carregar(ABA)});
@@ -671,7 +680,7 @@ if(window.THREE&&THREE.OrbitControls){
      m.material.map.dispose();m.material.map=logoTex(c,b);m.material.needsUpdate=true}))}
 
   // estado vindo dos dados: robô ligado senta, trabalha e acende a sala; desligado fica de pé ao lado da estação
-  function aplicar(){
+  function aplicar(){if(ABA!=="xm")return;
     for(const s of SALAS){const r=XT.robos.find(x=>x.robo===s.id),st=r?r.status:"parado",vivo=st!=="parado";
       s.status=st;if(!s.piso){s.telas.forEach(m=>m.material=mat(vivo?0x3f8fe0:0x1b2733,1,true));posRobo(s);continue}
       s.lamp.intensity=vivo?1.35:.55;
