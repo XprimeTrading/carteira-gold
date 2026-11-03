@@ -8,7 +8,7 @@
     "tipo": "conta",
     "inicio": "2026-11-01 20:23:23",
     "fim": "2026-11-03 08:46:35",
-    "dias": 1.5,
+    "dias": 1.6,
     "resultado": -39.4,
     "pct": -0.019700000000000002,
     "fechamentos": 12,
@@ -24,7 +24,7 @@
     "queda": -56.55,
     "queda_pct": -0.028275,
     "taxas": 0.0,
-    "media_dia": -25.437696862884398,
+    "media_dia": -25.36941621113386,
     "dias_operados": 3,
     "dias_lucro": 1,
     "melhor_dia": {
