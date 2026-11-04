@@ -16,14 +16,14 @@
   "robo": "robo_x2",
   "nome": "Robo X2",
   "magic": null,
-  "status": "operando",
-  "resultado": 20.82,
-  "fechadas": 4,
-  "hoje": 16.86,
-  "ganhos": 2,
-  "abertas": 1,
-  "flutuante": 16.96,
-  "ultima": "2026-11-04 09:07:57"
+  "status": "ativo",
+  "resultado": 38.02,
+  "fechadas": 5,
+  "hoje": 34.06,
+  "ganhos": 3,
+  "abertas": 0,
+  "flutuante": 0,
+  "ultima": "2026-11-04 16:45:51"
  },
  {
   "robo": "robo_x3",
