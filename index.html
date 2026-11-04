@@ -141,6 +141,24 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
 .ativos .val{text-align:right;font-variant-numeric:tabular-nums}
 .ativos hr{border:none;border-top:1px dashed var(--line);margin:4px 0;width:100%}
 @media (max-width:560px){.disj{grid-template-columns:1fr 1fr}.bloco{padding:14px}}
+/* calendário do resultado por dia, logo abaixo da curva */
+.cal{display:flex;flex-direction:column;gap:8px}
+.cal-cab{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.cal-cab h3{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.cal-cab .tot{font:500 13px var(--mono)}
+.cal-nav{display:flex;gap:6px}
+.cal-nav button{padding:4px 10px;font-size:13px}
+.cal-nav button:disabled{opacity:.35;cursor:default}
+.cal-grade{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}
+.cal-sem{font:500 10.5px var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.08em;text-align:center;padding:2px 0}
+.cal-dia{min-height:58px;border:1px solid var(--grid);border-radius:8px;padding:5px 6px;display:flex;flex-direction:column;justify-content:space-between;min-width:0;background:rgba(255,255,255,.015)}
+.cal-dia.fora{visibility:hidden}
+.cal-dia .d{font:500 11px var(--mono);color:var(--muted)}
+.cal-dia .r{font:500 12.5px var(--mono);font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cal-dia .n{font:400 10px var(--mono);color:var(--muted);text-align:right}
+.cal-dia.hoje{border-color:var(--gold)}
+.cal-dia.fim .d{opacity:.6}
+@media (max-width:560px){.cal-dia{min-height:50px;padding:4px}.cal-dia .r{font-size:10.5px}.cal-dia .n{display:none}}
 /* XGold no padrão do Monitor: abas Visão geral, Esperado × vivo, Geometria de risco e Linha do tempo */
 .subabas{display:flex;gap:20px;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid var(--line)}
 .subabas::-webkit-scrollbar{display:none}
@@ -221,6 +239,14 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
     <p class="dica">Passe o dedo ou o mouse na curva para ler o ponto; <b>arraste</b> para medir um trecho em valor e %.</p>
     <div class="chart" id="g-curva"></div>
     <div class="legenda" id="legenda"></div>
+    <section class="cal" id="cal" aria-label="Resultado por dia no calendário">
+      <div class="cal-cab">
+        <h3><span id="cal-mes">—</span><span class="tot" id="cal-tot"></span></h3>
+        <div class="cal-nav"><button type="button" id="cal-ant" aria-label="Mês anterior">‹</button><button type="button" id="cal-prox" aria-label="Próximo mês">›</button></div>
+      </div>
+      <div class="cal-grade" id="cal-grade"></div>
+      <p class="note">Resultado realizado de cada dia (fechamentos, já com taxas), no dia do servidor da corretora. Muda junto com o escopo escolhido acima.</p>
+    </section>
 
     <div class="sub2">
       <h3>Números do período</h3>
@@ -579,8 +605,39 @@ function graficoCurva(el,S,V){
   if(refs.length)it(css("--neg"),"linhas: limites e meta da conta");
 }
 
+// calendário: resultado realizado por dia do escopo escolhido, um mês por vez
+const MESES=["Janeiro","Fevereiro","Março","Abril","Maio","Junho","Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"];
+let CAL_MES=null;
+function calendario(S){
+  const V=XT.V,hoje=String(V.ultimo_preco||"").slice(0,10),por={},estreito=matchMedia("(max-width:560px)").matches;
+  S.barras.forEach(b=>por[b.dia]={v:+b.v,n:b.n});
+  const ini=String(S.inicio||V.inicio||hoje).slice(0,7),fim=hoje.slice(0,7)||ini;
+  if(!CAL_MES||CAL_MES<ini||CAL_MES>fim)CAL_MES=fim;
+  const[a,m]=CAL_MES.split("-").map(Number),dias=new Date(Date.UTC(a,m,0)).getUTCDate(),pri=new Date(Date.UTC(a,m-1,1)).getUTCDay();
+  const g=document.getElementById("cal-grade");g.textContent="";
+  ["Dom","Seg","Ter","Qua","Qui","Sex","Sáb"].forEach(d=>g.append(el("div","cal-sem",d)));
+  for(let i=0;i<pri;i++)g.append(el("div","cal-dia fora"));
+  const mx=Math.max(1,...S.barras.filter(b=>b.dia.startsWith(CAL_MES)).map(b=>Math.abs(+b.v)));
+  let tot=0,nd=0,pos=0;
+  for(let d=1;d<=dias;d++){
+    const k=`${CAL_MES}-${String(d).padStart(2,"0")}`,x=por[k],dw=(pri+d-1)%7,c=el("div","cal-dia");
+    if(k===hoje)c.classList.add("hoje");if(dw===0||dw===6)c.classList.add("fim");
+    c.append(el("span","d",String(d)));
+    if(x){tot+=x.v;nd++;if(x.v>0)pos++;
+      const r=el("span","r",estreito?(x.v>0?"+":x.v<0?"−":"")+(Math.abs(x.v)>=10?Math.round(Math.abs(x.v)):Math.abs(x.v).toFixed(1)):FMT.usdS(x.v).replace("US$ ",""));sinal(r,x.v,"usdS");
+      const cor=x.v>=0?"76,201,166":"240,141,104";c.style.background=`rgba(${cor},${(.08+.32*Math.abs(x.v)/mx).toFixed(2)})`;
+      c.title=`${FMT.dia(k)}: ${FMT.usdS(x.v)} · ${x.n} fechamento(s)`;c.append(r,el("span","n",x.n+" fech."))}
+    g.append(c)}
+  document.getElementById("cal-mes").textContent=`${MESES[m-1]} ${a}`;
+  const tt=document.getElementById("cal-tot");tt.textContent=nd?`${FMT.usdS(tot)} · ${pos} de ${nd} dias no lucro`:"sem fechamentos no mês";tt.classList.remove("pos","neg");if(nd)sinal(tt,tot,"usdS");
+  const mv=k=>{const[y,mm]=CAL_MES.split("-").map(Number),dt=new Date(Date.UTC(y,mm-1+k,1));return dt.toISOString().slice(0,7)};
+  const ant=document.getElementById("cal-ant"),prox=document.getElementById("cal-prox");
+  ant.disabled=CAL_MES<=ini;prox.disabled=CAL_MES>=fim;
+  ant.onclick=()=>{CAL_MES=mv(-1);calendario(S)};prox.onclick=()=>{CAL_MES=mv(1);calendario(S)};
+}
+
 let DADOS=null;
-function desenhar(){if(!DADOS||!window.d3||!EST)return;const S=EST.escopos.find(s=>s.id===XT.esc)||EST.escopos[0];graficoCurva(document.getElementById("g-curva"),S,XT.V)}
+function desenhar(){if(!DADOS||!window.d3||!EST)return;const S=EST.escopos.find(s=>s.id===XT.esc)||EST.escopos[0];graficoCurva(document.getElementById("g-curva"),S,XT.V);calendario(S)}
 
 // ---------- XGold: esperado × vivo, geometria e linha do tempo ----------
 let ADER=null,PAG="geral";
