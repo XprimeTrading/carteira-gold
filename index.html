@@ -179,7 +179,7 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
       </svg>
       <span class="sufixo">· carteira</span>
     </div>
-    <div class="vivo"><i></i><span data-v="corretora">—</span><span data-cent hidden> · conta cent</span> · dados de <span data-v="exportado" data-f="hora">—</span></div>
+    <div class="vivo"><i></i><span data-v="corretora">—</span> · dados de <span data-v="exportado" data-f="hora">—</span></div>
   </header>
 
   <nav class="abas" role="tablist" aria-label="Contas da carteira">
@@ -190,8 +190,6 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
   <div class="conteudo" id="conteudo" role="tabpanel">
   <div class="titulo">
     <h1>Carteira Prime</h1>
-    <div class="eyebrow"><span data-v="corretora">—</span> · <span data-v="programa">—</span></div>
-    <p class="note" data-cent hidden style="margin-top:6px"><b>Conta cent.</b> Na corretora o saldo é em centavos de dólar (USC); aqui tudo está convertido para US$ (100 USC = US$ 1). As operações de 01 a 03/11 foram feitas numa conta em dólar.</p>
   </div>
 
   <nav class="subabas" id="subabas" role="tablist" aria-label="Seções da carteira" hidden>
@@ -462,7 +460,6 @@ function situacao(conta,dias){
 function preencher(V,robos){
   document.querySelectorAll("[data-so]").forEach(el=>el.hidden=el.dataset.so!==V.modo);
   document.querySelectorAll("[data-nom]").forEach(el=>el.hidden=!V.nominal);
-  document.querySelectorAll("[data-cent]").forEach(el=>el.hidden=!V.cent);
   // conta sem limites definidos (Xcrypto): sem os cartões de risco e limites
   ["risco","limites"].forEach(id=>document.getElementById(id).hidden=REGRA.dia==null);
   document.querySelectorAll("[data-r]").forEach(el=>{const v=REGRA[el.dataset.r];el.textContent=v==null?"—":el.dataset.r==="diasLucro"?String(v):pctR(v)});
