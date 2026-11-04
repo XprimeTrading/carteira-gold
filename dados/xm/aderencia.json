@@ -3,8 +3,42 @@
   "robo": "robo_x1",
   "nome": "Robo X1",
   "ref": {
+   "trades": 2237,
+   "por_mes": 66.4,
+   "acerto": 0.4367,
+   "payoff": 1.907,
+   "fl": 1.478,
+   "r_trade": 0.178,
+   "recorde_seq": 15,
+   "r_oos": 0.09,
+   "versao": "v1.08",
+   "obs": "sem o range 4, desligado ao vivo"
+  },
+  "periodo_ref": "01/2024 a 10/2026",
+  "vivo": {
+   "trades": 14,
+   "acerto": 0.5,
+   "payoff": 1.8462128475551294,
+   "fl": 1.8462128475551296,
+   "por_semana": 40.94240781164637,
+   "seq_atual": 0,
+   "seq_max": 5,
+   "desde": "2026-11-02 07:35:57"
+  },
+  "aberto": {
+   "posicoes": 0,
+   "sem_stop": 0,
+   "no_stop": 0,
+   "no_alvo": 0,
+   "flutuante": 0
+  }
+ },
+ {
+  "robo": "robo_x2",
+  "nome": "Robo X2",
+  "ref": {
    "trades": 952,
-   "por_mes": 28.4,
+   "por_mes": 28.2,
    "acerto": 0.4674,
    "payoff": 1.861,
    "fl": 1.634,
@@ -12,7 +46,7 @@
    "recorde_seq": 9,
    "r_oos": 0.19,
    "versao": "v1.32",
-   "obs": "S1 e S2 juntos"
+   "obs": "setups 1 e 2 juntos"
   },
   "periodo_ref": "01/2024 a 10/2026",
   "vivo": {
@@ -20,7 +54,7 @@
    "acerto": 0.5,
    "payoff": 2.5784685367702807,
    "fl": 2.5784685367702807,
-   "por_semana": 12.166267234934729,
+   "por_semana": 12.148019447839134,
    "seq_atual": 0,
    "seq_max": 2,
    "desde": "2026-11-02 09:43:41"
@@ -30,34 +64,34 @@
    "sem_stop": 0,
    "no_stop": 0,
    "no_alvo": 17.2,
-   "flutuante": 12.4
+   "flutuante": 12.54
   }
  },
  {
-  "robo": "robo_x2",
-  "nome": "Robo X2",
+  "robo": "robo_x3",
+  "nome": "Robo X3",
   "ref": {
-   "trades": 2237,
-   "por_mes": 66.8,
-   "acerto": 0.4367,
-   "payoff": 1.907,
-   "fl": 1.478,
-   "r_trade": 0.178,
-   "recorde_seq": 15,
-   "r_oos": 0.09,
-   "versao": "v1.07 (ao vivo v1.08)",
-   "obs": "sem o range 4, desligado ao vivo"
+   "trades": 588,
+   "por_mes": 17.4,
+   "acerto": 0.6548,
+   "payoff": 1.248,
+   "fl": 2.366,
+   "r_trade": 0.415,
+   "recorde_seq": 7,
+   "r_oos": 0.23,
+   "versao": "v1.56.1",
+   "obs": "dois horários, filtro do dólar"
   },
   "periodo_ref": "01/2024 a 10/2026",
   "vivo": {
-   "trades": 14,
+   "trades": 2,
    "acerto": 0.5,
-   "payoff": 1.8462128475551294,
-   "fl": 1.8462128475551296,
-   "por_semana": 41.00162581885148,
-   "seq_atual": 0,
-   "seq_max": 5,
-   "desde": "2026-11-02 07:35:57"
+   "payoff": 2.0581527936145956,
+   "fl": 2.0581527936145956,
+   "por_semana": 14.0,
+   "seq_atual": 1,
+   "seq_max": 1,
+   "desde": "2026-11-04 06:20:06"
   },
   "aberto": {
    "posicoes": 0,

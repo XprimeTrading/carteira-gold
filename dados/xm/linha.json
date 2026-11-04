@@ -6,8 +6,8 @@
  },
  {
   "quando": "2026-11-03",
-  "titulo": "Robo X3 retirado",
-  "texto": "Operou de 01 a 03/11; o resultado dele continua na conta XGold."
+  "titulo": "Robô de abertura retirado",
+  "texto": "Um quarto robô operou de 01 a 03/11 e saiu da carteira; o resultado dele continua na conta XGold."
  },
  {
   "quando": "2026-11-03",
@@ -17,7 +17,12 @@
  {
   "quando": "2026-11-03",
   "titulo": "Robôs em operação",
-  "texto": "Robo X1 v1.32 (setups 1 e 2) e Robo X2 v1.08 com 4 ranges (o range das 11h, 8h de Brasília, desligado)."
+  "texto": "Robo X1 v1.08 com 4 ranges (o range das 11h, 8h de Brasília, desligado), Robo X2 v1.32 (setups 1 e 2) e Robo X3 v1.56.1 (dois horários, filtro do dólar)."
+ },
+ {
+  "quando": "2026-11-04",
+  "titulo": "Robôs renumerados",
+  "texto": "X1 passou a ser o robô de ciclos, X2 o de rompimento de range e X3 o de momentum de horário, que ganhou sala própria."
  },
  {
   "quando": "2026-11-06",
