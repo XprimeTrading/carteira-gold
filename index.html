@@ -692,8 +692,7 @@ function backtest(B){
   [["carteira","XGold (os dois)"],["x1","Robo X1"],["x2","Robo X2"]].forEach(([id,nome])=>{const x=st[id],tr=el("tr");tr.append(el("td",null,nome));
     [[FMT.usdS(x.resultado),x.resultado],[FMT.usdS(x.queda)+" ("+FMT.pctS(x.queda_pct)+")",x.queda],[`${x.meses_pos} de ${x.meses}`],[FMT.usdS(x.media_mes),x.media_mes],[FMT.usdS(x.pior_mes),x.pior_mes],[FMT.usdS(x.pior_dia),x.pior_dia]]
       .forEach(([t,v])=>{const td=el("td",null,t);if(v!=null)sinal(td,v,"usdS");tr.append(td)});tb.append(tr)});
-  const kx=v=>numV(v,1).replace(",0","");
-  document.getElementById("bt-nota").textContent=`No relatório, cada operação arrisca em média US$ ${numV(B.risco_bt.x1)} (Robo X1) e US$ ${numV(B.risco_bt.x2)} (Robo X2) nesta escala; a conta hoje opera com US$ ${numV(B.risco_usd.x1)} e US$ ${numV(B.risco_usd.x2)} (${kx(B.risco_usd.x1/B.risco_bt.x1)}× e ${kx(B.risco_usd.x2/B.risco_bt.x2)}×), então resultado e queda ao vivo andam nessa proporção. Planejamos com ~50% do lucro: no teste fora da amostra o ganho por operação caiu para cerca de metade.`;
+  document.getElementById("bt-nota").textContent=`O que vale é o desenho da curva: os percentuais estão sobre ${FMT.usd(B.capital)}, e quem entrar dimensiona o próprio risco. Planejamos com ~50% do lucro: no teste fora da amostra o ganho por operação caiu para cerca de metade.`;
   graficoBt();
 }
 function graficoBt(){
