@@ -7,29 +7,29 @@
     "nome": "XGold",
     "tipo": "conta",
     "inicio": "2026-11-01 20:23:23",
-    "fim": "2026-11-04 12:00:00",
+    "fim": "2026-11-04 13:07:01",
     "dias": 2.8,
-    "resultado": 57.92,
-    "pct": 0.05792,
-    "fechamentos": 25,
+    "resultado": 52.8,
+    "pct": 0.05280000000000001,
+    "fechamentos": 26,
     "ganhos_n": 11,
-    "acerto": 0.44,
+    "acerto": 0.4230769230769231,
     "soma_ganhos": 151.3,
-    "soma_perdas": -93.38,
-    "fl": 1.6202612979224673,
-    "payoff": 1.9148542611810975,
-    "por_fech": 2.3168,
+    "soma_perdas": -98.5,
+    "fl": 1.5360406091370558,
+    "payoff": 1.9549607752653435,
+    "por_fech": 2.030769230769231,
     "maior_ganho": 29.75,
     "maior_perda": -15.53,
     "queda": -56.55,
     "queda_pct": -0.056549999999999996,
     "taxas": 0.0,
-    "media_dia": 20.849211654380994,
+    "media_dia": 18.9777349037229,
     "dias_operados": 4,
     "dias_lucro": 2,
     "melhor_dia": {
      "dia": "2026-11-04",
-     "v": 57.16
+     "v": 52.04
     },
     "pior_dia": {
      "dia": "2026-11-02",
@@ -135,6 +135,10 @@
      {
       "quando": "2026-11-04 12:00:00",
       "r": 57.92
+     },
+     {
+      "quando": "2026-11-04 13:07:01",
+      "r": 52.8
      }
     ],
     "barras": [
@@ -155,8 +159,8 @@
      },
      {
       "dia": "2026-11-04",
-      "v": 57.16,
-      "n": 7
+      "v": 52.04,
+      "n": 8
      }
     ]
    },
@@ -182,7 +186,7 @@
     "queda": -13.19,
     "queda_pct": -0.01319,
     "taxas": 0.0,
-    "media_dia": 9.36876147245521,
+    "media_dia": 9.35123535732498,
     "dias_operados": 3,
     "dias_lucro": 2,
     "melhor_dia": {
@@ -251,7 +255,7 @@
     "queda": -30.85,
     "queda_pct": -0.030850000000000002,
     "taxas": 0.0,
-    "media_dia": 19.095774171530195,
+    "media_dia": 19.0614204477636,
     "dias_operados": 3,
     "dias_lucro": 2,
     "melhor_dia": {
