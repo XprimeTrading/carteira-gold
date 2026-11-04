@@ -1,184 +1,184 @@
 [
  {
   "dia": "2026-10-10",
-  "saldo_inicio": 7002.96,
+  "saldo_inicio": 7005.06,
   "realizado": -11.92,
-  "saldo_fim": 6991.04,
+  "saldo_fim": 6993.14,
   "fechadas": 15
  },
  {
   "dia": "2026-10-11",
-  "saldo_inicio": 6991.04,
+  "saldo_inicio": 6993.14,
   "realizado": -111.64,
-  "saldo_fim": 6879.4,
+  "saldo_fim": 6881.5,
   "fechadas": 71
  },
  {
   "dia": "2026-10-12",
-  "saldo_inicio": 6879.4,
+  "saldo_inicio": 6881.5,
   "realizado": 3.36,
-  "saldo_fim": 6882.76,
+  "saldo_fim": 6884.86,
   "fechadas": 70
  },
  {
   "dia": "2026-10-13",
-  "saldo_inicio": 6882.76,
+  "saldo_inicio": 6884.86,
   "realizado": 146.37,
-  "saldo_fim": 7029.14,
+  "saldo_fim": 7031.24,
   "fechadas": 76
  },
  {
   "dia": "2026-10-14",
-  "saldo_inicio": 7029.14,
+  "saldo_inicio": 7031.24,
   "realizado": -58.83,
-  "saldo_fim": 6970.3,
+  "saldo_fim": 6972.4,
   "fechadas": 47
  },
  {
   "dia": "2026-10-15",
-  "saldo_inicio": 6970.3,
+  "saldo_inicio": 6972.4,
   "realizado": -40.17,
-  "saldo_fim": 6930.13,
+  "saldo_fim": 6932.23,
   "fechadas": 67
  },
  {
   "dia": "2026-10-16",
-  "saldo_inicio": 6930.13,
+  "saldo_inicio": 6932.23,
   "realizado": 41.73,
-  "saldo_fim": 6971.86,
+  "saldo_fim": 6973.96,
   "fechadas": 64
  },
  {
   "dia": "2026-10-17",
-  "saldo_inicio": 6971.86,
+  "saldo_inicio": 6973.96,
   "realizado": 297.16,
-  "saldo_fim": 7269.02,
+  "saldo_fim": 7271.12,
   "fechadas": 62
  },
  {
   "dia": "2026-10-18",
-  "saldo_inicio": 7269.02,
+  "saldo_inicio": 7271.12,
   "realizado": 148.65,
-  "saldo_fim": 7417.66,
+  "saldo_fim": 7419.76,
   "fechadas": 48
  },
  {
   "dia": "2026-10-19",
-  "saldo_inicio": 7417.66,
+  "saldo_inicio": 7419.76,
   "realizado": -115.67,
-  "saldo_fim": 7301.99,
+  "saldo_fim": 7304.09,
   "fechadas": 58
  },
  {
   "dia": "2026-10-20",
-  "saldo_inicio": 7301.99,
+  "saldo_inicio": 7304.09,
   "realizado": -86.82,
-  "saldo_fim": 7215.17,
+  "saldo_fim": 7217.27,
   "fechadas": 67
  },
  {
   "dia": "2026-10-21",
-  "saldo_inicio": 7215.17,
+  "saldo_inicio": 7217.27,
   "realizado": -155.66,
-  "saldo_fim": 7059.51,
+  "saldo_fim": 7061.61,
   "fechadas": 47
  },
  {
   "dia": "2026-10-22",
-  "saldo_inicio": 7059.51,
+  "saldo_inicio": 7061.61,
   "realizado": 46.05,
-  "saldo_fim": 7105.57,
+  "saldo_fim": 7107.67,
   "fechadas": 59
  },
  {
   "dia": "2026-10-23",
-  "saldo_inicio": 7105.57,
+  "saldo_inicio": 7107.67,
   "realizado": -37.54,
-  "saldo_fim": 7068.03,
+  "saldo_fim": 7070.13,
   "fechadas": 60
  },
  {
   "dia": "2026-10-24",
-  "saldo_inicio": 7068.03,
+  "saldo_inicio": 7070.13,
   "realizado": 231.91,
-  "saldo_fim": 7299.94,
+  "saldo_fim": 7302.04,
   "fechadas": 32
  },
  {
   "dia": "2026-10-25",
-  "saldo_inicio": 7299.94,
+  "saldo_inicio": 7302.04,
   "realizado": 172.14,
-  "saldo_fim": 7472.09,
+  "saldo_fim": 7474.19,
   "fechadas": 41
  },
  {
   "dia": "2026-10-26",
-  "saldo_inicio": 7472.09,
+  "saldo_inicio": 7474.19,
   "realizado": 68.2,
-  "saldo_fim": 7540.29,
+  "saldo_fim": 7542.39,
   "fechadas": 35
  },
  {
   "dia": "2026-10-27",
-  "saldo_inicio": 7540.29,
+  "saldo_inicio": 7542.39,
   "realizado": 58.7,
-  "saldo_fim": 7598.99,
+  "saldo_fim": 7601.09,
   "fechadas": 53
  },
  {
   "dia": "2026-10-28",
-  "saldo_inicio": 7598.99,
+  "saldo_inicio": 7601.09,
   "realizado": -38.32,
-  "saldo_fim": 7560.66,
+  "saldo_fim": 7562.76,
   "fechadas": 41
  },
  {
   "dia": "2026-10-29",
-  "saldo_inicio": 7560.66,
+  "saldo_inicio": 7562.76,
   "realizado": 86.57,
-  "saldo_fim": 7647.23,
+  "saldo_fim": 7649.33,
   "fechadas": 105
  },
  {
   "dia": "2026-10-30",
-  "saldo_inicio": 7647.23,
+  "saldo_inicio": 7649.33,
   "realizado": 120.17,
-  "saldo_fim": 7767.4,
+  "saldo_fim": 7769.5,
   "fechadas": 64
  },
  {
   "dia": "2026-10-31",
-  "saldo_inicio": 7767.4,
+  "saldo_inicio": 7769.5,
   "realizado": 16.15,
-  "saldo_fim": 7783.55,
+  "saldo_fim": 7785.65,
   "fechadas": 30
  },
  {
   "dia": "2026-11-01",
-  "saldo_inicio": 7783.55,
+  "saldo_inicio": 7785.65,
   "realizado": 15.46,
-  "saldo_fim": 7799.01,
+  "saldo_fim": 7801.11,
   "fechadas": 23
  },
  {
   "dia": "2026-11-02",
-  "saldo_inicio": 7799.01,
+  "saldo_inicio": 7801.11,
   "realizado": 44.44,
-  "saldo_fim": 7843.45,
+  "saldo_fim": 7845.55,
   "fechadas": 42
  },
  {
   "dia": "2026-11-03",
-  "saldo_inicio": 7843.45,
+  "saldo_inicio": 7845.55,
   "realizado": 14.98,
-  "saldo_fim": 7858.43,
+  "saldo_fim": 7860.53,
   "fechadas": 28
  },
  {
   "dia": "2026-11-04",
-  "saldo_inicio": 7858.43,
+  "saldo_inicio": 7860.53,
   "realizado": 65.11,
-  "saldo_fim": 7923.54,
-  "fechadas": 20
+  "saldo_fim": 7925.64,
+  "fechadas": 22
  }
 ]
