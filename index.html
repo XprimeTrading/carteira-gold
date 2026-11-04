@@ -682,14 +682,14 @@ function linhaTempo(L){
 let BT=null;
 function backtest(B){
   BT=B;const st=B.stats,c=st.carteira,box=document.getElementById("bt-kpis");box.textContent="";
-  document.getElementById("bt-sub").textContent=`Relatório do backtest de ${FMT.dia(B.inicio)}/${B.inicio.slice(0,4)} a ${FMT.dia(B.fim)}/${B.fim.slice(0,4)}: Robo X1 + Robo X2 sem o range 4, ${B.fonte}, levado para ${FMT.usd(B.capital)}, sem juros compostos.`;
+  document.getElementById("bt-sub").textContent=`Relatório do backtest de ${FMT.dia(B.inicio)}/${B.inicio.slice(0,4)} a ${FMT.dia(B.fim)}/${B.fim.slice(0,4)}: os três robôs da conta (Robo X1, Robo X2 sem o range 4 e Robo XH), ${B.fonte}, sobre ${FMT.usd(B.capital)}, sem juros compostos.`;
   const k=(t,v,sub,f="usdS")=>{const d=el("div","kpi");d.append(el("p","k",t));const pv=el("p","v",FMT[f](v));sinal(pv,v,f);d.append(pv,el("p","s",sub));box.append(d)};
   k("Resultado",c.resultado,`${FMT.pctS(c.pct)} sobre ${FMT.usd(B.capital)}`);
   k("Queda máxima",c.queda,`${FMT.pctS(c.queda_pct)} do capital`+(REGRA.total!=null&&-c.queda_pct>REGRA.total?` · passa do limite total de ${pctR(REGRA.total)}`:""));
   k("Média por mês",c.media_mes,`${c.meses_pos} de ${c.meses} meses positivos`);
   k("Pior mês",c.pior_mes,`pior dia ${FMT.usdS(c.pior_dia)}`);
   const tb=document.querySelector("#bt-tab tbody");tb.textContent="";
-  [["carteira","XGold (os dois)"],["x1","Robo X1"],["x2","Robo X2"]].forEach(([id,nome])=>{const x=st[id],tr=el("tr");tr.append(el("td",null,nome));
+  [["carteira","XGold (os três)"],["x1","Robo X1"],["x2","Robo X2"],["xh","Robo XH"]].forEach(([id,nome])=>{const x=st[id],tr=el("tr");tr.append(el("td",null,nome));
     [[FMT.usdS(x.resultado),x.resultado],[FMT.usdS(x.queda)+" ("+FMT.pctS(x.queda_pct)+")",x.queda],[`${x.meses_pos} de ${x.meses}`],[FMT.usdS(x.media_mes),x.media_mes],[FMT.usdS(x.pior_mes),x.pior_mes],[FMT.usdS(x.pior_dia),x.pior_dia]]
       .forEach(([t,v])=>{const td=el("td",null,t);if(v!=null)sinal(td,v,"usdS");tr.append(td)});tb.append(tr)});
   document.getElementById("bt-nota").textContent=`O que vale é o desenho da curva: os percentuais estão sobre ${FMT.usd(B.capital)}, e quem entrar dimensiona o próprio risco. Planejamos com ~50% do lucro: no teste fora da amostra o ganho por operação caiu para cerca de metade.`;
@@ -698,21 +698,21 @@ function backtest(B){
 function graficoBt(){
   const B=BT,el0=document.getElementById("g-bt");if(!B||!window.d3||PAG!=="aderencia"||!el0.clientWidth)return;
   el0.querySelectorAll("svg").forEach(s=>s.remove());
-  const pts=B.pontos.map(([d,a,b])=>({t:parseT(d+" 00:00:00"),x1:a,x2:b,c:a+b})),W=Math.max(280,el0.clientWidth),H=240,m={l:62,r:12,t:10,b:24};
+  const pts=B.pontos.map(([d,a,b,h])=>({t:parseT(d+" 00:00:00"),x1:a,x2:b,xh:h||0,c:a+b+(h||0)})),W=Math.max(280,el0.clientWidth),H=240,m={l:62,r:12,t:10,b:24};
   const x=d3.scaleUtc(d3.extent(pts,p=>p.t),[m.l,W-m.r]);
-  const y=d3.scaleLinear([Math.min(0,d3.min(pts,p=>Math.min(p.x1,p.x2,p.c))),d3.max(pts,p=>p.c)],[H-m.b,m.t]).nice();
+  const y=d3.scaleLinear([Math.min(0,d3.min(pts,p=>Math.min(p.x1,p.x2,p.xh,p.c))),d3.max(pts,p=>p.c)],[H-m.b,m.t]).nice();
   const svg=d3.select(el0).append("svg").attr("width","100%").attr("viewBox",`0 0 ${W} ${H}`).attr("role","img").attr("aria-label","Curva do backtest da carteira").style("font-family","var(--mono)");
   svg.append("g").selectAll("line").data(y.ticks(5)).join("line").attr("x1",m.l).attr("x2",W-m.r).attr("y1",y).attr("y2",y).style("stroke",css("--grid"));
   svg.append("g").selectAll("text").data(y.ticks(5)).join("text").attr("x",m.l-8).attr("y",y).attr("dy",".32em").attr("text-anchor","end").style("font-size","11px").style("fill",css("--muted")).text(fy);
   svg.append("g").selectAll("text").data(x.ticks(Math.max(2,Math.floor(W/120)))).join("text").attr("x",x).attr("y",H-6).attr("text-anchor","middle").style("font-size","11px").style("fill",css("--muted")).text(d3.utcFormat("%m/%y"));
-  const ser=[["x2",corEsc(2),"Robo X2",1.4],["x1",corEsc(1),"Robo X1",1.4],["c",css("--gold"),"XGold",2.2]];
+  const ser=[["xh",corEsc(3),"Robo XH",1.4],["x2",corEsc(2),"Robo X2",1.4],["x1",corEsc(1),"Robo X1",1.4],["c",css("--gold"),"XGold",2.2]];
   ser.forEach(([k,cor,,w])=>svg.append("path").datum(pts).style("fill","none").style("stroke",cor).style("stroke-width",w).attr("d",d3.line().x(p=>x(p.t)).y(p=>y(p[k]))));
   const leg=document.getElementById("bt-leg");leg.textContent="";
   [...ser].reverse().forEach(([,cor,nome])=>{const s=el("span"),q=el("i");q.style.background=cor;s.append(q,document.createTextNode(nome));leg.append(s)});
   const tip=dica(el0),bis=d3.bisector(p=>p.t).left,v=svg.append("line").attr("y1",m.t).attr("y2",H-m.b).style("stroke",css("--muted")).style("stroke-dasharray","3 3").style("display","none");
   svg.append("rect").attr("x",m.l).attr("y",0).attr("width",W-m.l-m.r).attr("height",H-m.b).style("fill","transparent")
     .on("pointermove",ev=>{const[px]=d3.pointer(ev),p=pts[Math.min(pts.length-1,bis(pts,x.invert(px)))];v.style("display",null).attr("x1",x(p.t)).attr("x2",x(p.t));
-      tip.hidden=false;tip.innerHTML="";[[d3.utcFormat("%d/%m/%Y")(p.t)],["XGold "+FMT.usdS(p.c),1],["X1 "+FMT.usdS(p.x1)+" · X2 "+FMT.usdS(p.x2)]].forEach(([t,b])=>tip.append(el(b?"b":"span",null,t)));
+      tip.hidden=false;tip.innerHTML="";[[d3.utcFormat("%d/%m/%Y")(p.t)],["XGold "+FMT.usdS(p.c),1],["X1 "+FMT.usdS(p.x1)+" · X2 "+FMT.usdS(p.x2)+" · XH "+FMT.usdS(p.xh)]].forEach(([t,b])=>tip.append(el(b?"b":"span",null,t)));
       const bx=el0.getBoundingClientRect(),kk=bx.width/W;tip.style.left=Math.max(0,Math.min(bx.width-tip.offsetWidth,x(p.t)*kk+12))+"px";tip.style.top="4px"})
     .on("pointerleave",()=>{tip.hidden=true;v.style("display","none")});
 }
