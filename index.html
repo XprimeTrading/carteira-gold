@@ -323,7 +323,7 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
       <div class="cap" id="cap" hidden></div>
       <div class="sem3d" id="sem3d" hidden>A cena 3D não carregou neste aparelho. As salas estão nos cartões abaixo.</div>
     </div>
-    <div class="hint"><button id="spin" type="button">Pausar giro</button><span>Arraste para girar, pinça ou roda para zoom, toque numa sala ou numa etiqueta.</span></div>
+    <div class="hint"><button id="spin" type="button">Pausar giro</button><button id="geral3d" type="button">Visão geral</button><span>Toque numa sala, etiqueta ou cartão para ver o telão de perto. Arraste para girar, pinça ou roda para zoom, dois dedos ou botão direito para mover.</span></div>
     <div class="salas">
       <article class="sala" data-sala="robo_x1" tabindex="0">
         <h3><span>Robo X1</span><span class="num">Sala 1</span></h3>
@@ -825,7 +825,13 @@ if(window.THREE&&THREE.OrbitControls){
   S.add(new THREE.HemisphereLight(0xb8c8da,0x1a1a1a,1.05));
   const key=new THREE.DirectionalLight(0xdfe8ff,.6);key.position.set(-12,30,18);S.add(key);
   {const p=new THREE.PointLight(0xff8a3d,1.2,12,2);p.position.set(0,2.6,1.2);S.add(p)}
-  const O=new THREE.OrbitControls(C,R.domElement);O.target.set(0,.6,0);O.enableDamping=true;O.maxPolarAngle=1.3;O.minDistance=4;O.maxDistance=34;O.autoRotate=!calm;O.autoRotateSpeed=.45;O.enablePan=false;
+  const O=new THREE.OrbitControls(C,R.domElement);O.target.set(0,.6,0);O.enableDamping=true;O.maxPolarAngle=1.3;O.minDistance=.6;O.maxDistance=34;O.autoRotate=!calm;O.autoRotateSpeed=.45;O.enablePan=true;O.screenSpacePanning=true;
+  // voo da câmera: escolher uma sala leva a câmera para a frente do telão dela; sem escolha, volta à vista geral
+  const VISTA={p:C.position.clone(),t:O.target.clone()};let VOO=null;
+  function voar(p,tg,dur=1.1){VOO={p0:C.position.clone(),t0:O.target.clone(),p1:p.clone(),t1:tg.clone(),ini:performance.now(),dur:calm?.01:dur*1000};O.autoRotate=false;
+    const sp=document.getElementById("spin");if(sp)sp.textContent="Girar"}
+  function passoVoo(){if(!VOO)return;const k=Math.min(1,(performance.now()-VOO.ini)/VOO.dur),e=k<.5?2*k*k:1-Math.pow(-2*k+2,2)/2;
+    C.position.lerpVectors(VOO.p0,VOO.p1,e);O.target.lerpVectors(VOO.t0,VOO.t1,e);if(k>=1)VOO=null}
 
   const MC={},BOX=new THREE.BoxGeometry(1,1,1),CYL=new THREE.CylinderGeometry(1,1,1,8),SPH=new THREE.SphereGeometry(1,12,10);
   const mat=(c,o=1,glow=false)=>{const k=c+"|"+o+"|"+glow;return MC[k]||(MC[k]=glow
@@ -910,7 +916,8 @@ if(window.THREE&&THREE.OrbitControls){
     const tx=oeste?x0:x1,sd=oeste?1:-1;
     B(WT,1.3,d-1.4,tx+sd*.12,1.5,cz,0x0b0d0e);
     s.faixa=B(.02,.03,d-1.4,tx+sd*.17,.85,cz,s.cor,1,true);
-    const rk=new THREE.Group();rk.position.set(oeste?x0+.6:x1-.6,.12,z0+.7);S.add(rk);s.leds=FUR.rack(rk,1);
+    // rack no canto do telão; nas salas estreitas ele taparia a tela, então vai para o canto do lado da porta
+    const rk=new THREE.Group();rk.position.set(d<5?(oeste?x1-.7:x0+.7):(oeste?x0+.6:x1-.6),.12,z0+.7);S.add(rk);s.leds=FUR.rack(rk,1);
     s.vasos=[[oeste?x0+.5:x1-.5,z1-.5],[oeste?x1-.5:x0+.5,z0+.5]];
     juntos.forEach((o,k)=>{const oz=cz+(k-(nj-1)/2)*(d/nj),tw=nj>1?(d-1.6)/nj-.15:d-1.6;
       // telão de cada robô (lado a lado quando dividem a sala) e estação voltada para ele
@@ -977,7 +984,13 @@ if(window.THREE&&THREE.OrbitControls){
 
   // seleção: destaca a etiqueta e mostra a legenda
   const cap=document.getElementById("cap");
-  XT.aoEscolher=id=>{tags.forEach(t=>t.el.classList.toggle("on",t.id===id));
+  // enquadra o telão da sala: câmera na frente da tela, na distância em que a largura dela cabe na vista
+  function verTelao(id){const T=TELAS.find(x=>x.s.id===id);if(!T){voar(VISTA.p,VISTA.t);return}
+    const tl=T.tl,n=new THREE.Vector3(0,0,1).applyQuaternion(tl.quaternion),larg=tl.geometry.parameters.width;
+    const hf=2*Math.atan(Math.tan(C.fov*PI/360)*C.aspect),d=Math.max(1.2,larg/2/Math.tan(hf/2)*1.3);
+    voar(tl.position.clone().add(n.multiplyScalar(d)).add(new THREE.Vector3(0,.05,0)),tl.position)}
+  document.getElementById("geral3d").addEventListener("click",()=>{if(XT.sel)XT.escolher(XT.sel);else voar(VISTA.p,VISTA.t)});
+  XT.aoEscolher=id=>{tags.forEach(t=>t.el.classList.toggle("on",t.id===id));verTelao(id);
     if(!id){cap.hidden=true;return}
     cap.innerHTML="";const b=document.createElement("b"),sp=document.createElement("span");
     if(id==="agente"){b.textContent="Agente humano";sp.textContent="Acompanha as três salas e os limites da conta. Levanta de tempos em tempos para olhar cada sala de perto."}
@@ -1038,7 +1051,7 @@ if(window.THREE&&THREE.OrbitControls){
   let visible=true;new IntersectionObserver(es=>{visible=es[0].isIntersecting},{root:document}).observe(stage);
   const clock=new THREE.Clock(),v=new THREE.Vector3();let ultimo=0;
   (function loop(){requestAnimationFrame(loop);if(!visible||document.hidden)return;
-    const t=clock.getElapsedTime(),dt=Math.min(.05,t-ultimo);ultimo=t;O.update();
+    const t=clock.getElapsedTime(),dt=Math.min(.05,t-ultimo);ultimo=t;passoVoo();O.update();
     if(!calm){rondar(dt);for(const s of SALAS)if(s.status&&s.status!=="parado")s.leds.forEach((m,i)=>m.visible=Math.sin(t*4+i*1.7)>-.4);
       if(!AG.sentado){const A=AG.boneco.A;A.head.rotation.y=Math.sin(t*.45)*.5}
       SALAS.forEach((s,i)=>{if(s.robo&&s.status&&s.status!=="parado"){const g=s.robo.g;g.rotation.y=Math.sin(t*.7+i*2)*.28;g.rotation.x=.06+Math.sin(t*2.3+i)*.03}})}
