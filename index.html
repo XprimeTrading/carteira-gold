@@ -144,6 +144,32 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
 .ativos .val{text-align:right;font-variant-numeric:tabular-nums}
 .ativos hr{border:none;border-top:1px dashed var(--line);margin:4px 0;width:100%}
 @media (max-width:560px){.disj{grid-template-columns:1fr 1fr}.bloco{padding:14px}}
+/* páginas fixas: Quem somos e Como funciona a mineração (gera_paginas.py) */
+.pagina-est{display:flex;flex-direction:column;gap:20px}
+.pagina-est .txt{display:flex;flex-direction:column;gap:12px;font-size:15.5px;line-height:1.7;max-width:76ch}
+.pagina-est .txt p{margin:0}.pagina-est .txt b{font-weight:600;color:var(--ink)}
+.pagina-est .capa h2{font-size:clamp(24px,4.4vw,34px)}
+.pagina-est a{color:var(--gold)}
+.lista-txt{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:6px}
+.lista-txt ul{margin:6px 0 0;padding-left:18px;display:flex;flex-direction:column;gap:4px}
+.lista-txt li::marker{color:var(--gold)}
+.funil-n{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.funil-n div{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:12px;padding:10px 16px}
+.funil-n b{display:block;font:500 30px var(--mono);color:var(--gold)}.funil-n span{font-size:12.5px;color:var(--muted)}
+.funil-n i{font-style:normal;font-size:26px;color:var(--muted)}
+.pagina-est .cmp td,.pagina-est .cmp th{white-space:normal;text-align:left!important;font-family:var(--body);vertical-align:top}
+.pagina-est .cmp td:first-child{font-weight:600;color:var(--ink);min-width:110px}
+.pagina-est .cmp{font-size:14px}
+@media (max-width:560px){.funil-n i{display:none}.pagina-est .cmp td:first-child{position:static;min-width:90px}}
+.passos{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:14px;position:relative}
+.passos::before{content:"";position:absolute;left:23px;top:10px;bottom:10px;width:2px;background:linear-gradient(var(--gold),rgba(224,169,64,.15))}
+.passo{display:grid;grid-template-columns:48px minmax(0,1fr);gap:14px;align-items:start;position:relative}
+.passo .num{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font:600 16px var(--mono);background:var(--bg);border:2px solid var(--gold);color:var(--gold);position:relative;z-index:1}
+.passo .bloco{gap:10px}.passo h3{font-size:18px}
+.passo.ultimo .num{background:var(--gold);color:#111}
+.passo.ultimo .bloco{border-color:rgba(224,169,64,.55);background:linear-gradient(180deg,rgba(224,169,64,.08),var(--surface) 160px)}
+.passo.depois .num{border-style:dashed}
+@media (max-width:560px){.passo{grid-template-columns:36px minmax(0,1fr);gap:10px}.passo .num{width:36px;height:36px;font-size:13px}.passos::before{left:17px}.pagina-est .txt{font-size:15px}}
 /* aba Gestão de risco: os três perfis para quem entra com US$ 1.000 (Backtest\dashboard_site\PERFIS_DE_RISCO_1000USD.md) */
 .perfis{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:12px}
 .perfil{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--c);border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:12px;min-width:0}
@@ -225,9 +251,99 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
 
   <nav class="abas" role="tablist" aria-label="Contas da carteira">
     <button type="button" role="tab" id="aba-xm" data-aba="xm" aria-selected="true">Carteira Xprime · Exness</button>
+    <button type="button" role="tab" id="aba-quem" data-aba="quem" aria-selected="false">Quem somos</button>
+    <button type="button" role="tab" id="aba-mineracao" data-aba="mineracao" aria-selected="false">Como funciona a mineração</button>
   </nav>
 
   <p class="aviso" id="aviso" hidden></p>
+  <!--paginas-->
+  <div class="pagina-est" id="pg-quem" hidden>
+  <section class="bloco ouro capa">
+    <p class="sec">XPrime Trading <b>quem somos</b></p>
+    <h2>Trading sistemático, <em>com dinheiro real e às claras</em></h2>
+    <div class="txt"><p>A XPrime Trading é uma mesa de trading sistemático, fundada em abril de 2026.</p>
+<p>Nós desenvolvemos, testamos e operamos os nossos próprios robôs com dinheiro real. Toda decisão de compra e venda é tomada por regras escritas em código, e não por palpite ou emoção.</p>
+<p>Não somos corretora, não guardamos dinheiro de ninguém e não prometemos retorno. Operamos as nossas próprias contas e mostramos os resultados em público, todos os dias.</p></div>
+  </section>
+  <section class="bloco">
+    <p class="sec">01 <b>Inteligência artificial no centro do método</b></p>
+    <div class="txt"><p>Nossa vantagem é a escala com disciplina. Um motor de mineração de dados alimenta a nossa IA com anos de histórico do mercado. Com ele, a IA cria, testa e descarta milhares de estratégias até sobrarem só as que resistem a tudo. Uma pessoa levaria meses para fazer o que ela faz em horas, e sem cansaço, sem pressa e sem apego a uma ideia.</p>
+<p><b>Todas as nossas carteiras passam pelo processo completo de mineração:</b></p>
+<ol class="lista-txt"><li>criação;</li><li>escolha dos ativos;</li><li>validação;</li><li>robustez;</li><li>walk-forward;</li><li>Monte Carlo;</li><li>gestão de risco;</li><li>15 dias de incubação em conta demo.</li></ol>
+<p>Nenhuma etapa é pulada. O passo a passo está na aba <b>Como funciona a mineração</b>.</p></div>
+  </section>
+  <section class="bloco">
+    <p class="sec">02 <b>O que fazemos</b></p>
+    <div class="txt"><ul class="lista-txt"><li><b>Carteiras de robôs.</b> Um robô sozinho tem meses ruins. Por isso juntamos robôs que se compensam entre si, e o resultado é medido sempre na carteira inteira.<ul><li><b>XGold:</b> três robôs de ouro (XAUUSD) numa conta real. No backtest de jan/2024 a out/2026, ficou positiva em 33 de 34 meses.</li><li><b>XCrypto:</b> em montagem. Vai para o site quando estiver operando.</li></ul></li><li><b>Risco antes do lucro.</b> Cada conta tem trava diária e perda máxima, aplicadas automaticamente por um robô guardião. O tamanho das operações é decidido antes, nunca no calor do mercado.</li><li><b>Transparência total.</b> Este painel lê a conta real direto da corretora e se atualiza a cada poucos minutos. O pior dia aparece ao lado do melhor, e o que o backtest prometeu fica lado a lado com o que está acontecendo de verdade.</li></ul></div>
+  </section>
+  <section class="bloco">
+    <p class="sec">03 <b>No que acreditamos</b></p>
+    <div class="txt"><ul class="lista-txt"><li><b>Regra antes de opinião.</b> Se não dá para escrever em código e testar, não operamos.</li><li><b>Sobreviver vem primeiro.</b> Uma conta só cresce se não quebrar no caminho.</li><li><b>Backtest não é promessa.</b> Planejamos com metade do lucro testado e com a queda inteira.</li><li><b>Transparência.</b> Número que não pode ser conferido não serve.</li></ul></div>
+  </section>
+  <p class="note" style="padding:0 4px">Resultados passados não garantem resultados futuros. Operar no mercado financeiro envolve risco de perda do capital. Este conteúdo não é recomendação de investimento.</p>
+  <p class="note" style="padding:0 4px"><a href="#mineracao" data-ir="mineracao">Como funciona a mineração →</a></p>
+  </div>
+  <div class="pagina-est" id="pg-mineracao" hidden>
+  <section class="bloco ouro capa">
+    <p class="sec">XPrime Trading <b>como funciona a mineração</b></p>
+    <h2>Da ideia à carteira, <em>em 12 etapas</em></h2>
+    <div class="funil-n"><div><b>40.750</b><span>avaliações numa campanha</span></div><i>→</i><div><b>9</b><span>estratégias aprovadas</span></div></div>
+    <div class="txt"><p>Toda carteira da XPrime nasce do mesmo processo.</p>
+<p>Um <b>motor de mineração de dados</b> alimenta a nossa <b>IA</b> com anos de histórico do mercado. A IA gera milhares de estratégias candidatas, e o motor as submete a uma sequência de portões. Cada portão tem uma régua fixa, que não se negocia. Se a estratégia passa, segue; se não passa, sai.</p>
+<p>São 12 etapas, da ideia até a carteira que opera com dinheiro real. O funil é severo de propósito: numa campanha medida, <b>40.750 avaliações viraram 9 estratégias</b>.</p></div>
+  </section>
+  <ol class="passos">
+    <li class="passo"><span class="num">01</span>
+      <div class="bloco"><h3>O mandato</h3><div class="txt"><p>Antes de minerar qualquer coisa, a carteira ganha um mandato com quatro números:</p>
+<ul class="lista-txt"><li>quanto capital ela vai operar;</li><li>qual é a perda máxima tolerada;</li><li>qual é o objetivo (crescimento ou consistência);</li><li>qual é o horizonte.</li></ul>
+<p>O mandato governa todo o resto: o tamanho dos lotes, a trava diária, a janela de dados e o prazo de revisão.</p></div></div></li>
+    <li class="passo"><span class="num">02</span>
+      <div class="bloco"><h3>Leitura de regime</h3><div class="txt"><p>O preço é a última coisa a mudar. Antes do desenho, lemos o ambiente para inclinar o que vai ser minerado e encurtar o que está no ar:</p>
+<ul class="lista-txt"><li>juros e liquidez;</li><li>dólar;</li><li>volatilidade;</li><li>calendário de notícias.</li></ul>
+<p>Essa leitura nunca afrouxa um portão. Quem decide o que opera é a medição.</p></div></div></li>
+    <li class="passo"><span class="num">03</span>
+      <div class="bloco"><h3>Escolha dos ativos</h3><div class="txt"><p>Ninguém escolhe ativo pelo nome. Cada candidato é medido no livro de ofertas e no lote que a carteira vai usar:</p>
+<ul class="lista-txt"><li>liquidez diária;</li><li>profundidade perto do preço;</li><li>spread;</li><li>derrapagem.</li></ul>
+<p>Ativo que reprova não entra, por melhor que o backtest pareça. A recusa é registrada com o número que reprovou.</p></div></div></li>
+    <li class="passo"><span class="num">04</span>
+      <div class="bloco"><h3>Dados</h3><div class="txt"><p>O motor baixa anos de histórico e confere a cobertura antes de começar: nada atrasado, nada com buracos. A janela mínima é de cerca de dois anos. O piso é contado em <b>operações fora da amostra</b>, e não em quantidade de candles.</p></div></div></li>
+    <li class="passo"><span class="num">05</span>
+      <div class="bloco"><h3>Desenho amostral</h3><div class="txt"><p>O histórico é dividido em três blocos:</p>
+<ul class="lista-txt"><li><b>IS (aprendizado):</b> onde a IA procura as regras.</li><li><b>OOS (fora da amostra):</b> um regime anterior, de natureza diferente. A estratégia que só vive num tipo de mercado morre aqui.</li><li><b>OOS2 (selado):</b> o trecho mais recente, que a IA nunca viu durante a busca. É o mercado que a carteira vai encontrar ao ligar.</li></ul>
+<p>As estratégias são mineradas <b>nos dois lados</b>, compra e venda. Sem isso, a carteira vira uma aposta só numa direção.</p></div></div></li>
+    <li class="passo"><span class="num">06</span>
+      <div class="bloco"><h3>Criação</h3><div class="txt"><p>A IA monta as estratégias a partir de quatro famílias de comportamento do mercado:</p>
+<div class="rolar"><table class="cmp cmp3"><thead><tr><th>Família</th><th>O que captura</th></tr></thead><tbody><tr><td>Tendência</td><td>continuação de movimento</td></tr><tr><td>Reversão</td><td>esticamento e retorno</td></tr><tr><td>Impulso</td><td>compressão e rompimento com volume</td></tr><tr><td>Regime</td><td>persistência e volatilidade</td></tr></tbody></table></div>
+<p>Estratégias de famílias diferentes valem mais numa carteira do que estratégias iguais em ativos diferentes, porque falham em momentos diferentes.</p></div></div></li>
+    <li class="passo"><span class="num">07</span>
+      <div class="bloco"><h3>Validação: o funil de portões</h3><div class="txt"><p>Cada candidata enfrenta os portões abaixo. Basta reprovar em um para sair.</p>
+<div class="rolar"><table class="cmp cmp3"><thead><tr><th>Portão</th><th>A régua</th></tr></thead><tbody><tr><td>Amostra</td><td>mínimo de 40 operações no aprendizado e 30 em cada bloco fora da amostra</td></tr><tr><td>Fora da amostra</td><td>fator de lucro acima de 1 no trecho selado, com payoff positivo</td></tr><tr><td>Custo realista</td><td>o dobro da taxa, mais spread e derrapagem medidos</td></tr><tr><td>Redundância</td><td>correlação diária de no máximo 0,5 com o que já está aprovado</td></tr><tr><td>Período anterior</td><td>também lucra na janela de mesmo tamanho imediatamente anterior</td></tr></tbody></table></div></div></div></li>
+    <li class="passo"><span class="num">08</span>
+      <div class="bloco"><h3>Robustez</h3><div class="txt"><p>Passar no teste não basta; é preciso mostrar que não foi sorte.</p>
+<div class="rolar"><table class="cmp cmp3"><thead><tr><th>Portão</th><th>A régua</th></tr></thead><tbody><tr><td>Vizinhos de parâmetro</td><td>pelo menos metade dos ajustes vizinhos continua boa. Senão foi ajuste fino com sorte.</td></tr><tr><td>Sem os melhores</td><td>tirando os 5% melhores trades, ainda lucra. Quem vive de dois acertos morre aqui.</td></tr><tr><td>Margem de segurança</td><td>ainda lucra com acerto 15 pontos abaixo do testado</td></tr><tr><td>Tempo gráfico vizinho</td><td>funciona também em pelo menos um tempo gráfico ao lado</td></tr><tr><td>Fidelidade</td><td>antes de ir para a conta, o robô é refeito numa réplica independente e conferido operação por operação contra o testador da corretora. No nosso robô de rompimento, a réplica bateu com 99,6% de fidelidade.</td></tr></tbody></table></div></div></div></li>
+    <li class="passo"><span class="num">09</span>
+      <div class="bloco"><h3>Walk-forward</h3><div class="txt"><p>O histórico é cortado em janelas sucessivas: o robô aprende numa, é testado na seguinte e o processo anda para a frente. As réguas:</p>
+<ul class="lista-txt"><li>pelo menos <b>60% das janelas</b> precisam ser lucrativas;</li><li><b>nenhuma janela</b> pode concentrar mais da metade do lucro.</li></ul>
+<p>É o teste mais próximo de operar de verdade, mês após mês, sem saber o futuro.</p></div></div></li>
+    <li class="passo"><span class="num">10</span>
+      <div class="bloco"><h3>Monte Carlo</h3><div class="txt"><p>Cada estratégia, e depois a carteira inteira, passa por milhares de simulações que embaralham a ordem e o tamanho dos resultados. As réguas:</p>
+<ul class="lista-txt"><li>pelo menos <b>70% das simulações</b> lucrativas;</li><li><b>risco de ruína de no máximo 10%</b>;</li><li>retorno sobre a queda de pelo menos <b>70% do original</b>.</li></ul>
+<p>Na carteira XGold foram <b>20.000 simulações</b>. É delas que saem os perfis da aba Gestão de risco.</p></div></div></li>
+    <li class="passo"><span class="num">11</span>
+      <div class="bloco"><h3>Composição e gestão de risco</h3><div class="txt"><p>A carteira não é uma lista de robôs aprovados. O motor:</p>
+<ul class="lista-txt"><li>mede quantas <b>apostas independentes</b> existem de fato;</li><li>roda o backtest da carteira <b>marcado a mercado</b>, com as posições abertas contando;</li><li>dimensiona tudo pela <b>queda</b>, e não pelo lucro.</li></ul>
+<p>Depois vêm as travas:</p>
+<div class="rolar"><table class="cmp cmp3"><thead><tr><th>Nível</th><th>Trava</th><th>O que acontece ao romper</th></tr></thead><tbody><tr><td>Robô</td><td>queda além do percentil 95 do próprio Monte Carlo</td><td>pausa</td></tr><tr><td>Robô</td><td>aderência abaixo de 50% do esperado</td><td>pausa e nova mineração</td></tr><tr><td>Robô</td><td>prazo de validade vencido</td><td>revalidação</td></tr><tr><td>Conta</td><td>trava diária</td><td>fecha e só volta no dia seguinte</td></tr><tr><td>Conta</td><td>perda máxima</td><td>os robôs param</td></tr></tbody></table></div></div></div></li>
+    <li class="passo ultimo"><span class="num">12</span>
+      <div class="bloco"><h3>Incubação: 15 dias em conta demo</h3><div class="txt"><p>A última etapa não é estatística, é operacional. Antes do dinheiro real, a carteira passa <b>15 dias operando em conta demo</b>, com preço ao vivo. É a incubação, e nela conferimos:</p>
+<ul class="lista-txt"><li>se cada ordem saiu no horário certo, no lote certo e com stop e alvo corretos;</li><li>a derrapagem e o spread reais contra os do teste;</li><li>erros de conexão, de fuso horário e de configuração;</li><li>se o resultado ao vivo anda na faixa que o backtest prometeu.</li></ul>
+<p>Qualquer erro encontrado volta para o código e a contagem dos 15 dias recomeça. Só a carteira que passa limpa pela incubação vai para a conta real.</p></div></div></li>
+    <li class="passo depois"><span class="num">∞</span>
+      <div class="bloco"><h3>Depois: vigilância contínua</h3><div class="txt"><p>Na conta real, cada fechamento é comparado com o que o backtest prometeu: acerto, payoff e sequência de perdas. Isso aparece nas abas Esperado × vivo e Geometria de risco deste painel. Cada robô tem prazo de validade. Quando ele vence, ou quando o robô sai da estatística, a carteira é revista. Os robôs gastos são trocados por uma nova safra, minerada pelo mesmo processo, do começo.</p></div></div></li>
+  </ol>
+  <p class="note" style="padding:0 4px">Resultados passados não garantem resultados futuros. Operar no mercado financeiro envolve risco de perda do capital. Este conteúdo não é recomendação de investimento.</p>
+  </div>
+  <!--/paginas-->
   <div class="conteudo" id="conteudo" role="tabpanel">
   <div class="titulo">
     <h1>Carteira Prime</h1>
@@ -911,8 +1027,14 @@ function xgold(ader,bt){
 const AVISO={xm:"Os dados da Carteira Xprime não carregaram. Recarregue a página.",
   bybit:"Os dados da Carteira Xcrypto não carregaram. Recarregue a página."};
 let ABA=null;
+const PAGINAS=["quem","mineracao"];  // abas de texto fixo: não leem dados
 function carregar(id){
   ABA=id;
+  document.querySelectorAll(".pagina-est").forEach(p=>p.hidden=p.id!=="pg-"+id);
+  if(PAGINAS.includes(id)){document.querySelectorAll(".abas [data-aba]").forEach(b=>b.setAttribute("aria-selected",String(b.dataset.aba===id)));
+    document.getElementById("aviso").hidden=true;document.getElementById("conteudo").hidden=true;
+    document.querySelector(".barra .vivo").style.visibility=XT.V?"":"hidden";return}
+  document.querySelector(".barra .vivo").style.visibility="";
   document.querySelectorAll(".abas [data-aba]").forEach(b=>b.setAttribute("aria-selected",String(b.dataset.aba===id)));
   document.getElementById("conteudo").setAttribute("aria-labelledby","aba-"+id);
   const pega=n=>fetch(`dados/${id}/${n}.json?t=${Date.now()}`,{cache:"no-store"}).then(r=>{if(!r.ok)throw new Error(n);return r.json()});
@@ -931,7 +1053,9 @@ document.querySelectorAll(".abas [data-aba]").forEach(b=>b.addEventListener("cli
   try{history.replaceState(null,"","#"+b.dataset.aba)}catch(e){}carregar(b.dataset.aba)}));
 document.querySelector(".abas")?.addEventListener("keydown",e=>{if(e.key!=="ArrowRight"&&e.key!=="ArrowLeft")return;
   const bs=[...document.querySelectorAll(".abas [data-aba]")],i=bs.findIndex(b=>b.dataset.aba===ABA),n=bs[(i+(e.key==="ArrowRight"?1:bs.length-1))%bs.length];n.focus();n.click()});
-carregar("xm");
+carregar(["quem","mineracao"].includes(location.hash.slice(1))?location.hash.slice(1):"xm");
+document.addEventListener("click",e=>{const a=e.target.closest("[data-ir]");if(!a)return;e.preventDefault();
+  try{history.replaceState(null,"","#"+a.dataset.ir)}catch(_){}carregar(a.dataset.ir);window.scrollTo(0,0)});
 // os dados são publicados a cada 6 min; a página relê a cada 2 min, sem recarregar a cena 3D
 setInterval(()=>{if(!document.hidden)carregar(ABA)},2*60e3);
 document.addEventListener("visibilitychange",()=>{if(!document.hidden&&XT.V&&Date.now()-Date.parse(XT.V.exportado)>2*60e3)carregar(ABA)});
