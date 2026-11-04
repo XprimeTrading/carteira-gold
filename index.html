@@ -67,6 +67,8 @@ h3{font-size:15px}
 .placar b{color:#4cc9a6;font-weight:500}.placar i{font-style:normal;color:#e0a940}.placar .n{color:#f08d68}
 .cap{position:absolute;left:10px;bottom:10px;max-width:min(76%,440px);background:rgba(8,10,10,.8);color:#eef1ee;border:1px solid rgba(255,255,255,.16);border-radius:10px;padding:8px 12px;z-index:2;pointer-events:none}
 .cap b{display:block;font:600 15px var(--display)}.cap span{font-size:12.5px;color:#b9c2bd}
+.sede3d{display:block;width:100%;height:clamp(440px,75vh,820px);border:1px solid var(--line);border-radius:14px;background:#07090a}
+.hint a{color:var(--gold);font-weight:500}
 .sem3d{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:16px;color:#b9c2bd;text-align:center}
 .hint{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;font-size:12px;color:var(--muted)}
 button{font:500 12px var(--body);color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:6px 10px;cursor:pointer}
@@ -481,18 +483,12 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
 
   <section class="bloco" id="salas" data-pag="geral">
     <div>
-      <p class="sec">03 <b>Salas</b></p>
-      <h2>Salas de <em>operação</em></h2>
-      <p class="note" style="margin-top:4px">Uma sala para cada robô e o agente humano no corredor, de olho nas três. Robô ligado fica sentado na estação, trabalhando; desligado, fica de pé ao lado dela.</p>
+      <p class="sec">03 <b>Sede</b></p>
+      <h2>A sede da XPrime em <em>3D</em></h2>
+      <p class="note" style="margin-top:4px">A Carteira XGold com os robôs e o supervisor, a Carteira XCrypto em incubação, a Sala de Mineração e o resto da empresa. O telão da XGold mostra o resultado do dia desta conta.</p>
     </div>
-    <div class="stage" id="stage">
-      <canvas id="cv" aria-label="Salas de operação em 3D: três salas com um robô cada e o agente humano no corredor"></canvas>
-      <div class="tags" id="tags"></div>
-      <div class="placar" id="placar">—</div>
-      <div class="cap" id="cap" hidden></div>
-      <div class="sem3d" id="sem3d" hidden>A cena 3D não carregou neste aparelho. As salas estão nos cartões abaixo.</div>
-    </div>
-    <div class="hint"><button id="spin" type="button">Pausar giro</button><button id="geral3d" type="button">Visão geral</button><span>Toque numa sala, etiqueta ou cartão para ver o telão de perto. Arraste para girar, pinça ou roda para zoom, dois dedos ou botão direito para mover.</span></div>
+    <iframe class="sede3d" id="sede3d" data-src="sede.html?embed=1" title="Sede da XPrime em 3D" allow="fullscreen"></iframe>
+    <div class="hint"><a href="sede.html" target="_blank" rel="noopener" id="sede-cheia">Abrir a sede em tela cheia →</a><span>Arraste para girar, pinça ou roda para zoom, toque numa sala. Passeio e Tour guiado andam pelo corredor.</span></div>
     <div class="salas">
       <article class="sala" data-sala="robo_x1" tabindex="0">
         <h3><span>Robo X1</span><span class="num">Sala 1</span></h3>
@@ -1193,7 +1189,11 @@ document.querySelectorAll(".sala[data-sala]").forEach(c=>{c.addEventListener("cl
 <script>
 // ---------- salas 3D, no motor e com os modelos da sede ----------
 const stage=document.getElementById("stage"),cv=document.getElementById("cv"),tagsEl=document.getElementById("tags");
-if(window.THREE&&THREE.OrbitControls){
+// a sede 3D (iframe) só carrega quando a seção chega perto da tela: são ~40 MB de modelos
+{const f=document.getElementById("sede3d");if(f){const ir=()=>{if(!f.src)f.src=f.dataset.src};
+  if("IntersectionObserver"in window)new IntersectionObserver((es,o)=>{if(es.some(e=>e.isIntersecting)){ir();o.disconnect()}},{rootMargin:"600px"}).observe(f);else ir()}}
+const VELHO3D=!!document.getElementById("cv");
+if(VELHO3D&&window.THREE&&THREE.OrbitControls){
   const PI=Math.PI,FW=PI/2,FE=-PI/2;
   let W=stage.clientWidth,H=stage.clientHeight;
   const lowEnd=W<560||matchMedia("(pointer: coarse)").matches,calm=matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -1448,5 +1448,5 @@ if(window.THREE&&THREE.OrbitControls){
   R.domElement.addEventListener("pointerup",e=>{if(!down||Math.hypot(e.clientX-down[0],e.clientY-down[1])>5)return;const b=R.domElement.getBoundingClientRect();
     pt.set((e.clientX-b.left)/b.width*2-1,-(e.clientY-b.top)/b.height*2+1);ray.setFromCamera(pt,C);
     const hit=ray.intersectObjects(SALAS.filter(s=>s.piso).map(s=>s.piso))[0];if(hit){const s=SALAS.find(x=>x.piso===hit.object);XT.escolher(s.id)}});
-}else{document.getElementById("sem3d").hidden=false;document.getElementById("placar").hidden=true}
+}else if(VELHO3D){document.getElementById("sem3d").hidden=false;document.getElementById("placar").hidden=true}
 </script>

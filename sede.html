@@ -1,0 +1,724 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="dark">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<script>if(/[?&]embed=1/.test(location.search))document.documentElement.classList.add("embed")</script></head>
+
+<title>Sede XPrime</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* layout: um andar 3D no topo, depois as salas como fichas e o fluxo de uma estratégia */
+:root{
+  --bg:#f3f4f1;--surface:#ffffff;--ink:#1b1f1d;--muted:#5d6661;--line:#d9ddd8;
+  --gold:#a8771c;--teal:#0f7a62;--violet:#5146b0;--gray:#7b827e;--pos:#0f7a62;--neg:#b8461f;
+  --display:"Sora",system-ui,sans-serif;--body:"IBM Plex Sans",system-ui,sans-serif;--mono:"IBM Plex Mono",ui-monospace,monospace;
+  --stage:#e7eae5;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#121614;--surface:#1b201e;--ink:#eef1ee;--muted:#a3aca7;--line:#2e3532;
+  --gold:#e0a940;--teal:#4cc9a6;--violet:#a59cf0;--gray:#9aa29d;--pos:#4cc9a6;--neg:#f08d68;--stage:#161b19;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#121614;--surface:#1b201e;--ink:#eef1ee;--muted:#a3aca7;--line:#2e3532;
+  --gold:#e0a940;--teal:#4cc9a6;--violet:#a59cf0;--gray:#9aa29d;--pos:#4cc9a6;--neg:#f08d68;--stage:#161b19;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:15px/1.6 var(--body)}
+.wrap{max-width:1040px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 56px}
+h1,h2{font-family:var(--display);font-weight:600;text-wrap:balance;margin:0}
+h1{font-size:clamp(26px,5vw,38px);letter-spacing:-.01em}
+h2{font-size:20px;margin-bottom:14px}
+.lede{color:var(--muted);max-width:62ch;margin:8px 0 0}
+.eyebrow{font:500 11px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+section{margin-top:40px}
+.stage{position:relative;margin-top:22px;height:clamp(440px,78vh,860px);width:min(1440px,calc(100vw - 32px));margin-left:50%;transform:translateX(-50%);border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#07090a;touch-action:none}
+.stage canvas{display:block;width:100%;height:100%}
+.tags{position:absolute;inset:0;pointer-events:none}
+.tag{position:absolute;transform:translate(-50%,-100%);font:500 11px/1.2 var(--mono);background:rgba(8,10,10,.72);color:#eef1ee;border:1px solid rgba(255,255,255,.18);border-radius:6px;padding:3px 6px;white-space:nowrap;pointer-events:auto;cursor:pointer}
+.tag.on{border-color:#e0a940;color:#e0a940}
+.hud{position:absolute;top:10px;left:10px;display:flex;gap:6px;flex-wrap:wrap;z-index:2}
+.hud button{font:500 12px var(--body);color:#eef1ee;background:rgba(8,10,10,.72);border:1px solid rgba(255,255,255,.2);border-radius:8px;padding:6px 10px;cursor:pointer}
+.hud button.on{border-color:#e0a940;color:#e0a940}
+.cap{position:absolute;left:10px;bottom:10px;max-width:min(76%,460px);background:rgba(8,10,10,.8);color:#eef1ee;border:1px solid rgba(255,255,255,.16);border-radius:10px;padding:8px 12px;z-index:2;pointer-events:none}
+.cap b{display:block;font:600 15px var(--display)}.cap span{font-size:12.5px;color:#b9c2bd}.cap em{font-style:normal;font-family:var(--mono)}.cap em.p{color:#4cc9a6}.cap em.n{color:#f08d68}
+.pad{position:absolute;right:10px;bottom:10px;display:grid;grid-template-columns:repeat(3,48px);grid-template-rows:repeat(2,48px);gap:6px;z-index:2}
+.pad button{font-size:18px;color:#eef1ee;background:rgba(8,10,10,.72);border:1px solid rgba(255,255,255,.22);border-radius:10px;touch-action:none;user-select:none;-webkit-user-select:none}
+.pad button:active{border-color:#e0a940;color:#e0a940}
+.pad[hidden],.cap[hidden],.tags[hidden]{display:none}
+.placar{position:absolute;top:10px;right:10px;z-index:2;max-width:46%;text-align:right;font:500 11.5px/1.45 var(--mono);color:#eef1ee;background:rgba(8,10,10,.72);border:1px solid rgba(255,255,255,.18);border-radius:8px;padding:6px 9px;pointer-events:none}
+.placar b{color:#4cc9a6;font-weight:500}.placar i{font-style:normal;color:#e0a940}
+.hint{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;margin-top:10px;font-size:12px;color:var(--muted)}
+.key{display:inline-flex;align-items:center;gap:6px}.sw{width:10px;height:10px;border-radius:3px;display:inline-block}
+.dash{border:1px dashed var(--muted);background:transparent}
+button{font:500 12px var(--body);color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:6px 10px;cursor:pointer}
+button:focus-visible,.tag:focus-visible,.room:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.rooms{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px}
+.room{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:6px;min-width:0;scroll-margin-top:20px}
+.room.on{border-color:var(--gold)}
+.room h3{font:600 15px var(--display);margin:0;display:flex;justify-content:space-between;gap:8px;align-items:baseline}
+.room p{margin:0;color:var(--muted);font-size:13.5px}
+.num{font:500 11px var(--mono);color:var(--muted)}
+.room p.seats{font:500 12px/1.4 var(--mono);color:var(--ink);border-top:1px solid var(--line);padding-top:8px;margin-top:2px}
+.pill{align-self:flex-start;font:500 11px var(--mono);padding:2px 8px;border-radius:999px;border:1px solid currentColor}
+.p-op{color:var(--violet)}.p-ctl{color:var(--teal)}.p-dec{color:var(--gray)}.p-fut{color:var(--muted);border-style:dashed}
+.ops{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.op{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px;min-width:0}
+.op .k{font:500 11px var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.op .v{font:500 24px var(--mono);font-variant-numeric:tabular-nums;margin-top:2px}
+.op .s{font-size:13px;color:var(--muted)}
+.pos{color:var(--pos)}.neg{color:var(--neg)}
+.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:13.5px}
+.step{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+.step.gate{border-color:var(--teal)}.step.you{border-color:var(--gold)}
+.arrow{color:var(--muted);font-family:var(--mono)}
+.rules{display:grid;gap:8px;padding:0;margin:0;list-style:none;counter-reset:r}
+.rules li{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 14px;display:flex;gap:12px}
+.rules li::before{counter-increment:r;content:counter(r);font:500 13px var(--mono);color:var(--gold)}
+.note{font-size:12px;color:var(--muted);margin-top:10px}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
+html.embed,html.embed body{margin:0;height:100%;overflow:hidden;background:#07090a}
+html.embed .wrap{max-width:none;padding:0}
+html.embed .wrap>*:not(.stage){display:none}
+html.embed .stage{margin:0;width:100vw;height:100vh;transform:none;border:0;border-radius:0}
+@media (max-width:560px){.placar{top:52px;max-width:62%}}
+</style>
+
+<div class="wrap">
+  <div class="eyebrow">Sede virtual · fundada em abril de 2026</div>
+  <h1>XPrime Trading</h1>
+  <p class="lede">Escritório de operação com capital próprio. As carteiras operam ouro e, em breve, cripto; cada sala tem função, regras e registro. Dinheiro real só é ligado pela Presidência.</p>
+
+  <div class="stage" id="stage"><canvas id="cv" aria-label="Mapa 3D das salas"></canvas><div class="tags" id="tags"></div>
+    <div class="hud" id="hud"><button type="button" data-m="aereo" class="on">Vista aérea</button><button type="button" data-m="passeio">Passeio</button><button type="button" data-m="tour">Tour guiado</button><button type="button" id="btnReu">Reunião</button></div>
+    <div class="cap" id="cap" hidden></div>
+    <div class="placar" id="placar"></div>
+    <div class="pad" id="pad" hidden><span></span><button type="button" data-k="f" aria-label="Andar para frente">▲</button><span></span><button type="button" data-k="l" aria-label="Virar à esquerda">◀</button><button type="button" data-k="b" aria-label="Andar para trás">▼</button><button type="button" data-k="r" aria-label="Virar à direita">▶</button></div></div>
+  <div class="hint">
+    <button id="spin" type="button">Pausar giro</button>
+    <span class="key"><i class="sw" style="background:#7b827e"></i>Decisão</span>
+    <span class="key"><i class="sw" style="background:#6a5fd0"></i>Operação</span>
+    <span class="key"><i class="sw" style="background:#17a07f"></i>Controle</span>
+    <span class="key"><i class="sw dash"></i>Fase futura</span>
+    <span>Vista aérea: arraste para girar, pinça para zoom, toque numa sala. Passeio: setas ou W A S D, arraste para olhar em volta.</span>
+  </div>
+
+  <section>
+    <h2>Carteiras</h2>
+    <div class="ops">
+      <div class="op"><div class="k">Carteira XGold · 3 robôs, 5 estratégias · conta real</div><div class="v" id="op-xgold-v">—</div><div class="s" id="op-xgold-s">resultado do dia, lido da conta</div></div>
+      <div class="op"><div class="k">Carteira XCrypto · em incubação</div><div class="v">—</div><div class="s">12 operadores robôs e 1 agente humano, 15 dias em conta demo antes do dinheiro real.</div></div>
+    </div>
+    <p class="note">Resultado realizado do dia, em US$, lido direto da conta da carteira. É o mesmo número do telão da sala e do telão da Presidência.</p>
+    <div class="flow" style="margin-top:14px"><span class="step">Telão de cada carteira</span><span class="arrow">→</span><span class="step gate">Financeiro consolida por conta</span><span class="arrow">→</span><span class="step you">Relatório e telão da Presidência</span></div>
+  </section>
+
+  <section>
+    <h2>Quadro de assentos</h2>
+    <div class="ops">
+      <div class="op"><div class="k">Estações de trabalho</div><div class="v">33</div><div class="s">6 na Carteira XGold · 13 na Carteira XCrypto · 5 na Mineração</div></div>
+      <div class="op"><div class="k">Nas carteiras</div><div class="v">6 + 13</div><div class="s">XGold: 5 estratégias e 1 supervisor · XCrypto: 12 robôs e 1 agente humano</div></div>
+      <div class="op"><div class="k">Poltronas, sofás e banquetas</div><div class="v">5 + 9 + 2</div><div class="s">Recepção, Presidência, Financeiro e o espaço de lazer</div></div>
+      <div class="op"><div class="k">Lugares no total</div><div class="v">76</div><div class="s">Inclui a sala de reuniões (21), a reunião da Presidência (6) e o espaço de lazer</div></div>
+    </div>
+    <p class="note">Na Carteira XGold, cada uma das 5 estações é uma estratégia (robô), ligada enquanto o mercado está aberto; a cadeira vermelha é o supervisor, que acompanha a carteira e as travas do Guardião. Na Carteira XCrypto, os 12 operadores robôs rodam em conta demo 24 horas por dia, e o agente humano confere cada ordem durante a incubação.</p>
+  </section>
+
+  <section>
+    <h2>As salas</h2>
+    <div class="rooms" id="rooms"></div>
+  </section>
+
+  <section>
+    <h2>Caminho de uma estratégia</h2>
+    <div class="flow">
+      <span class="step">Sala de Mineração</span><span class="arrow">→</span>
+      <span class="step gate">Comitê de robustez</span><span class="arrow">→</span>
+      <span class="step">Incubação: 15 dias em demo</span><span class="arrow">→</span>
+      <span class="step you">Presidência aprova</span><span class="arrow">→</span>
+      <span class="step">Carteira ao vivo</span><span class="arrow">→</span>
+      <span class="step gate">Relatório diário</span><span class="arrow">↺ volta à mineração</span>
+    </div>
+    <p class="note">Quem reprova em qualquer porta vai para o cemitério, no Arquivo, com o motivo registrado.</p>
+  </section>
+
+  <section>
+    <h2>Regras da casa</h2>
+    <ol class="rules">
+      <li>Dinheiro real só é ligado pela Presidência, na tela do motor ou do terminal.</li>
+      <li>Número de dinheiro vem do extrato da corretora, nunca de conta feita à mão.</li>
+      <li>Toda decisão vira ata no Administrativo.</li>
+      <li>Chave de corretora nunca vai para chat, arquivo ou repositório.</li>
+      <li>Estratégia nova só entra se melhorar o fator de recuperação da carteira.</li>
+      <li>Travas de conta são sagradas: na Carteira XGold (perfil Agressivo), perda diária de 4,1% e perda máxima de 19%, aplicadas pelo Guardião.</li>
+    </ol>
+  </section>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/shaders/CopyShader.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/shaders/LuminosityHighPassShader.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/EffectComposer.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/RenderPass.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/ShaderPass.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/postprocessing/UnrealBloomPass.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/utils/SkeletonUtils.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/RGBELoader.js"></script>
+<script>
+const PI=Math.PI,FW=PI/2,FE=-PI/2,FN=0,FS=PI;
+let DIA={pregao:"—",mesas:{xgold:null}};
+const AN={w:1.05,role:"an"},TIME=[
+  ...[-1.95,-.65,.65,1.95].map(z=>["est",-2,z,FW,AN]),...[-1.3,0,1.3].map(z=>["est",-.4,z,FW,AN]),
+  ["est",1.3,-.9,FW,{w:1.05,m:3,c:0xc9962a,role:"chefe"}],["est",1.3,.9,FW,{w:1.05,m:2,c:0xb8461f,role:"risk"}],
+  ["est",2.6,-1.75,FW,{w:1.05,c:0x1c1846,role:"juiz"}],["est",2.6,1.75,FW,{w:1.05,c:0x8a8f8b,role:"sec"}]];
+const ROOMS=[
+  {id:"rec",n:"00",nome:"Recepção",cur:"Recepção",tipo:"dec",txt:"Entrada da sede. Painel do dia, mapa e direções para cada ala.",ass:"1 balcão · 2 poltronas · sofá de 3 lugares",x:[-3,3],z:[11,16],door:"ns",cor:0xa9aea9,
+   items:[["balcao",-1.8,0,FS],["sofa",2.4,0,FW],["polt",1.3,-1.6,FW],["polt",1.3,1.6,FW]]},
+  {id:"pres",n:"01",nome:"Presidência",cur:"Presidência",tipo:"dec",txt:"Decide capital, risco, quem entra e quem sai. Liga o dinheiro real. Recebe o relatório diário do Financeiro e acompanha todas as mesas no telão.",ass:"1 estação executiva · telão de todas as mesas · 2 poltronas · reunião com 6 lugares",x:[-3,3],z:[-23,-17],door:"s",doorAt:2,cor:0x7b827e,
+   items:[["est",-.4,-1,FN,{m:3,role:"chefe"}],["polt",2.2,-1.6,FW],["polt",2.2,-.5,FW],["reun",-.9,1.6,FN,{n:6}]]},
+  {id:"fin",n:"02",nome:"Financeiro",cur:"Financeiro",tipo:"ctl",txt:"Colhe o resultado das carteiras, separa por conta e envia o relatório do dia para a Presidência. Cuida também de custos, impostos e da gestão de risco da empresa.",ass:"1 estação: tesouraria e gestão de risco · 1 poltrona",x:[-3,1],z:[-16,-11],door:"s",cor:0x5dcaa5,
+   items:[["est",0,-1.1,FN,{m:3}],["polt",-1.3,1.5,FN]]},
+  {id:"xgold",n:"03",nome:"Carteira XGold",cur:"Carteira XGold",tipo:"op",txt:"A carteira de ouro em conta real: 5 estratégias em 3 robôs (ciclos, rompimento de range e momentum de horário) e o supervisor, que acompanha a carteira e as travas do Guardião.",ass:"6 estações: 5 estratégias · 1 supervisor · telão",x:[-10,-3],z:[-11,0],door:"e",cor:0xe0a940,painel:true,
+   items:[["est",-1.6,-2.2,FW,{robot:1}],["est",-1.6,0,FW,{robot:1}],["est",-1.6,2.2,FW,{robot:1}],["est",.3,-1.1,FW,{robot:1}],["est",.3,1.1,FW,{robot:1}],["est",2.1,0,FW,{m:3,role:"risk"}]]},
+  {id:"xcrypto",n:"04",nome:"Carteira XCrypto",cur:"Carteira XCrypto",tipo:"op",txt:"A carteira de cripto em incubação: 12 operadores robôs rodando em conta demo por 15 dias, acompanhados por um agente humano, antes do dinheiro real.",ass:"13 estações: 12 operadores robôs · 1 agente humano · telão da incubação",x:[-10,-3],z:[0,11],door:"e",cor:0x6a5fd0,painel:true,
+   items:[["est",-2,-3.6,FW,{robot:1}],["est",-2,-1.2,FW,{robot:1}],["est",-2,1.2,FW,{robot:1}],["est",-2,3.6,FW,{robot:1}],["est",-0.5,-3.6,FW,{robot:1}],["est",-0.5,-1.2,FW,{robot:1}],["est",-0.5,1.2,FW,{robot:1}],["est",-0.5,3.6,FW,{robot:1}],["est",1,-3.6,FW,{robot:1}],["est",1,-1.2,FW,{robot:1}],["est",1,1.2,FW,{robot:1}],["est",1,3.6,FW,{robot:1}],["est",2.6,0,FW,{m:3,role:"risk"}]]},
+  {id:"arq",n:"07",nome:"Arquivo",cur:"Arquivo",tipo:"ctl",txt:"Cemitério de estratégias, conferências mensais e histórico de contas.",ass:"1 estação · 3 estantes",x:[3,10],z:[-11,-6.6],door:"w",cor:0x5dcaa5,
+   items:[["est",-.8,0,FE],["estante",2.9,-1.2,0],["estante",2.9,0,0],["estante",2.9,1.2,0]]},
+  {id:"mkt",n:"08",nome:"Marketing",cur:"Marketing",tipo:"fut",txt:"Identidade, modelos 3D e relatórios públicos verificados. Abre com histórico de 3 a 6 meses.",ass:"2 estações · mini estúdio",x:[3,10],z:[-6.6,-2.2],door:"w",cor:0xc9cdc8,fut:true,
+   items:[["est",-.8,-.9,FE,{m:2}],["est",-.8,.9,FE,{m:2}],["studio",2.5,0,0]]},
+  {id:"dev",n:"09",nome:"Sala de Mineração",cur:"Mineração",tipo:"op",txt:"O motor de mineração alimenta a IA: cria, testa e valida as estratégias das carteiras, do mandato à incubação em conta demo.",ass:"5 estações: 4 robôs de mineração · 1 humano · 2 máquinas de mineração",x:[3,10],z:[-2.2,2.2],door:"w",cor:0x8f86e6,
+   items:[["est",-1.9,-.9,FE,{robot:1}],["est",-1.9,.9,FE,{robot:1}],["est",-.3,-.9,FE,{robot:1}],["est",-.3,.9,FE,{robot:1}],["est",1.4,0,FE,{m:2}],["miner",2.9,-1,0],["miner",2.9,1,0]]},
+  {id:"ti",n:"10",nome:"TI",cur:"TI",tipo:"ctl",txt:"Terminais MT5, ponte DXY, motor de mineração, servidores e segurança.",ass:"2 estações · 3 racks",x:[3,10],z:[2.2,6.6],door:"w",cor:0x17a07f,
+   items:[["est",-1,-.9,FE,{m:3}],["est",-1,.9,FE,{m:2}],["rack",2.8,-1.2,0],["rack",2.8,0,0],["rack",2.8,1.2,0]]},
+  {id:"adm",n:"11",nome:"Administrativo",cur:"Adm",tipo:"ctl",txt:"Atas, calendário e compliance.",ass:"2 estações · 1 armário de atas",x:[3,10],z:[6.6,11],door:"w",cor:0x5dcaa5,
+   items:[["est",-1,-.9,FE],["est",-1,.9,FE],["armario",2.9,0,0]]},
+  {id:"reu",n:"13",nome:"Sala de Reuniões",cur:"Reuniões",tipo:"dec",txt:"Ao lado da Presidência. Apresenta resultados, cobra metas dos agentes, comemora vitórias e corrige erros. Toda reunião termina em ata no Administrativo; o que não vira ata ou ajuste no robô não conta.",ass:"mesa de 20 lugares + cabeceira · TV com o resultado de todas as mesas",x:[3.05,10],z:[-23,-11.2],door:"w",doorZ:-14,cor:0x9c8a6a,
+   items:[["reun",0,.4,FE,{n:20,larga:1,cab:1}]]},
+  {id:"lazer",n:"—",nome:"Espaço de lazer",cur:"Lazer",tipo:"lzr",txt:"No vão central, aberto a todos. Quem está de folga usa: ping pong, sofás para descanso, cafezinho, pinball e dois arcades.",ass:"mesa de ping pong · 2 sofás de 3 lugares · café com 2 banquetas · pinball · 2 arcades",lounge:true}
+];
+const PILL={dec:["Decisão","p-dec"],ctl:["Controle","p-ctl"],op:["Operação","p-op"],fut:["Fase futura","p-fut"],out:["Fora da planta","p-fut"],lzr:["Área comum","p-dec"]};
+const grid=document.getElementById("rooms");
+ROOMS.forEach(r=>{
+  const el=document.createElement("article");el.className="room";el.id="sala-"+r.id;el.tabIndex=0;
+  el.innerHTML=`<h3><span>${r.nome}</span><span class="num">${r.n}</span></h3><span class="pill ${PILL[r.tipo][1]}">${PILL[r.tipo][0]}</span><p>${r.txt}</p><p class="seats">${r.ass}</p>`;
+  el.addEventListener("click",()=>pick(r.id,false));grid.appendChild(el);
+});
+
+const stage=document.getElementById("stage"),cv=document.getElementById("cv"),tagsEl=document.getElementById("tags");
+let W=stage.clientWidth,H=stage.clientHeight;
+const tags=[];let pick=(id,scroll)=>{
+  document.querySelectorAll(".room.on,.tag.on").forEach(e=>e.classList.remove("on"));
+  const card=document.getElementById("sala-"+id);card&&card.classList.add("on");
+  tags.forEach(t=>t.id===id&&t.el.classList.add("on"));
+  if(scroll&&card)card.scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"center"});
+};
+if(window.THREE){
+  const lowEnd=W<560||matchMedia("(pointer: coarse)").matches;
+  const calm=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const R=new THREE.WebGLRenderer({canvas:cv,antialias:!lowEnd,powerPreference:"high-performance"});
+  R.setPixelRatio(Math.min(devicePixelRatio,lowEnd?1.4:2));R.setSize(W,H,false);
+  const S=new THREE.Scene();S.background=new THREE.Color(0x07090a);S.fog=new THREE.Fog(0x07090a,48,100);
+  const C=new THREE.PerspectiveCamera(40,W/H,.1,200);
+  const far=W<520?1.5:1;C.position.set(16*far,26*far,30*far);
+  S.add(new THREE.HemisphereLight(0xb8c8da,0x1a1a1a,1.05));
+  const key=new THREE.DirectionalLight(0xdfe8ff,.6);key.position.set(-12,30,18);S.add(key);
+  [[0,-8,0xff8a3d],[0,2,0xff8a3d],[0,12,0xffa25a],[0,-20,0xffd29a]].forEach(([x,z,c])=>{const p=new THREE.PointLight(c,1.2,16,2);p.position.set(x,2.6,z);S.add(p)});
+  const O=new THREE.OrbitControls(C,R.domElement);O.target.set(0,0,-3);O.enableDamping=true;O.maxPolarAngle=1.3;O.minDistance=6;O.maxDistance=70;O.autoRotate=!calm;O.autoRotateSpeed=.45;O.enablePan=false;
+
+  const MC={},BOX=new THREE.BoxGeometry(1,1,1),CYL=new THREE.CylinderGeometry(1,1,1,8),SPH=new THREE.SphereGeometry(1,12,10);
+  const mat=(c,o=1,glow=false)=>{const k=c+"|"+o+"|"+glow;return MC[k]||(MC[k]=glow
+    ?new THREE.MeshBasicMaterial({color:c,transparent:o<1,opacity:o,fog:true})
+    :new THREE.MeshLambertMaterial({color:c,transparent:o<1,opacity:o,depthWrite:o>=.5}))};
+  const mesh=(geo,c,sx,sy,sz,x,y,z,par=S,o=1,glow=false)=>{const m=new THREE.Mesh(geo,mat(c,o,glow));m.scale.set(sx,sy,sz);m.position.set(x,y,z);par.add(m);return m};
+  const B=(w,h,d,x,y,z,c,o=1,glow=false)=>mesh(BOX,c,w,h,d,x,y,z,S,o,glow);
+  const P=(g,w,h,d,x,y,z,c,o=1,glow=false)=>mesh(BOX,c,w,h,d,x,y,z,g,o,glow);
+
+  const floor=new THREE.Mesh(new THREE.PlaneGeometry(44,56),new THREE.MeshStandardMaterial({color:0x101315,roughness:.36,metalness:.35}));
+  floor.rotation.x=-PI/2;floor.position.set(0,-.01,-3);S.add(floor);
+  B(6,.06,22,0,.03,0,0x1a1e21);B(2,.06,6,2,.03,-14,0x1a1e21);B(6,.06,2,0,.03,17,0x1a1e21);
+  const NEON=0xff7a1a;
+  B(.06,.04,22,-2.95,.08,0,NEON,1,true);B(.06,.04,22,2.95,.08,0,NEON,1,true);
+  B(.06,.04,6,1.05,.08,-14,NEON,1,true);B(.06,.04,6,2.95,.08,-14,NEON,1,true);
+  B(6,.04,.06,0,.08,18,NEON,1,true);
+
+  const CH=0x24282c,DK=0x3a3f45,SCR=0x2b5cab,LE=0x6e4f33;
+  const chair=(g,o,z,c=CH)=>{P(g,.5,.08,.5,0,.45,z,c,o);P(g,.5,.5,.07,0,.72,z+.25,c,o)};
+  const FUR={
+    est:(g,o,m=1,op={})=>{const w=op.w||1.3;P(g,w,.06,.65,0,.74,0,DK,o);P(g,w,.02,.65,0,.775,0,0x3a3f45,o);
+      for(let i=0;i<m;i++){P(g,.38,.27,.03,(i-(m-1)/2)*.4,1.0,-.21,0x0d0f10,o);P(g,.34,.23,.01,(i-(m-1)/2)*.4,1.0,-.19,SCR,o,true)}chair(g,o,.55,op.c)},
+    polt:(g,o)=>{P(g,.8,.38,.75,0,.19,0,LE,o);P(g,.8,.5,.18,0,.55,.3,LE,o);P(g,.14,.24,.75,-.33,.5,0,LE,o);P(g,.14,.24,.75,.33,.5,0,LE,o)},
+    sofa:(g,o)=>{P(g,2.1,.38,.8,0,.19,0,LE,o);P(g,2.1,.5,.18,0,.55,.32,LE,o);P(g,.14,.24,.8,-1,.5,0,LE,o);P(g,.14,.24,.8,1,.5,0,LE,o)},
+    // mesa de reunião: n lugares nas laterais; "larga" para a sala de reuniões, "cab" põe uma cadeira na cabeceira (+x)
+    reun:(g,o,n=6,op={})=>{const k=n/2,sp=op.larga?.75:.7,L=Math.max(2.2,k*sp+.5),W=op.larga?1.5:1,e=W/2+.25;P(g,L,.06,W,0,.72,0,DK,o);
+      for(let i=0;i<k;i++){const x=(i-(k-1)/2)*sp;
+      P(g,.42,.08,.42,x,.45,e,CH,o);P(g,.42,.45,.06,x,.7,e+.23,CH,o);P(g,.42,.08,.42,x,.45,-e,CH,o);P(g,.42,.45,.06,x,.7,-e-.23,CH,o)}
+      if(op.cab){P(g,.42,.08,.42,L/2+.45,.45,0,CH,o);P(g,.06,.45,.42,L/2+.68,.7,0,CH,o)}},
+    balcao:(g,o)=>{P(g,2,.95,.5,0,.48,0,DK,o);P(g,2,.03,.52,0,.18,-.27,NEON,o,true);P(g,.4,.27,.03,0,1.1,.1,SCR,o,true);chair(g,o,.6)},
+    estante:(g,o)=>{P(g,.4,1.7,1.1,0,.85,0,0x2a2c2e,o);for(let k=0;k<4;k++)P(g,.36,.04,1.04,0,.3+k*.4,0,0x6b5a45,o)},
+    rack:(g,o)=>{P(g,.7,1.9,.7,0,.95,0,0x141618,o);for(let k=0;k<6;k++)P(g,.02,.03,.4,-.36,.4+k*.25,0,k%2?0x3cff9e:0x39b6ff,o,true)},
+    miner:(g,o)=>{P(g,.6,.8,.6,0,.4,0,0x141618,o);P(g,.02,.5,.3,-.31,.45,0,0xff4fd8,o,true)},
+    armario:(g,o)=>P(g,.5,1.6,1.4,0,.8,0,0x3a3d40,o),
+    studio:(g,o)=>{P(g,.08,1.6,2.2,.8,.8,0,0xf4c0d1,o);P(g,.12,1.3,.12,-.6,.65,0,0x0d0f10,o);P(g,.25,.2,.3,-.6,1.35,0,0x0d0f10,o)}
+  };
+
+  const SK=[0xf1c7a3,0xd9a47e,0xb07a55,0x7a4a2e],HR=[0x15100c,0x3b2a1e,0x6b4a2b,0xb8925a,0x2a2a2a],STAFF=[0x2c6e63,0xe8e6e1,0x3a3f8f,0x7a5a3a,0x55606b];
+  const ROLE={an:0x2c4aa0,chefe:0x16181b,risk:0x8f2a1e,juiz:0x2b1f5e,sec:0x5f656b};
+  const people=[];let seed=7;const rnd=()=>(seed=(seed*16807)%2147483647)/2147483647;
+  function pessoa(o){
+    const g=new THREE.Group(),A={ph:rnd()*10,robot:o.robot};
+    const skin=o.robot?0x8b949c:o.skin,shirt=o.robot?0x5c656e:o.shirt,pants=o.robot?0x3b4249:(o.pants||0x22262b);
+    const head=(par,y)=>{A.head=new THREE.Group();A.head.position.set(0,y,-.02);par.add(A.head);
+      if(o.robot){mesh(BOX,skin,.22,.22,.22,0,0,0,A.head);mesh(BOX,0x39d0ff,.18,.05,.01,0,.02,-.115,A.head,1,true);mesh(CYL,skin,.01,.12,.01,0,.17,0,A.head)}
+      else{mesh(SPH,skin,.11,.13,.115,0,0,0,A.head);mesh(SPH,o.hair,.118,.075,.122,0,.065,.015,A.head)}};
+    if(o.seated){
+      mesh(BOX,pants,.34,.14,.32,0,.52,0,g);
+      for(const s of[-1,1]){mesh(BOX,pants,.13,.12,.44,s*.09,.55,-.22,g);mesh(BOX,pants,.12,.44,.12,s*.09,.33,-.42,g);mesh(BOX,0x0e0e0e,.13,.06,.22,s*.09,.08,-.48,g)}
+      A.torso=new THREE.Group();A.torso.position.set(0,.6,.02);g.add(A.torso);
+      mesh(CYL,shirt,.17,.48,.13,0,.24,0,A.torso);head(A.torso,.6);
+      A.arms=[];for(const s of[-1,1]){const sh=new THREE.Group();sh.position.set(s*.2,.44,0);sh.rotation.x=.5;A.torso.add(sh);
+        mesh(CYL,shirt,.05,.28,.05,0,-.14,0,sh);const el=new THREE.Group();el.position.set(0,-.28,0);el.rotation.x=1;sh.add(el);
+        mesh(CYL,o.robot?skin:shirt,.045,.26,.045,0,-.13,0,el);mesh(SPH,skin,.045,.045,.045,0,-.27,0,el);A.arms.push(el)}
+    }else{
+      A.legs=[];for(const s of[-1,1]){const hip=new THREE.Group();hip.position.set(s*.09,.9,0);g.add(hip);
+        mesh(CYL,pants,.065,.86,.065,0,-.43,0,hip);mesh(BOX,0x0e0e0e,.12,.06,.24,0,-.86,-.05,hip);A.legs.push(hip)}
+      A.torso=new THREE.Group();A.torso.position.set(0,.9,0);g.add(A.torso);
+      mesh(BOX,pants,.34,.14,.24,0,.02,0,A.torso);mesh(CYL,shirt,.17,.55,.13,0,.33,0,A.torso);head(A.torso,.76);
+      A.arms=[];for(const s of[-1,1]){const sh=new THREE.Group();sh.position.set(s*.21,.55,0);A.torso.add(sh);
+        mesh(CYL,shirt,.05,.55,.05,0,-.27,0,sh);mesh(SPH,skin,.05,.05,.05,0,-.56,0,sh);A.arms.push(sh)}
+    }
+    if(o.seated)people.push(A);return{g,A,o};
+  }
+  const humano=(shirt,seated=true)=>pessoa({seated,shirt,skin:SK[Math.floor(rnd()*SK.length)],hair:HR[Math.floor(rnd()*HR.length)],pants:rnd()<.5?0x22262b:0x3a3226});
+  const staff=()=>humano(STAFF[Math.floor(rnd()*STAFF.length)]);
+
+  const fmt=v=>(v>0?"+":v<0?"−":"")+Math.abs(v).toFixed(2).replace(".",",");
+  const corV=v=>v>0?"#4cc9a6":v<0?"#f08d68":"#eef1ee";
+  function canvasTex(w,h,draw,bg="#0d1110"){const c=document.createElement("canvas");c.width=w;c.height=h;const g=c.getContext("2d");
+    if(bg){g.fillStyle=bg;g.fillRect(0,0,w,h)}draw(g);const t=new THREE.CanvasTexture(c);t.anisotropy=4;return t}
+  // telão da Carteira XCrypto: só a contagem da incubação, sem resultado (a carteira ainda não opera em conta real).
+  // Quando a incubação começar, ponha a data em XCRYPTO_INCUB ("AAAA-MM-DD").
+  const XCRYPTO_INCUB=null,INCUB_DIAS=15;
+  function telaIncub(r){return canvasTex(720,200,g=>{
+    g.fillStyle="#9aa49f";g.font="500 24px system-ui";g.fillText(r.nome.toUpperCase()+" · INCUBAÇÃO EM CONTA DEMO",28,40);
+    let dia=null;if(XCRYPTO_INCUB){dia=Math.floor((Date.now()-Date.parse(XCRYPTO_INCUB+"T00:00:00Z"))/864e5)+1}
+    g.fillStyle="#e0a940";g.font="600 76px system-ui";
+    g.fillText(dia==null?"aguardando início":dia>INCUB_DIAS?"incubação concluída":`dia ${Math.max(1,dia)} de ${INCUB_DIAS}`,28,128);
+    g.fillStyle="#eef1ee";g.font="500 24px system-ui";g.fillText("12 operadores robôs · 1 agente humano · resultado só na conta real",28,180)})}
+  function telaMesa(r){if(r.id==="xcrypto")return telaIncub(r);const m=DIA.mesas[r.id];return canvasTex(720,200,g=>{
+    g.fillStyle="#9aa49f";g.font="500 24px system-ui";g.fillText(r.nome.toUpperCase()+" · RESULTADO DO DIA",28,40);
+    if(!m){g.fillStyle="#9aa49f";g.font="600 64px ui-monospace,Consolas,monospace";g.fillText("sem fonte",28,130);return}
+    g.fillStyle=corV(m.r);g.font="600 92px ui-monospace,Consolas,monospace";g.fillText(fmt(m.r),28,140);
+    g.fillStyle="#eef1ee";g.font="500 24px system-ui";g.fillText(`${m.n} entradas · ${m.g} ganhos · ${m.p} perdas · aberto ${fmt(m.a)}`,28,182)})}
+  function telaPres(sala="Presidência"){return canvasTex(720,330,g=>{
+    g.fillStyle="#eef1ee";g.font="600 30px system-ui";g.fillText(sala+" · resultado do dia",28,46);
+    g.fillStyle="#9aa49f";g.font="500 20px system-ui";g.fillText("Pregão "+DIA.pregao+" · consolidado pelo Financeiro",28,76);
+    [["xgold","Carteira XGold"],["xcrypto","Carteira XCrypto"]].forEach(([id,n],i)=>{
+      const m=DIA.mesas[id],y=128+i*52;g.fillStyle="#eef1ee";g.font="500 28px system-ui";g.fillText(n,28,y);
+      g.font="600 32px ui-monospace,Consolas,monospace";g.textAlign="right";g.fillStyle=m?corV(m.r):"#9aa49f";
+      g.fillText(m?fmt(m.r):id==="xcrypto"?"em incubação":"sem fonte",692,y);g.textAlign="left"})})}
+  function neon(txt,cor){const hex="#"+new THREE.Color(cor).getHexString();return canvasTex(512,96,g=>{
+    g.font="600 46px system-ui";g.textAlign="center";g.textBaseline="middle";g.shadowColor=hex;g.shadowBlur=18;g.fillStyle=hex;
+    g.fillText(txt.toUpperCase(),256,50);g.shadowBlur=0;g.fillStyle="#ffffff";g.globalAlpha=.55;g.fillText(txt.toUpperCase(),256,50)},null)}
+
+  const WH=1.7,WT=.06,GAP=1.4,GLASS=0x8fb3c7,FRAME=0x16191c;
+  const WALLS=[],SEATED=[],TELAS=[],FURG=[];
+  function pane(w,x,z,horiz,o){if(w<=.05)return;WALLS.push(horiz?[x-w/2,z,x+w/2,z]:[x,z-w/2,x,z+w/2]);
+    horiz?B(w,WH,.03,x,WH/2,z,GLASS,o*.12):B(.03,WH,w,x,WH/2,z,GLASS,o*.12);
+    horiz?B(w,.06,WT,x,WH,z,FRAME,o):B(WT,.06,w,x,WH,z,FRAME,o);
+    horiz?B(w,.08,WT,x,.04,z,FRAME,o):B(WT,.08,w,x,.04,z,FRAME,o)}
+  function wallH(x0,x1,z,gx,o){if(gx==null){pane(x1-x0,(x0+x1)/2,z,true,o);return}
+    const a=gx-GAP/2,b=gx+GAP/2;pane(a-x0,(x0+a)/2,z,true,o);pane(x1-b,(b+x1)/2,z,true,o)}
+  function wallV(z0,z1,x,gz,o){if(gz==null){pane(z1-z0,x,(z0+z1)/2,false,o);return}
+    const a=gz-GAP/2,b=gz+GAP/2;pane(a-z0,x,(z0+a)/2,false,o);pane(z1-b,x,(b+z1)/2,false,o)}
+
+  ROOMS.filter(r=>!r.out&&!r.lounge).forEach(r=>{
+    const [x0,x1]=r.x,[z0,z1]=r.z,w=x1-x0,d=z1-z0,cx=(x0+x1)/2,cz=(z0+z1)/2,o=r.fut?.35:1,dr=r.door;
+    const tint=new THREE.Color(r.cor).lerp(new THREE.Color(0x0e1012),.55);
+    B(w-.1,.12,d-.1,cx,.06,cz,tint.getHex(),o);
+    wallH(x0,x1,z0,dr.includes("n")?(r.doorAt??cx):null,o);wallH(x0,x1,z1,dr.includes("s")?(r.doorAt??cx):null,o);
+    const dz=r.doorZ??cz;wallV(z0,z1,x0,dr.includes("w")?dz:null,o);wallV(z0,z1,x1,dr.includes("e")?dz:null,o);
+    const lamp=new THREE.PointLight(new THREE.Color(r.cor).lerp(new THREE.Color(0xffffff),.55),r.fut?.35:1.25,Math.max(w,d)+2,2);lamp.position.set(cx,2.3,cz);S.add(lamp);
+    const sx=dr.includes("e")?[x1+.04,2.05,dz,PI/2]:dr.includes("w")?[x0-.04,2.05,dz,-PI/2]:dr.includes("s")?[r.doorAt??cx,2.05,z1+.04,0]:[cx,2.05,z0-.04,PI];
+    const sg=new THREE.Mesh(new THREE.PlaneGeometry(2.4,.45),new THREE.MeshBasicMaterial({map:neon(r.cur,r.cor),transparent:true,depthWrite:false}));
+    sg.position.set(sx[0],sx[1],sx[2]);sg.rotation.y=sx[3];S.add(sg);
+    r.items.forEach(([t,dx,dz,rot,op={}],idx)=>{const g=new THREE.Group();g.position.set(cx+dx,.12,cz+dz);g.rotation.y=rot;S.add(g);
+      const oo=(op.res||r.fut)?.32:1;FUR[t](g,oo,op.m||op.n,op);if(oo===1)FURG.push({g,t,op,n:g.children.length});
+      let p=null;
+      if(t==="est"&&oo===1){
+        if(op.robot)p=pessoa({seated:true,robot:true});
+        else if(op.role)p=humano(ROLE[op.role]);
+        else p=staff();
+        p.g.position.set(0,0,.55);g.add(p.g);SEATED.push({p,r,robot:!!op.robot,role:op.role||"",idx})}
+      else if(t==="balcao"){p=staff();p.g.position.set(0,0,.6);g.add(p.g);SEATED.push({p,r,robot:false,role:"rec",idx})}});
+    if(r.painel){B(WT,1.3,d-1.4,x0+.12,1.5,cz,0x0b0d0e);
+      const s=new THREE.Mesh(new THREE.PlaneGeometry(d-1.6,1.15),new THREE.MeshBasicMaterial({map:telaMesa(r)}));
+      s.position.set(x0+.17,1.5,cz);s.rotation.y=PI/2;S.add(s);TELAS.push({s,r});B(.02,.03,d-1.4,x0+.17,.85,cz,r.cor,1,true)}
+    if(r.id==="pres"){B(3.4,1.6,WT,cx-.4,1.6,z0+.12,0x0b0d0e);
+      const s=new THREE.Mesh(new THREE.PlaneGeometry(3.2,1.45),new THREE.MeshBasicMaterial({map:telaPres()}));
+      s.position.set(cx-.4,1.6,z0+.17);S.add(s);TELAS.push({s,pres:true});B(3.4,.03,.02,cx-.4,.75,z0+.17,0xffd29a,1,true)}
+    if(r.id==="reu"){B(4.6,2.3,WT,cx,1.75,z0+.12,0x0b0d0e);B(3.2,.5,.45,cx,.37,z0+.4,DK);
+      const s=new THREE.Mesh(new THREE.PlaneGeometry(4.4,2.02),new THREE.MeshBasicMaterial({map:telaPres("Sala de Reuniões")}));
+      s.position.set(cx,1.75,z0+.17);S.add(s);TELAS.push({s,pres:"Sala de Reuniões"});B(4.6,.03,.02,cx,.6,z0+.17,0xd9a441,1,true)}
+    const el=document.createElement("button");el.type="button";el.className="tag";el.textContent=r.cur;
+    el.addEventListener("click",()=>pick(r.id,true));tagsEl.appendChild(el);
+    tags.push({id:r.id,el,v:new THREE.Vector3(cx,2.6,cz)});
+  });
+
+  // logotipo da XPrime Trading: fachada da recepção e piso da entrada
+  function logoTex(neutro,brilho){return canvasTex(1080,240,g=>{const k=2.1,ox=18,oy=15,A="#FFB35C";
+    const L=(x1,y1,x2,y2,c,w,cap)=>{g.beginPath();g.lineCap=cap;g.lineWidth=w*k;g.strokeStyle=c;g.moveTo(ox+x1*k,oy+y1*k);g.lineTo(ox+x2*k,oy+y2*k);g.stroke()};
+    L(20,20,80,80,neutro,15,"square");
+    g.globalCompositeOperation="destination-out";L(20,80,66,34,"#000",27,"butt");g.globalCompositeOperation="source-over";
+    if(brilho){g.shadowColor=A;g.shadowBlur=26}
+    L(20,80,64,36,A,15,"square");g.fillStyle=A;g.beginPath();g.moveTo(ox+56*k,oy+14*k);g.lineTo(ox+86*k,oy+14*k);g.lineTo(ox+86*k,oy+44*k);g.closePath();g.fill();
+    g.font="700 128px Sora, 'Segoe UI', Arial, sans-serif";g.textBaseline="alphabetic";g.fillStyle=A;g.fillText("X",270,158);
+    const wx=g.measureText("X").width;g.shadowBlur=brilho?10:0;g.shadowColor=neutro;g.fillStyle=neutro;g.fillText("PRIME",270+wx+4,158);
+    g.shadowBlur=0;g.font="500 34px 'IBM Plex Mono', Consolas, monospace";g.fillStyle=brilho?"#c9d2cd":neutro;
+    [..."TRADING"].forEach((c,i)=>g.fillText(c,276+i*46,214))},null)}
+  {B(5.6,1.35,.06,0,2.92,16.06,0x0b0d0e);B(5.6,.03,.03,0,2.23,16.1,0xffb35c,1,true);B(5.6,.03,.03,0,3.6,16.1,0xffb35c,1,true);
+   const fach=new THREE.Mesh(new THREE.PlaneGeometry(5.2,1.16),new THREE.MeshBasicMaterial({map:logoTex("#EEF1EE",true),transparent:true,depthWrite:false}));
+   fach.position.set(0,2.92,16.11);S.add(fach);
+   const piso=new THREE.Mesh(new THREE.PlaneGeometry(4.4,.98),new THREE.MeshBasicMaterial({map:logoTex("#d9dfdb",false),transparent:true,opacity:.92,depthWrite:false}));
+   piso.rotation.x=-PI/2;piso.position.set(0,.075,17.45);S.add(piso);
+   B(4.9,.012,1.4,0,.066,17.45,0x14181a)}
+
+  // espaço de lazer no vão: ping pong, sofás, café, pinball e arcades, para quem está de folga
+  const anims=[],LAZER=[];
+  const G=(x,z,rot=0)=>{const g=new THREE.Group();g.position.set(x,.06,z);g.rotation.y=rot;S.add(g);return g};
+  const em_pe=(shirt,x,z,rot)=>{const p=humano(shirt,false);p.g.position.set(x,.06,z);p.g.rotation.y=rot;S.add(p.g);return p};
+  B(3.6,.02,18.4,0,.07,-.4,0x1e1712);
+  B(3.6,.03,.05,0,.09,-9.6,0xffb35c,1,true);B(3.6,.03,.05,0,.09,8.8,0xffb35c,1,true);
+  {const sg=new THREE.Mesh(new THREE.PlaneGeometry(2.6,.5),new THREE.MeshBasicMaterial({map:neon("Lazer",0xffb35c),transparent:true,depthWrite:false}));
+   sg.position.set(0,2.2,-9.55);S.add(sg);B(.04,2.1,.04,-1.2,1.05,-9.6,FRAME);B(.04,2.1,.04,1.2,1.05,-9.6,FRAME)}
+  {const el=document.createElement("button");el.type="button";el.className="tag";el.textContent="Lazer";el.addEventListener("click",()=>pick("lazer",true));tagsEl.appendChild(el);tags.push({id:"lazer",el,v:new THREE.Vector3(0,2.6,0)})}
+  const lz=new THREE.PointLight(0xffc27a,1.1,10,2);lz.position.set(0,2.4,-3);S.add(lz);
+  const la=new THREE.PointLight(0xff4fd8,.8,7,2);la.position.set(0,2,7.4);S.add(la);
+
+  {const g=G(0,-3.2);P(g,.95,.05,1.7,0,.76,0,0x1f4e8c);P(g,.02,.012,1.7,0,.79,0,0xffffff,1,true);
+   P(g,.95,.012,.02,0,.79,-.84,0xffffff,1,true);P(g,.95,.012,.02,0,.79,.84,0xffffff,1,true);P(g,1.05,.14,.015,0,.86,0,0xdfe6ee,.7);
+   for(const[x,z]of[[-.4,-.7],[.4,-.7],[-.4,.7],[.4,.7]])P(g,.05,.72,.05,x,.37,z,0x111315);
+   const a=em_pe(STAFF[2],0,-4.55,PI),b=em_pe(ROLE.an,0,-1.85,0);LAZER.push([a,"parado"],[b,"parado"]);
+   const ball=mesh(SPH,0xffffff,.035,.035,.035,0,1,0,S,1,true);
+   anims.push(t=>{const ph=(t*.9)%2,f=ph<1?ph:2-ph,z=-4.15+f*1.9,y=.84+Math.abs(Math.sin(f*PI*2))*.32;ball.position.set(Math.sin(t*1.3)*.25,y,z);
+     const sa=ph<1?Math.max(0,1-ph*4):0,sb=ph>=1?Math.max(0,1-(ph-1)*4):0;
+     a.A.arms[1].rotation.x=.5+sa*1.1;a.A.arms[1].rotation.z=.35;b.A.arms[1].rotation.x=.5+sb*1.1;b.A.arms[1].rotation.z=.35;
+     a.A.torso.rotation.y=Math.sin(t*1.8)*.15;b.A.torso.rotation.y=Math.sin(t*1.8+1)*.15})}
+
+  {for(const[z,ry]of[[1.7,PI],[4.7,0]]){const g=G(z===1.7?0:0,z,ry);FUR.sofa(g,1);FURG.push({g,t:"sofa",op:{},n:4})}
+   const m=G(0,3.2);FURG.push({g:m,t:"mesinha",op:{},n:3});P(m,1.2,.05,.6,0,.4,0,0x2a2d30);P(m,.08,.4,.08,-.5,.2,0,0x111315);P(m,.08,.4,.08,.5,.2,0,0x111315);
+   P(m,.08,.1,.08,-.2,.47,.1,0xffffff);P(m,.08,.1,.08,.25,.47,-.1,0xffffff);
+   const s1=staff();s1.g.position.set(-.5,-.12,1.7+.12);s1.g.rotation.y=PI;S.add(s1.g);
+   const s2=humano(ROLE.an);s2.g.position.set(.5,-.12,4.7-.12);S.add(s2.g);
+   const s3=staff();s3.g.position.set(-.45,-.12,4.7-.12);S.add(s3.g);[s1,s2,s3].forEach(x=>{x.A.trab=false;LAZER.push([x,x===s2?"sentado":"conversar",.1])})}
+
+  {const g=G(1.3,-8.4,PI);FURG.push({g,t:"cafe",op:{},n:99});P(g,1.5,.95,.55,0,.48,0,0x3a2a1f);P(g,1.5,.04,.6,0,.97,0,0x5a4632);
+   P(g,.34,.46,.3,-.4,1.22,.05,0x15171a);P(g,.2,.05,.01,-.4,1.32,-.11,0xff3b30,1,true);P(g,.06,.08,.06,.2,1.03,0,0xffffff);P(g,.06,.08,.06,.35,1.03,-.05,0xffffff);
+   P(g,1.5,.03,.03,0,.2,-.29,0xffb35c,1,true);
+   for(const x of[-.4,.4]){const st=G(1.3+x,-7.55);FURG.push({g:st,t:"banco",op:{},n:2});mesh(CYL,0x111315,.03,.7,.03,0,.35,0,st);mesh(CYL,0x8a6a48,.18,.05,.18,0,.72,0,st)}
+   const c=em_pe(STAFF[1],.9,-7.5,0);LAZER.push([c,"beber"]);
+   anims.push(t=>{const k=(t*.35+.2)%1,up=k<.25?Math.sin(k/.25*PI):0;c.A.arms[1].rotation.x=.6+1.5*up;c.A.arms[1].rotation.z=.1;c.A.head.rotation.x=-.25*up})}
+
+  {const g=G(-1.15,8.1);const body=new THREE.Group();body.position.set(0,.85,0);body.rotation.x=.1;g.add(body);
+   P(body,.62,.22,1.25,0,0,0,0x2b1f5e);P(body,.54,.01,1.1,0,.115,0,0xff4fd8,.85,true);
+   P(g,.62,.75,.12,0,1.3,.62,0x2b1f5e);P(g,.54,.6,.01,0,1.3,.555,0x39d0ff,1,true);
+   for(const[x,z]of[[-.27,-.55],[.27,-.55],[-.27,.55],[.27,.55]])P(g,.05,.8,.05,x,.4,z,0x111315);
+   const pb=em_pe(STAFF[0],-1.15,7.15,PI);LAZER.push([pb,"parado"]);
+   anims.push(t=>{pb.A.arms[0].rotation.x=.9+Math.max(0,Math.sin(t*7))*.2;pb.A.arms[1].rotation.x=.9+Math.max(0,Math.sin(t*5.3+1))*.2;pb.A.torso.rotation.y=Math.sin(t*2.2)*.08})}
+
+  for(const[x,cor]of[[.55,0x39d0ff],[1.45,0x3cff9e]]){const g=G(x,8.25);
+   P(g,.72,1.8,.72,0,.9,0,0x15122e);P(g,.6,.45,.02,0,1.35,-.37,cor,1,true);P(g,.72,.22,.06,0,1.83,-.34,0xffb000,1,true);
+   P(g,.72,.08,.3,0,.98,-.45,0x24203f);P(g,.04,.08,.04,-.12,1.06,-.48,0xff3b30,1,true);P(g,.06,.03,.06,.12,1.03,-.48,0x39d0ff,1,true)}
+  {const gm=em_pe(STAFF[3],1,7.35,PI);LAZER.push([gm,"parado"]);
+   anims.push(t=>{gm.A.arms[0].rotation.x=1.05+Math.sin(t*11)*.1;gm.A.arms[1].rotation.x=1.05+Math.sin(t*13+2)*.1;gm.A.head.rotation.x=.1})}
+
+  const ROTAS=[
+    [[-2.25,15],[-2.25,-10],[-1.95,-10.2],[-1.95,15.2]],
+    [[2.25,-9.5],[2.25,14],[1.95,14.2],[1.95,-9.7]],
+    [[2,-10.4],[2,-16.2],[2,-10.4],[2.5,-9.6]],
+    [[2.2,0],[2.2,-7],[1.6,-7.4],[2.2,-7],[2.2,0],[-2.2,0],[-2.2,6],[-2.2,0]]];
+  const walkers=ROTAS.map((pts,i)=>{const p=humano(i===2?ROLE.chefe:STAFF[i],false);S.add(p.g);
+    const seg=[];let L=0;for(let k=0;k<pts.length;k++){const a=pts[k],b=pts[(k+1)%pts.length],l=Math.hypot(b[0]-a[0],b[1]-a[1]);seg.push({a,b,l,s:L});L+=l}
+    return{p,seg,L,off:i*7.3,v:.9+i*.08}});
+  if(lowEnd)walkers.splice(2).forEach(w=>S.remove(w.p.g));
+
+  // carrega os modelos depois do primeiro quadro; se falhar, a sede segue com os bonecos simples
+  if(THREE.GLTFLoader&&THREE.SkeletonUtils)setTimeout(()=>{const ld=new THREE.GLTFLoader(),get=u=>fetch(u).then(r=>r.json()).then(j=>{const bin=atob(j.glb),buf=new Uint8Array(bin.length);
+      for(let i=0;i<bin.length;i++)buf[i]=bin.charCodeAt(i);return new Promise((ok,er)=>ld.parse(buf.buffer,"",ok,er))});
+    // móveis do Poly Haven e reflexo HDR; se falhar, ficam os blocos simples
+    const toque=matchMedia("(pointer: coarse)").matches;
+    {
+      get("modelos/moveis.json").then(mobiliar).catch(e=>console.warn("móveis 3D não carregaram",e));
+      if(THREE.RGBELoader)fetch("modelos/hdr_neon.json").then(r=>r.json()).then(j=>{const bin=atob(j.hdr),buf=new Uint8Array(bin.length);
+        for(let i=0;i<bin.length;i++)buf[i]=bin.charCodeAt(i);const url=URL.createObjectURL(new Blob([buf]));
+        new THREE.RGBELoader().load(url,tex=>{const pm=new THREE.PMREMGenerator(R);S.environment=pm.fromEquirectangular(tex).texture;tex.dispose();pm.dispose();URL.revokeObjectURL(url)})})
+        .catch(e=>console.warn("HDR não carregou",e))}
+    // no celular só 3 das 5 pessoas do Mixamo (cerca de 3 MB cada), repetidas pelas mesas
+    // o Presidente tem modelo próprio (Leonard de terno), sempre carregado
+    const lista=["anims","p_Presidente",...(toque?PESSOAS.slice(0,3):PESSOAS).map(n=>"p_"+n)];
+    Promise.all(["robo",...lista].map(n=>get(`modelos/${n}.json`))).then(([robo,anims,pres,...ps])=>{MOD.robo=robo;MOD.ok=true;
+      if(anims){MOD.clips=anims.animations;MOD.pessoas=ps;MOD.presidente=pres}
+      for(const sp of SEATED){if(!sp.robot)continue;const m=instancia("robo");m.g.position.set(0,.28,.45);sp.p.g.parent.add(m.g);
+        sp.modelo=m;sp.p.g.visible=false;m.tocar("sentado",0);m.mixer.update(1);if(sp.fora)m.g.visible=false}
+      if(MOD.pessoas){
+        for(const sp of SEATED){if(sp.robot)continue;const m=instancia("pessoa",sp.k);m.g.position.set(0,SENTA[1],SENTA[2]);sp.p.g.parent.add(m.g);
+          sp.modelo=m;sp.p.g.visible=false;postura(sp);if(sp.fora)m.g.visible=false}
+        walkers.forEach((w,i)=>{const m=instancia("pessoa",i%PESSOAS.length);S.add(m.g);S.remove(w.p.g);w.m=m})
+        LAZER.forEach(([p,acao,dy=0],i)=>{const m=instancia("pessoa",(i+2)%PESSOAS.length);m.g.position.copy(p.g.position);m.g.position.y+=dy;
+          m.g.rotation.y=p.g.rotation.y;S.add(m.g);p.g.visible=false;m.tocar(acao,0)})}
+      stage.dataset.modelos="ok"}).catch(e=>{stage.dataset.modelos="falhou";console.warn("modelos 3D não carregaram; seguem os bonecos simples",e)})},300);
+
+  // modelos articulados (robô e humano) publicados junto com a página; até carregarem, valem os bonecos simples
+  // móveis reais (Poly Haven, CC0) no lugar dos blocos: escala para o mesmo espaço de cada bloco
+  function mobiliar(gl){const M={};(gl.scene.getObjectByName("moveis")||gl.scene).children.forEach(c=>M[c.name]=c);
+    const por=(id,sx,sy,sz,x,y,z,ry,par=S)=>{const o=M[id].clone();o.scale.set(sx,sy,sz);o.position.set(x,y,z);o.rotation.y=ry;
+      o.traverse(m=>{if(m.isMesh)m.material.envMapIntensity=.7});par.add(o);return o};
+    const esconder=(g,n)=>{for(let i=0;i<Math.min(n,g.children.length);i++)g.children[i].visible=false};
+    for(const f of FURG){const g=f.g,n=f.n;
+      if(f.t==="est"){const w=f.op.w||1.3;[0,1,n-2,n-1].forEach(i=>g.children[i].visible=false);
+        por("metal_office_desk",w/2,.775/.79,.65/.95,0,0,0,0,g);por("modern_arm_chair_01",.68,.68,.68,0,0,.6,PI,g)}
+      else if(f.t==="polt"){esconder(g,n);por("mid_century_lounge_chair",.78,.78,.78,0,0,0,PI,g)}
+      else if(f.t==="sofa"){esconder(g,n);por("sofa_03",.78,.78,.78,0,0,0,PI,g)}
+      else if(f.t==="estante"){esconder(g,n);por("steel_frame_shelves_03",1.1/2.35,1.7/2.31,.4/.72,0,0,0,-PI/2,g)}
+      else if(f.t==="armario"){esconder(g,n);por("drawer_cabinet",1.4/1.14,1.6/1.88,.5/.49,0,0,0,-PI/2,g)}
+      else if(f.t==="reun"){const k=(f.op.n||6)/2,sp=f.op.larga?.75:.7,L=Math.max(2.2,k*sp+.5),e=(f.op.larga?1.5:1)/2+.32;for(let i=1;i<n;i++)g.children[i].visible=false;
+        for(let i=0;i<k;i++){const x=(i-(k-1)/2)*sp;por("modern_arm_chair_01",.6,.6,.6,x,0,e,PI,g);por("modern_arm_chair_01",.6,.6,.6,x,0,-e,0,g)}
+        if(f.op.cab)por("modern_arm_chair_01",.68,.68,.68,L/2+.5,0,0,-PI/2,g)}
+      else if(f.t==="mesinha"){esconder(g,n);por("modern_coffee_table_01",1,1.15,1,0,0,0,PI/2,g)}
+      else if(f.t==="banco"){esconder(g,n);por("bar_chair_round_01",1,1,1,0,0,0,0,g)}
+      else if(f.t==="cafe"){esconder(g,g.children.length);por("CoffeeCart_01",.7,.7,.7,0,0,0,PI,g)}}
+    // plantas, puff, luminárias, relógio e quadro
+    for(const[x,z]of[[-1.55,-9.25],[1.55,-9.25],[-1.55,8.45],[1.55,8.45],[-2.6,11.4],[2.6,11.4],[-2.6,15.6],[2.6,15.6],[2.6,-22.6],[-2.6,-16.4]])
+      por("potted_plant_04",3,3,3,x,.06,z,rnd()*PI*2);
+    por("Ottoman_01",.8,.8,.8,1.35,.06,3.2,PI/2);
+    for(const z of[3.2,-3.2,-8.2])por("modern_ceiling_lamp_01",.8,.8,.8,z===-8.2?1.3:0,1.7,z,0);
+    por("wall_clock",1.2,1.2,1.2,2.1,1.95,-22.83,0);por("hanging_picture_frame_01",1,1,1,-2.6,1.35,-22.83,0);
+    stage.dataset.moveis="ok"}
+
+  // pessoas: personagens do Mixamo (gratuitos), todas com o mesmo esqueleto e o mesmo pacote de animações
+  const MOD={ok:false},MIXERS=[],PESSOAS=["Suzie","Martha","Louise","Josh","Joe"],SENTA=[0,.02,.5];
+  const ELENCO={chefe:3,juiz:4,risk:1},GIRO=[0,2,4,1,3];
+  SEATED.forEach((sp,i)=>{sp.k=sp.r.id==="pres"?"pres":ELENCO[sp.role]??GIRO[i%GIRO.length]});
+  function instancia(tipo,k){
+    const src=tipo==="robo"?MOD.robo:k==="pres"&&MOD.presidente?MOD.presidente:MOD.pessoas[(+k||0)%MOD.pessoas.length],raiz=THREE.SkeletonUtils.clone(src.scene),g=new THREE.Group(),inner=new THREE.Group();
+    inner.rotation.y=PI;inner.scale.setScalar(tipo==="robo"?.19:1);inner.add(raiz);g.add(inner);
+    raiz.traverse(o=>{if(o.isMesh)o.frustumCulled=false});
+    const mixer=new THREE.AnimationMixer(raiz),acts={},clips=tipo==="robo"?src.animations:MOD.clips;
+    const nomes=tipo==="robo"?{andar:"Walking",parado:"Idle",sentado:"Sitting",trabalho:"Yes"}
+      :{andar:"Walk",parado:"Idle",sentado:"Sitting",digitar:"Typing",conversar:"SittingTalking",beber:"Drinking"};
+    for(const[n,c]of Object.entries(nomes)){const cl=clips.find(a=>a.name===c);if(cl)acts[n]=mixer.clipAction(cl)}
+    if(tipo==="robo"&&acts.sentado){acts.sentado.setLoop(THREE.LoopOnce);acts.sentado.clampWhenFinished=true}
+    const m={g,mixer,acts,atual:null,modelo:true,robo:tipo==="robo",tocar(n,f=.25){const a=acts[n]||acts.parado;if(!a||m.atual===a)return;
+      a.reset();if(!m.robo&&n!=="andar")a.time=rnd()*a.getClip().duration;a.fadeIn(f).play();if(m.atual)m.atual.fadeOut(f);m.atual=a}};
+    mixer.timeScale=.85+rnd()*.3;MIXERS.push(m);if(!m.robo){m.tocar("parado",0);mixer.update(.01)}return m}
+  const soltar=m=>{if(m&&m.modelo){const i=MIXERS.indexOf(m);if(i>=0)MIXERS.splice(i,1)}};
+  // na mesa: quem está operando digita; quem está de folga na cadeira descansa ou conversa
+  function postura(sp,f=0){const m=sp.modelo;if(!m)return;
+    if(m.robo){m.atual=null;m.tocar("sentado",0);m.mixer.update(1);return}
+    m.tocar(sp.trab?"digitar":(sp.idx%3===0?"conversar":"sentado"),f);if(!f)m.mixer.update(.01)}
+  function sentar(sp,v){if(sp.modelo){sp.modelo.g.visible=v;if(v){sp.modelo.atual=null;postura(sp)}}else sp.p.g.visible=v}
+
+  // vida: de tempos em tempos um agente levanta, vai ao lazer pelo corredor e volta; robôs vão à TI para manutenção
+  const doorOf=r=>{const [x0,x1]=r.x,[z0,z1]=r.z,cx=(x0+x1)/2,cz=(z0+z1)/2,d=r.door;
+    if(d.includes("e"))return[[x1-.7,cz],[x1+.7,cz]];
+    if(d.includes("w"))return[[x0+.7,cz],[x0-.7,cz]];
+    if(r.id==="rec")return[[cx,z0+.7],[cx,z0-.7]];
+    const dx=r.doorAt??cx;return[[dx,z1-.7],[dx,z1+.7]]};
+  const lane=x=>x<0?-2.1:2.1;
+  function rota(r,alvo){
+    const pts=doorOf(r);if(r.id==="pres")pts.push([2,-10.6]);
+    const fim=pts[pts.length-1],la=lane(fim[0]),lb=lane(alvo[0][0]);pts.push([la,fim[1]]);
+    if(la!==lb){const z=fim[1],cz=Math.abs(z+10.1)<Math.abs(z-9.4)?-10.1:9.4;pts.push([la,cz],[lb,cz])}
+    pts.push([lb,alvo[0][1]],...alvo);return pts}
+  const ALVOS=[
+    {p:[[1.0,-7.3]],olhar:[1.3,-8.4],acao:"cafe"},{p:[[1.75,-7.25]],olhar:[1.3,-8.4],acao:"cafe"},
+    {p:[[1.6,-2.4]],olhar:[0,-3.2],acao:"ver"},{p:[[-1.6,-3.9]],olhar:[0,-3.2],acao:"ver"},
+    {p:[[1.5,3.2]],olhar:[0,3.2],acao:"ver"},{p:[[1.9,6.9]],olhar:[1,8.2],acao:"ver"},{p:[[-1.9,6.6]],olhar:[-1.15,8.1],acao:"ver"}];
+  const alvoTI=()=>({p:[[2.1,4.4],[3.8,4.4],[8.3,4.4+(rnd()-.5)*2.2]],olhar:[9.3,4.4],acao:"manut"});
+  const BREAKS=[],wp=new THREE.Vector3();let proxima=3;
+  function iniciar(sp){
+    sp.p.g.getWorldPosition(wp);const alvo=sp.robot?alvoTI():ALVOS[Math.floor(rnd()*ALVOS.length)];
+    const ida=[[wp.x,wp.z],...rota(sp.r,alvo.p)],w=sp.modelo?instancia(sp.robot?"robo":"pessoa",sp.k):pessoa({...sp.p.o,seated:false});
+    S.add(w.g);sentar(sp,false);sp.fora=true;
+    BREAKS.push({sp,w,ida,volta:[...ida].reverse(),fase:"ida",i:0,pos:[wp.x,wp.z],espera:14+rnd()*22,alvo})}
+  function vida(t,dt){
+    proxima-=dt;
+    if(proxima<=0){proxima=1.5+rnd()*2.5;
+      const robotFora=BREAKS.some(b=>b.sp.robot),livres=SEATED.filter(s=>!s.fora&&!s.trab&&(!s.robot||!robotFora));
+      if(BREAKS.length<(lowEnd?4:9)&&livres.length)iniciar(livres[Math.floor(rnd()*livres.length)])}
+    for(let k=BREAKS.length-1;k>=0;k--){const b=BREAKS[k],A=b.w.A;
+      if(b.fase!=="parado"){const pts=b[b.fase],alvo=pts[b.i+1];
+        if(!alvo){if(b.fase==="ida")b.fase="parado";else{S.remove(b.w.g);soltar(b.w);sentar(b.sp,true);b.sp.fora=false;BREAKS.splice(k,1);continue}}
+        else{const dx=alvo[0]-b.pos[0],dz=alvo[1]-b.pos[1],d=Math.hypot(dx,dz);
+          if(d<.03)b.i++;else{const st=Math.min(d,dt*(b.vel||1.05));b.pos[0]+=dx/d*st;b.pos[1]+=dz/d*st;b.w.g.rotation.y=Math.atan2(-dx,-dz)}
+          if(b.w.modelo)b.w.tocar("andar");else{const sw=Math.sin(t*6.8+k);A.legs[0].rotation.x=sw*.45;A.legs[1].rotation.x=-sw*.45;A.arms[0].rotation.x=-sw*.35;A.arms[1].rotation.x=sw*.35}}}
+      if(b.fase==="parado"){b.espera-=b.sp.trab?dt*8:dt;const o=b.alvo.olhar;b.w.g.rotation.y=Math.atan2(-(o[0]-b.pos[0]),-(o[1]-b.pos[1]));
+        if(b.w.modelo)b.w.tocar(b.alvo.acao==="reuniao"?b.alvo.pose:b.alvo.acao==="manut"?"trabalho":b.alvo.acao==="cafe"?"beber":"parado");
+        else{A.legs[0].rotation.x=A.legs[1].rotation.x=0;
+        if(b.alvo.acao==="cafe"){A.arms[0].rotation.x=0;A.arms[1].rotation.x=.6+1.4*Math.max(0,Math.sin(t*1.3+k))}
+        else if(b.alvo.acao==="manut"){A.arms[0].rotation.x=1.2+Math.sin(t*6)*.15;A.arms[1].rotation.x=1.2+Math.sin(t*6+2)*.15;A.head.rotation.x=.2}
+        else{A.arms[0].rotation.x=A.arms[1].rotation.x=0;A.head.rotation.y=Math.sin(t*.8+k)*.45}}
+        if(b.espera<=0){b.fase="volta";b.i=0;if(!b.w.modelo)A.head.rotation.set(0,0,0)}}
+      b.w.g.position.set(b.pos[0],b.reu&&b.fase==="parado"&&b.w.modelo?.14:.06,b.pos[1])}}
+
+  // reunião: a Presidência chama um coordenador de cada setor; cada um caminha até a mesa de 20 lugares e senta, o Presidente na cabeceira
+  const btnReu=document.getElementById("btnReu");let REU=null;
+  const ORDEM_REU=["xgold","fin","ti","dev","arq","adm","rec"];
+  const coordenador=id=>{const da=SEATED.filter(s=>s.r.id===id&&!s.robot);return da.find(s=>s.role==="chefe")||da.find(s=>s.role==="risk")||da[0]};
+  function lugaresReu(){const f=FURG.find(f=>f.t==="reun"&&f.op.cab),g=f.g,k=f.op.n/2,L=Math.max(2.2,k*.75+.5),e=.97,a=e+.6,u=new THREE.Vector3();
+    g.updateMatrixWorld();const w=(x,z)=>{u.set(x,0,z);g.localToWorld(u);return[u.x,u.z]};
+    const porta=[[2.1,-12],[2.35,-14],[3.75,-14]],oeste=w(L/2+.95,a),leste=w(L/2+.95,-a);
+    const cab={p:w(L/2+.4,0),o:w(0,0),entra:[oeste,w(L/2+.95,0)]},ord=[];
+    for(let i=k-1;i>=0;i--){const x=(i-(k-1)/2)*.75;
+      ord.push({p:w(x,e),o:w(x,0),entra:[w(x,a)]},{p:w(x,-e),o:w(x,0),entra:[oeste,leste,w(x,-a)]})}
+    return{porta,cab,ord}}
+  function chamar(sp,lugar,pose,porta){
+    let ini;const b0=BREAKS.findIndex(b=>b.sp===sp);
+    if(b0>=0){const b=BREAKS[b0];ini=[[...b.pos],[lane(b.pos[0]),b.pos[1]]];if(lane(b.pos[0])<0)ini.push([-2.1,-10.1],[2.1,-10.1]);
+      S.remove(b.w.g);soltar(b.w);BREAKS.splice(b0,1)}
+    else{sp.p.g.getWorldPosition(wp);ini=sp.r.id==="pres"?[[wp.x,wp.z],[2,-17.7],[2,-16.3]]:[[wp.x,wp.z],...rota(sp.r,[[2.1,-12]])]}
+    const ida=[...ini,...(sp.r.id==="pres"?porta.slice(1):porta),...lugar.entra,lugar.p];
+    const w=sp.modelo?instancia("pessoa",sp.k):pessoa({...sp.p.o,seated:false});S.add(w.g);sentar(sp,false);sp.fora=true;
+    BREAKS.push({sp,w,ida,volta:[...ida].reverse(),fase:"ida",i:0,pos:[...ida[0]],espera:Infinity,vel:1.5,reu:true,alvo:{olhar:lugar.o,acao:"reuniao",pose}})}
+  function reuniao(){
+    if(REU){for(const b of BREAKS)if(b.reu)b.espera=0;REU=null;btnReu.textContent="Reunião";btnReu.classList.remove("on");cap.hidden=modo==="aereo";return}
+    if(modo!=="aereo")setModo("aereo");
+    const L=lugaresReu(),pres=SEATED.find(s=>s.r.id==="pres"),quem=ORDEM_REU.map(id=>[id,coordenador(id)]).filter(x=>x[1]);
+    chamar(pres,L.cab,"conversar",L.porta);quem.forEach(([id,sp],i)=>chamar(sp,L.ord[i],i%3===1?"conversar":"sentado",L.porta));
+    REU={quem};btnReu.textContent="Encerrar reunião";btnReu.classList.add("on");
+    cap.innerHTML=`<b>Reunião de teste · Presidente + ${quem.length} coordenadores</b><span>${quem.map(([id])=>INFO[id].cur).join(" · ")}<br>Pauta: resultado de cada mesa → o que deu certo → o que deu errado → o que muda</span>`;cap.hidden=false;
+    O.autoRotate=false;document.getElementById("spin").textContent="Girar";
+    voo={p0:C.position.clone(),t0:O.target.clone(),p1:new THREE.Vector3(-.5,9.5,-7.5),t1:new THREE.Vector3(6.5,.4,-15.5),k:0}}
+  let voo=null;
+  btnReu&&btnReu.addEventListener("click",reuniao);
+
+  // expediente: quem está operando fica na mesa; quem não está, fica de folga e circula pela sede
+  const placar=document.getElementById("placar");
+  function relogio(){const p=Object.fromEntries(new Intl.DateTimeFormat("en-US",{timeZone:"America/Sao_Paulo",hour12:false,weekday:"short",hour:"2-digit",minute:"2-digit"})
+    .formatToParts(new Date()).map(x=>[x.type,x.value]));const h=(+p.hour%24)+(+p.minute)/60;
+    return{h,util:!["Sat","Sun"].includes(p.weekday),txt:`${String(+p.hour%24).padStart(2,"0")}:${p.minute}`}}
+  const plantaoTI=()=>SEATED.find(s=>s.r.id==="ti");
+  function trabalhando(sp,rl){const m=DIA.mesas[sp.r.id],exp=rl.util&&rl.h>=9&&rl.h<18;
+    switch(sp.r.id){
+      case"xgold":return sp.robot?rl.util:exp;
+      case"xcrypto":case"dev":return sp.robot?true:exp;  // robôs da incubação e da mineração não param  // cripto opera 24/7: os robôs da incubação não param  // robôs ligados com o mercado aberto; o supervisor no expediente
+      case"xau":{if(!rl.util)return false;
+        if((rl.h>=9&&rl.h<10.5)||(rl.h>=16.75&&rl.h<17.5))return true;
+        return(sp.role==="risk"||sp.role==="chefe")&&!!(m&&(m.abertas||m.pendentes))}
+      case"ti":return exp||sp===plantaoTI();
+      default:return exp}}
+  function atualizarExpediente(){const rl=relogio();let n=0;
+    for(const sp of SEATED){const antes=sp.trab;sp.trab=trabalhando(sp,rl);sp.p.A.trab=sp.trab;if(sp.trab)n++;if(antes!==sp.trab&&!sp.fora)postura(sp,.6)}
+    const mercado=rl.util?"mercado aberto":"mercado fechado";
+    placar.innerHTML=`${rl.txt} em Brasília · <i>${mercado}</i><br><b>${n} trabalhando</b> · ${SEATED.length-n} de folga`}
+  function trocarTelas(){for(const t of TELAS){const old=t.s.material.map;t.s.material.map=t.pres?telaPres(t.pres===true?undefined:t.pres):telaMesa(t.r);t.s.material.needsUpdate=true;old&&old.dispose()}}
+  // telões: o arquivo publicado é só o retrato da publicação; o número vivo chega pelo banco do artefato (telao/sede), gravado pela tarefa agendada
+  let vivo="";
+  function cartaoXGold(m){const v=document.getElementById("op-xgold-v"),s=document.getElementById("op-xgold-s");if(!v||!m)return;
+    v.textContent=(m.r>0?"+":m.r<0?"−":"")+Math.abs(m.r).toFixed(2).replace(".",",");v.className="v "+(m.r>0?"pos":m.r<0?"neg":"");
+    s.textContent=`${m.n} fechamentos hoje · ${m.g} ganhos · ${m.p} perdas · ${m.abertas?m.abertas+" aberta(s), "+fmt(m.a):"nada aberto"}`}
+  function aplicarDados(j){if(j&&j.mesas)cartaoXGold(j.mesas.xgold);if(!j||!j.pregao||!j.mesas||(vivo&&j.gerado===vivo))return;vivo=j.gerado||"";
+    DIA={pregao:j.pregao.slice(8,10)+"/"+j.pregao.slice(5,7)+"/"+j.pregao.slice(0,4),mesas:j.mesas};trocarTelas();atualizarExpediente()}
+  // site público: o telão da Carteira XGold lê os mesmos dados da página da carteira (dados/xm), relidos a cada 2 min
+  function lerSite(){const pg=n=>fetch(`dados/xm/${n}.json?t=${Date.now()}`,{cache:"no-store"}).then(r=>r.json());
+    Promise.all([pg("conta"),pg("dias")]).then(([c,d])=>{const k=c[0],hoje=String(k.ultimo_preco).slice(0,10),x=d.find(z=>z.dia===hoje)||{realizado:0,fechadas:0};
+      aplicarDados({pregao:hoje,gerado:k.exportado,mesas:{xgold:{r:x.realizado,a:k.flutuante,n:x.fechadas,g:x.ganhos??0,p:x.perdas??0,abertas:k.abertas,pendentes:0,por_agente:{}}}})}).catch(()=>{})}
+  lerSite();setInterval(()=>{if(!document.hidden)lerSite()},120000);
+  atualizarExpediente();setInterval(atualizarExpediente,20000);
+
+  // passeio: câmera na altura dos olhos, paredes de vidro como obstáculo; tour guiado pelo corredor
+  const hud=document.getElementById("hud"),cap=document.getElementById("cap"),pad=document.getElementById("pad");
+  let modo="aereo",tour=null,capId="";const eye={x:0,z:20.4,yaw:0,pitch:-.05},keys={};
+  let aereo={p:C.position.clone(),t:O.target.clone()};
+  function bloqueado(x,z){if(x<-10.3||x>10.3||z<-23.3||z>21.5)return true;
+    for(const w of WALLS){const ax=w[0],az=w[1],vx=w[2]-ax,vz=w[3]-az,l2=vx*vx+vz*vz||1;let u=((x-ax)*vx+(z-az)*vz)/l2;u=Math.max(0,Math.min(1,u));
+      if(Math.hypot(x-(ax+u*vx),z-(az+u*vz))<.28)return true}return false}
+  function mover(dx,dz){const nx=eye.x+dx,nz=eye.z+dz;
+    if(!bloqueado(nx,nz)){eye.x=nx;eye.z=nz}else if(!bloqueado(nx,eye.z))eye.x=nx;else if(!bloqueado(eye.x,nz))eye.z=nz}
+  function girar(alvo,max){const d=((alvo-eye.yaw+PI)%(2*PI)+2*PI)%(2*PI)-PI;eye.yaw+=Math.max(-max,Math.min(max,d))}
+  function olhar(){C.position.set(eye.x,1.6,eye.z);const cp=Math.cos(eye.pitch);
+    C.lookAt(eye.x-Math.sin(eye.yaw)*cp,1.6+Math.sin(eye.pitch),eye.z-Math.cos(eye.yaw)*cp)}
+  const INFO=Object.fromEntries(ROOMS.map(r=>[r.id,r]));
+  function legenda(id){
+    if(id==="lazer")return"<b>Espaço de lazer</b><span>Para quem está de folga: ping pong, sofás, café, pinball e arcades</span>";
+    const r=INFO[id];if(!r)return"<b>Corredor comum</b><span>Mesas à esquerda de quem entra, salas de apoio à direita, Presidência ao fundo</span>";
+    const m=DIA.mesas[id],res=m?` · hoje <em class="${m.r>0?"p":m.r<0?"n":""}">${fmt(m.r)}</em>`:"";
+    const da=SEATED.filter(s=>s.r.id===id),tr=da.filter(s=>s.trab).length;
+    const eq=da.length?`<br>${tr} de ${da.length} trabalhando${da.length-tr?` · ${da.length-tr} de folga`:""}`:"";
+    return`<b>${r.nome}</b><span>${r.ass}${res}${eq}</span>`}
+  function ondeEstou(x,z){if(Math.abs(x)<1.8&&z>-9.6&&z<8.8)return"lazer";
+    const r=ROOMS.find(r=>!r.out&&!r.lounge&&x>r.x[0]&&x<r.x[1]&&z>r.z[0]&&z<r.z[1]);return r?r.id:"corredor"}
+  const PARADAS=[["rec",[0,20.6],[0,14.5]],[null,[0,16.6]],[null,[0,10.4]],[null,[2.75,9.6]],["lazer",[2.75,1.5],[0,-1]],
+    ["adm",[2.75,8.8],[7,8.8]],["ti",[2.75,4.4],[7,4.4]],["dev",[2.75,0],[7,0]],["mkt",[2.75,-4.4],[7,-4.4]],["arq",[2.75,-8.8],[7,-8.8]],
+    ["fin",[-1,-10.2],[-1,-14]],[null,[2,-10.6]],["pres",[2,-16.4],[0,-21]],["reu",[2.4,-14],[6.5,-18]],[null,[2,-10.6]],
+    ["xgold",[-2.75,-5.5],[-7,-5.5]],["xcrypto",[-2.75,5.5],[-7,5.5]],[null,[-.2,10.4]]];
+  function passo(dt){
+    if(modo==="passeio"){const s=2.2*dt,f=(keys.f?1:0)-(keys.b?1:0);
+      if(keys.l)eye.yaw+=1.9*dt;if(keys.r)eye.yaw-=1.9*dt;
+      if(f)mover(-Math.sin(eye.yaw)*s*f,-Math.cos(eye.yaw)*s*f);
+      const id=ondeEstou(eye.x,eye.z);if(id!==capId){capId=id;cap.innerHTML=legenda(id)}}
+    else if(modo==="tour"&&tour){const P=PARADAS[tour.i],a=P[1];
+      if(tour.fase==="andar"){const dx=a[0]-eye.x,dz=a[1]-eye.z,d=Math.hypot(dx,dz);
+        if(d<.05){if(P[2]){tour.fase="parar";tour.esp=4.5;capId=P[0];cap.innerHTML=legenda(P[0])}else tour.i=(tour.i+1)%PARADAS.length}
+        else{const st=Math.min(d,1.7*dt);eye.x+=dx/d*st;eye.z+=dz/d*st;girar(Math.atan2(-dx,-dz),2.6*dt)}}
+      else{const o=P[2];girar(Math.atan2(-(o[0]-eye.x),-(o[1]-eye.z)),2.2*dt);tour.esp-=dt;
+        if(tour.esp<=0){tour.fase="andar";tour.i=(tour.i+1)%PARADAS.length}}
+      eye.pitch+=(-.06-eye.pitch)*Math.min(1,dt*2)}
+    olhar()}
+  function setModo(m){
+    if(modo==="aereo"&&m!=="aereo")aereo={p:C.position.clone(),t:O.target.clone()};
+    modo=m;const chao=m!=="aereo";
+    hud.querySelectorAll("button").forEach(b=>b.classList.toggle("on",b.dataset.m===m));
+    O.enabled=!chao;pad.hidden=m!=="passeio";cap.hidden=!chao;tagsEl.hidden=chao;
+    C.fov=chao?68:40;C.near=chao?.05:.1;C.updateProjectionMatrix();
+    const sb=document.getElementById("spin");
+    if(chao){O.autoRotate=false;sb.textContent="Girar";capId="";
+      if(m==="tour"){eye.x=0;eye.z=20.6;eye.yaw=0;eye.pitch=-.06;tour={i:0,fase:"andar"}}else tour=null}
+    else{tour=null;C.position.copy(aereo.p);O.target.copy(aereo.t);C.lookAt(aereo.t);O.update()}}
+  hud.addEventListener("click",e=>{const b=e.target.closest("button");if(b&&b.dataset.m)setModo(b.dataset.m)});
+  pad.querySelectorAll("button").forEach(b=>{const k=b.dataset.k,on=e=>{e.preventDefault();keys[k]=true},off=()=>{keys[k]=false};
+    b.addEventListener("pointerdown",on);["pointerup","pointerleave","pointercancel"].forEach(ev=>b.addEventListener(ev,off))});
+  const TECLAS={ArrowUp:"f",w:"f",W:"f",ArrowDown:"b",s:"b",S:"b",ArrowLeft:"l",a:"l",A:"l",ArrowRight:"r",d:"r",D:"r"};
+  window.addEventListener("keydown",e=>{if(modo==="aereo"||!TECLAS[e.key])return;if(modo==="tour")setModo("passeio");keys[TECLAS[e.key]]=true;e.preventDefault()});
+  window.addEventListener("keyup",e=>{if(TECLAS[e.key])keys[TECLAS[e.key]]=false});
+  let arr=null;
+  R.domElement.addEventListener("pointerdown",e=>{if(modo==="aereo")return;arr={x:e.clientX,y:e.clientY};R.domElement.setPointerCapture(e.pointerId)});
+  R.domElement.addEventListener("pointermove",e=>{if(!arr||modo==="aereo")return;const dx=e.clientX-arr.x,dy=e.clientY-arr.y;
+    if(modo==="tour"&&Math.hypot(dx,dy)>6)setModo("passeio");
+    eye.yaw-=dx*.005;eye.pitch=Math.max(-.6,Math.min(.6,eye.pitch-dy*.004));arr={x:e.clientX,y:e.clientY}});
+  ["pointerup","pointercancel"].forEach(ev=>R.domElement.addEventListener(ev,()=>{arr=null}));
+
+  let comp=null;
+  if(THREE.EffectComposer&&THREE.RenderPass&&THREE.UnrealBloomPass){
+    comp=new THREE.EffectComposer(R);comp.addPass(new THREE.RenderPass(S,C));
+    comp.addPass(new THREE.UnrealBloomPass(new THREE.Vector2(W,H),lowEnd?.5:.6,.4,.68));}
+  let visible=true;new IntersectionObserver(es=>{visible=es[0].isIntersecting}).observe(stage);
+  const clock=new THREE.Clock(),v=new THREE.Vector3();
+  let ultimo=0;
+  (function loop(){requestAnimationFrame(loop);if(!visible||document.hidden)return;
+    const t=clock.getElapsedTime(),dt=Math.min(.05,t-ultimo);ultimo=t;
+    if(voo&&modo==="aereo"){voo.k=Math.min(1,voo.k+dt/2.2);const e=voo.k*voo.k*(3-2*voo.k);C.position.lerpVectors(voo.p0,voo.p1,e);O.target.lerpVectors(voo.t0,voo.t1,e);if(voo.k>=1)voo=null}
+    if(modo==="aereo")O.update();else passo(dt);
+    if(!calm)vida(t,dt);
+    if(!calm){
+      for(const A of people){if(!A.legs&&A.trab===false){A.arms[0].rotation.x=A.arms[1].rotation.x=.25;A.torso.rotation.x=-.12;A.head.rotation.y=Math.sin(t*.3+A.ph)*.7;A.head.rotation.x=-.1;continue}
+        if(!A.legs){const k=t*9+A.ph;A.arms[0].rotation.x=1+Math.sin(k)*.12;A.arms[1].rotation.x=1+Math.sin(k+1.7)*.12;A.head.rotation.x=0;
+          A.head.rotation.y=Math.sin(t*.45+A.ph)*.35;A.torso.rotation.x=Math.sin(t*1.2+A.ph)*.025}}
+      for(const w of walkers){let d=((t*w.v+w.off)%w.L+w.L)%w.L;const s=w.seg.find(q=>d>=q.s&&d<q.s+q.l)||w.seg[0];const f=(d-s.s)/s.l;
+        const x=s.a[0]+(s.b[0]-s.a[0])*f,z=s.a[1]+(s.b[1]-s.a[1])*f,ry=Math.atan2(-(s.b[0]-s.a[0]),-(s.b[1]-s.a[1]));
+        if(w.m){w.m.g.position.set(x,.06,z);w.m.g.rotation.y=ry;w.m.tocar("andar");continue}
+        w.p.g.position.set(x,.06,z);w.p.g.rotation.y=ry;
+        const sw=Math.sin(t*w.v*6.5);w.p.A.legs[0].rotation.x=sw*.45;w.p.A.legs[1].rotation.x=-sw*.45;
+        w.p.A.arms[0].rotation.x=-sw*.35;w.p.A.arms[1].rotation.x=sw*.35;w.p.A.head.rotation.y=Math.sin(t*.7+w.off)*.2}
+      for(const f of anims)f(t)}
+    for(const m of MIXERS)if(m.g.visible&&m.g.parent)m.mixer.update(calm?0:dt);
+    comp?comp.render():R.render(S,C);
+    if(modo==="aereo")for(const tg of tags){v.copy(tg.v).project(C);tg.el.style.left=((v.x+1)/2*W)+"px";tg.el.style.top=((-v.y+1)/2*H)+"px";tg.el.hidden=v.z>1}
+  })();
+  new ResizeObserver(()=>{W=stage.clientWidth;H=stage.clientHeight;R.setSize(W,H,false);comp&&comp.setSize(W,H);C.aspect=W/H;C.updateProjectionMatrix()}).observe(stage);
+  const sp=document.getElementById("spin");
+  if(calm)sp.textContent="Girar";
+  sp.addEventListener("click",()=>{O.autoRotate=!O.autoRotate;sp.textContent=O.autoRotate?"Pausar giro":"Girar"});
+  R.domElement.addEventListener("pointerdown",()=>{voo=null;if(modo==="aereo"&&O.autoRotate){O.autoRotate=false;sp.textContent="Girar"}});
+  sp.addEventListener("click",()=>{if(modo!=="aereo")setModo("aereo")},true);
+}else{stage.innerHTML='<p style="padding:16px;color:var(--muted)">O mapa 3D não carregou. As salas estão listadas abaixo.</p>'}
+</script>
