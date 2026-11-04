@@ -144,6 +144,26 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
 .ativos .val{text-align:right;font-variant-numeric:tabular-nums}
 .ativos hr{border:none;border-top:1px dashed var(--line);margin:4px 0;width:100%}
 @media (max-width:560px){.disj{grid-template-columns:1fr 1fr}.bloco{padding:14px}}
+/* aba Gestão de risco: os três perfis para quem entra com US$ 1.000 (Backtest\dashboard_site\PERFIS_DE_RISCO_1000USD.md) */
+.perfis{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:12px}
+.perfil{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--c);border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.perfil h3{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:18px}
+.perfil h3 i{width:12px;height:12px;border-radius:50%;background:var(--c);display:inline-block;margin-right:8px}
+.perfil .tag2{font:600 10px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--c);border:1px solid var(--c);border-radius:999px;padding:2px 8px;white-space:nowrap}
+.perfil .grande{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.perfil .grande div{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.perfil .grande b{display:block;font:500 22px var(--mono);margin-top:2px}
+.perfil .grande small{font:500 12px var(--mono);color:var(--muted)}
+.perfil dl{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:5px 12px;margin:0;font-size:13.5px}
+.perfil dt{color:var(--muted)}.perfil dd{margin:0;text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums}
+.perfil .para{font-size:13.5px;color:var(--muted);margin:0;border-top:1px solid var(--line);padding-top:10px}
+.perfil .para b{color:var(--ink);font-weight:500}
+.cmp3 th:not(:first-child),.cmp3 td:not(:first-child){text-align:right}
+.cmp3 td:first-child,.cmp3 th:first-child{white-space:normal;min-width:118px;position:sticky;left:0;z-index:1;background:var(--surface)}
+@media (max-width:560px){.cmp3{font-size:12px}.cmp3 th,.cmp3 td{padding:7px 5px}.cmp3 th{font-size:9.5px;letter-spacing:.04em}}
+.lista-ok{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px;font-size:14px}
+.lista-ok li{padding-left:22px;position:relative}.lista-ok li::before{content:"";position:absolute;left:2px;top:.55em;width:8px;height:8px;border-radius:2px;background:var(--gold)}
+.lista-ok b{font-weight:500;color:var(--ink)}
 /* calendário do resultado por dia, logo abaixo da curva */
 .cal{display:flex;flex-direction:column;gap:8px}
 .cal-cab{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
@@ -167,7 +187,7 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
 .subabas::-webkit-scrollbar{display:none}
 .subabas button{border:none;border-bottom:2px solid transparent;border-radius:0;background:transparent;color:var(--muted);padding:6px 0 9px;margin-bottom:-1px;font-size:13.5px;white-space:nowrap}
 .subabas button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--gold)}
-.conteudo[data-pag-on="aderencia"] [data-pag]:not([data-pag="aderencia"]),.conteudo[data-pag-on="geometria"] [data-pag]:not([data-pag="geometria"]),.conteudo[data-pag-on="geral"] [data-pag]:not([data-pag="geral"]){display:none!important}
+.conteudo[data-pag-on="gestao"] [data-pag]:not([data-pag="gestao"]),.conteudo[data-pag-on="aderencia"] [data-pag]:not([data-pag="aderencia"]),.conteudo[data-pag-on="geometria"] [data-pag]:not([data-pag="geometria"]),.conteudo[data-pag-on="geral"] [data-pag]:not([data-pag="geral"]){display:none!important}
 .robo-h{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
 .robo-h h3{display:flex;align-items:center;gap:8px}.robo-h h3 i{width:10px;height:10px;border-radius:50%}
 .cmp{width:100%;border-collapse:collapse;font-size:13px}
@@ -215,6 +235,7 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
 
   <nav class="subabas" id="subabas" role="tablist" aria-label="Seções da carteira" hidden>
     <button type="button" role="tab" data-sub="geral" aria-selected="true">Visão geral</button>
+    <button type="button" role="tab" data-sub="gestao" aria-selected="false">Gestão de risco</button>
     <button type="button" role="tab" data-sub="aderencia" aria-selected="false">Esperado × vivo</button>
     <button type="button" role="tab" data-sub="geometria" aria-selected="false">Geometria de risco</button>
   </nav>
@@ -381,6 +402,116 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
         <p class="s">Monitora as três salas e a conta inteira. O pregão está em <span data-v="resultado_dia" data-f="usdS">—</span>, com <b data-v="folga_dia" data-f="usd">—</b> de folga até o limite diário.</p>
       </article>
     </div>
+  </section>
+
+  <section class="bloco ouro" id="gestao" data-pag="gestao">
+    <div class="cab"><div>
+      <p class="sec">01 <b>Gestão de risco</b></p>
+      <h2>Escolha o seu <em>perfil</em></h2>
+      <p class="s">Todos os números valem para <b>US$ 1.000 na entrada, em qualquer data</b>. Fonte: backtest de jan/2024 a out/2026 (testador do MT5 com os sets em uso) e 20.000 simulações. A carteira é só ouro (XAUUSD), com 3 robôs que se compensam entre si; de um perfil para outro muda apenas o tamanho das operações e as travas.</p>
+    </div></div>
+    <div class="perfis">
+      <article class="perfil" style="--c:#4cc9a6">
+        <h3><span><i></i>Conservador</span><span class="tag2">arrisca pouco</span></h3>
+        <div class="grande">
+          <div><p class="k">Trava diária</p><b>US$ 20</b><small>2% · fecha tudo e volta no dia seguinte</small></div>
+          <div><p class="k">Perda total máxima</p><b>US$ 60</b><small>6% · os robôs param</small></div>
+        </div>
+        <dl>
+          <dt>Tamanho das operações</dt><dd>0,25×</dd>
+          <dt>Média por mês no backtest</dt><dd class="pos">+US$ 61 (6,1%)</dd>
+          <dt>Meses positivos no backtest</dt><dd>33 de 34</dd>
+          <dt>Pior mês</dt><dd class="neg">−US$ 21 (−2,1%)</dd>
+          <dt>Pior dia (antes da trava)</dt><dd class="neg">−US$ 17</dd>
+          <dt>Pior data para entrar</dt><dd class="neg">−US$ 48 (−4,8%)</dd>
+          <dt>Queda típica logo após entrar</dt><dd class="neg">−US$ 10</dd>
+          <dt>Robo X1 · risco por operação</dt><dd>US$ 2,68</dd>
+          <dt>Robo X2 · risco por operação</dt><dd>US$ 2,14</dd>
+          <dt>Robo X3 · lote</dt><dd>0,15</dd>
+        </dl>
+        <p class="para"><b>Para quem quer conhecer a estratégia arriscando pouco.</b> Você pode perder no máximo US$ 60, e no pior dia o normal é perder menos de US$ 20. O lucro esperado é menor, mas a queda raramente passa de 5%.</p>
+      </article>
+      <article class="perfil" style="--c:#e0a940">
+        <h3><span><i></i>Moderado</span><span class="tag2">equilíbrio</span></h3>
+        <div class="grande">
+          <div><p class="k">Trava diária</p><b>US$ 30</b><small>3% · fecha tudo e volta no dia seguinte</small></div>
+          <div><p class="k">Perda total máxima</p><b>US$ 100</b><small>10% · os robôs param</small></div>
+        </div>
+        <dl>
+          <dt>Tamanho das operações</dt><dd>0,4×</dd>
+          <dt>Média por mês no backtest</dt><dd class="pos">+US$ 98 (9,8%)</dd>
+          <dt>Meses positivos no backtest</dt><dd>33 de 34</dd>
+          <dt>Pior mês</dt><dd class="neg">−US$ 34 (−3,4%)</dd>
+          <dt>Pior dia (antes da trava)</dt><dd class="neg">−US$ 28</dd>
+          <dt>Pior data para entrar</dt><dd class="neg">−US$ 78 (−7,8%)</dd>
+          <dt>Queda típica logo após entrar</dt><dd class="neg">−US$ 16</dd>
+          <dt>Robo X1 · risco por operação</dt><dd>US$ 4,28</dd>
+          <dt>Robo X2 · risco por operação</dt><dd>US$ 3,43</dd>
+          <dt>Robo X3 · lote</dt><dd>0,24</dd>
+        </dl>
+        <p class="para"><b>O equilíbrio entre retorno e risco:</b> perda máxima de 10% e trava diária de 3%.</p>
+      </article>
+      <article class="perfil" style="--c:#f08d68">
+        <h3><span><i></i>Agressivo</span><span class="tag2">lote da carteira</span></h3>
+        <div class="grande">
+          <div><p class="k">Trava diária</p><b>US$ 41</b><small>4,1% · fecha tudo e volta no dia seguinte</small></div>
+          <div><p class="k">Perda total máxima</p><b>US$ 190</b><small>19% · os robôs param</small></div>
+        </div>
+        <dl>
+          <dt>Tamanho das operações</dt><dd>1×</dd>
+          <dt>Média por mês no backtest</dt><dd class="pos">+US$ 246 (24,6%)</dd>
+          <dt>Meses positivos no backtest</dt><dd>33 de 34</dd>
+          <dt>Pior mês</dt><dd class="neg">−US$ 84 (−8,4%)</dd>
+          <dt>Pior dia (antes da trava)</dt><dd class="neg">−US$ 69</dd>
+          <dt>Pior data para entrar</dt><dd class="neg">−US$ 158 (−15,8%)</dd>
+          <dt>Queda típica logo após entrar</dt><dd class="neg">−US$ 37</dd>
+          <dt>Robo X1 · risco por operação</dt><dd>US$ 10,71</dd>
+          <dt>Robo X2 · risco por operação</dt><dd>US$ 8,57</dd>
+          <dt>Robo X3 · lote</dt><dd>0,60</dd>
+        </dl>
+        <p class="para"><b>Usa o mesmo lote da carteira.</b> Você pode perder até US$ 190 (19%) e ver −US$ 41 num único dia. É só para quem aceita quedas de 15% a 19% sem desistir no meio.</p>
+      </article>
+    </div>
+    <p class="note">"Pior data para entrar" é a maior queda abaixo dos US$ 1.000 para quem tivesse entrado no pior dia possível do backtest.</p>
+  </section>
+
+  <section class="bloco" id="gestao-real" data-pag="gestao">
+    <div class="cab"><div>
+      <p class="sec">02 <b>O que esperar de verdade</b></p>
+      <h2>Cenário <em>realista</em></h2>
+      <p class="s">O backtest usa o mesmo período em que os parâmetros foram escolhidos, então o ao vivo tende a render menos. Para planejar, considere <b>metade do lucro do backtest</b>. Os resultados não somam juros: o lote fica fixo.</p>
+    </div></div>
+    <div class="rolar"><table class="cmp cmp3">
+      <thead><tr><th>Cenário realista</th><th>Conservador</th><th>Moderado</th><th>Agressivo</th></tr></thead>
+      <tbody>
+        <tr><td>Resultado mais provável em 3 meses</td><td class="pos">+US$ 90</td><td class="pos">+US$ 143</td><td class="pos">+US$ 371</td></tr>
+        <tr><td>Resultado mais provável em 12 meses</td><td class="pos">+US$ 358</td><td class="pos">+US$ 574</td><td class="pos">+US$ 1.484</td></tr>
+        <tr><td>Queda típica no caminho</td><td class="neg">−US$ 12</td><td class="neg">−US$ 19</td><td class="neg">−US$ 45</td></tr>
+        <tr><td>Chance de bater a perda total máxima em 12 meses</td><td>7%</td><td>6%</td><td>9%</td></tr>
+      </tbody>
+    </table></div>
+    <div class="sub2">
+      <h3>Cenário ruim <span class="rot2">a vantagem da estratégia desaparece, como no ouro entre 2018 e 2023</span></h3>
+      <div class="rolar"><table class="cmp cmp3">
+        <thead><tr><th>Cenário ruim</th><th>Conservador</th><th>Moderado</th><th>Agressivo</th></tr></thead>
+        <tbody>
+          <tr><td>Chance de bater a perda total máxima em 3 meses</td><td>33%</td><td>31%</td><td>38%</td></tr>
+          <tr><td>Chance de bater a perda total máxima em 12 meses</td><td>62%</td><td>61%</td><td>61%</td></tr>
+          <tr><td>Quanto você perde se isso acontecer</td><td class="neg">US$ 60</td><td class="neg">US$ 100</td><td class="neg">US$ 190</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </section>
+
+  <section class="bloco" id="gestao-antes" data-pag="gestao">
+    <div class="cab"><div><p class="sec">03 <b>Antes de entrar</b></p><h2>Vale para os <em>3 perfis</em></h2></div></div>
+    <ul class="lista-ok">
+      <li><b>Use uma conta cents de ouro (XAUUSDc, 1 onça por lote)</b>, com US$ 1.000 = 100.000 USC. Numa conta padrão (100 onças por lote), o lote mínimo é grande demais para US$ 1.000.</li>
+      <li><b>Entre só com dinheiro que você aceita perder até a perda total máxima do perfil.</b></li>
+      <li><b>Não opere manualmente na mesma conta.</b> Isso muda o risco e quebra a comparação com a carteira.</li>
+      <li><b>As travas são automáticas</b> (robô guardião). A única coisa que pode passar delas é a derrapagem do último fechamento, que pode ser maior em notícias fortes.</li>
+      <li><b>Backtest não é resultado real.</b> Rentabilidade passada não garante rentabilidade futura.</li>
+    </ul>
   </section>
 
   <section class="bloco ouro" id="aderencia" data-pag="aderencia">
