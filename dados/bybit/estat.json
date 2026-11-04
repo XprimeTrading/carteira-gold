@@ -1,6 +1,6 @@
 [
  {
-  "base": 6971.14,
+  "base": 6967.14,
   "escopos": [
    {
     "id": "conta",
@@ -10,7 +10,7 @@
     "fim": "2026-11-04 08:08:52",
     "dias": 25.1,
     "resultado": 909.04,
-    "pct": 0.13040047969198723,
+    "pct": 0.13047534569421598,
     "fechamentos": 1337,
     "ganhos_n": 656,
     "acerto": 0.4906507105459985,
@@ -22,9 +22,9 @@
     "maior_ganho": 61.32,
     "maior_perda": -59.19,
     "queda": -429.45,
-    "queda_pct": -0.05811286439790364,
+    "queda_pct": -0.058144336596745436,
     "taxas": 0.0,
-    "media_dia": 36.27377943407935,
+    "media_dia": 36.267765029535084,
     "dias_operados": 26,
     "dias_lucro": 17,
     "melhor_dia": {
@@ -5526,7 +5526,7 @@
     "fim": "2026-10-27 16:19:52",
     "dias": 25.1,
     "resultado": 597.64,
-    "pct": 0.08573059786491163,
+    "pct": 0.0857798178305589,
     "fechamentos": 967,
     "ganhos_n": 448,
     "acerto": 0.46328852119958636,
@@ -5538,9 +5538,9 @@
     "maior_ganho": 61.32,
     "maior_perda": -59.19,
     "queda": -429.45,
-    "queda_pct": -0.05811286439790364,
+    "queda_pct": -0.058144336596745436,
     "taxas": 0.0,
-    "media_dia": 23.84786317541933,
+    "media_dia": 23.84390906038387,
     "dias_operados": 18,
     "dias_lucro": 10,
     "melhor_dia": {
@@ -9522,7 +9522,7 @@
     "fim": "2026-11-04 08:08:52",
     "dias": 7.5,
     "resultado": 274.9,
-    "pct": 0.0394340093585841,
+    "pct": 0.03945664935683795,
     "fechamentos": 369,
     "ganhos_n": 207,
     "acerto": 0.5609756097560976,
@@ -9534,9 +9534,9 @@
     "maior_ganho": 58.05,
     "maior_perda": -14.14,
     "queda": -71.45,
-    "queda_pct": -0.010248208894211805,
+    "queda_pct": -0.010254091949569099,
     "taxas": 0.0,
-    "media_dia": 36.553968367252914,
+    "media_dia": 36.53377929224703,
     "dias_operados": 9,
     "dias_lucro": 7,
     "melhor_dia": {
