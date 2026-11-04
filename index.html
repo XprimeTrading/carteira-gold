@@ -144,6 +144,12 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
 .ativos .val{text-align:right;font-variant-numeric:tabular-nums}
 .ativos hr{border:none;border-top:1px dashed var(--line);margin:4px 0;width:100%}
 @media (max-width:560px){.disj{grid-template-columns:1fr 1fr}.bloco{padding:14px}}
+/* curva no padrão do Monitor: marcada a mercado, faixa de melhor/pior aberto, ouro e marcadores */
+.g-opcoes{display:flex;flex-wrap:wrap;gap:6px}
+.g-opcoes button{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:5px 12px;font:500 12.5px var(--body);background:transparent;border:1px solid var(--line);color:var(--muted)}
+.g-opcoes button i{width:9px;height:9px;border-radius:2px}
+.g-opcoes button[aria-pressed="true"]{background:#f2b632;border-color:#f2b632;color:#111;font-weight:600}
+.chart.mercado{min-height:420px}
 /* páginas fixas: Quem somos e Como funciona a mineração (gera_paginas.py) */
 .pagina-est{display:flex;flex-direction:column;gap:20px}
 .abas .dir{margin-left:auto}
@@ -367,7 +373,7 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
   <!--/paginas-->
   <div class="conteudo" id="conteudo" role="tabpanel">
   <div class="titulo">
-    <h1>Carteira Prime</h1>
+    <h1 id="titulo-cart">Carteira XGold</h1>
     <a class="perfil-op" id="perfil-op" href="#gestao" data-sub-ir="gestao" title="Ver os perfis de risco"><i></i>Perfil em operação: <b>Agressivo</b></a>
   </div>
 
@@ -398,7 +404,8 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
       <div class="kpi"><p class="k">Fator de lucro</p><p class="v" data-e="fl" data-f="num">—</p><p class="s">payoff <b data-e="payoff" data-f="num">—</b> · <span data-e="por_fech" data-f="usdS">—</span> por fechamento</p></div>
       <div class="kpi"><p class="k">Queda máxima</p><p class="v"><span data-e="queda" data-f="usdS">—</span> <small data-e="queda_pct" data-f="pctS">—</small></p><p class="s">do pico ao fundo do realizado</p></div>
     </div>
-    <p class="dica">Passe o dedo ou o mouse na curva para ler o ponto; <b>arraste</b> para medir um trecho em valor e %.</p>
+    <div class="g-opcoes" id="g-opcoes" hidden></div>
+    <p class="dica">Passe o dedo ou o mouse na curva para ler o ponto; <b>arraste</b> para medir um trecho em % (resultado, queda e ouro).</p>
     <div class="chart" id="g-curva"></div>
     <div class="legenda" id="legenda"></div>
     <section class="cal" id="cal" aria-label="Resultado por dia no calendário">
@@ -815,7 +822,96 @@ function montarEscopos(){
 }
 
 // curva do realizado com barras por dia; passar o mouse lê o ponto, arrastar mede o trecho
+// curva no padrão do Monitor: resultado marcado a mercado (posições abertas contando) em % da conta, faixa do melhor e do
+// pior aberto, o ouro como benchmark, marcador da troca de corretora e barras do dia em %. Dados: mercado.json (exporta.py)
+let MERC=null;const GOPC={mfe:true,mae:true,ouro:true};
+function opcoesGrafico(){
+  const box=document.getElementById("g-opcoes");if(!box)return;box.hidden=!MERC;if(!MERC)return;box.textContent="";
+  [["mfe","MFE · melhor aberto","#4cc9a6"],["mae","MAE · pior aberto","#f08d68"],["ouro","Benchmark ouro (XAUUSD)","#d9dfdb"]].forEach(([k,txt,c])=>{
+    const b=el("button");b.type="button";b.setAttribute("aria-pressed",String(GOPC[k]));const q=el("i");q.style.background=c;b.append(q,document.createTextNode(txt));
+    b.addEventListener("click",()=>{GOPC[k]=!GOPC[k];opcoesGrafico();desenhar()});box.append(b)});
+}
+function graficoMercado(el,S,V){
+  el.querySelectorAll("svg,.vazio").forEach(s=>s.remove());el.classList.add("mercado");
+  const leg=document.getElementById("legenda");leg.textContent="";
+  const M=MERC,E=M.escopos[S.id],base=EST.base,i0=EST.escopos.indexOf(S),cor=corEsc(i0);
+  const pct=v=>v/base*100,fp=v=>(v>0?"+":v<0?"−":"")+Math.abs(v).toFixed(1).replace(".",",")+"%";
+  const pts=M.t.map((t,i)=>({t:new Date(t*1000),m:pct(E.m[i]),r:pct(E.r[i]),hi:pct(E.hi[i]),lo:pct(E.lo[i]),o:(M.ouro[i]/M.ouro[0]-1)*100}));
+  if(pts.length<2){const v=document.createElement("div");v.className="vazio";v.textContent="Sem operações ainda.";el.append(v);return}
+  const W=Math.max(300,el.clientWidth),H=420,hB=64,mB=24,yTop=12,yBot=H-mB-hB-22,estreito=W<560;
+  const vals=pts.flatMap(p=>[p.m,GOPC.mfe?p.hi:p.m,GOPC.mae?p.lo:p.m,GOPC.ouro?p.o:p.m]),lim=REGRA.total!=null&&S.tipo==="conta"?-REGRA.total*100:null;
+  let lo=Math.min(0,d3.min(vals)),hi=Math.max(0,d3.max(vals));if(lim!=null&&lim>=lo-(hi-lo)*.6)lo=Math.min(lo,lim);
+  const pad=(hi-lo||1)*.08,y=d3.scaleLinear([lo-pad,hi+pad],[yBot,yTop]),ticks=y.ticks(estreito?4:6);
+  const svg=d3.select(el).append("svg").attr("width","100%").attr("viewBox",`0 0 ${W} ${H}`).attr("role","img").attr("aria-label","Curva marcada a mercado de "+S.nome).style("font-family","var(--mono)").style("touch-action","pan-y");
+  const fy2=v=>fy(v*base/100);
+  const mL=Math.ceil(d3.max(ticks,t=>medir(svg,fp(t),11)))+12,mR=estreito?10:Math.ceil(d3.max(ticks,t=>medir(svg,fy2(t),11)))+12;
+  const x=d3.scaleUtc(d3.extent(pts,p=>p.t),[mL,W-mR]);
+  // grade e eixos: % à esquerda, US$ à direita, um rótulo por dia
+  svg.append("g").selectAll("line").data(ticks).join("line").attr("x1",mL).attr("x2",W-mR).attr("y1",y).attr("y2",y).style("stroke",css("--grid"));
+  svg.append("g").selectAll("text").data(ticks).join("text").attr("x",mL-8).attr("y",y).attr("dy",".32em").attr("text-anchor","end").style("font-size","11px").style("fill",css("--muted")).text(fp);
+  if(!estreito)svg.append("g").selectAll("text").data(ticks).join("text").attr("x",W-mR+8).attr("y",y).attr("dy",".32em").style("font-size","11px").style("fill",css("--muted")).text(fy2);
+  const dias=d3.utcDay.range(d3.utcDay.ceil(pts[0].t),pts[pts.length-1].t),passoD=Math.max(1,Math.ceil(dias.length/Math.floor((W-mL-mR)/70)));
+  svg.append("g").selectAll("text").data(dias.filter((_,i)=>i%passoD===0)).join("text").attr("x",x).attr("y",H-6).attr("text-anchor","middle").style("font-size","11px").style("fill",css("--muted")).text(d3.utcFormat("%d/%m"));
+  svg.append("g").selectAll("line").data(dias).join("line").attr("x1",x).attr("x2",x).attr("y1",yTop).attr("y2",yBot).style("stroke",css("--grid")).style("opacity",.5);
+  svg.append("text").attr("x",W-mR).attr("y",H-6).attr("text-anchor","end").style("font-size","11px").style("fill",css("--muted")).text("agora");
+  svg.append("line").attr("x1",mL).attr("x2",W-mR).attr("y1",y(0)).attr("y2",y(0)).style("stroke",css("--muted")).style("stroke-dasharray","2 4").style("opacity",.7);
+  if(lim!=null&&lim>=y.domain()[0]){svg.append("line").attr("x1",mL).attr("x2",W-mR).attr("y1",y(lim)).attr("y2",y(lim)).style("stroke",css("--neg")).style("stroke-dasharray","5 4");
+    svg.append("text").attr("x",mL+6).attr("y",y(lim)-5).style("font-size","10.5px").style("fill",css("--muted")).text(`Limite total · ${fp(lim)}`)}
+  // faixa do melhor (verde) e do pior (vermelho) aberto em torno da curva
+  const ar=(a,b)=>d3.area().x(p=>x(p.t)).y0(p=>y(a(p))).y1(p=>y(b(p))).curve(d3.curveMonotoneX);
+  const gid="g"+Math.random().toString(36).slice(2),gr=svg.append("defs").append("linearGradient").attr("id",gid).attr("x1",0).attr("x2",0).attr("y1",0).attr("y2",1);
+  gr.append("stop").attr("offset","0%").attr("stop-color",cor).attr("stop-opacity",.1);gr.append("stop").attr("offset","100%").attr("stop-color",cor).attr("stop-opacity",0);
+  svg.append("path").datum(pts).attr("fill",`url(#${gid})`).attr("d",d3.area().x(p=>x(p.t)).y0(y(0)).y1(p=>y(p.m)).curve(d3.curveMonotoneX));
+  if(GOPC.mfe)svg.append("path").datum(pts).attr("d",ar(p=>p.m,p=>p.hi)).style("fill","#4cc9a6").style("opacity",.38);
+  if(GOPC.mae)svg.append("path").datum(pts).attr("d",ar(p=>p.lo,p=>p.m)).style("fill","#f08d68").style("opacity",.42);
+  if(GOPC.ouro)svg.append("path").datum(pts).attr("d",d3.line().x(p=>x(p.t)).y(p=>y(p.o))).style("fill","none").style("stroke","#d9dfdb").style("stroke-width",1.3).style("stroke-dasharray","4 3").style("opacity",.75);
+  svg.append("path").datum(pts).attr("d",d3.line().x(p=>x(p.t)).y(p=>y(p.m)).curve(d3.curveMonotoneX)).style("fill","none").style("stroke",cor).style("stroke-width",2.4).style("stroke-linejoin","round");
+  const fim=pts[pts.length-1];
+  svg.append("circle").attr("cx",x(fim.t)).attr("cy",y(fim.m)).attr("r",9).style("fill",cor).style("opacity",.25);
+  svg.append("circle").attr("cx",x(fim.t)).attr("cy",y(fim.m)).attr("r",5).style("fill",cor).style("stroke",css("--surface")).style("stroke-width",2);
+  if(GOPC.ouro)svg.append("circle").attr("cx",x(fim.t)).attr("cy",y(fim.o)).attr("r",3.5).style("fill","#d9dfdb");
+  // marcadores (troca de corretora)
+  const fdh=d3.utcFormat("%d/%m, %H:%M");
+  (M.eventos||[]).forEach(ev=>{const tx=x(new Date(ev.t*1000));if(tx<mL||tx>W-mR)return;
+    [-2,2].forEach(dx=>svg.append("line").attr("x1",tx+dx).attr("x2",tx+dx).attr("y1",yTop+26).attr("y2",H-mB-4).style("stroke","#f2b632").style("stroke-dasharray","2 3").style("stroke-width",1.4));
+    const anc=tx>W*.7?"end":"start",ox=anc==="end"?-8:8;
+    svg.append("text").attr("x",tx+ox).attr("y",yTop+10).attr("text-anchor",anc).style("font","600 11px var(--body)").style("fill","#f2b632").text(`→ ${ev.txt} · ${fdh(new Date(ev.t*1000))}`);});
+  // barras do dia em %
+  const yb0=H-mB-hB,bars=S.barras.map(b=>({t:parseT(b.dia+" 00:00:00"),v:pct(+b.v)})),mx=d3.max(bars,b=>Math.abs(b.v))||1;
+  const yb=d3.scaleLinear([-mx,mx],[yb0+hB,yb0]),bw=Math.max(4,Math.min(34,(W-mL-mR)/Math.max(1,dias.length+1)*.55));
+  svg.append("text").attr("x",mL-8).attr("y",yb0+6).attr("text-anchor","end").style("font-size","10.5px").style("fill",css("--muted")).text(fp(mx));
+  svg.append("text").attr("x",mL-8).attr("y",yb0+hB).attr("text-anchor","end").style("font-size","10.5px").style("fill",css("--muted")).text(fp(-mx));
+  svg.append("line").attr("x1",mL).attr("x2",W-mR).attr("y1",yb(0)).attr("y2",yb(0)).style("stroke",css("--grid"));
+  svg.append("g").selectAll("rect").data(bars).join("rect").attr("x",b=>Math.min(W-mR-bw,Math.max(mL,x(d3.utcHour.offset(b.t,12))-bw/2))).attr("width",bw)
+    .attr("y",b=>Math.min(yb(0),yb(b.v))).attr("height",b=>Math.max(1,Math.abs(yb(b.v)-yb(0)))).attr("rx",2).style("fill",b=>b.v>=0?"#3f9e7f":"#c0604a");
+  // leitura e medição (arrastar)
+  const tip=dica(el),bis=d3.bisector(p=>p.t).left,em=px=>Math.max(0,Math.min(pts.length-1,bis(pts,x.invert(px))));
+  const vl=svg.append("line").attr("y1",yTop).attr("y2",H-mB).style("stroke",css("--muted")).style("stroke-dasharray","3 3").style("display","none");
+  const dot=svg.append("circle").attr("r",4).style("fill",cor).style("stroke",css("--surface")).style("stroke-width",2).style("display","none");
+  const sel=svg.append("rect").attr("y",yTop).attr("height",yBot-yTop).style("fill","#f2b632").style("opacity",.1).style("display","none");
+  const fd=d3.utcFormat("%d/%m %H:%M");let ini=null;
+  const mostra=(linhas,px,py)=>{tip.hidden=false;tip.innerHTML="";linhas.forEach(([t2,b])=>{const s=document.createElement(b?"b":"span");s.textContent=t2;tip.append(s)});
+    const bx=el.getBoundingClientRect(),kk=bx.width/W;tip.style.left=Math.max(0,Math.min(bx.width-tip.offsetWidth,px*kk+12))+"px";tip.style.top=Math.max(0,py*kk-70)+"px"};
+  svg.append("rect").attr("x",mL).attr("y",0).attr("width",W-mL-mR).attr("height",H-mB).style("fill","transparent").style("cursor","crosshair")
+    .on("pointerdown",ev=>{ini=em(d3.pointer(ev)[0]);ev.currentTarget.setPointerCapture&&ev.currentTarget.setPointerCapture(ev.pointerId)})
+    .on("pointermove",ev=>{const k=em(d3.pointer(ev)[0]),p=pts[k];vl.style("display",null).attr("x1",x(p.t)).attr("x2",x(p.t));dot.style("display",null).attr("cx",x(p.t)).attr("cy",y(p.m));
+      if(ini!=null&&k!==ini){const a=Math.min(ini,k),b=Math.max(ini,k),A=pts[a],Bp=pts[b];let pk=A.m,dd=0;for(let j=a;j<=b;j++){pk=Math.max(pk,pts[j].m);dd=Math.min(dd,pts[j].m-pk)}
+        sel.style("display",null).attr("x",x(A.t)).attr("width",Math.max(1,x(Bp.t)-x(A.t)));
+        mostra([[`${fd(A.t)} → ${fd(Bp.t)}`],[`${fp(Bp.m-A.m)} (${FMT.usdS((Bp.m-A.m)*base/100)})`,1],[`queda no trecho ${fp(dd)} · ouro ${fp(Bp.o-A.o)}`]],x(p.t),y(p.m))}
+      else mostra([[fd(p.t)+(k===pts.length-1?" · agora":"")],[`${fp(p.m)} (${FMT.usdS(p.m*base/100)})`,1],
+        [`realizado ${fp(p.r)} · aberto ${fp(p.m-p.r)}`],[`melhor ${fp(p.hi)} · pior ${fp(p.lo)}`],[`ouro ${fp(p.o)}`]],x(p.t),y(p.m))})
+    .on("pointerup",()=>{ini=null})
+    .on("pointerleave",()=>{if(ini==null){tip.hidden=true;dot.style("display","none");vl.style("display","none")}})
+    .on("dblclick",()=>sel.style("display","none"));
+  const it=(c,t2,b)=>{const s=document.createElement("span"),q=document.createElement("i");q.style.background=c;s.append(q,document.createTextNode(t2));if(b){const bb=document.createElement("b");bb.textContent=b;bb.style.color=c;s.append(bb)}leg.append(s)};
+  it(cor,`${S.nome}: `,`${fp(fim.m)} (${FMT.usdS(fim.m*base/100)})`);
+  if(GOPC.ouro){const dif=fim.m-fim.o;it("#d9dfdb","Ouro (XAUUSD): ",`${fp(fim.o)} · carteira ${dif>=0?"acima":"abaixo"} do ouro em ${Math.abs(dif).toFixed(1).replace(".",",")} p.p.`)}
+  if(M.eventos&&M.eventos.length)it("#f2b632","marcador: troca de corretora · antes dele, só os fechamentos da conta anterior");
+  it("#3f9e7f","barras: resultado de cada dia");
+}
 function graficoCurva(el,S,V){
+  if(MERC&&MERC.escopos&&MERC.escopos[S.id])return graficoMercado(el,S,V);
+  el.classList.remove("mercado");
   el.querySelectorAll("svg,.vazio").forEach(s=>s.remove());
   const leg=document.getElementById("legenda");leg.textContent="";
   const i=EST.escopos.indexOf(S),cor=corEsc(i),base=EST.base;
@@ -1061,10 +1157,10 @@ function carregar(id){
   document.getElementById("conteudo").setAttribute("aria-labelledby","aba-"+id);
   const pega=n=>fetch(`dados/${id}/${n}.json?t=${Date.now()}`,{cache:"no-store"}).then(r=>{if(!r.ok)throw new Error(n);return r.json()});
   const extra=[];
-  Promise.all([...["conta","curva","dias","robos","estat"].map(pega),...["aderencia","backtest"].map(n=>pega(n).catch(()=>null)),...extra])
-    .then(([conta,curva,dias,robos,est,ader,bt,fech,ativos])=>{if(ABA!==id)return;
+  Promise.all([...["conta","curva","dias","robos","estat"].map(pega),...["aderencia","backtest","mercado"].map(n=>pega(n).catch(()=>null)),...extra])
+    .then(([conta,curva,dias,robos,est,ader,bt,merc,fech,ativos])=>{if(ABA!==id)return;MERC=merc&&merc[0]||null;opcoesGrafico();
       document.getElementById("aviso").hidden=true;document.getElementById("conteudo").hidden=false;
-      document.getElementById("salas").hidden=id!=="xm";document.getElementById("perfil-op").hidden=id!=="xm";
+      document.getElementById("salas").hidden=id!=="xm";document.getElementById("perfil-op").hidden=id!=="xm";document.getElementById("titulo-cart").textContent=id==="xm"?"Carteira XGold":"Bybit · monitor";
       MOEDA=conta[0].moeda==="USC"?"USC ":"US$ ";
       DADOS={conta,curva,dias,robos};XT.V=situacao(conta,dias);XT.robos=robos;EST=est[0];
       preencher(XT.V,robos);montarEscopos();xgold(ader,bt);XT.ouvintes.forEach(f=>f())})
