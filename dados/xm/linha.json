@@ -1,0 +1,28 @@
+[
+ {
+  "quando": "2026-11-01",
+  "titulo": "Conta aberta",
+  "texto": "US$ 1.000 numa conta real em dólar na XM, com os robôs de ouro."
+ },
+ {
+  "quando": "2026-11-03",
+  "titulo": "Robo X3 retirado",
+  "texto": "Operou de 01 a 03/11; o resultado dele continua na conta XGold."
+ },
+ {
+  "quando": "2026-11-03",
+  "titulo": "Migração para conta cent na Exness",
+  "texto": "O mesmo dinheiro passou para uma conta em centavos (USC). A curva segue numa só, convertida para US$."
+ },
+ {
+  "quando": "2026-11-03",
+  "titulo": "Robôs em operação",
+  "texto": "Robo X1 v1.32 (setups 1 e 2) e Robo X2 v1.08 com 4 ranges (o range das 11h, 8h de Brasília, desligado)."
+ },
+ {
+  "quando": "2026-11-06",
+  "titulo": "Migração para a HFM",
+  "texto": "Prevista. O histórico continua na mesma curva.",
+  "previsto": true
+ }
+]
