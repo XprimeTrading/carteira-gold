@@ -1,742 +1,737 @@
 [
  {
   "quando": "2026-10-10 06:30:35",
-  "saldo": 7037.9,
+  "saldo": 7033.43,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-10 07:00:40",
-  "saldo": 7039.01,
+  "saldo": 7034.54,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-10 09:00:04",
-  "saldo": 7036.62,
+  "saldo": 7032.15,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-10 09:00:04",
-  "saldo": 7040.52,
+  "saldo": 7036.05,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-10 10:00:13",
-  "saldo": 7041.32,
+  "saldo": 7036.85,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-10 14:00:16",
-  "saldo": 7040.17,
+  "saldo": 7035.7,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-10 16:30:18",
-  "saldo": 7037.72,
+  "saldo": 7033.25,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-10 17:00:14",
-  "saldo": 7030.02,
+  "saldo": 7025.55,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-10 17:00:14",
-  "saldo": 7032.9,
+  "saldo": 7028.43,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-10 17:03:35",
-  "saldo": 7032.9,
+  "saldo": 7028.43,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-10 20:00:23",
-  "saldo": 7032.58,
+  "saldo": 7028.11,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-10 21:00:24",
-  "saldo": 7026.83,
+  "saldo": 7022.36,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-10 22:00:19",
-  "saldo": 7028.14,
+  "saldo": 7023.67,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-10 22:00:20",
-  "saldo": 7026.76,
+  "saldo": 7022.29,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-10 23:00:04",
-  "saldo": 7026.77,
+  "saldo": 7022.3,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-10 23:13:59",
-  "saldo": 7025.98,
+  "saldo": 7021.51,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-11 00:00:12",
-  "saldo": 7028.34,
+  "saldo": 7023.87,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-11 01:00:20",
-  "saldo": 7027.2,
+  "saldo": 7022.73,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-11 01:25:51",
-  "saldo": 7027.18,
+  "saldo": 7022.71,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-11 01:30:23",
-  "saldo": 7028.1,
+  "saldo": 7023.63,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-11 02:00:06",
-  "saldo": 7029.54,
+  "saldo": 7025.07,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-11 02:00:07",
-  "saldo": 7029.75,
+  "saldo": 7025.28,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-11 03:10:52",
-  "saldo": 7024.56,
+  "saldo": 7020.09,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-11 03:27:09",
-  "saldo": 7015.15,
+  "saldo": 7010.68,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-11 03:30:14",
-  "saldo": 7011.71,
+  "saldo": 7007.24,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-11 04:00:00",
-  "saldo": 7021.75,
+  "saldo": 7017.28,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-11 04:00:16",
-  "saldo": 7030.93,
+  "saldo": 7026.46,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-11 04:00:17",
-  "saldo": 7032.9,
+  "saldo": 7028.43,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-11 04:00:17",
-  "saldo": 7037.52,
+  "saldo": 7033.05,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-11 04:00:18",
-  "saldo": 7039.68,
+  "saldo": 7035.21,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-11 04:00:19",
-  "saldo": 7040.78,
+  "saldo": 7036.31,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-11 04:02:33",
-  "saldo": 7047.36,
+  "saldo": 7042.89,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-11 05:00:17",
-  "saldo": 7058.17,
+  "saldo": 7053.7,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-11 05:05:12",
-  "saldo": 7058.16,
+  "saldo": 7053.69,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-11 06:00:06",
-  "saldo": 7076.09,
+  "saldo": 7071.62,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-11 06:00:07",
-  "saldo": 7073.02,
+  "saldo": 7068.55,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-11 07:00:07",
-  "saldo": 7072.16,
+  "saldo": 7067.69,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-11 07:30:04",
-  "saldo": 7073.29,
+  "saldo": 7068.82,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-11 07:56:15",
-  "saldo": 7084.6,
+  "saldo": 7080.13,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-11 08:09:33",
-  "saldo": 7094.61,
+  "saldo": 7090.14,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-11 08:30:14",
-  "saldo": 7092.78,
+  "saldo": 7088.31,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-11 08:30:14",
-  "saldo": 7092.84,
+  "saldo": 7088.37,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-11 08:36:07",
-  "saldo": 7073.14,
+  "saldo": 7068.67,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-11 08:36:07",
-  "saldo": 7053.72,
+  "saldo": 7049.25,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-11 08:36:07",
-  "saldo": 7033.28,
+  "saldo": 7028.81,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-11 09:10:07",
-  "saldo": 7041.83,
+  "saldo": 7037.36,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-11 09:12:47",
-  "saldo": 7042.13,
+  "saldo": 7037.66,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-11 10:00:07",
-  "saldo": 7042.45,
+  "saldo": 7037.98,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-11 11:00:16",
-  "saldo": 7042.53,
+  "saldo": 7038.06,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-11 12:00:30",
-  "saldo": 7042.24,
+  "saldo": 7037.77,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-11 12:30:21",
-  "saldo": 7037.0,
+  "saldo": 7032.53,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-11 12:46:10",
-  "saldo": 7030.34,
+  "saldo": 7025.87,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-11 13:23:31",
-  "saldo": 7011.67,
+  "saldo": 7007.2,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-11 14:36:33",
-  "saldo": 7000.37,
+  "saldo": 6995.9,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-11 15:27:53",
-  "saldo": 6994.34,
+  "saldo": 6989.87,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-11 15:29:30",
-  "saldo": 6981.03,
+  "saldo": 6976.56,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-11 15:49:40",
-  "saldo": 6974.78,
+  "saldo": 6970.31,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-11 15:49:54",
-  "saldo": 6956.1,
+  "saldo": 6951.63,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-11 15:56:59",
-  "saldo": 6952.0,
+  "saldo": 6947.53,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-11 15:58:22",
-  "saldo": 6959.68,
+  "saldo": 6955.21,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-11 16:00:30",
-  "saldo": 6955.73,
+  "saldo": 6951.26,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-11 16:00:31",
-  "saldo": 6960.58,
+  "saldo": 6956.11,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-11 16:00:31",
-  "saldo": 6969.12,
+  "saldo": 6964.65,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-11 16:00:32",
-  "saldo": 6965.07,
+  "saldo": 6960.6,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-11 16:12:41",
-  "saldo": 6973.87,
+  "saldo": 6969.4,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-11 16:32:52",
-  "saldo": 6990.26,
+  "saldo": 6985.79,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-11 16:59:32",
-  "saldo": 6974.69,
+  "saldo": 6970.22,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-11 17:00:24",
-  "saldo": 6974.71,
+  "saldo": 6970.24,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-11 17:00:25",
-  "saldo": 6974.68,
+  "saldo": 6970.21,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-11 17:00:25",
-  "saldo": 6968.73,
+  "saldo": 6964.26,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-11 17:00:26",
-  "saldo": 6966.37,
+  "saldo": 6961.9,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-11 17:00:29",
-  "saldo": 6966.37,
+  "saldo": 6961.9,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-11 17:04:31",
-  "saldo": 6949.49,
+  "saldo": 6945.02,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-11 17:46:08",
-  "saldo": 6943.3,
+  "saldo": 6938.83,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-11 18:00:24",
-  "saldo": 6942.51,
+  "saldo": 6938.04,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-11 18:11:33",
-  "saldo": 6939.3,
+  "saldo": 6934.83,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-11 20:00:27",
-  "saldo": 6937.32,
+  "saldo": 6932.85,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-11 20:00:27",
-  "saldo": 6935.94,
+  "saldo": 6931.47,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-11 20:00:28",
-  "saldo": 6936.03,
+  "saldo": 6931.56,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-11 20:14:11",
-  "saldo": 6916.84,
+  "saldo": 6912.37,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-11 21:15:05",
-  "saldo": 6909.43,
+  "saldo": 6904.96,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-11 22:00:24",
-  "saldo": 6907.54,
+  "saldo": 6903.07,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-11 22:30:08",
-  "saldo": 6908.33,
+  "saldo": 6903.86,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-11 23:00:28",
-  "saldo": 6909.91,
+  "saldo": 6905.44,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-11 23:00:29",
-  "saldo": 6910.0,
+  "saldo": 6905.53,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-11 23:00:29",
-  "saldo": 6908.35,
+  "saldo": 6903.88,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-11 23:31:06",
-  "saldo": 6914.34,
+  "saldo": 6909.87,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-12 02:00:10",
-  "saldo": 6917.38,
+  "saldo": 6912.91,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-12 03:00:48",
-  "saldo": 6913.47,
+  "saldo": 6909.0,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-12 04:00:20",
-  "saldo": 6915.77,
+  "saldo": 6911.3,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-12 04:30:16",
-  "saldo": 6919.39,
+  "saldo": 6914.92,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-12 05:00:23",
-  "saldo": 6919.37,
+  "saldo": 6914.9,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-12 06:00:17",
-  "saldo": 6919.37,
+  "saldo": 6914.9,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-12 06:00:17",
-  "saldo": 6919.38,
+  "saldo": 6914.91,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-12 06:01:50",
-  "saldo": 6952.31,
+  "saldo": 6947.84,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-12 06:30:20",
-  "saldo": 6935.41,
+  "saldo": 6930.94,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-12 06:54:10",
-  "saldo": 6935.41,
+  "saldo": 6930.94,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-12 07:00:23",
-  "saldo": 6936.87,
+  "saldo": 6932.4,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-12 07:00:23",
-  "saldo": 6939.76,
+  "saldo": 6935.29,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-12 07:10:00",
-  "saldo": 6929.47,
+  "saldo": 6925.0,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-12 07:30:04",
-  "saldo": 6930.43,
+  "saldo": 6925.96,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-12 08:00:35",
-  "saldo": 6933.74,
+  "saldo": 6929.27,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-12 08:15:52",
-  "saldo": 6929.44,
+  "saldo": 6924.97,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-12 09:00:17",
-  "saldo": 6929.46,
+  "saldo": 6924.99,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-12 09:00:18",
-  "saldo": 6929.91,
+  "saldo": 6925.44,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-12 09:30:02",
-  "saldo": 6929.14,
+  "saldo": 6924.67,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-12 10:00:21",
-  "saldo": 6929.14,
+  "saldo": 6924.67,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-12 10:00:22",
-  "saldo": 6933.37,
+  "saldo": 6928.9,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-12 11:00:25",
-  "saldo": 6937.63,
+  "saldo": 6933.16,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-12 11:03:09",
-  "saldo": 6927.43,
+  "saldo": 6922.96,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-12 11:06:21",
-  "saldo": 6932.13,
+  "saldo": 6927.66,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-12 11:30:19",
-  "saldo": 6932.13,
+  "saldo": 6927.66,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-12 11:37:41",
-  "saldo": 6926.01,
+  "saldo": 6921.54,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-12 11:41:06",
-  "saldo": 6923.61,
+  "saldo": 6919.14,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-12 11:46:06",
-  "saldo": 6918.73,
+  "saldo": 6914.26,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-12 11:46:50",
-  "saldo": 6912.52,
+  "saldo": 6908.05,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-12 12:00:10",
-  "saldo": 6916.9,
+  "saldo": 6912.43,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-12 12:30:19",
-  "saldo": 6917.53,
+  "saldo": 6913.06,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-12 13:00:25",
-  "saldo": 6921.93,
+  "saldo": 6917.46,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-12 13:00:26",
-  "saldo": 6926.61,
+  "saldo": 6922.14,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-12 13:19:17",
-  "saldo": 6925.73,
+  "saldo": 6921.26,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-12 14:00:25",
-  "saldo": 6930.81,
+  "saldo": 6926.34,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-12 14:11:36",
-  "saldo": 6915.2,
+  "saldo": 6910.73,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-12 14:11:36",
-  "saldo": 6899.43,
+  "saldo": 6894.96,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-12 14:18:36",
-  "saldo": 6906.15,
+  "saldo": 6901.68,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-12 14:18:49",
-  "saldo": 6919.66,
+  "saldo": 6915.19,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-12 14:25:27",
-  "saldo": 6925.47,
+  "saldo": 6921.0,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-12 14:38:49",
-  "saldo": 6920.72,
+  "saldo": 6916.25,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-12 14:40:04",
-  "saldo": 6916.35,
+  "saldo": 6911.88,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-12 15:30:14",
-  "saldo": 6916.28,
+  "saldo": 6911.81,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-12 15:30:14",
-  "saldo": 6916.28,
+  "saldo": 6911.81,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-12 15:49:30",
-  "saldo": 6857.1,
+  "saldo": 6852.63,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-12 16:30:22",
-  "saldo": 6892.68,
+  "saldo": 6888.21,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-12 16:50:43",
-  "saldo": 6884.87,
+  "saldo": 6880.4,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-12 16:51:18",
-  "saldo": 6896.29,
+  "saldo": 6891.82,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-12 16:51:18",
-  "saldo": 6907.7,
+  "saldo": 6903.23,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-12 16:53:03",
-  "saldo": 6905.31,
+  "saldo": 6900.84,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-12 18:00:18",
-  "saldo": 6906.18,
+  "saldo": 6901.71,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-12 20:00:27",
-  "saldo": 6904.95,
+  "saldo": 6900.48,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-12 20:00:28",
-  "saldo": 6903.49,
+  "saldo": 6899.02,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-12 20:31:31",
-  "saldo": 6910.94,
+  "saldo": 6906.47,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-12 21:00:07",
-  "saldo": 6909.76,
+  "saldo": 6905.29,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-12 21:04:56",
-  "saldo": 6917.2,
+  "saldo": 6912.73,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-12 21:44:22",
-  "saldo": 6906.79,
+  "saldo": 6902.32,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-12 21:44:22",
-  "saldo": 6897.97,
+  "saldo": 6893.5,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-12 21:44:23",
-  "saldo": 6888.67,
+  "saldo": 6884.2,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-12 21:44:23",
-  "saldo": 6879.51,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-12 21:45:56",
-  "saldo": 6893.77,
+  "saldo": 6875.04,
   "tipo": "saldo"
  },
  {
@@ -745,5883 +740,5888 @@
   "tipo": "saldo"
  },
  {
+  "quando": "2026-10-12 21:45:56",
+  "saldo": 6884.83,
+  "tipo": "saldo"
+ },
+ {
   "quando": "2026-10-12 21:46:00",
-  "saldo": 6889.34,
+  "saldo": 6884.87,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-12 22:24:11",
-  "saldo": 6915.8,
+  "saldo": 6911.33,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-12 23:00:57",
-  "saldo": 6913.11,
+  "saldo": 6908.64,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-12 23:02:19",
-  "saldo": 6902.82,
+  "saldo": 6898.35,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-12 23:22:33",
-  "saldo": 6895.11,
+  "saldo": 6890.64,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-12 23:34:04",
-  "saldo": 6887.72,
+  "saldo": 6883.25,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-12 23:35:06",
-  "saldo": 6902.63,
+  "saldo": 6898.16,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-12 23:38:29",
-  "saldo": 6917.7,
+  "saldo": 6913.23,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-13 00:00:04",
-  "saldo": 6931.62,
+  "saldo": 6927.15,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-13 00:00:05",
-  "saldo": 6935.53,
+  "saldo": 6931.06,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-13 00:05:25",
-  "saldo": 6931.93,
+  "saldo": 6927.46,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-13 00:06:59",
-  "saldo": 6942.62,
+  "saldo": 6938.15,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-13 00:07:10",
-  "saldo": 6940.46,
+  "saldo": 6935.99,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-13 00:07:29",
-  "saldo": 6934.23,
+  "saldo": 6929.76,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-13 00:48:50",
-  "saldo": 6946.49,
+  "saldo": 6942.02,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-13 00:50:10",
-  "saldo": 6960.26,
+  "saldo": 6955.79,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-13 00:50:59",
-  "saldo": 6988.6,
+  "saldo": 6984.13,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-13 00:51:23",
-  "saldo": 6998.32,
+  "saldo": 6993.85,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-13 00:51:26",
-  "saldo": 7014.02,
+  "saldo": 7009.55,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-13 00:52:02",
-  "saldo": 7005.1,
+  "saldo": 7000.63,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-13 00:52:04",
-  "saldo": 6995.28,
+  "saldo": 6990.81,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-13 00:52:08",
-  "saldo": 7025.39,
+  "saldo": 7020.92,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-13 00:52:21",
-  "saldo": 7014.39,
+  "saldo": 7009.92,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-13 00:52:23",
-  "saldo": 7004.04,
+  "saldo": 6999.57,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-13 01:18:23",
-  "saldo": 7003.64,
+  "saldo": 6999.17,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-13 01:37:54",
-  "saldo": 6995.91,
+  "saldo": 6991.44,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-13 02:00:31",
-  "saldo": 6995.91,
+  "saldo": 6991.44,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-13 02:00:32",
-  "saldo": 7001.53,
+  "saldo": 6997.06,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-13 02:00:42",
-  "saldo": 7007.62,
+  "saldo": 7003.15,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-13 02:05:54",
-  "saldo": 7001.9,
+  "saldo": 6997.43,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-13 02:30:06",
-  "saldo": 6998.91,
+  "saldo": 6994.44,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-13 02:30:08",
-  "saldo": 7002.22,
+  "saldo": 6997.75,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-13 02:56:22",
-  "saldo": 6991.23,
+  "saldo": 6986.76,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-13 03:09:09",
-  "saldo": 6984.01,
+  "saldo": 6979.54,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-13 03:30:09",
-  "saldo": 6986.96,
+  "saldo": 6982.49,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-13 03:32:29",
-  "saldo": 6983.36,
+  "saldo": 6978.89,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-13 04:01:43",
-  "saldo": 6980.3,
+  "saldo": 6975.83,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-13 04:08:28",
-  "saldo": 6972.8,
+  "saldo": 6968.33,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-13 04:30:10",
-  "saldo": 6975.8,
+  "saldo": 6971.33,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-13 04:30:11",
-  "saldo": 6970.13,
+  "saldo": 6965.66,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-13 05:00:44",
-  "saldo": 6984.4,
+  "saldo": 6979.93,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-13 05:00:45",
-  "saldo": 6979.52,
+  "saldo": 6975.05,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-13 05:00:46",
-  "saldo": 6980.7,
+  "saldo": 6976.23,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-13 05:05:06",
-  "saldo": 6980.7,
+  "saldo": 6976.23,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-13 05:13:37",
-  "saldo": 6972.5,
+  "saldo": 6968.03,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-13 05:23:38",
-  "saldo": 6964.98,
+  "saldo": 6960.51,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-13 06:00:13",
-  "saldo": 6976.56,
+  "saldo": 6972.09,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-13 06:00:14",
-  "saldo": 6992.76,
+  "saldo": 6988.29,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-13 06:00:15",
-  "saldo": 6989.41,
+  "saldo": 6984.94,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-13 07:00:25",
-  "saldo": 6988.31,
+  "saldo": 6983.84,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-13 07:00:26",
-  "saldo": 6982.4,
+  "saldo": 6977.93,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-13 07:30:19",
-  "saldo": 6982.42,
+  "saldo": 6977.95,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-13 08:00:10",
-  "saldo": 6989.23,
+  "saldo": 6984.76,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-13 08:00:11",
-  "saldo": 6993.71,
+  "saldo": 6989.24,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-13 09:00:28",
-  "saldo": 6988.5,
+  "saldo": 6984.03,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-13 09:00:29",
-  "saldo": 6997.33,
+  "saldo": 6992.86,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-13 09:49:27",
-  "saldo": 6970.41,
+  "saldo": 6965.94,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-13 09:49:27",
-  "saldo": 6943.49,
+  "saldo": 6939.02,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-13 09:49:27",
-  "saldo": 6916.56,
+  "saldo": 6912.09,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-13 10:00:07",
-  "saldo": 6913.28,
+  "saldo": 6908.81,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-13 10:00:08",
-  "saldo": 6914.67,
+  "saldo": 6910.2,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-13 10:30:10",
-  "saldo": 6897.57,
+  "saldo": 6893.1,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-13 11:00:20",
-  "saldo": 6897.57,
+  "saldo": 6893.1,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-13 11:00:22",
-  "saldo": 6899.29,
+  "saldo": 6894.82,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-13 11:12:36",
-  "saldo": 6892.54,
+  "saldo": 6888.07,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-13 11:17:02",
-  "saldo": 6908.33,
+  "saldo": 6903.86,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-13 12:00:42",
-  "saldo": 6923.34,
+  "saldo": 6918.87,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-13 12:00:44",
-  "saldo": 6926.69,
+  "saldo": 6922.22,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-13 13:38:45",
-  "saldo": 6910.57,
+  "saldo": 6906.1,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-13 14:00:31",
-  "saldo": 6914.33,
+  "saldo": 6909.86,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-13 14:32:21",
-  "saldo": 6914.33,
+  "saldo": 6909.86,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-13 14:58:20",
-  "saldo": 6953.31,
+  "saldo": 6948.84,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-13 15:00:20",
-  "saldo": 6943.06,
+  "saldo": 6938.59,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-13 15:48:32",
-  "saldo": 6936.95,
+  "saldo": 6932.48,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-13 16:00:35",
-  "saldo": 6938.48,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-13 16:44:45",
-  "saldo": 6996.9,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-13 16:44:45",
-  "saldo": 7055.33,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-13 18:00:34",
-  "saldo": 7055.19,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-13 18:30:08",
-  "saldo": 7055.87,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-13 19:30:07",
-  "saldo": 7066.14,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-13 20:30:06",
-  "saldo": 7067.75,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-13 21:00:23",
-  "saldo": 7067.75,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-13 21:30:17",
-  "saldo": 7061.52,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-13 22:00:18",
-  "saldo": 7064.08,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-14 00:00:09",
-  "saldo": 7061.98,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-14 00:00:10",
-  "saldo": 7060.1,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-14 00:02:25",
-  "saldo": 7046.17,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-14 00:11:59",
-  "saldo": 7028.81,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-14 00:30:18",
-  "saldo": 7026.89,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-14 00:30:39",
-  "saldo": 7010.32,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-14 00:37:22",
-  "saldo": 6998.69,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-14 01:00:14",
-  "saldo": 6995.07,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-14 03:00:05",
-  "saldo": 6993.47,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-14 03:30:15",
-  "saldo": 6987.49,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-14 05:52:20",
-  "saldo": 6998.25,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-14 07:00:18",
-  "saldo": 6997.35,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-14 07:00:19",
-  "saldo": 6996.05,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-14 08:00:30",
-  "saldo": 6990.32,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-14 08:06:02",
-  "saldo": 6983.15,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-14 08:30:03",
-  "saldo": 6983.81,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-14 09:00:06",
-  "saldo": 6980.84,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-14 11:00:23",
-  "saldo": 6986.45,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-14 12:30:07",
-  "saldo": 6986.46,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-14 12:30:07",
-  "saldo": 6986.46,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-14 12:30:29",
-  "saldo": 6972.43,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-14 12:58:37",
-  "saldo": 6986.84,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-14 12:58:51",
-  "saldo": 6993.5,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-14 13:00:26",
-  "saldo": 6981.76,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-14 13:00:27",
-  "saldo": 6985.27,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-14 13:00:28",
-  "saldo": 6985.27,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-14 13:13:15",
-  "saldo": 6977.9,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-14 13:14:26",
-  "saldo": 6969.35,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-14 14:00:19",
-  "saldo": 6965.4,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-14 14:05:42",
-  "saldo": 6974.28,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-14 14:07:42",
-  "saldo": 6983.55,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-14 14:12:20",
-  "saldo": 6972.76,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-14 14:14:56",
-  "saldo": 6969.58,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-14 14:30:25",
-  "saldo": 6960.81,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-14 15:00:31",
-  "saldo": 6989.14,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-14 15:00:31",
-  "saldo": 7000.17,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-14 16:00:26",
-  "saldo": 7013.22,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-14 16:00:27",
-  "saldo": 7026.1,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-14 16:00:28",
-  "saldo": 7007.03,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-14 16:00:29",
-  "saldo": 7007.0,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-14 17:30:30",
-  "saldo": 7011.05,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-14 18:01:09",
-  "saldo": 7003.01,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-14 20:00:34",
-  "saldo": 7005.0,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-14 20:39:32",
-  "saldo": 7005.02,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-14 22:00:09",
-  "saldo": 7005.02,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-14 23:00:26",
-  "saldo": 7005.02,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-14 23:00:27",
-  "saldo": 7005.24,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-15 02:00:25",
-  "saldo": 7016.17,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-15 02:00:26",
-  "saldo": 7016.85,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-15 02:11:24",
-  "saldo": 7026.64,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-15 02:15:45",
-  "saldo": 7039.92,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-15 02:22:11",
-  "saldo": 7024.74,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-15 02:22:21",
-  "saldo": 7029.31,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-15 02:22:21",
-  "saldo": 7022.06,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-15 02:22:25",
-  "saldo": 7046.64,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-15 02:23:13",
-  "saldo": 7060.91,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-15 02:24:17",
-  "saldo": 7058.68,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-15 02:24:17",
-  "saldo": 7047.12,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-15 02:24:17",
-  "saldo": 7065.05,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-15 02:24:18",
-  "saldo": 7083.71,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-15 02:24:18",
-  "saldo": 7065.2,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-15 02:24:29",
-  "saldo": 7042.3,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-15 02:24:29",
-  "saldo": 7050.96,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-15 02:28:52",
-  "saldo": 7048.32,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-15 02:28:56",
-  "saldo": 7030.58,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-15 02:30:18",
-  "saldo": 7016.81,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-15 02:44:54",
-  "saldo": 7014.26,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-15 04:30:32",
-  "saldo": 7025.03,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-15 05:00:05",
-  "saldo": 7035.84,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-15 07:00:32",
-  "saldo": 7040.81,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-15 08:00:11",
-  "saldo": 7035.72,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-15 08:00:12",
-  "saldo": 7037.37,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-15 09:00:22",
-  "saldo": 7037.32,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-15 09:39:49",
-  "saldo": 7011.9,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-15 09:39:49",
-  "saldo": 6986.64,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-15 09:39:49",
-  "saldo": 6961.45,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-15 10:21:28",
-  "saldo": 6989.16,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-15 13:00:23",
-  "saldo": 7006.43,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-15 14:38:47",
-  "saldo": 6993.88,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-15 14:40:18",
-  "saldo": 7004.64,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-15 14:48:59",
-  "saldo": 7007.06,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-15 14:55:00",
-  "saldo": 6991.93,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-15 14:56:42",
-  "saldo": 6988.76,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-15 14:58:42",
-  "saldo": 7000.95,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-15 15:00:24",
-  "saldo": 7013.24,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-15 15:03:33",
-  "saldo": 7005.27,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-15 15:03:40",
-  "saldo": 6993.58,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-15 15:04:45",
-  "saldo": 6986.56,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-15 15:30:26",
-  "saldo": 7003.86,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-15 15:30:27",
-  "saldo": 6989.13,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-15 15:30:28",
-  "saldo": 6974.09,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-15 15:35:52",
-  "saldo": 7001.74,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-15 15:38:42",
-  "saldo": 6999.65,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-15 15:39:09",
-  "saldo": 6997.0,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-15 15:41:13",
-  "saldo": 6983.4,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-15 16:00:20",
-  "saldo": 6961.29,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-15 16:00:21",
-  "saldo": 6967.17,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-15 16:00:22",
-  "saldo": 6963.91,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-15 16:00:23",
-  "saldo": 6981.16,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-15 16:00:24",
-  "saldo": 6978.04,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-15 16:44:13",
-  "saldo": 6990.38,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-15 17:00:21",
-  "saldo": 7022.6,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-15 17:00:22",
-  "saldo": 7022.27,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-15 17:48:28",
-  "saldo": 7022.27,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-15 19:00:11",
-  "saldo": 7010.16,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-15 19:00:44",
-  "saldo": 7007.15,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-15 19:00:45",
-  "saldo": 7007.14,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-15 19:03:03",
-  "saldo": 7010.71,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-15 19:23:53",
-  "saldo": 7003.05,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-15 20:00:29",
-  "saldo": 7000.53,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-15 20:00:29",
-  "saldo": 7000.65,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-15 21:00:19",
-  "saldo": 6993.07,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-15 22:14:17",
-  "saldo": 6967.94,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-15 23:00:33",
-  "saldo": 6965.07,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-16 00:00:35",
-  "saldo": 6964.35,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-16 00:18:28",
-  "saldo": 6949.52,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-16 01:00:18",
-  "saldo": 6948.64,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-16 02:00:18",
-  "saldo": 6957.52,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-16 02:30:09",
-  "saldo": 6943.86,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-16 02:30:10",
-  "saldo": 6953.86,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-16 03:00:24",
-  "saldo": 6952.28,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-16 03:00:25",
-  "saldo": 6957.13,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-16 03:30:11",
-  "saldo": 6958.85,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-16 04:00:36",
-  "saldo": 6954.66,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-16 04:00:37",
-  "saldo": 6954.9,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-16 05:00:27",
-  "saldo": 6954.91,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-16 06:00:21",
-  "saldo": 6958.79,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-16 07:00:17",
-  "saldo": 6958.77,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-16 08:00:27",
-  "saldo": 6962.58,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-16 08:00:28",
-  "saldo": 6971.19,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-16 08:00:28",
-  "saldo": 6972.71,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-16 08:30:12",
-  "saldo": 6976.67,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-16 08:39:01",
-  "saldo": 6969.88,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-16 09:00:30",
-  "saldo": 6969.88,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-16 09:20:29",
-  "saldo": 6969.84,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-16 09:30:25",
-  "saldo": 6976.63,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-16 10:00:06",
-  "saldo": 6971.5,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-16 10:00:37",
-  "saldo": 6973.65,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-16 10:30:23",
-  "saldo": 6981.85,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-16 11:30:29",
-  "saldo": 6981.76,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-16 11:30:29",
-  "saldo": 6977.09,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-16 11:45:36",
-  "saldo": 6969.18,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-16 12:30:09",
-  "saldo": 6967.06,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-16 12:34:51",
-  "saldo": 6953.84,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-16 14:00:07",
-  "saldo": 6949.36,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-16 14:00:07",
-  "saldo": 6947.93,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-16 14:00:08",
-  "saldo": 6946.67,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-16 14:35:10",
   "saldo": 6934.01,
   "tipo": "saldo"
  },
  {
+  "quando": "2026-10-13 16:44:45",
+  "saldo": 6992.43,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-13 16:44:45",
+  "saldo": 7050.86,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-13 18:00:34",
+  "saldo": 7050.72,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-13 18:30:08",
+  "saldo": 7051.4,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-13 19:30:07",
+  "saldo": 7061.67,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-13 20:30:06",
+  "saldo": 7063.28,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-13 21:00:23",
+  "saldo": 7063.28,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-13 21:30:17",
+  "saldo": 7057.05,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-13 22:00:18",
+  "saldo": 7059.61,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-14 00:00:09",
+  "saldo": 7057.51,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-14 00:00:10",
+  "saldo": 7055.63,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-14 00:02:25",
+  "saldo": 7041.7,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-14 00:11:59",
+  "saldo": 7024.34,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-14 00:30:18",
+  "saldo": 7022.42,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-14 00:30:39",
+  "saldo": 7005.85,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-14 00:37:22",
+  "saldo": 6994.22,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-14 01:00:14",
+  "saldo": 6990.6,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-14 03:00:05",
+  "saldo": 6989.0,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-14 03:30:15",
+  "saldo": 6983.02,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-14 05:52:20",
+  "saldo": 6993.78,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-14 07:00:18",
+  "saldo": 6992.88,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-14 07:00:19",
+  "saldo": 6991.58,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-14 08:00:30",
+  "saldo": 6985.85,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-14 08:06:02",
+  "saldo": 6978.68,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-14 08:30:03",
+  "saldo": 6979.34,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-14 09:00:06",
+  "saldo": 6976.37,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-14 11:00:23",
+  "saldo": 6981.98,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-14 12:30:07",
+  "saldo": 6981.99,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-14 12:30:07",
+  "saldo": 6981.99,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-14 12:30:29",
+  "saldo": 6967.96,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-14 12:58:37",
+  "saldo": 6982.37,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-14 12:58:51",
+  "saldo": 6989.03,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-14 13:00:26",
+  "saldo": 6977.29,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-14 13:00:27",
+  "saldo": 6980.8,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-14 13:00:28",
+  "saldo": 6980.8,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-14 13:13:15",
+  "saldo": 6973.43,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-14 13:14:26",
+  "saldo": 6964.88,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-14 14:00:19",
+  "saldo": 6960.93,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-14 14:05:42",
+  "saldo": 6969.81,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-14 14:07:42",
+  "saldo": 6979.08,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-14 14:12:20",
+  "saldo": 6968.29,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-14 14:14:56",
+  "saldo": 6965.11,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-14 14:30:25",
+  "saldo": 6956.34,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-14 15:00:31",
+  "saldo": 6984.67,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-14 15:00:31",
+  "saldo": 6995.7,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-14 16:00:26",
+  "saldo": 7008.75,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-14 16:00:27",
+  "saldo": 7021.63,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-14 16:00:28",
+  "saldo": 7002.56,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-14 16:00:29",
+  "saldo": 7002.53,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-14 17:30:30",
+  "saldo": 7006.58,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-14 18:01:09",
+  "saldo": 6998.54,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-14 20:00:34",
+  "saldo": 7000.53,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-14 20:39:32",
+  "saldo": 7000.55,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-14 22:00:09",
+  "saldo": 7000.55,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-14 23:00:26",
+  "saldo": 7000.55,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-14 23:00:27",
+  "saldo": 7000.77,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-15 02:00:25",
+  "saldo": 7011.7,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-15 02:00:26",
+  "saldo": 7012.38,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-15 02:11:24",
+  "saldo": 7022.17,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-15 02:15:45",
+  "saldo": 7035.45,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-15 02:22:11",
+  "saldo": 7020.27,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-15 02:22:21",
+  "saldo": 7024.84,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-15 02:22:21",
+  "saldo": 7017.59,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-15 02:22:25",
+  "saldo": 7042.17,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-15 02:23:13",
+  "saldo": 7056.44,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-15 02:24:17",
+  "saldo": 7054.21,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-15 02:24:17",
+  "saldo": 7042.65,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-15 02:24:17",
+  "saldo": 7060.58,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-15 02:24:18",
+  "saldo": 7079.24,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-15 02:24:18",
+  "saldo": 7060.73,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-15 02:24:29",
+  "saldo": 7037.83,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-15 02:24:29",
+  "saldo": 7046.49,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-15 02:28:52",
+  "saldo": 7043.85,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-15 02:28:56",
+  "saldo": 7026.11,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-15 02:30:18",
+  "saldo": 7012.34,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-15 02:44:54",
+  "saldo": 7009.79,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-15 04:30:32",
+  "saldo": 7020.56,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-15 05:00:05",
+  "saldo": 7031.37,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-15 07:00:32",
+  "saldo": 7036.34,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-15 08:00:11",
+  "saldo": 7031.25,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-15 08:00:12",
+  "saldo": 7032.9,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-15 09:00:22",
+  "saldo": 7032.85,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-15 09:39:49",
+  "saldo": 7007.43,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-15 09:39:49",
+  "saldo": 6982.17,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-15 09:39:49",
+  "saldo": 6956.98,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-15 10:21:28",
+  "saldo": 6984.69,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-15 13:00:23",
+  "saldo": 7001.96,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-15 14:38:47",
+  "saldo": 6989.41,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-15 14:40:18",
+  "saldo": 7000.17,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-15 14:48:59",
+  "saldo": 7002.59,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-15 14:55:00",
+  "saldo": 6987.46,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-15 14:56:42",
+  "saldo": 6984.29,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-15 14:58:42",
+  "saldo": 6996.48,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-15 15:00:24",
+  "saldo": 7008.77,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-15 15:03:33",
+  "saldo": 7000.8,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-15 15:03:40",
+  "saldo": 6989.11,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-15 15:04:45",
+  "saldo": 6982.09,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-15 15:30:26",
+  "saldo": 6999.39,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-15 15:30:27",
+  "saldo": 6984.66,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-15 15:30:28",
+  "saldo": 6969.62,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-15 15:35:52",
+  "saldo": 6997.27,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-15 15:38:42",
+  "saldo": 6995.18,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-15 15:39:09",
+  "saldo": 6992.53,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-15 15:41:13",
+  "saldo": 6978.93,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-15 16:00:20",
+  "saldo": 6956.82,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-15 16:00:21",
+  "saldo": 6962.7,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-15 16:00:22",
+  "saldo": 6959.44,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-15 16:00:23",
+  "saldo": 6976.69,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-15 16:00:24",
+  "saldo": 6973.57,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-15 16:44:13",
+  "saldo": 6985.91,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-15 17:00:21",
+  "saldo": 7018.13,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-15 17:00:22",
+  "saldo": 7017.8,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-15 17:48:28",
+  "saldo": 7017.8,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-15 19:00:11",
+  "saldo": 7005.69,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-15 19:00:44",
+  "saldo": 7002.68,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-15 19:00:45",
+  "saldo": 7002.67,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-15 19:03:03",
+  "saldo": 7006.24,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-15 19:23:53",
+  "saldo": 6998.58,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-15 20:00:29",
+  "saldo": 6996.06,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-15 20:00:29",
+  "saldo": 6996.18,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-15 21:00:19",
+  "saldo": 6988.6,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-15 22:14:17",
+  "saldo": 6963.47,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-15 23:00:33",
+  "saldo": 6960.6,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-16 00:00:35",
+  "saldo": 6959.88,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-16 00:18:28",
+  "saldo": 6945.05,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-16 01:00:18",
+  "saldo": 6944.17,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-16 02:00:18",
+  "saldo": 6953.05,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-16 02:30:09",
+  "saldo": 6939.39,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-16 02:30:10",
+  "saldo": 6949.39,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-16 03:00:24",
+  "saldo": 6947.81,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-16 03:00:25",
+  "saldo": 6952.66,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-16 03:30:11",
+  "saldo": 6954.38,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-16 04:00:36",
+  "saldo": 6950.19,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-16 04:00:37",
+  "saldo": 6950.43,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-16 05:00:27",
+  "saldo": 6950.44,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-16 06:00:21",
+  "saldo": 6954.32,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-16 07:00:17",
+  "saldo": 6954.3,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-16 08:00:27",
+  "saldo": 6958.11,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-16 08:00:28",
+  "saldo": 6966.72,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-16 08:00:28",
+  "saldo": 6968.24,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-16 08:30:12",
+  "saldo": 6972.2,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-16 08:39:01",
+  "saldo": 6965.41,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-16 09:00:30",
+  "saldo": 6965.41,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-16 09:20:29",
+  "saldo": 6965.37,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-16 09:30:25",
+  "saldo": 6972.16,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-16 10:00:06",
+  "saldo": 6967.03,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-16 10:00:37",
+  "saldo": 6969.18,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-16 10:30:23",
+  "saldo": 6977.38,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-16 11:30:29",
+  "saldo": 6977.29,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-16 11:30:29",
+  "saldo": 6972.62,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-16 11:45:36",
+  "saldo": 6964.71,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-16 12:30:09",
+  "saldo": 6962.59,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-16 12:34:51",
+  "saldo": 6949.37,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-16 14:00:07",
+  "saldo": 6944.89,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-16 14:00:07",
+  "saldo": 6943.46,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-16 14:00:08",
+  "saldo": 6942.2,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-16 14:35:10",
+  "saldo": 6929.54,
+  "tipo": "saldo"
+ },
+ {
   "quando": "2026-10-16 15:00:07",
-  "saldo": 6935.87,
+  "saldo": 6931.4,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-16 15:05:49",
-  "saldo": 6936.01,
+  "saldo": 6931.54,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-16 15:16:07",
-  "saldo": 6935.96,
+  "saldo": 6931.49,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-16 16:00:13",
-  "saldo": 6943.29,
+  "saldo": 6938.82,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-16 16:00:14",
-  "saldo": 6950.6,
+  "saldo": 6946.13,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-16 16:00:14",
-  "saldo": 6947.24,
+  "saldo": 6942.77,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-16 16:00:15",
-  "saldo": 6949.01,
+  "saldo": 6944.54,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-16 16:01:02",
-  "saldo": 6951.74,
+  "saldo": 6947.27,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-16 16:30:31",
-  "saldo": 6951.72,
+  "saldo": 6947.25,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-16 16:30:32",
-  "saldo": 6966.42,
+  "saldo": 6961.95,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-16 16:30:33",
-  "saldo": 6962.58,
+  "saldo": 6958.11,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-16 16:30:33",
-  "saldo": 6969.88,
+  "saldo": 6965.41,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-16 16:51:09",
-  "saldo": 6962.78,
+  "saldo": 6958.31,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-16 16:52:05",
-  "saldo": 6976.24,
+  "saldo": 6971.77,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-16 17:00:36",
-  "saldo": 6991.26,
+  "saldo": 6986.79,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-16 17:06:29",
-  "saldo": 7003.18,
+  "saldo": 6998.71,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-16 17:18:20",
-  "saldo": 7021.88,
+  "saldo": 7017.41,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-16 17:30:20",
-  "saldo": 6991.63,
+  "saldo": 6987.16,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-16 18:30:24",
-  "saldo": 6991.59,
+  "saldo": 6987.12,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-16 19:00:15",
-  "saldo": 7001.47,
+  "saldo": 6997.0,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-16 19:00:16",
-  "saldo": 6986.87,
+  "saldo": 6982.4,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-16 19:00:17",
-  "saldo": 6994.72,
+  "saldo": 6990.25,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-16 19:00:18",
-  "saldo": 6992.97,
+  "saldo": 6988.5,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-16 19:00:19",
-  "saldo": 6990.18,
+  "saldo": 6985.71,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-16 20:00:25",
-  "saldo": 6996.25,
+  "saldo": 6991.78,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-16 20:00:26",
-  "saldo": 7004.27,
+  "saldo": 6999.8,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-16 21:30:05",
-  "saldo": 7011.9,
+  "saldo": 7007.43,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-16 22:01:02",
-  "saldo": 7003.23,
+  "saldo": 6998.76,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-16 23:00:18",
-  "saldo": 7008.82,
+  "saldo": 7004.35,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-16 23:30:13",
-  "saldo": 7006.8,
+  "saldo": 7002.33,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-17 01:00:09",
-  "saldo": 7013.75,
+  "saldo": 7009.28,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-17 01:00:10",
-  "saldo": 7011.21,
+  "saldo": 7006.74,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-17 02:02:09",
-  "saldo": 7011.09,
+  "saldo": 7006.62,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-17 02:39:44",
-  "saldo": 7011.09,
+  "saldo": 7006.62,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-17 03:00:24",
-  "saldo": 7010.35,
+  "saldo": 7005.88,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-17 03:30:18",
-  "saldo": 7010.35,
+  "saldo": 7005.88,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-17 04:00:04",
-  "saldo": 7007.22,
+  "saldo": 7002.75,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-17 04:30:20",
-  "saldo": 7006.53,
+  "saldo": 7002.06,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-17 06:00:24",
-  "saldo": 7006.53,
+  "saldo": 7002.06,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-17 06:00:24",
-  "saldo": 7010.91,
+  "saldo": 7006.44,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-17 06:00:25",
-  "saldo": 6997.74,
+  "saldo": 6993.27,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-17 07:00:26",
-  "saldo": 7000.24,
+  "saldo": 6995.77,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-17 07:00:27",
-  "saldo": 6999.67,
+  "saldo": 6995.2,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-17 08:48:26",
-  "saldo": 6993.47,
+  "saldo": 6989.0,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-17 10:00:05",
-  "saldo": 6994.37,
+  "saldo": 6989.9,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-17 10:11:06",
-  "saldo": 6981.3,
+  "saldo": 6976.83,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-17 11:30:22",
-  "saldo": 6981.44,
+  "saldo": 6976.97,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-17 12:30:22",
-  "saldo": 6982.35,
+  "saldo": 6977.88,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-17 12:30:22",
-  "saldo": 6982.08,
+  "saldo": 6977.61,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-17 12:46:50",
-  "saldo": 6963.85,
+  "saldo": 6959.38,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-17 12:52:05",
-  "saldo": 7007.83,
+  "saldo": 7003.36,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-17 13:00:11",
-  "saldo": 7017.19,
+  "saldo": 7012.72,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-17 13:00:12",
-  "saldo": 7021.95,
+  "saldo": 7017.48,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-17 13:00:12",
-  "saldo": 7038.35,
+  "saldo": 7033.88,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-17 13:06:19",
-  "saldo": 7031.44,
+  "saldo": 7026.97,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-17 14:00:09",
-  "saldo": 7031.44,
+  "saldo": 7026.97,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-17 14:00:10",
-  "saldo": 7039.1,
+  "saldo": 7034.63,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-17 14:00:11",
-  "saldo": 7039.1,
+  "saldo": 7034.63,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-17 14:30:18",
-  "saldo": 7037.19,
+  "saldo": 7032.72,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-17 15:00:17",
-  "saldo": 7036.66,
+  "saldo": 7032.19,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-17 15:00:18",
-  "saldo": 7036.66,
+  "saldo": 7032.19,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-17 15:47:38",
-  "saldo": 7046.51,
+  "saldo": 7042.04,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-17 16:00:21",
-  "saldo": 7046.48,
+  "saldo": 7042.01,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-17 16:00:22",
-  "saldo": 7048.15,
+  "saldo": 7043.68,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-17 16:56:57",
-  "saldo": 7034.12,
+  "saldo": 7029.65,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-17 17:00:25",
-  "saldo": 7043.0,
+  "saldo": 7038.53,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-17 17:30:20",
-  "saldo": 7039.44,
+  "saldo": 7034.97,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-17 17:30:20",
-  "saldo": 7039.43,
+  "saldo": 7034.96,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-17 18:00:25",
-  "saldo": 7042.98,
+  "saldo": 7038.51,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-17 18:00:26",
-  "saldo": 7042.32,
+  "saldo": 7037.85,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-17 18:00:27",
-  "saldo": 7042.32,
+  "saldo": 7037.85,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-17 18:30:18",
-  "saldo": 7043.46,
+  "saldo": 7038.99,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-17 19:22:19",
-  "saldo": 7045.6,
+  "saldo": 7041.13,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-17 19:30:17",
-  "saldo": 7042.67,
+  "saldo": 7038.2,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-17 20:00:39",
-  "saldo": 7042.82,
+  "saldo": 7038.35,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-17 20:00:41",
-  "saldo": 7042.77,
+  "saldo": 7038.3,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-17 20:01:38",
-  "saldo": 7042.77,
+  "saldo": 7038.3,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-17 21:00:22",
-  "saldo": 7047.56,
+  "saldo": 7043.09,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-17 21:25:46",
-  "saldo": 7102.31,
+  "saldo": 7097.84,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-17 21:27:23",
-  "saldo": 7109.27,
+  "saldo": 7104.8,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-17 21:30:19",
-  "saldo": 7116.08,
+  "saldo": 7111.61,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-17 21:32:12",
-  "saldo": 7128.32,
+  "saldo": 7123.85,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-17 21:32:12",
-  "saldo": 7145.12,
+  "saldo": 7140.65,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-17 21:32:14",
-  "saldo": 7170.62,
+  "saldo": 7166.15,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-17 21:32:14",
-  "saldo": 7188.47,
+  "saldo": 7184.0,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-17 21:32:45",
-  "saldo": 7200.91,
+  "saldo": 7196.44,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-17 21:37:40",
-  "saldo": 7211.84,
+  "saldo": 7207.37,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-17 21:38:05",
-  "saldo": 7273.17,
+  "saldo": 7268.7,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-17 21:38:05",
-  "saldo": 7272.72,
+  "saldo": 7268.25,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-17 21:38:05",
-  "saldo": 7292.12,
+  "saldo": 7287.65,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-17 21:38:07",
-  "saldo": 7303.95,
+  "saldo": 7299.48,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-17 23:00:10",
-  "saldo": 7303.96,
+  "saldo": 7299.49,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-18 00:00:16",
-  "saldo": 7303.21,
+  "saldo": 7298.74,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-18 01:00:04",
-  "saldo": 7302.38,
+  "saldo": 7297.91,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-18 01:30:19",
-  "saldo": 7302.43,
+  "saldo": 7297.96,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-18 03:30:21",
-  "saldo": 7294.46,
+  "saldo": 7289.99,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-18 04:00:26",
-  "saldo": 7294.77,
+  "saldo": 7290.3,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-18 04:00:26",
-  "saldo": 7294.77,
+  "saldo": 7290.3,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-18 05:37:58",
-  "saldo": 7297.78,
+  "saldo": 7293.31,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-18 06:00:11",
-  "saldo": 7298.36,
+  "saldo": 7293.89,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-18 06:30:07",
-  "saldo": 7316.33,
+  "saldo": 7311.86,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-18 06:30:08",
-  "saldo": 7316.55,
+  "saldo": 7312.08,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-18 07:00:15",
-  "saldo": 7315.57,
+  "saldo": 7311.1,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-18 07:24:53",
-  "saldo": 7311.05,
+  "saldo": 7306.58,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-18 09:00:23",
-  "saldo": 7312.61,
+  "saldo": 7308.14,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-18 09:00:24",
-  "saldo": 7322.47,
+  "saldo": 7318.0,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-18 09:01:04",
-  "saldo": 7344.25,
+  "saldo": 7339.78,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-18 11:30:23",
-  "saldo": 7342.18,
+  "saldo": 7337.71,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-18 12:00:06",
-  "saldo": 7340.17,
+  "saldo": 7335.7,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-18 12:30:20",
-  "saldo": 7342.55,
+  "saldo": 7338.08,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-18 14:03:46",
-  "saldo": 7349.75,
+  "saldo": 7345.28,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-18 14:30:08",
-  "saldo": 7349.37,
+  "saldo": 7344.9,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-18 14:31:51",
-  "saldo": 7360.77,
+  "saldo": 7356.3,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-18 14:31:51",
-  "saldo": 7345.85,
+  "saldo": 7341.38,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-18 15:30:07",
-  "saldo": 7350.59,
+  "saldo": 7346.12,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-18 15:30:51",
-  "saldo": 7361.69,
+  "saldo": 7357.22,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-18 16:30:17",
-  "saldo": 7361.7,
+  "saldo": 7357.23,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-18 18:00:27",
-  "saldo": 7386.32,
+  "saldo": 7381.85,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-18 19:00:53",
-  "saldo": 7398.08,
+  "saldo": 7393.61,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-18 19:27:00",
-  "saldo": 7385.72,
+  "saldo": 7381.25,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-18 19:30:38",
-  "saldo": 7406.91,
+  "saldo": 7402.44,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-18 19:33:08",
-  "saldo": 7406.68,
+  "saldo": 7402.21,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-18 19:35:45",
-  "saldo": 7368.7,
+  "saldo": 7364.23,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-18 19:35:45",
-  "saldo": 7383.93,
+  "saldo": 7379.46,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-18 19:35:45",
-  "saldo": 7396.0,
+  "saldo": 7391.53,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-18 19:43:44",
-  "saldo": 7372.9,
+  "saldo": 7368.43,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-18 19:46:01",
-  "saldo": 7345.77,
+  "saldo": 7341.3,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-18 20:00:27",
-  "saldo": 7328.09,
+  "saldo": 7323.62,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-18 20:00:28",
-  "saldo": 7341.42,
+  "saldo": 7336.95,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-18 20:30:13",
-  "saldo": 7351.4,
+  "saldo": 7346.93,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-18 20:30:13",
-  "saldo": 7345.26,
+  "saldo": 7340.79,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-18 20:33:08",
-  "saldo": 7386.73,
+  "saldo": 7382.26,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-18 21:00:16",
-  "saldo": 7399.08,
+  "saldo": 7394.61,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-18 21:30:08",
-  "saldo": 7440.48,
+  "saldo": 7436.01,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-18 22:00:22",
-  "saldo": 7442.8,
+  "saldo": 7438.33,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-18 23:21:42",
-  "saldo": 7444.22,
+  "saldo": 7439.75,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-18 23:26:31",
-  "saldo": 7441.83,
+  "saldo": 7437.36,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-18 23:30:20",
-  "saldo": 7440.46,
+  "saldo": 7435.99,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-18 23:30:25",
-  "saldo": 7456.43,
+  "saldo": 7451.96,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-18 23:30:26",
-  "saldo": 7452.6,
+  "saldo": 7448.13,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-19 00:00:09",
-  "saldo": 7449.14,
+  "saldo": 7444.67,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-19 00:00:10",
-  "saldo": 7449.61,
+  "saldo": 7445.14,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-19 00:00:11",
-  "saldo": 7452.63,
+  "saldo": 7448.16,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-19 00:00:45",
-  "saldo": 7443.26,
+  "saldo": 7438.79,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-19 00:30:19",
-  "saldo": 7456.75,
+  "saldo": 7452.28,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-19 00:52:45",
-  "saldo": 7446.69,
+  "saldo": 7442.22,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-19 01:00:32",
-  "saldo": 7446.68,
+  "saldo": 7442.21,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-19 01:00:33",
-  "saldo": 7443.52,
+  "saldo": 7439.05,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-19 01:42:02",
-  "saldo": 7430.16,
+  "saldo": 7425.69,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-19 02:00:18",
-  "saldo": 7433.21,
+  "saldo": 7428.74,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-19 02:00:19",
-  "saldo": 7427.61,
+  "saldo": 7423.14,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-19 02:00:20",
-  "saldo": 7423.67,
+  "saldo": 7419.2,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-19 02:00:20",
-  "saldo": 7419.49,
+  "saldo": 7415.02,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-19 02:49:56",
-  "saldo": 7410.73,
+  "saldo": 7406.26,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-19 03:00:28",
-  "saldo": 7410.09,
+  "saldo": 7405.62,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-19 03:00:28",
-  "saldo": 7403.34,
+  "saldo": 7398.87,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-19 03:30:29",
-  "saldo": 7395.19,
+  "saldo": 7390.72,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-19 04:44:40",
-  "saldo": 7384.8,
+  "saldo": 7380.33,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-19 05:00:24",
-  "saldo": 7378.44,
+  "saldo": 7373.97,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-19 06:30:16",
-  "saldo": 7387.55,
+  "saldo": 7383.08,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-19 07:00:05",
-  "saldo": 7380.54,
+  "saldo": 7376.07,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-19 07:05:48",
-  "saldo": 7370.51,
+  "saldo": 7366.04,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-19 07:14:00",
-  "saldo": 7370.51,
+  "saldo": 7366.04,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-19 08:00:19",
-  "saldo": 7370.54,
+  "saldo": 7366.07,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-19 08:00:20",
-  "saldo": 7366.08,
+  "saldo": 7361.61,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-19 08:00:21",
-  "saldo": 7365.92,
+  "saldo": 7361.45,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-19 09:00:22",
-  "saldo": 7357.11,
+  "saldo": 7352.64,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-19 10:00:12",
-  "saldo": 7354.51,
+  "saldo": 7350.04,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-19 11:00:27",
-  "saldo": 7354.51,
+  "saldo": 7350.04,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-19 11:00:28",
-  "saldo": 7351.47,
+  "saldo": 7347.0,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-19 11:00:28",
-  "saldo": 7345.07,
+  "saldo": 7340.6,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-19 12:55:08",
-  "saldo": 7364.71,
+  "saldo": 7360.24,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-19 13:00:36",
-  "saldo": 7366.09,
+  "saldo": 7361.62,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-19 14:00:22",
-  "saldo": 7366.76,
+  "saldo": 7362.29,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-19 14:00:23",
-  "saldo": 7370.77,
+  "saldo": 7366.3,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-19 14:00:24",
-  "saldo": 7375.65,
+  "saldo": 7371.18,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-19 14:02:05",
-  "saldo": 7367.72,
+  "saldo": 7363.25,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-19 14:02:40",
-  "saldo": 7367.73,
+  "saldo": 7363.26,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-19 14:27:30",
-  "saldo": 7356.28,
+  "saldo": 7351.81,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-19 14:30:14",
-  "saldo": 7362.39,
+  "saldo": 7357.92,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-19 15:00:14",
-  "saldo": 7363.19,
+  "saldo": 7358.72,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-19 15:23:37",
-  "saldo": 7351.44,
+  "saldo": 7346.97,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-19 15:29:02",
-  "saldo": 7343.05,
+  "saldo": 7338.58,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-19 16:00:41",
-  "saldo": 7344.14,
+  "saldo": 7339.67,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-19 16:00:41",
-  "saldo": 7335.81,
+  "saldo": 7331.34,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-19 17:00:22",
-  "saldo": 7335.83,
+  "saldo": 7331.36,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-19 17:00:23",
-  "saldo": 7335.84,
+  "saldo": 7331.37,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-19 18:00:26",
-  "saldo": 7348.13,
+  "saldo": 7343.66,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-19 19:00:45",
-  "saldo": 7348.13,
+  "saldo": 7343.66,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-19 19:00:46",
-  "saldo": 7348.13,
+  "saldo": 7343.66,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-19 20:00:23",
-  "saldo": 7349.59,
+  "saldo": 7345.12,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-19 20:00:23",
-  "saldo": 7339.61,
+  "saldo": 7335.14,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-19 21:00:27",
-  "saldo": 7339.62,
+  "saldo": 7335.15,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-19 21:01:28",
-  "saldo": 7339.48,
+  "saldo": 7335.01,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-19 22:00:23",
-  "saldo": 7336.96,
+  "saldo": 7332.49,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-19 22:00:24",
-  "saldo": 7336.93,
+  "saldo": 7332.46,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-19 22:36:10",
-  "saldo": 7336.93,
+  "saldo": 7332.46,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-19 23:00:31",
-  "saldo": 7336.93,
+  "saldo": 7332.46,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-20 00:00:16",
-  "saldo": 7333.1,
+  "saldo": 7328.63,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-20 02:00:05",
-  "saldo": 7333.5,
+  "saldo": 7329.03,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-20 02:00:05",
-  "saldo": 7341.97,
+  "saldo": 7337.5,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-20 03:00:16",
-  "saldo": 7342.75,
+  "saldo": 7338.28,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-20 03:59:19",
-  "saldo": 7331.21,
+  "saldo": 7326.74,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-20 04:00:18",
-  "saldo": 7338.93,
+  "saldo": 7334.46,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-20 04:00:18",
-  "saldo": 7315.14,
+  "saldo": 7310.67,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-20 05:00:17",
-  "saldo": 7308.27,
+  "saldo": 7303.8,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-20 05:36:30",
-  "saldo": 7336.48,
+  "saldo": 7332.01,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-20 05:36:30",
-  "saldo": 7364.69,
+  "saldo": 7360.22,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-20 06:00:15",
-  "saldo": 7364.67,
+  "saldo": 7360.2,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-20 08:30:17",
-  "saldo": 7350.14,
+  "saldo": 7345.67,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-20 08:30:18",
-  "saldo": 7377.58,
+  "saldo": 7373.11,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-20 10:00:28",
-  "saldo": 7382.42,
+  "saldo": 7377.95,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-20 10:00:28",
-  "saldo": 7382.23,
+  "saldo": 7377.76,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-20 11:40:08",
-  "saldo": 7375.19,
+  "saldo": 7370.72,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-20 12:14:37",
-  "saldo": 7375.14,
+  "saldo": 7370.67,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-20 12:30:16",
-  "saldo": 7375.16,
+  "saldo": 7370.69,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-20 12:30:17",
-  "saldo": 7373.83,
+  "saldo": 7369.36,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-20 12:30:17",
-  "saldo": 7373.97,
+  "saldo": 7369.5,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-20 13:00:25",
-  "saldo": 7373.97,
+  "saldo": 7369.5,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-20 13:30:15",
-  "saldo": 7382.72,
+  "saldo": 7378.25,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-20 13:59:45",
-  "saldo": 7371.34,
+  "saldo": 7366.88,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-20 14:00:27",
-  "saldo": 7376.7,
+  "saldo": 7372.23,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-20 14:00:35",
-  "saldo": 7351.31,
+  "saldo": 7346.84,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-20 14:00:51",
-  "saldo": 7383.66,
+  "saldo": 7379.19,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-20 14:07:06",
-  "saldo": 7372.77,
+  "saldo": 7368.3,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-20 14:07:30",
-  "saldo": 7362.31,
+  "saldo": 7357.84,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-20 14:07:32",
-  "saldo": 7361.91,
+  "saldo": 7357.44,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-20 14:08:33",
-  "saldo": 7354.65,
+  "saldo": 7350.18,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-20 14:10:26",
-  "saldo": 7332.68,
+  "saldo": 7328.21,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-20 14:12:02",
-  "saldo": 7344.34,
+  "saldo": 7339.87,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-20 14:15:01",
-  "saldo": 7335.86,
+  "saldo": 7331.39,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-20 14:15:10",
-  "saldo": 7326.19,
+  "saldo": 7321.72,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-20 14:30:20",
-  "saldo": 7313.1,
+  "saldo": 7308.63,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-20 14:30:21",
-  "saldo": 7295.25,
+  "saldo": 7290.78,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-20 14:30:22",
-  "saldo": 7304.29,
+  "saldo": 7299.82,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-20 14:30:25",
-  "saldo": 7295.55,
+  "saldo": 7291.08,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-20 14:30:25",
-  "saldo": 7294.21,
+  "saldo": 7289.74,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-20 14:31:43",
-  "saldo": 7294.21,
+  "saldo": 7289.74,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-20 14:37:51",
-  "saldo": 7272.7,
+  "saldo": 7268.23,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-20 15:00:36",
-  "saldo": 7262.91,
+  "saldo": 7258.44,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-20 15:00:37",
-  "saldo": 7245.41,
+  "saldo": 7240.94,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-20 15:00:38",
-  "saldo": 7258.16,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-20 15:00:38",
-  "saldo": 7247.54,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-20 15:00:39",
-  "saldo": 7260.2,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-20 15:12:45",
-  "saldo": 7258.76,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-20 15:13:01",
-  "saldo": 7259.29,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-20 15:27:22",
-  "saldo": 7247.94,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-20 15:30:03",
-  "saldo": 7254.2,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-20 16:00:32",
-  "saldo": 7255.03,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-20 16:00:33",
-  "saldo": 7255.64,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-20 16:00:34",
-  "saldo": 7262.72,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-20 17:05:05",
-  "saldo": 7255.94,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-20 18:00:34",
-  "saldo": 7247.41,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-20 19:00:28",
-  "saldo": 7242.43,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-20 19:00:29",
-  "saldo": 7243.3,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-20 19:21:43",
-  "saldo": 7243.23,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-20 19:30:09",
-  "saldo": 7235.69,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-20 19:30:09",
-  "saldo": 7236.16,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-20 19:30:10",
-  "saldo": 7244.37,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-20 20:00:30",
-  "saldo": 7245.09,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-20 21:00:26",
-  "saldo": 7245.04,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-20 21:00:26",
-  "saldo": 7240.85,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-20 21:30:05",
-  "saldo": 7232.81,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-20 22:00:41",
-  "saldo": 7238.64,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-20 23:30:13",
-  "saldo": 7250.11,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-21 00:42:03",
-  "saldo": 7256.65,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-21 01:00:24",
-  "saldo": 7267.81,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-21 01:51:27",
-  "saldo": 7252.3,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-21 02:30:17",
-  "saldo": 7247.64,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-21 03:00:29",
-  "saldo": 7247.64,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-21 03:30:20",
-  "saldo": 7249.52,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-21 04:00:29",
-  "saldo": 7245.58,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-21 04:30:25",
-  "saldo": 7245.33,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-21 05:00:20",
-  "saldo": 7240.48,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-21 05:00:21",
-  "saldo": 7236.53,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-21 05:00:22",
-  "saldo": 7237.2,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-21 05:30:24",
-  "saldo": 7250.48,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-21 06:00:36",
-  "saldo": 7240.22,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-21 06:00:37",
-  "saldo": 7243.64,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-21 06:47:03",
-  "saldo": 7250.46,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-21 08:44:12",
-  "saldo": 7240.47,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-21 08:50:10",
-  "saldo": 7240.39,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-21 09:00:27",
-  "saldo": 7236.06,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-21 09:25:49",
-  "saldo": 7223.97,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-21 10:00:31",
-  "saldo": 7217.51,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-21 12:00:09",
-  "saldo": 7214.46,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-21 12:17:39",
-  "saldo": 7201.33,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-21 13:01:19",
-  "saldo": 7182.68,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-21 13:12:04",
-  "saldo": 7162.96,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-21 14:00:22",
-  "saldo": 7170.42,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-21 15:00:14",
-  "saldo": 7183.33,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-21 15:04:40",
-  "saldo": 7171.84,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-21 15:10:09",
-  "saldo": 7157.4,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-21 15:28:59",
-  "saldo": 7134.83,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-21 15:28:59",
-  "saldo": 7109.92,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-21 15:30:10",
-  "saldo": 7106.67,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-21 15:30:26",
-  "saldo": 7079.86,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-21 16:00:40",
-  "saldo": 7051.2,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-21 16:00:41",
-  "saldo": 7051.18,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-21 16:00:41",
-  "saldo": 7051.63,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-21 16:00:42",
-  "saldo": 7046.99,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-21 16:00:43",
-  "saldo": 7041.18,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-21 16:30:22",
-  "saldo": 7036.01,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-21 18:23:00",
-  "saldo": 7050.48,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-21 18:30:18",
-  "saldo": 7063.89,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-21 19:00:39",
-  "saldo": 7060.42,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-21 19:02:01",
-  "saldo": 7082.78,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-21 20:00:27",
-  "saldo": 7081.91,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-21 20:30:24",
-  "saldo": 7075.21,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-21 23:30:26",
-  "saldo": 7092.43,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-21 23:30:26",
-  "saldo": 7092.99,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-21 23:30:27",
-  "saldo": 7094.45,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-22 00:00:34",
-  "saldo": 7093.62,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-22 01:00:21",
-  "saldo": 7097.66,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-22 02:00:28",
-  "saldo": 7108.1,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-22 02:00:29",
-  "saldo": 7113.41,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-22 02:00:29",
-  "saldo": 7101.7,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-22 02:00:30",
-  "saldo": 7104.47,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-22 02:00:31",
-  "saldo": 7104.23,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-22 02:06:51",
-  "saldo": 7095.64,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-22 02:06:58",
-  "saldo": 7095.65,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-22 02:17:25",
-  "saldo": 7080.26,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-22 02:19:27",
-  "saldo": 7081.93,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-22 02:27:59",
-  "saldo": 7070.13,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-22 02:30:24",
-  "saldo": 7070.48,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-22 02:30:25",
-  "saldo": 7059.45,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-22 03:00:28",
-  "saldo": 7061.0,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-22 03:00:29",
-  "saldo": 7060.92,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-22 04:00:29",
-  "saldo": 7067.92,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-22 04:00:30",
-  "saldo": 7069.88,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-22 04:00:31",
-  "saldo": 7069.12,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-22 04:39:17",
-  "saldo": 7078.05,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-22 05:15:34",
-  "saldo": 7056.64,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-22 05:31:29",
-  "saldo": 7048.77,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-22 06:00:28",
-  "saldo": 7065.22,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-22 06:34:25",
-  "saldo": 7079.56,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-22 07:11:00",
-  "saldo": 7079.43,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-22 07:13:03",
-  "saldo": 7067.62,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-22 07:30:24",
-  "saldo": 7067.61,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-22 08:00:18",
-  "saldo": 7071.8,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-22 08:00:19",
-  "saldo": 7071.8,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-22 08:34:24",
-  "saldo": 7080.88,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-22 09:00:22",
-  "saldo": 7063.23,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-22 09:00:52",
-  "saldo": 7074.76,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-22 09:12:23",
-  "saldo": 7074.54,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-22 09:12:57",
-  "saldo": 7058.93,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-22 09:30:16",
-  "saldo": 7058.51,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-22 10:00:30",
-  "saldo": 7068.83,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-22 10:00:31",
-  "saldo": 7097.42,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-22 10:00:32",
-  "saldo": 7098.65,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-22 10:30:23",
-  "saldo": 7096.04,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-22 11:00:04",
-  "saldo": 7091.46,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-22 13:08:48",
-  "saldo": 7101.59,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-22 14:00:19",
-  "saldo": 7131.69,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-22 14:00:20",
-  "saldo": 7132.15,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-22 14:00:21",
-  "saldo": 7132.15,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-22 14:30:17",
-  "saldo": 7132.15,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-22 15:00:31",
-  "saldo": 7133.79,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-22 15:00:32",
-  "saldo": 7133.56,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-22 15:12:45",
-  "saldo": 7162.65,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-22 15:30:22",
-  "saldo": 7179.72,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-22 16:48:13",
-  "saldo": 7159.48,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-22 16:50:16",
-  "saldo": 7137.37,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-22 16:50:16",
-  "saldo": 7146.33,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-22 18:45:09",
-  "saldo": 7136.0,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-22 19:00:32",
-  "saldo": 7127.17,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-22 19:00:33",
-  "saldo": 7134.04,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-22 20:00:29",
-  "saldo": 7135.91,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-22 20:50:16",
-  "saldo": 7135.91,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-22 21:00:23",
-  "saldo": 7139.8,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-22 21:00:24",
-  "saldo": 7140.51,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-23 00:00:31",
-  "saldo": 7140.51,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-23 00:30:11",
-  "saldo": 7138.56,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-23 00:30:12",
-  "saldo": 7130.77,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-23 01:00:32",
-  "saldo": 7126.76,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-23 01:00:33",
-  "saldo": 7125.68,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-23 01:00:34",
-  "saldo": 7125.69,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-23 01:45:42",
-  "saldo": 7119.88,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-23 02:00:22",
-  "saldo": 7119.29,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-23 02:00:23",
-  "saldo": 7119.31,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-23 02:32:03",
-  "saldo": 7119.31,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-23 03:00:06",
-  "saldo": 7132.96,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-23 03:00:39",
-  "saldo": 7129.86,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-23 04:00:25",
-  "saldo": 7133.34,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-23 04:00:26",
-  "saldo": 7149.17,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-23 05:00:13",
-  "saldo": 7145.04,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-23 05:00:14",
-  "saldo": 7145.31,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-23 05:30:13",
-  "saldo": 7138.77,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-23 05:32:45",
-  "saldo": 7131.55,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-23 05:42:52",
-  "saldo": 7131.55,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-23 06:00:24",
-  "saldo": 7129.47,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-23 06:00:25",
-  "saldo": 7122.98,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-23 06:11:27",
-  "saldo": 7113.55,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-23 07:00:17",
-  "saldo": 7106.51,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-23 07:00:18",
-  "saldo": 7109.96,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-23 07:30:34",
-  "saldo": 7109.42,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-23 08:00:22",
-  "saldo": 7107.01,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-23 08:16:11",
-  "saldo": 7098.46,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-23 08:35:56",
-  "saldo": 7074.08,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-23 09:30:52",
-  "saldo": 7077.34,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-23 10:20:10",
-  "saldo": 7062.97,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-23 10:30:27",
-  "saldo": 7060.94,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-23 10:30:28",
-  "saldo": 7062.56,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-23 11:00:22",
-  "saldo": 7066.64,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-23 11:00:58",
-  "saldo": 7066.35,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-23 13:18:00",
-  "saldo": 7075.64,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-23 14:00:29",
-  "saldo": 7062.7,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-23 15:30:14",
-  "saldo": 7062.75,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-23 15:30:15",
-  "saldo": 7061.75,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-23 16:00:27",
-  "saldo": 7062.56,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-23 16:00:28",
-  "saldo": 7063.39,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-23 16:55:39",
-  "saldo": 7062.95,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-23 18:00:31",
-  "saldo": 7076.4,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-23 19:00:34",
-  "saldo": 7072.2,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-23 19:13:06",
-  "saldo": 7071.92,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-23 19:30:12",
-  "saldo": 7077.1,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-23 20:00:12",
-  "saldo": 7077.11,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-23 20:00:13",
-  "saldo": 7057.81,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-23 20:20:48",
-  "saldo": 7047.11,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-23 21:19:18",
-  "saldo": 7044.44,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-23 22:00:10",
-  "saldo": 7043.16,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-23 22:30:14",
-  "saldo": 7048.47,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-23 22:31:00",
-  "saldo": 7027.31,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-23 22:48:51",
-  "saldo": 7046.5,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-23 22:50:57",
-  "saldo": 7031.91,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-23 22:53:37",
-  "saldo": 7044.25,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-23 22:53:40",
-  "saldo": 7074.11,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-23 22:53:40",
-  "saldo": 7089.32,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-23 22:53:41",
-  "saldo": 7081.63,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-23 22:53:41",
-  "saldo": 7103.26,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-23 22:53:42",
-  "saldo": 7102.97,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-24 02:46:40",
-  "saldo": 7098.95,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-24 03:04:13",
-  "saldo": 7089.47,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-24 04:00:24",
-  "saldo": 7089.38,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-24 05:00:15",
-  "saldo": 7089.15,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-24 07:57:59",
-  "saldo": 7122.7,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-24 08:00:05",
-  "saldo": 7132.13,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-24 08:00:06",
-  "saldo": 7160.96,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-24 08:19:48",
-  "saldo": 7189.96,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-24 09:04:01",
-  "saldo": 7201.26,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-24 09:35:02",
-  "saldo": 7219.26,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-24 09:35:36",
-  "saldo": 7231.37,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-24 10:05:56",
-  "saldo": 7272.21,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-24 14:15:01",
-  "saldo": 7277.66,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-24 14:15:07",
-  "saldo": 7257.7,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-24 14:16:13",
-  "saldo": 7269.21,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-24 14:16:46",
-  "saldo": 7262.91,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-24 14:17:04",
-  "saldo": 7252.35,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-24 15:09:57",
-  "saldo": 7244.26,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-24 15:16:24",
-  "saldo": 7237.34,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-24 15:18:10",
-  "saldo": 7256.77,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-24 16:00:24",
-  "saldo": 7257.24,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-24 16:00:24",
-  "saldo": 7253.73,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-24 16:00:25",
   "saldo": 7253.69,
   "tipo": "saldo"
  },
  {
+  "quando": "2026-10-20 15:00:38",
+  "saldo": 7243.07,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-20 15:00:39",
+  "saldo": 7255.73,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-20 15:12:45",
+  "saldo": 7254.29,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-20 15:13:01",
+  "saldo": 7254.82,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-20 15:27:22",
+  "saldo": 7243.47,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-20 15:30:03",
+  "saldo": 7249.73,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-20 16:00:32",
+  "saldo": 7250.56,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-20 16:00:33",
+  "saldo": 7251.17,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-20 16:00:34",
+  "saldo": 7258.25,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-20 17:05:05",
+  "saldo": 7251.47,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-20 18:00:34",
+  "saldo": 7242.94,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-20 19:00:28",
+  "saldo": 7237.96,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-20 19:00:29",
+  "saldo": 7238.83,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-20 19:21:43",
+  "saldo": 7238.76,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-20 19:30:09",
+  "saldo": 7231.22,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-20 19:30:09",
+  "saldo": 7231.69,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-20 19:30:10",
+  "saldo": 7239.9,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-20 20:00:30",
+  "saldo": 7240.62,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-20 21:00:26",
+  "saldo": 7240.57,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-20 21:00:26",
+  "saldo": 7236.38,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-20 21:30:05",
+  "saldo": 7228.34,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-20 22:00:41",
+  "saldo": 7234.17,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-20 23:30:13",
+  "saldo": 7245.64,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-21 00:42:03",
+  "saldo": 7252.18,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-21 01:00:24",
+  "saldo": 7263.34,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-21 01:51:27",
+  "saldo": 7247.83,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-21 02:30:17",
+  "saldo": 7243.17,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-21 03:00:29",
+  "saldo": 7243.17,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-21 03:30:20",
+  "saldo": 7245.05,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-21 04:00:29",
+  "saldo": 7241.11,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-21 04:30:25",
+  "saldo": 7240.86,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-21 05:00:20",
+  "saldo": 7236.01,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-21 05:00:21",
+  "saldo": 7232.06,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-21 05:00:22",
+  "saldo": 7232.73,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-21 05:30:24",
+  "saldo": 7246.01,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-21 06:00:36",
+  "saldo": 7235.75,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-21 06:00:37",
+  "saldo": 7239.17,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-21 06:47:03",
+  "saldo": 7245.99,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-21 08:44:12",
+  "saldo": 7236.0,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-21 08:50:10",
+  "saldo": 7235.92,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-21 09:00:27",
+  "saldo": 7231.59,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-21 09:25:49",
+  "saldo": 7219.5,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-21 10:00:31",
+  "saldo": 7213.04,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-21 12:00:09",
+  "saldo": 7209.99,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-21 12:17:39",
+  "saldo": 7196.86,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-21 13:01:19",
+  "saldo": 7178.21,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-21 13:12:04",
+  "saldo": 7158.49,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-21 14:00:22",
+  "saldo": 7165.95,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-21 15:00:14",
+  "saldo": 7178.86,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-21 15:04:40",
+  "saldo": 7167.37,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-21 15:10:09",
+  "saldo": 7152.93,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-21 15:28:59",
+  "saldo": 7130.36,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-21 15:28:59",
+  "saldo": 7105.45,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-21 15:30:10",
+  "saldo": 7102.2,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-21 15:30:26",
+  "saldo": 7075.39,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-21 16:00:40",
+  "saldo": 7046.73,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-21 16:00:41",
+  "saldo": 7046.71,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-21 16:00:41",
+  "saldo": 7047.16,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-21 16:00:42",
+  "saldo": 7042.52,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-21 16:00:43",
+  "saldo": 7036.71,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-21 16:30:22",
+  "saldo": 7031.54,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-21 18:23:00",
+  "saldo": 7046.01,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-21 18:30:18",
+  "saldo": 7059.42,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-21 19:00:39",
+  "saldo": 7055.95,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-21 19:02:01",
+  "saldo": 7078.31,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-21 20:00:27",
+  "saldo": 7077.44,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-21 20:30:24",
+  "saldo": 7070.74,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-21 23:30:26",
+  "saldo": 7087.96,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-21 23:30:26",
+  "saldo": 7088.52,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-21 23:30:27",
+  "saldo": 7089.98,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-22 00:00:34",
+  "saldo": 7089.15,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-22 01:00:21",
+  "saldo": 7093.19,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-22 02:00:28",
+  "saldo": 7103.63,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-22 02:00:29",
+  "saldo": 7108.94,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-22 02:00:29",
+  "saldo": 7097.23,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-22 02:00:30",
+  "saldo": 7100.0,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-22 02:00:31",
+  "saldo": 7099.76,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-22 02:06:51",
+  "saldo": 7091.17,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-22 02:06:58",
+  "saldo": 7091.18,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-22 02:17:25",
+  "saldo": 7075.79,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-22 02:19:27",
+  "saldo": 7077.46,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-22 02:27:59",
+  "saldo": 7065.66,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-22 02:30:24",
+  "saldo": 7066.01,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-22 02:30:25",
+  "saldo": 7054.98,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-22 03:00:28",
+  "saldo": 7056.53,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-22 03:00:29",
+  "saldo": 7056.45,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-22 04:00:29",
+  "saldo": 7063.45,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-22 04:00:30",
+  "saldo": 7065.41,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-22 04:00:31",
+  "saldo": 7064.65,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-22 04:39:17",
+  "saldo": 7073.58,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-22 05:15:34",
+  "saldo": 7052.17,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-22 05:31:29",
+  "saldo": 7044.3,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-22 06:00:28",
+  "saldo": 7060.75,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-22 06:34:25",
+  "saldo": 7075.09,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-22 07:11:00",
+  "saldo": 7074.96,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-22 07:13:03",
+  "saldo": 7063.15,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-22 07:30:24",
+  "saldo": 7063.14,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-22 08:00:18",
+  "saldo": 7067.33,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-22 08:00:19",
+  "saldo": 7067.33,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-22 08:34:24",
+  "saldo": 7076.41,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-22 09:00:22",
+  "saldo": 7058.76,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-22 09:00:52",
+  "saldo": 7070.29,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-22 09:12:23",
+  "saldo": 7070.07,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-22 09:12:57",
+  "saldo": 7054.46,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-22 09:30:16",
+  "saldo": 7054.04,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-22 10:00:30",
+  "saldo": 7064.36,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-22 10:00:31",
+  "saldo": 7092.95,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-22 10:00:32",
+  "saldo": 7094.18,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-22 10:30:23",
+  "saldo": 7091.57,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-22 11:00:04",
+  "saldo": 7086.99,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-22 13:08:48",
+  "saldo": 7097.12,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-22 14:00:19",
+  "saldo": 7127.22,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-22 14:00:20",
+  "saldo": 7127.68,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-22 14:00:21",
+  "saldo": 7127.68,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-22 14:30:17",
+  "saldo": 7127.68,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-22 15:00:31",
+  "saldo": 7129.32,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-22 15:00:32",
+  "saldo": 7129.09,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-22 15:12:45",
+  "saldo": 7158.18,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-22 15:30:22",
+  "saldo": 7175.25,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-22 16:48:13",
+  "saldo": 7155.01,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-22 16:50:16",
+  "saldo": 7132.9,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-22 16:50:16",
+  "saldo": 7141.86,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-22 18:45:09",
+  "saldo": 7131.53,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-22 19:00:32",
+  "saldo": 7122.7,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-22 19:00:33",
+  "saldo": 7129.57,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-22 20:00:29",
+  "saldo": 7131.44,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-22 20:50:16",
+  "saldo": 7131.44,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-22 21:00:23",
+  "saldo": 7135.33,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-22 21:00:24",
+  "saldo": 7136.04,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-23 00:00:31",
+  "saldo": 7136.04,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-23 00:30:11",
+  "saldo": 7134.09,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-23 00:30:12",
+  "saldo": 7126.3,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-23 01:00:32",
+  "saldo": 7122.29,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-23 01:00:33",
+  "saldo": 7121.21,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-23 01:00:34",
+  "saldo": 7121.22,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-23 01:45:42",
+  "saldo": 7115.41,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-23 02:00:22",
+  "saldo": 7114.82,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-23 02:00:23",
+  "saldo": 7114.84,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-23 02:32:03",
+  "saldo": 7114.84,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-23 03:00:06",
+  "saldo": 7128.49,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-23 03:00:39",
+  "saldo": 7125.39,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-23 04:00:25",
+  "saldo": 7128.87,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-23 04:00:26",
+  "saldo": 7144.7,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-23 05:00:13",
+  "saldo": 7140.57,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-23 05:00:14",
+  "saldo": 7140.84,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-23 05:30:13",
+  "saldo": 7134.3,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-23 05:32:45",
+  "saldo": 7127.08,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-23 05:42:52",
+  "saldo": 7127.08,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-23 06:00:24",
+  "saldo": 7125.0,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-23 06:00:25",
+  "saldo": 7118.51,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-23 06:11:27",
+  "saldo": 7109.08,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-23 07:00:17",
+  "saldo": 7102.04,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-23 07:00:18",
+  "saldo": 7105.49,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-23 07:30:34",
+  "saldo": 7104.95,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-23 08:00:22",
+  "saldo": 7102.54,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-23 08:16:11",
+  "saldo": 7093.99,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-23 08:35:56",
+  "saldo": 7069.61,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-23 09:30:52",
+  "saldo": 7072.87,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-23 10:20:10",
+  "saldo": 7058.5,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-23 10:30:27",
+  "saldo": 7056.47,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-23 10:30:28",
+  "saldo": 7058.09,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-23 11:00:22",
+  "saldo": 7062.17,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-23 11:00:58",
+  "saldo": 7061.88,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-23 13:18:00",
+  "saldo": 7071.17,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-23 14:00:29",
+  "saldo": 7058.23,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-23 15:30:14",
+  "saldo": 7058.28,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-23 15:30:15",
+  "saldo": 7057.28,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-23 16:00:27",
+  "saldo": 7058.09,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-23 16:00:28",
+  "saldo": 7058.92,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-23 16:55:39",
+  "saldo": 7058.48,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-23 18:00:31",
+  "saldo": 7071.93,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-23 19:00:34",
+  "saldo": 7067.73,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-23 19:13:06",
+  "saldo": 7067.45,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-23 19:30:12",
+  "saldo": 7072.63,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-23 20:00:12",
+  "saldo": 7072.64,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-23 20:00:13",
+  "saldo": 7053.34,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-23 20:20:48",
+  "saldo": 7042.64,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-23 21:19:18",
+  "saldo": 7039.97,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-23 22:00:10",
+  "saldo": 7038.69,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-23 22:30:14",
+  "saldo": 7044.0,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-23 22:31:00",
+  "saldo": 7022.84,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-23 22:48:51",
+  "saldo": 7042.03,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-23 22:50:57",
+  "saldo": 7027.44,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-23 22:53:37",
+  "saldo": 7039.78,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-23 22:53:40",
+  "saldo": 7069.64,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-23 22:53:40",
+  "saldo": 7084.85,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-23 22:53:41",
+  "saldo": 7077.16,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-23 22:53:41",
+  "saldo": 7098.79,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-23 22:53:42",
+  "saldo": 7098.5,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-24 02:46:40",
+  "saldo": 7094.48,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-24 03:04:13",
+  "saldo": 7085.0,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-24 04:00:24",
+  "saldo": 7084.91,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-24 05:00:15",
+  "saldo": 7084.68,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-24 07:57:59",
+  "saldo": 7118.23,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-24 08:00:05",
+  "saldo": 7127.66,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-24 08:00:06",
+  "saldo": 7156.49,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-24 08:19:48",
+  "saldo": 7185.49,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-24 09:04:01",
+  "saldo": 7196.79,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-24 09:35:02",
+  "saldo": 7214.79,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-24 09:35:36",
+  "saldo": 7226.9,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-24 10:05:56",
+  "saldo": 7267.74,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-24 14:15:01",
+  "saldo": 7273.19,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-24 14:15:07",
+  "saldo": 7253.23,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-24 14:16:13",
+  "saldo": 7264.74,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-24 14:16:46",
+  "saldo": 7258.44,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-24 14:17:04",
+  "saldo": 7247.88,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-24 15:09:57",
+  "saldo": 7239.79,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-24 15:16:24",
+  "saldo": 7232.87,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-24 15:18:10",
+  "saldo": 7252.3,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-24 16:00:24",
+  "saldo": 7252.77,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-24 16:00:24",
+  "saldo": 7249.26,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-24 16:00:25",
+  "saldo": 7249.22,
+  "tipo": "saldo"
+ },
+ {
   "quando": "2026-10-24 16:29:04",
-  "saldo": 7294.04,
+  "saldo": 7289.57,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-24 16:31:52",
-  "saldo": 7335.45,
+  "saldo": 7330.98,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-24 17:00:24",
-  "saldo": 7346.99,
+  "saldo": 7342.52,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-24 17:00:24",
-  "saldo": 7343.13,
+  "saldo": 7338.66,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-24 18:30:23",
-  "saldo": 7344.96,
+  "saldo": 7340.49,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-24 20:00:38",
-  "saldo": 7344.96,
+  "saldo": 7340.49,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-24 23:00:27",
-  "saldo": 7345.08,
+  "saldo": 7340.61,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-24 23:32:49",
-  "saldo": 7340.0,
+  "saldo": 7335.53,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-24 23:33:18",
-  "saldo": 7334.88,
+  "saldo": 7330.41,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-25 00:00:23",
-  "saldo": 7334.8,
+  "saldo": 7330.33,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-25 00:00:23",
-  "saldo": 7317.1,
+  "saldo": 7312.63,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-25 00:00:24",
-  "saldo": 7317.29,
+  "saldo": 7312.82,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-25 00:00:24",
-  "saldo": 7313.09,
+  "saldo": 7308.62,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-25 00:30:02",
-  "saldo": 7338.84,
+  "saldo": 7334.37,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-25 00:30:03",
-  "saldo": 7340.7,
+  "saldo": 7336.23,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-25 01:00:04",
-  "saldo": 7340.77,
+  "saldo": 7336.3,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-25 02:00:28",
-  "saldo": 7338.13,
+  "saldo": 7333.66,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-25 02:30:07",
-  "saldo": 7335.93,
+  "saldo": 7331.46,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-25 03:00:22",
-  "saldo": 7337.33,
+  "saldo": 7332.86,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-25 04:00:23",
-  "saldo": 7334.12,
+  "saldo": 7329.65,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-25 05:30:01",
-  "saldo": 7348.1,
+  "saldo": 7343.63,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-25 06:00:20",
-  "saldo": 7363.69,
+  "saldo": 7359.22,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-25 06:00:20",
-  "saldo": 7367.61,
+  "saldo": 7363.14,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-25 06:44:37",
-  "saldo": 7374.03,
+  "saldo": 7369.56,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-25 07:00:11",
-  "saldo": 7392.29,
+  "saldo": 7387.82,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-25 07:00:11",
-  "saldo": 7397.69,
+  "saldo": 7393.22,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-25 08:30:12",
-  "saldo": 7397.12,
+  "saldo": 7392.65,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-25 08:52:24",
-  "saldo": 7447.14,
+  "saldo": 7442.67,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-25 08:54:15",
-  "saldo": 7439.16,
+  "saldo": 7434.69,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-25 09:13:09",
-  "saldo": 7454.19,
+  "saldo": 7449.72,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-25 10:00:12",
-  "saldo": 7454.49,
+  "saldo": 7450.02,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-25 10:00:13",
-  "saldo": 7450.64,
+  "saldo": 7446.17,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-25 13:35:40",
-  "saldo": 7460.96,
+  "saldo": 7456.49,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-25 14:26:37",
-  "saldo": 7506.61,
+  "saldo": 7502.14,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-25 14:26:37",
-  "saldo": 7552.21,
+  "saldo": 7547.74,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-25 15:00:21",
-  "saldo": 7538.53,
+  "saldo": 7534.06,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-25 15:00:32",
-  "saldo": 7539.9,
+  "saldo": 7535.43,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-25 15:00:33",
-  "saldo": 7538.2,
+  "saldo": 7533.73,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-25 15:00:34",
-  "saldo": 7524.05,
+  "saldo": 7519.58,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-25 16:00:32",
-  "saldo": 7516.91,
+  "saldo": 7512.44,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-25 17:00:12",
-  "saldo": 7516.84,
+  "saldo": 7512.37,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-25 17:00:12",
-  "saldo": 7516.84,
+  "saldo": 7512.37,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-25 17:00:13",
-  "saldo": 7504.55,
+  "saldo": 7500.08,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-25 18:00:18",
-  "saldo": 7504.64,
+  "saldo": 7500.17,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-25 18:00:19",
-  "saldo": 7512.22,
+  "saldo": 7507.75,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-25 18:47:45",
-  "saldo": 7501.8,
+  "saldo": 7497.33,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-25 20:30:04",
-  "saldo": 7503.51,
+  "saldo": 7499.04,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-25 22:00:28",
-  "saldo": 7504.53,
+  "saldo": 7500.06,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-25 22:00:29",
-  "saldo": 7506.57,
+  "saldo": 7502.1,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-25 23:00:06",
-  "saldo": 7507.03,
+  "saldo": 7502.56,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-26 01:40:33",
-  "saldo": 7494.67,
+  "saldo": 7490.2,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-26 01:46:02",
-  "saldo": 7487.41,
+  "saldo": 7482.94,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-26 03:00:24",
-  "saldo": 7487.52,
+  "saldo": 7483.05,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-26 03:00:25",
-  "saldo": 7492.0,
+  "saldo": 7487.53,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-26 03:30:30",
-  "saldo": 7530.52,
+  "saldo": 7526.05,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-26 03:49:05",
-  "saldo": 7523.41,
+  "saldo": 7518.94,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-26 03:49:34",
-  "saldo": 7551.06,
+  "saldo": 7546.59,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-26 03:50:48",
-  "saldo": 7559.47,
+  "saldo": 7555.0,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-26 04:00:23",
-  "saldo": 7565.54,
+  "saldo": 7561.07,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-26 05:00:19",
-  "saldo": 7562.43,
+  "saldo": 7557.96,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-26 05:01:40",
-  "saldo": 7557.2,
+  "saldo": 7552.73,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-26 05:30:16",
-  "saldo": 7554.1,
+  "saldo": 7549.63,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-26 06:00:23",
-  "saldo": 7554.12,
+  "saldo": 7549.65,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-26 06:00:24",
-  "saldo": 7557.53,
+  "saldo": 7553.06,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-26 08:30:07",
-  "saldo": 7557.55,
+  "saldo": 7553.08,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-26 09:00:39",
-  "saldo": 7553.02,
+  "saldo": 7548.55,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-26 10:00:36",
-  "saldo": 7553.28,
+  "saldo": 7548.81,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-26 11:00:20",
-  "saldo": 7551.86,
+  "saldo": 7547.39,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-26 11:30:20",
-  "saldo": 7563.5,
+  "saldo": 7559.03,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-26 13:30:23",
-  "saldo": 7563.42,
+  "saldo": 7558.95,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-26 14:00:30",
-  "saldo": 7561.03,
+  "saldo": 7556.56,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-26 14:00:31",
-  "saldo": 7558.86,
+  "saldo": 7554.39,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-26 14:30:15",
-  "saldo": 7559.37,
+  "saldo": 7554.9,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-26 15:00:27",
-  "saldo": 7559.25,
+  "saldo": 7554.78,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-26 15:30:10",
-  "saldo": 7568.84,
+  "saldo": 7564.37,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-26 15:30:11",
-  "saldo": 7571.52,
+  "saldo": 7567.05,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-26 15:36:36",
-  "saldo": 7564.69,
+  "saldo": 7560.22,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-26 16:00:25",
-  "saldo": 7561.99,
+  "saldo": 7557.52,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-26 16:00:26",
-  "saldo": 7569.31,
+  "saldo": 7564.84,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-26 18:00:19",
-  "saldo": 7567.0,
+  "saldo": 7562.53,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-26 19:00:33",
-  "saldo": 7570.75,
+  "saldo": 7566.28,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-26 19:00:33",
-  "saldo": 7576.04,
+  "saldo": 7571.57,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-26 22:00:21",
-  "saldo": 7575.08,
+  "saldo": 7570.61,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-26 22:00:22",
-  "saldo": 7575.11,
+  "saldo": 7570.64,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-26 23:00:19",
-  "saldo": 7575.23,
+  "saldo": 7570.76,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-27 00:00:38",
-  "saldo": 7579.94,
+  "saldo": 7575.47,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-27 00:30:17",
-  "saldo": 7580.0,
+  "saldo": 7575.53,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-27 02:30:16",
-  "saldo": 7564.62,
+  "saldo": 7560.15,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-27 04:00:19",
-  "saldo": 7564.15,
+  "saldo": 7559.68,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-27 04:00:19",
-  "saldo": 7571.11,
+  "saldo": 7566.64,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-27 04:00:20",
-  "saldo": 7569.42,
+  "saldo": 7564.95,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-27 04:30:32",
-  "saldo": 7560.42,
+  "saldo": 7555.95,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-27 05:00:17",
-  "saldo": 7562.08,
+  "saldo": 7557.61,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-27 05:32:18",
-  "saldo": 7577.39,
+  "saldo": 7572.92,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-27 07:00:27",
-  "saldo": 7575.81,
+  "saldo": 7571.34,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-27 09:30:19",
-  "saldo": 7581.83,
+  "saldo": 7577.36,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-27 09:40:10",
-  "saldo": 7581.71,
+  "saldo": 7577.24,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-27 12:00:30",
-  "saldo": 7584.7,
+  "saldo": 7580.23,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-27 12:00:31",
-  "saldo": 7584.59,
+  "saldo": 7580.12,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-27 12:30:18",
-  "saldo": 7595.95,
+  "saldo": 7591.48,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-27 15:00:05",
-  "saldo": 7599.48,
+  "saldo": 7595.01,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-27 15:00:37",
-  "saldo": 7605.44,
+  "saldo": 7600.97,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-27 16:05:30",
-  "saldo": 7592.25,
+  "saldo": 7587.78,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-27 16:19:15",
-  "saldo": 7592.39,
+  "saldo": 7587.92,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-27 16:19:15",
-  "saldo": 7596.85,
+  "saldo": 7592.38,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-27 16:19:16",
-  "saldo": 7599.92,
+  "saldo": 7595.45,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-27 16:19:16",
-  "saldo": 7619.12,
+  "saldo": 7614.65,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-27 16:19:17",
-  "saldo": 7643.27,
+  "saldo": 7638.8,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-27 16:19:18",
-  "saldo": 7645.94,
+  "saldo": 7641.47,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-27 16:19:18",
-  "saldo": 7598.02,
+  "saldo": 7593.55,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-27 16:19:19",
-  "saldo": 7590.17,
+  "saldo": 7585.7,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-27 16:19:19",
-  "saldo": 7599.8,
+  "saldo": 7595.33,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-27 16:19:20",
-  "saldo": 7606.59,
+  "saldo": 7602.12,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-27 16:19:21",
-  "saldo": 7624.64,
+  "saldo": 7620.17,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-27 16:19:21",
-  "saldo": 7621.38,
+  "saldo": 7616.91,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-27 16:19:22",
-  "saldo": 7606.49,
+  "saldo": 7602.02,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-27 16:19:23",
-  "saldo": 7604.15,
+  "saldo": 7599.68,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-27 16:19:23",
-  "saldo": 7614.33,
+  "saldo": 7609.86,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-27 16:19:24",
-  "saldo": 7614.29,
+  "saldo": 7609.82,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-27 16:19:25",
-  "saldo": 7608.98,
+  "saldo": 7604.51,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-27 16:19:25",
-  "saldo": 7610.27,
+  "saldo": 7605.8,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-27 16:19:26",
-  "saldo": 7615.84,
+  "saldo": 7611.37,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-27 16:19:26",
-  "saldo": 7646.01,
+  "saldo": 7641.54,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-27 16:19:27",
-  "saldo": 7659.6,
+  "saldo": 7655.13,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-27 16:19:27",
-  "saldo": 7638.78,
+  "saldo": 7634.31,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-27 16:19:28",
-  "saldo": 7644.48,
+  "saldo": 7640.01,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-27 16:19:29",
-  "saldo": 7644.48,
+  "saldo": 7640.01,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-27 16:19:29",
-  "saldo": 7645.49,
+  "saldo": 7641.02,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-27 16:19:30",
-  "saldo": 7635.59,
+  "saldo": 7631.12,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-27 16:19:50",
-  "saldo": 7635.59,
+  "saldo": 7631.12,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-27 16:19:51",
-  "saldo": 7635.59,
+  "saldo": 7631.12,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-27 16:19:52",
-  "saldo": 7635.58,
+  "saldo": 7631.11,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-27 19:58:28",
-  "saldo": 7632.47,
+  "saldo": 7628.0,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-27 20:00:32",
-  "saldo": 7632.55,
+  "saldo": 7628.08,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-27 20:00:32",
-  "saldo": 7631.89,
+  "saldo": 7627.42,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-27 21:00:29",
-  "saldo": 7631.94,
+  "saldo": 7627.47,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-27 21:34:47",
-  "saldo": 7633.86,
+  "saldo": 7629.39,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-27 22:00:29",
-  "saldo": 7633.93,
+  "saldo": 7629.46,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-28 00:00:34",
-  "saldo": 7633.89,
+  "saldo": 7629.42,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-28 00:00:35",
-  "saldo": 7633.46,
+  "saldo": 7628.99,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-28 00:00:36",
-  "saldo": 7632.56,
+  "saldo": 7628.09,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-28 02:00:26",
-  "saldo": 7631.42,
+  "saldo": 7626.95,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-28 04:00:21",
-  "saldo": 7631.56,
+  "saldo": 7627.09,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-28 04:00:22",
-  "saldo": 7631.4,
+  "saldo": 7626.93,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-28 06:00:28",
-  "saldo": 7630.95,
+  "saldo": 7626.48,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-28 07:00:02",
-  "saldo": 7632.99,
+  "saldo": 7628.52,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-28 08:00:32",
-  "saldo": 7632.99,
+  "saldo": 7628.52,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-28 08:00:33",
-  "saldo": 7634.98,
+  "saldo": 7630.51,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-28 08:30:20",
-  "saldo": 7636.37,
+  "saldo": 7631.9,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-28 09:41:26",
-  "saldo": 7632.29,
+  "saldo": 7627.82,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-28 10:00:36",
-  "saldo": 7631.89,
+  "saldo": 7627.42,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-28 12:02:51",
-  "saldo": 7630.16,
+  "saldo": 7625.69,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-28 12:15:08",
-  "saldo": 7627.41,
+  "saldo": 7622.94,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-28 12:30:08",
-  "saldo": 7627.27,
+  "saldo": 7622.8,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-28 12:30:09",
-  "saldo": 7627.61,
+  "saldo": 7623.14,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-28 12:35:17",
-  "saldo": 7626.23,
+  "saldo": 7621.76,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-28 12:47:47",
-  "saldo": 7629.15,
+  "saldo": 7624.68,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-28 13:00:10",
-  "saldo": 7626.98,
+  "saldo": 7622.51,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-28 13:00:10",
-  "saldo": 7627.76,
+  "saldo": 7623.29,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-28 15:00:03",
-  "saldo": 7628.85,
+  "saldo": 7624.38,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-28 16:46:32",
-  "saldo": 7626.99,
+  "saldo": 7622.52,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-28 17:30:12",
-  "saldo": 7625.93,
+  "saldo": 7621.46,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-28 18:00:16",
-  "saldo": 7626.27,
+  "saldo": 7621.8,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-28 18:40:39",
-  "saldo": 7626.25,
+  "saldo": 7621.78,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-28 19:33:03",
-  "saldo": 7623.16,
+  "saldo": 7618.69,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-28 19:33:05",
-  "saldo": 7621.5,
+  "saldo": 7617.03,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-28 20:00:34",
-  "saldo": 7619.94,
+  "saldo": 7615.47,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-28 20:00:35",
-  "saldo": 7619.77,
+  "saldo": 7615.3,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-28 20:00:35",
-  "saldo": 7615.63,
+  "saldo": 7611.16,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-28 20:00:36",
-  "saldo": 7613.7,
+  "saldo": 7609.23,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-28 20:00:37",
-  "saldo": 7613.66,
+  "saldo": 7609.19,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-28 20:01:42",
-  "saldo": 7611.08,
+  "saldo": 7606.61,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-28 20:01:48",
-  "saldo": 7606.96,
+  "saldo": 7602.49,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-28 20:01:48",
-  "saldo": 7602.83,
+  "saldo": 7598.36,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-28 20:02:02",
-  "saldo": 7604.21,
+  "saldo": 7599.74,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-28 20:29:55",
-  "saldo": 7600.01,
+  "saldo": 7595.54,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-28 20:30:17",
-  "saldo": 7597.44,
+  "saldo": 7592.97,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-28 23:30:01",
-  "saldo": 7595.95,
+  "saldo": 7591.48,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-28 23:30:02",
-  "saldo": 7595.6,
+  "saldo": 7591.13,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 00:00:40",
-  "saldo": 7593.74,
+  "saldo": 7589.27,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 00:00:41",
-  "saldo": 7593.05,
+  "saldo": 7588.58,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 00:00:42",
-  "saldo": 7593.32,
+  "saldo": 7588.85,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 00:08:12",
-  "saldo": 7590.69,
+  "saldo": 7586.22,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 01:30:17",
-  "saldo": 7590.4,
+  "saldo": 7585.93,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 01:40:19",
-  "saldo": 7585.03,
+  "saldo": 7580.56,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 01:48:16",
-  "saldo": 7582.59,
+  "saldo": 7578.12,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 01:49:10",
-  "saldo": 7583.79,
+  "saldo": 7579.32,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 01:49:17",
-  "saldo": 7585.86,
+  "saldo": 7581.39,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 01:59:45",
-  "saldo": 7588.43,
+  "saldo": 7583.96,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 02:00:31",
-  "saldo": 7585.15,
+  "saldo": 7580.68,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 02:00:31",
-  "saldo": 7587.85,
+  "saldo": 7583.38,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 02:00:32",
-  "saldo": 7589.82,
+  "saldo": 7585.35,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 02:05:21",
-  "saldo": 7592.74,
+  "saldo": 7588.27,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 02:05:40",
-  "saldo": 7595.07,
+  "saldo": 7590.6,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 02:05:47",
-  "saldo": 7598.32,
+  "saldo": 7593.85,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 02:30:15",
-  "saldo": 7601.0,
+  "saldo": 7596.53,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 02:30:49",
-  "saldo": 7600.89,
+  "saldo": 7596.42,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 02:35:43",
-  "saldo": 7602.45,
+  "saldo": 7597.98,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 03:23:06",
-  "saldo": 7605.14,
+  "saldo": 7600.67,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 03:23:38",
-  "saldo": 7602.17,
+  "saldo": 7597.7,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 03:29:44",
-  "saldo": 7602.21,
+  "saldo": 7597.74,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 04:00:27",
-  "saldo": 7602.22,
+  "saldo": 7597.75,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 05:00:21",
-  "saldo": 7602.22,
+  "saldo": 7597.75,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 06:00:30",
-  "saldo": 7602.04,
+  "saldo": 7597.57,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 06:30:23",
-  "saldo": 7602.05,
+  "saldo": 7597.58,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 06:45:50",
-  "saldo": 7604.31,
+  "saldo": 7599.84,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 07:00:26",
-  "saldo": 7605.62,
+  "saldo": 7601.15,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 08:00:35",
-  "saldo": 7607.51,
+  "saldo": 7603.04,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 08:00:36",
-  "saldo": 7609.45,
+  "saldo": 7604.98,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 09:00:27",
-  "saldo": 7608.8,
+  "saldo": 7604.33,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 09:47:00",
-  "saldo": 7610.3,
+  "saldo": 7605.83,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 10:00:25",
-  "saldo": 7610.32,
+  "saldo": 7605.85,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 10:34:09",
-  "saldo": 7612.08,
+  "saldo": 7607.61,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 10:34:48",
-  "saldo": 7614.32,
+  "saldo": 7609.85,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 10:39:06",
-  "saldo": 7616.68,
+  "saldo": 7612.21,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 10:39:52",
-  "saldo": 7616.85,
+  "saldo": 7612.38,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 10:52:03",
-  "saldo": 7615.11,
+  "saldo": 7610.64,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 10:52:12",
-  "saldo": 7612.89,
+  "saldo": 7608.42,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 11:00:25",
-  "saldo": 7612.85,
+  "saldo": 7608.38,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 11:11:38",
-  "saldo": 7610.01,
+  "saldo": 7605.54,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 12:00:36",
-  "saldo": 7607.92,
+  "saldo": 7603.45,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 12:51:46",
-  "saldo": 7606.34,
+  "saldo": 7601.87,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 12:59:49",
-  "saldo": 7609.39,
+  "saldo": 7604.92,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 13:00:03",
-  "saldo": 7612.78,
+  "saldo": 7608.31,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 13:00:27",
-  "saldo": 7616.1,
+  "saldo": 7611.63,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 14:00:22",
-  "saldo": 7613.01,
+  "saldo": 7608.54,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 14:00:23",
-  "saldo": 7614.28,
+  "saldo": 7609.81,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 14:17:53",
-  "saldo": 7610.9,
+  "saldo": 7606.43,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 14:30:21",
-  "saldo": 7609.75,
+  "saldo": 7605.28,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 14:35:08",
-  "saldo": 7607.24,
+  "saldo": 7602.77,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 14:36:35",
-  "saldo": 7603.52,
+  "saldo": 7599.05,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 14:36:35",
-  "saldo": 7599.8,
+  "saldo": 7595.33,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 15:15:34",
-  "saldo": 7598.79,
+  "saldo": 7594.32,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 15:33:23",
-  "saldo": 7594.17,
+  "saldo": 7589.7,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 16:00:29",
-  "saldo": 7589.9,
+  "saldo": 7585.43,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 16:00:30",
-  "saldo": 7596.25,
+  "saldo": 7591.78,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 16:00:31",
-  "saldo": 7593.65,
+  "saldo": 7589.18,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 16:00:33",
-  "saldo": 7594.34,
+  "saldo": 7589.87,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 16:06:49",
-  "saldo": 7592.02,
+  "saldo": 7587.55,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 16:06:56",
-  "saldo": 7589.73,
+  "saldo": 7585.26,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 16:07:01",
-  "saldo": 7592.47,
+  "saldo": 7588.0,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 16:08:47",
-  "saldo": 7587.07,
+  "saldo": 7582.6,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 16:09:21",
-  "saldo": 7582.46,
+  "saldo": 7577.99,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 16:30:28",
-  "saldo": 7578.53,
+  "saldo": 7574.06,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 18:00:27",
-  "saldo": 7577.06,
+  "saldo": 7572.59,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 18:23:14",
-  "saldo": 7575.36,
+  "saldo": 7570.89,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 19:00:29",
-  "saldo": 7573.86,
+  "saldo": 7569.39,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 20:00:31",
-  "saldo": 7572.34,
+  "saldo": 7567.87,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 20:02:01",
-  "saldo": 7573.92,
+  "saldo": 7569.45,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 20:03:58",
-  "saldo": 7571.46,
+  "saldo": 7566.99,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 20:04:16",
-  "saldo": 7573.75,
+  "saldo": 7569.28,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 20:06:41",
-  "saldo": 7572.88,
+  "saldo": 7568.41,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 20:28:49",
-  "saldo": 7569.89,
+  "saldo": 7565.42,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 20:30:13",
-  "saldo": 7565.82,
+  "saldo": 7561.35,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 20:33:53",
-  "saldo": 7568.21,
+  "saldo": 7563.74,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 20:36:27",
-  "saldo": 7570.24,
+  "saldo": 7565.77,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 20:37:30",
-  "saldo": 7565.84,
+  "saldo": 7561.37,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 20:40:46",
-  "saldo": 7569.18,
+  "saldo": 7564.71,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 20:41:19",
-  "saldo": 7564.93,
+  "saldo": 7560.46,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 20:42:01",
-  "saldo": 7570.11,
+  "saldo": 7565.64,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 20:42:10",
-  "saldo": 7573.21,
+  "saldo": 7568.74,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 20:42:15",
-  "saldo": 7574.74,
+  "saldo": 7570.27,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 20:42:23",
-  "saldo": 7578.21,
+  "saldo": 7573.74,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 20:42:27",
-  "saldo": 7582.13,
+  "saldo": 7577.66,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 20:42:27",
-  "saldo": 7586.07,
+  "saldo": 7581.6,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 20:42:27",
-  "saldo": 7625.32,
+  "saldo": 7620.85,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 20:43:13",
-  "saldo": 7630.6,
+  "saldo": 7626.13,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 20:43:13",
-  "saldo": 7627.48,
+  "saldo": 7623.01,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 20:45:19",
-  "saldo": 7634.3,
+  "saldo": 7629.83,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 20:45:22",
-  "saldo": 7637.65,
+  "saldo": 7633.18,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 20:45:23",
-  "saldo": 7643.32,
+  "saldo": 7638.85,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 20:46:47",
-  "saldo": 7646.55,
+  "saldo": 7642.08,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 20:47:23",
-  "saldo": 7652.62,
+  "saldo": 7648.15,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 21:00:29",
-  "saldo": 7655.87,
+  "saldo": 7651.4,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 21:00:29",
-  "saldo": 7661.42,
+  "saldo": 7656.95,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 21:18:59",
-  "saldo": 7664.97,
+  "saldo": 7660.5,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 21:37:31",
-  "saldo": 7665.04,
+  "saldo": 7660.57,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 21:51:34",
-  "saldo": 7658.56,
+  "saldo": 7654.09,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 22:00:27",
-  "saldo": 7661.98,
+  "saldo": 7657.51,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 22:00:28",
-  "saldo": 7667.58,
+  "saldo": 7663.11,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 22:00:28",
-  "saldo": 7672.33,
+  "saldo": 7667.86,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 22:00:29",
-  "saldo": 7681.24,
+  "saldo": 7676.77,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 22:07:31",
-  "saldo": 7685.27,
+  "saldo": 7680.8,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-29 23:02:30",
-  "saldo": 7682.17,
+  "saldo": 7677.7,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-30 00:00:33",
-  "saldo": 7686.57,
+  "saldo": 7682.1,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-30 00:10:54",
-  "saldo": 7690.37,
+  "saldo": 7685.9,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-30 00:11:02",
-  "saldo": 7692.47,
+  "saldo": 7688.0,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-30 00:18:39",
-  "saldo": 7698.95,
+  "saldo": 7694.48,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-30 00:18:45",
-  "saldo": 7709.82,
+  "saldo": 7705.35,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-30 00:18:46",
-  "saldo": 7711.21,
+  "saldo": 7706.74,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-30 00:18:52",
-  "saldo": 7713.3,
+  "saldo": 7708.83,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-30 00:18:54",
-  "saldo": 7715.92,
+  "saldo": 7711.45,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-30 00:18:56",
-  "saldo": 7711.58,
+  "saldo": 7707.11,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-30 00:22:01",
-  "saldo": 7713.51,
+  "saldo": 7709.04,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-30 00:23:18",
-  "saldo": 7719.48,
+  "saldo": 7715.01,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-30 00:23:18",
-  "saldo": 7714.54,
+  "saldo": 7710.07,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-30 00:23:20",
-  "saldo": 7772.59,
+  "saldo": 7768.12,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-30 00:23:29",
-  "saldo": 7781.1,
+  "saldo": 7776.63,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-30 00:30:09",
-  "saldo": 7786.18,
+  "saldo": 7781.71,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-30 00:35:09",
-  "saldo": 7790.77,
+  "saldo": 7786.3,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-30 00:53:31",
-  "saldo": 7793.22,
+  "saldo": 7788.75,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-30 01:01:00",
-  "saldo": 7796.49,
+  "saldo": 7792.02,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-30 02:01:16",
-  "saldo": 7801.81,
+  "saldo": 7797.34,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-30 02:04:09",
-  "saldo": 7797.88,
+  "saldo": 7793.41,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-30 02:04:10",
-  "saldo": 7793.25,
+  "saldo": 7788.78,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-30 02:37:51",
-  "saldo": 7788.86,
+  "saldo": 7784.39,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-30 03:00:20",
-  "saldo": 7790.82,
+  "saldo": 7786.35,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-30 03:00:21",
-  "saldo": 7800.37,
+  "saldo": 7795.9,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-30 03:30:25",
-  "saldo": 7805.05,
+  "saldo": 7800.58,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-30 03:31:09",
-  "saldo": 7805.56,
+  "saldo": 7801.09,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-30 03:31:17",
-  "saldo": 7808.25,
+  "saldo": 7803.78,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-30 03:56:23",
-  "saldo": 7811.96,
+  "saldo": 7807.49,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-30 04:30:23",
-  "saldo": 7808.76,
+  "saldo": 7804.29,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-30 04:41:54",
-  "saldo": 7813.96,
+  "saldo": 7809.49,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-30 04:46:55",
-  "saldo": 7810.02,
+  "saldo": 7805.55,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-30 04:49:38",
-  "saldo": 7811.54,
+  "saldo": 7807.07,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-30 05:00:22",
-  "saldo": 7811.42,
+  "saldo": 7806.95,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-30 05:00:22",
-  "saldo": 7811.72,
+  "saldo": 7807.25,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-30 05:01:33",
-  "saldo": 7806.9,
+  "saldo": 7802.43,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-30 05:02:26",
-  "saldo": 7801.93,
+  "saldo": 7797.46,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-30 05:02:36",
-  "saldo": 7800.16,
+  "saldo": 7795.69,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-30 05:36:09",
-  "saldo": 7803.86,
+  "saldo": 7799.39,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-30 06:59:05",
-  "saldo": 7801.58,
+  "saldo": 7797.11,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-30 07:00:02",
-  "saldo": 7803.69,
+  "saldo": 7799.22,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-30 07:01:13",
-  "saldo": 7801.69,
+  "saldo": 7797.22,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-30 10:00:22",
-  "saldo": 7801.8,
+  "saldo": 7797.33,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-30 10:53:36",
-  "saldo": 7801.73,
+  "saldo": 7797.26,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-30 11:00:30",
-  "saldo": 7800.91,
+  "saldo": 7796.44,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-30 12:00:42",
-  "saldo": 7800.54,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-30 14:50:49",
-  "saldo": 7802.09,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-30 14:55:51",
-  "saldo": 7804.22,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-30 15:02:06",
-  "saldo": 7802.23,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-30 15:06:59",
-  "saldo": 7799.68,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-30 15:09:56",
-  "saldo": 7804.77,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-30 15:23:57",
-  "saldo": 7807.16,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-30 15:30:45",
-  "saldo": 7804.27,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-30 15:59:45",
-  "saldo": 7800.82,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-30 16:00:24",
-  "saldo": 7797.53,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-30 16:00:25",
-  "saldo": 7801.0,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-30 18:48:22",
-  "saldo": 7802.36,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-30 18:52:22",
-  "saldo": 7788.22,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-30 19:30:05",
-  "saldo": 7785.85,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-30 19:56:35",
-  "saldo": 7790.56,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-30 20:00:30",
-  "saldo": 7791.85,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-30 21:00:04",
-  "saldo": 7794.79,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-10-30 22:00:01",
   "saldo": 7796.07,
   "tipo": "saldo"
  },
  {
+  "quando": "2026-10-30 14:50:49",
+  "saldo": 7797.62,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-30 14:55:51",
+  "saldo": 7799.75,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-30 15:02:06",
+  "saldo": 7797.76,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-30 15:06:59",
+  "saldo": 7795.21,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-30 15:09:56",
+  "saldo": 7800.3,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-30 15:23:57",
+  "saldo": 7802.69,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-30 15:30:45",
+  "saldo": 7799.8,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-30 15:59:45",
+  "saldo": 7796.35,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-30 16:00:24",
+  "saldo": 7793.06,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-30 16:00:25",
+  "saldo": 7796.53,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-30 18:48:22",
+  "saldo": 7797.89,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-30 18:52:22",
+  "saldo": 7783.75,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-30 19:30:05",
+  "saldo": 7781.38,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-30 19:56:35",
+  "saldo": 7786.09,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-30 20:00:30",
+  "saldo": 7787.38,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-30 21:00:04",
+  "saldo": 7790.32,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-10-30 22:00:01",
+  "saldo": 7791.6,
+  "tipo": "saldo"
+ },
+ {
   "quando": "2026-10-30 23:00:28",
-  "saldo": 7797.61,
+  "saldo": 7793.14,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-30 23:32:55",
-  "saldo": 7802.34,
+  "saldo": 7797.87,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-31 00:00:38",
-  "saldo": 7802.04,
+  "saldo": 7797.57,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-31 00:41:22",
-  "saldo": 7801.14,
+  "saldo": 7796.67,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-31 01:30:06",
-  "saldo": 7800.38,
+  "saldo": 7795.91,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-31 02:00:18",
-  "saldo": 7800.19,
+  "saldo": 7795.72,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-31 03:00:29",
-  "saldo": 7801.75,
+  "saldo": 7797.28,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-31 04:00:30",
-  "saldo": 7802.57,
+  "saldo": 7798.1,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-31 04:00:31",
-  "saldo": 7802.37,
+  "saldo": 7797.9,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-31 06:00:18",
-  "saldo": 7804.7,
+  "saldo": 7800.23,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-31 06:50:59",
-  "saldo": 7808.93,
+  "saldo": 7804.46,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-31 07:00:28",
-  "saldo": 7810.57,
+  "saldo": 7806.1,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-31 07:00:28",
-  "saldo": 7810.57,
+  "saldo": 7806.1,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-31 08:36:34",
-  "saldo": 7806.73,
+  "saldo": 7802.26,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-31 10:00:27",
-  "saldo": 7811.16,
+  "saldo": 7806.69,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-31 10:00:28",
-  "saldo": 7813.09,
+  "saldo": 7808.62,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-31 13:30:19",
-  "saldo": 7813.13,
+  "saldo": 7808.66,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-31 14:00:19",
-  "saldo": 7817.21,
+  "saldo": 7812.74,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-31 14:00:20",
-  "saldo": 7819.74,
+  "saldo": 7815.27,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-31 14:00:21",
-  "saldo": 7821.84,
+  "saldo": 7817.37,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-31 15:36:49",
-  "saldo": 7824.22,
+  "saldo": 7819.75,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-31 15:57:15",
-  "saldo": 7827.56,
+  "saldo": 7823.09,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-31 15:57:15",
-  "saldo": 7830.9,
+  "saldo": 7826.43,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-31 16:00:26",
-  "saldo": 7822.32,
+  "saldo": 7817.85,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-31 16:00:27",
-  "saldo": 7822.19,
+  "saldo": 7817.72,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-31 16:00:28",
-  "saldo": 7820.53,
+  "saldo": 7816.06,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-31 16:00:28",
-  "saldo": 7820.65,
+  "saldo": 7816.18,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-31 16:06:22",
-  "saldo": 7823.68,
+  "saldo": 7819.21,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-31 16:10:04",
-  "saldo": 7821.62,
+  "saldo": 7817.15,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-31 19:00:25",
-  "saldo": 7824.21,
+  "saldo": 7819.74,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-31 20:00:07",
-  "saldo": 7823.82,
+  "saldo": 7819.35,
   "tipo": "saldo"
  },
  {
   "quando": "2026-10-31 21:25:18",
-  "saldo": 7818.49,
+  "saldo": 7814.02,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-01 00:00:34",
-  "saldo": 7821.71,
+  "saldo": 7817.24,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-01 00:00:35",
-  "saldo": 7821.88,
+  "saldo": 7817.41,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-01 01:00:29",
-  "saldo": 7825.89,
+  "saldo": 7821.42,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-01 01:38:05",
-  "saldo": 7825.33,
+  "saldo": 7820.86,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-01 04:31:16",
-  "saldo": 7828.37,
+  "saldo": 7823.9,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-01 06:00:03",
-  "saldo": 7828.27,
+  "saldo": 7823.8,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-01 08:00:35",
-  "saldo": 7827.74,
+  "saldo": 7823.27,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-01 09:00:22",
-  "saldo": 7833.27,
+  "saldo": 7828.8,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-01 10:00:30",
-  "saldo": 7832.81,
+  "saldo": 7828.34,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-01 12:00:31",
-  "saldo": 7834.83,
+  "saldo": 7830.36,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-01 12:00:31",
-  "saldo": 7837.49,
+  "saldo": 7833.02,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-01 13:00:24",
-  "saldo": 7837.12,
+  "saldo": 7832.65,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-01 13:36:24",
-  "saldo": 7832.18,
+  "saldo": 7827.71,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-01 14:07:07",
-  "saldo": 7830.86,
+  "saldo": 7826.39,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-01 14:48:06",
-  "saldo": 7825.27,
+  "saldo": 7820.8,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-01 15:00:19",
-  "saldo": 7825.29,
+  "saldo": 7820.82,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-01 15:30:06",
-  "saldo": 7825.09,
+  "saldo": 7820.62,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-01 18:00:30",
-  "saldo": 7827.27,
+  "saldo": 7822.8,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-01 18:00:31",
-  "saldo": 7828.37,
+  "saldo": 7823.9,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-01 18:40:11",
-  "saldo": 7830.63,
+  "saldo": 7826.16,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-01 18:50:01",
-  "saldo": 7832.39,
+  "saldo": 7827.92,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-01 19:13:12",
-  "saldo": 7832.39,
+  "saldo": 7827.92,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-01 19:30:06",
-  "saldo": 7833.95,
+  "saldo": 7829.48,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-02 00:00:46",
-  "saldo": 7836.92,
+  "saldo": 7832.45,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-02 02:00:23",
-  "saldo": 7839.02,
+  "saldo": 7834.55,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-02 04:42:50",
-  "saldo": 7840.39,
+  "saldo": 7835.92,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-02 04:43:26",
-  "saldo": 7841.85,
+  "saldo": 7837.38,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-02 06:15:48",
-  "saldo": 7840.31,
+  "saldo": 7835.84,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-02 06:30:08",
-  "saldo": 7840.31,
+  "saldo": 7835.84,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-02 06:33:24",
-  "saldo": 7843.23,
+  "saldo": 7838.76,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-02 06:54:55",
-  "saldo": 7840.66,
+  "saldo": 7836.19,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-02 08:00:25",
-  "saldo": 7842.87,
+  "saldo": 7838.4,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-02 09:15:20",
-  "saldo": 7847.68,
+  "saldo": 7843.21,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-02 09:30:11",
-  "saldo": 7849.5,
+  "saldo": 7845.03,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-02 11:55:41",
-  "saldo": 7851.07,
+  "saldo": 7846.6,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-02 12:30:19",
-  "saldo": 7852.21,
+  "saldo": 7847.74,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-02 12:41:16",
-  "saldo": 7854.5,
+  "saldo": 7850.03,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-02 13:00:29",
-  "saldo": 7856.23,
+  "saldo": 7851.76,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-02 13:17:33",
-  "saldo": 7859.06,
+  "saldo": 7854.59,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-02 13:22:04",
-  "saldo": 7857.4,
+  "saldo": 7852.93,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-02 15:58:15",
-  "saldo": 7859.83,
+  "saldo": 7855.36,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-02 15:58:21",
-  "saldo": 7857.27,
+  "saldo": 7852.8,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-02 15:58:21",
-  "saldo": 7857.78,
+  "saldo": 7853.31,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-02 15:58:21",
-  "saldo": 7860.11,
+  "saldo": 7855.64,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-02 15:58:58",
-  "saldo": 7862.58,
+  "saldo": 7858.11,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-02 16:00:17",
-  "saldo": 7865.81,
+  "saldo": 7861.34,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-02 16:00:18",
-  "saldo": 7863.43,
+  "saldo": 7858.96,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-02 16:00:18",
-  "saldo": 7864.64,
+  "saldo": 7860.17,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-02 17:10:18",
-  "saldo": 7861.2,
+  "saldo": 7856.73,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-02 17:18:09",
-  "saldo": 7856.78,
+  "saldo": 7852.31,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-02 17:23:18",
-  "saldo": 7858.68,
+  "saldo": 7854.21,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-02 17:37:58",
-  "saldo": 7864.47,
+  "saldo": 7860.0,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-02 17:37:58",
-  "saldo": 7870.3,
+  "saldo": 7865.83,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-02 18:28:38",
-  "saldo": 7866.8,
+  "saldo": 7862.33,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-02 19:33:54",
-  "saldo": 7862.84,
+  "saldo": 7858.37,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-02 19:36:24",
-  "saldo": 7866.76,
+  "saldo": 7862.29,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-02 19:37:16",
-  "saldo": 7869.22,
+  "saldo": 7864.75,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-02 19:38:52",
-  "saldo": 7874.15,
+  "saldo": 7869.68,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-02 19:38:55",
-  "saldo": 7876.41,
+  "saldo": 7871.94,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-02 19:39:50",
-  "saldo": 7872.97,
+  "saldo": 7868.5,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-02 19:41:51",
-  "saldo": 7874.22,
+  "saldo": 7869.75,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-02 20:00:23",
-  "saldo": 7870.71,
+  "saldo": 7866.24,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-02 21:00:29",
-  "saldo": 7873.09,
+  "saldo": 7868.62,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-02 22:30:24",
-  "saldo": 7875.38,
+  "saldo": 7870.91,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-02 23:00:25",
-  "saldo": 7878.39,
+  "saldo": 7873.92,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-03 00:06:28",
-  "saldo": 7880.63,
+  "saldo": 7876.16,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-03 02:00:22",
-  "saldo": 7879.38,
+  "saldo": 7874.91,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-03 02:00:24",
-  "saldo": 7880.63,
+  "saldo": 7876.16,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-03 02:25:15",
-  "saldo": 7883.84,
+  "saldo": 7879.37,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-03 02:53:33",
-  "saldo": 7886.47,
+  "saldo": 7882.0,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-03 03:01:00",
-  "saldo": 7889.19,
+  "saldo": 7884.72,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-03 03:27:42",
-  "saldo": 7891.12,
+  "saldo": 7886.65,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-03 03:28:23",
-  "saldo": 7888.29,
+  "saldo": 7883.82,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-03 07:08:30",
-  "saldo": 7890.9,
+  "saldo": 7886.43,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-03 07:09:46",
-  "saldo": 7893.59,
+  "saldo": 7889.12,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-03 10:00:05",
-  "saldo": 7892.64,
+  "saldo": 7888.17,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-03 10:00:06",
-  "saldo": 7892.17,
+  "saldo": 7887.7,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-03 10:00:06",
-  "saldo": 7891.7,
+  "saldo": 7887.23,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-03 11:07:49",
-  "saldo": 7891.89,
+  "saldo": 7887.42,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-03 11:52:27",
-  "saldo": 7887.47,
+  "saldo": 7883.0,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-03 12:00:40",
-  "saldo": 7887.88,
+  "saldo": 7883.41,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-03 12:00:41",
-  "saldo": 7890.33,
+  "saldo": 7885.86,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-03 12:00:41",
-  "saldo": 7891.08,
+  "saldo": 7886.61,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-03 12:25:17",
-  "saldo": 7888.9,
+  "saldo": 7884.43,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-03 12:45:05",
-  "saldo": 7888.95,
+  "saldo": 7884.48,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-03 13:58:33",
-  "saldo": 7889.88,
+  "saldo": 7885.41,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-03 13:58:36",
-  "saldo": 7891.22,
+  "saldo": 7886.75,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-03 14:00:49",
-  "saldo": 7893.3,
+  "saldo": 7888.83,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-03 14:34:53",
-  "saldo": 7890.57,
+  "saldo": 7886.1,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-03 17:00:04",
-  "saldo": 7890.05,
+  "saldo": 7885.58,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-03 20:00:34",
-  "saldo": 7890.06,
+  "saldo": 7885.59,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-03 20:00:34",
-  "saldo": 7893.41,
+  "saldo": 7888.94,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-03 20:13:15",
-  "saldo": 7893.37,
+  "saldo": 7888.9,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-04 01:00:32",
-  "saldo": 7893.62,
+  "saldo": 7889.15,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-04 01:30:06",
-  "saldo": 7893.31,
+  "saldo": 7888.84,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-04 02:00:01",
-  "saldo": 7892.3,
+  "saldo": 7887.83,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-04 02:00:36",
-  "saldo": 7891.75,
+  "saldo": 7887.28,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-04 02:31:02",
-  "saldo": 7895.54,
+  "saldo": 7891.07,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-04 02:58:29",
-  "saldo": 7900.03,
+  "saldo": 7895.56,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-04 02:59:47",
-  "saldo": 7897.92,
+  "saldo": 7893.45,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-04 03:00:52",
-  "saldo": 7901.33,
+  "saldo": 7896.86,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-04 03:01:07",
-  "saldo": 7906.54,
+  "saldo": 7902.07,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-04 03:02:07",
-  "saldo": 7910.56,
+  "saldo": 7906.09,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-04 03:02:09",
-  "saldo": 7907.07,
+  "saldo": 7902.6,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-04 03:02:14",
-  "saldo": 7909.53,
+  "saldo": 7905.06,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-04 03:02:20",
-  "saldo": 7915.21,
+  "saldo": 7910.74,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-04 03:09:45",
-  "saldo": 7915.15,
+  "saldo": 7910.68,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-04 04:00:30",
-  "saldo": 7917.19,
+  "saldo": 7912.72,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-04 04:00:30",
-  "saldo": 7921.5,
+  "saldo": 7917.03,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-04 04:49:37",
-  "saldo": 7958.01,
+  "saldo": 7953.54,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-04 04:49:37",
-  "saldo": 7956.5,
+  "saldo": 7952.03,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-04 04:49:37",
-  "saldo": 7956.5,
+  "saldo": 7952.03,
   "tipo": "patrimonio"
  }
 ]
