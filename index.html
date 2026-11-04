@@ -682,7 +682,7 @@ function linhaTempo(L){
 let BT=null;
 function backtest(B){
   BT=B;const st=B.stats,c=st.carteira,box=document.getElementById("bt-kpis");box.textContent="";
-  document.getElementById("bt-sub").textContent=`${FMT.dia(B.inicio)}/${B.inicio.slice(0,4)} a ${FMT.dia(B.fim)}/${B.fim.slice(0,4)}, Robo X1 + Robo X2 sem o range 4, com o risco de hoje por operação (US$ ${numV(B.risco_usd.x1)} e US$ ${numV(B.risco_usd.x2)}) sobre ${FMT.usd(B.capital)}, sem juros compostos.`;
+  document.getElementById("bt-sub").textContent=`Relatório do backtest de ${FMT.dia(B.inicio)}/${B.inicio.slice(0,4)} a ${FMT.dia(B.fim)}/${B.fim.slice(0,4)}: Robo X1 + Robo X2 sem o range 4, ${B.fonte}, levado para ${FMT.usd(B.capital)}, sem juros compostos.`;
   const k=(t,v,sub,f="usdS")=>{const d=el("div","kpi");d.append(el("p","k",t));const pv=el("p","v",FMT[f](v));sinal(pv,v,f);d.append(pv,el("p","s",sub));box.append(d)};
   k("Resultado",c.resultado,`${FMT.pctS(c.pct)} sobre ${FMT.usd(B.capital)}`);
   k("Queda máxima",c.queda,`${FMT.pctS(c.queda_pct)} do capital`+(REGRA.total!=null&&-c.queda_pct>REGRA.total?` · passa do limite total de ${pctR(REGRA.total)}`:""));
@@ -692,15 +692,16 @@ function backtest(B){
   [["carteira","XGold (os dois)"],["x1","Robo X1"],["x2","Robo X2"]].forEach(([id,nome])=>{const x=st[id],tr=el("tr");tr.append(el("td",null,nome));
     [[FMT.usdS(x.resultado),x.resultado],[FMT.usdS(x.queda)+" ("+FMT.pctS(x.queda_pct)+")",x.queda],[`${x.meses_pos} de ${x.meses}`],[FMT.usdS(x.media_mes),x.media_mes],[FMT.usdS(x.pior_mes),x.pior_mes],[FMT.usdS(x.pior_dia),x.pior_dia]]
       .forEach(([t,v])=>{const td=el("td",null,t);if(v!=null)sinal(td,v,"usdS");tr.append(td)});tb.append(tr)});
-  document.getElementById("bt-nota").textContent=`Simulação a partir das réplicas validadas contra o MT5, em múltiplos do risco de cada operação. Planejamos com ~50% disso: no teste fora da amostra o ganho por operação caiu para cerca de metade. A queda máxima é o número a respeitar: ela não encolhe junto com o lucro.`;
+  const kx=v=>numV(v,1).replace(",0","");
+  document.getElementById("bt-nota").textContent=`No relatório, cada operação arrisca em média US$ ${numV(B.risco_bt.x1)} (Robo X1) e US$ ${numV(B.risco_bt.x2)} (Robo X2) nesta escala; a conta hoje opera com US$ ${numV(B.risco_usd.x1)} e US$ ${numV(B.risco_usd.x2)} (${kx(B.risco_usd.x1/B.risco_bt.x1)}× e ${kx(B.risco_usd.x2/B.risco_bt.x2)}×), então resultado e queda ao vivo andam nessa proporção. Planejamos com ~50% do lucro: no teste fora da amostra o ganho por operação caiu para cerca de metade.`;
   graficoBt();
 }
 function graficoBt(){
   const B=BT,el0=document.getElementById("g-bt");if(!B||!window.d3||PAG!=="aderencia"||!el0.clientWidth)return;
   el0.querySelectorAll("svg").forEach(s=>s.remove());
   const pts=B.pontos.map(([d,a,b])=>({t:parseT(d+" 00:00:00"),x1:a,x2:b,c:a+b})),W=Math.max(280,el0.clientWidth),H=240,m={l:62,r:12,t:10,b:24};
-  const x=d3.scaleUtc(d3.extent(pts,p=>p.t),[m.l,W-m.r]),lim=REGRA.total!=null?-B.capital*REGRA.total:null;
-  const y=d3.scaleLinear([Math.min(lim??0,d3.min(pts,p=>Math.min(p.x1,p.x2,p.c))),d3.max(pts,p=>p.c)],[H-m.b,m.t]).nice();
+  const x=d3.scaleUtc(d3.extent(pts,p=>p.t),[m.l,W-m.r]);
+  const y=d3.scaleLinear([Math.min(0,d3.min(pts,p=>Math.min(p.x1,p.x2,p.c))),d3.max(pts,p=>p.c)],[H-m.b,m.t]).nice();
   const svg=d3.select(el0).append("svg").attr("width","100%").attr("viewBox",`0 0 ${W} ${H}`).attr("role","img").attr("aria-label","Curva do backtest da carteira").style("font-family","var(--mono)");
   svg.append("g").selectAll("line").data(y.ticks(5)).join("line").attr("x1",m.l).attr("x2",W-m.r).attr("y1",y).attr("y2",y).style("stroke",css("--grid"));
   svg.append("g").selectAll("text").data(y.ticks(5)).join("text").attr("x",m.l-8).attr("y",y).attr("dy",".32em").attr("text-anchor","end").style("font-size","11px").style("fill",css("--muted")).text(fy);
