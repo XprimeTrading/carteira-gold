@@ -141,6 +141,34 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
 .ativos .val{text-align:right;font-variant-numeric:tabular-nums}
 .ativos hr{border:none;border-top:1px dashed var(--line);margin:4px 0;width:100%}
 @media (max-width:560px){.disj{grid-template-columns:1fr 1fr}.bloco{padding:14px}}
+/* XGold no padrão do Monitor: abas Visão geral, Esperado × vivo, Geometria de risco e Linha do tempo */
+.subabas{display:flex;gap:20px;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid var(--line)}
+.subabas::-webkit-scrollbar{display:none}
+.subabas button{border:none;border-bottom:2px solid transparent;border-radius:0;background:transparent;color:var(--muted);padding:6px 0 9px;margin-bottom:-1px;font-size:13.5px;white-space:nowrap}
+.subabas button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--gold)}
+.conteudo[data-pag-on="aderencia"] [data-pag]:not([data-pag="aderencia"]),.conteudo[data-pag-on="geometria"] [data-pag]:not([data-pag="geometria"]),
+.conteudo[data-pag-on="linha"] [data-pag]:not([data-pag="linha"]),.conteudo[data-pag-on="geral"] [data-pag]:not([data-pag="geral"]){display:none!important}
+.robo-h{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.robo-h h3{display:flex;align-items:center;gap:8px}.robo-h h3 i{width:10px;height:10px;border-radius:50%}
+.cmp{width:100%;border-collapse:collapse;font-size:13px}
+.cmp th{font:500 10.5px var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.08em;text-align:right;padding:6px 8px;border-bottom:1px solid var(--line)}
+.cmp th:first-child,.cmp td:first-child{text-align:left;font-family:var(--body)}
+.cmp td{padding:8px;border-bottom:1px solid var(--grid);text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums}
+.cmp td small{display:block;font-size:11px;color:var(--muted)}
+.plano{width:100%;height:auto;display:block;touch-action:none}
+.plano .resp{animation:resp 2.4s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes resp{50%{transform:scale(1.35);opacity:.75}}
+@media (prefers-reduced-motion:reduce){.plano .resp{animation:none}}
+.leitura{font:500 12px var(--mono);color:var(--muted);min-height:1.5em}
+.leitura b{color:var(--ink);font-weight:500}
+.risco3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.linha-t{list-style:none;margin:0;padding:0 0 0 18px;border-left:1px solid var(--line);display:flex;flex-direction:column;gap:18px}
+.linha-t li{position:relative}
+.linha-t li::before{content:"";position:absolute;left:-24px;top:6px;width:11px;height:11px;border-radius:50%;background:var(--gold)}
+.linha-t li.prev::before{background:var(--bg);border:1.5px dashed var(--gold)}
+.linha-t .q{font:500 11px var(--mono);color:var(--gold);letter-spacing:.08em;text-transform:uppercase}
+.linha-t h3{margin:2px 0}
+@media (max-width:560px){.risco3{grid-template-columns:1fr 1fr}}
 </style>
 
 <div class="wrap">
@@ -174,13 +202,20 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
     <p class="note" data-cent hidden style="margin-top:6px"><b>Conta cent.</b> Na corretora o saldo é em centavos de dólar (USC); aqui tudo está convertido para US$ (100 USC = US$ 1). As operações de 01 a 03/11 foram feitas numa conta em dólar.</p>
   </div>
 
-  <div class="periodo">
+  <nav class="subabas" id="subabas" role="tablist" aria-label="Seções da carteira" hidden>
+    <button type="button" role="tab" data-sub="geral" aria-selected="true">Visão geral</button>
+    <button type="button" role="tab" data-sub="aderencia" aria-selected="false">Esperado × vivo</button>
+    <button type="button" role="tab" data-sub="geometria" aria-selected="false">Geometria de risco</button>
+    <button type="button" role="tab" data-sub="linha" aria-selected="false">Linha do tempo</button>
+  </nav>
+
+  <div class="periodo" data-pag="geral">
     <span class="rot">◇ Escopo</span>
     <div class="chips" id="chips" role="group" aria-label="Escopo dos números"></div>
     <span class="note" id="per-nota">—</span>
   </div>
 
-  <section class="bloco ouro" id="geral">
+  <section class="bloco ouro" id="geral" data-pag="geral">
     <div class="cab">
       <div>
         <p class="sec">01 <b>A conta</b></p>
@@ -224,7 +259,7 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
     </div>
   </section>
 
-  <section class="bloco" id="agora">
+  <section class="bloco" id="agora" data-pag="geral">
     <div class="cab"><div><p class="sec">02 <b>Agora</b></p><h2>Conta <em>agora</em></h2></div></div>
     <div class="kpis">
       <div class="kpi"><p class="k">Patrimônio</p><p class="v" data-v="patrimonio" data-f="usd">—</p><p class="s"><span data-v="resultado_pct" data-f="pctS">—</span> desde o início · <span data-v="flutuante" data-f="usdS">—</span> em aberto</p></div>
@@ -260,7 +295,7 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
   </section>
 
 
-  <section class="bloco" id="salas">
+  <section class="bloco" id="salas" data-pag="geral">
     <div>
       <p class="sec">03 <b>Salas</b></p>
       <h2>Salas de <em>operação</em></h2>
@@ -313,6 +348,42 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
         <p class="s">Monitora as duas salas e a conta inteira. O pregão está em <span data-v="resultado_dia" data-f="usdS">—</span>, com <b data-v="folga_dia" data-f="usd">—</b> de folga até o limite diário.</p>
       </article>
     </div>
+  </section>
+
+  <section class="bloco ouro" id="aderencia" data-pag="aderencia">
+    <div class="cab"><div>
+      <p class="sec">01 <b>Esperado × vivo</b></p>
+      <h2>O que o backtest <em>prometeu</em></h2>
+      <p class="s" id="ad-sub">—</p>
+    </div></div>
+    <div class="duas" id="ad-robos"></div>
+    <p class="note" id="ad-nota">—</p>
+  </section>
+
+  <section class="bloco" id="geometria" data-pag="geometria">
+    <div class="cab"><div>
+      <p class="sec">01 <b>Geometria de risco</b></p>
+      <h2>Acerto × <em>payoff</em></h2>
+      <p class="s">Cada robô é um ponto. Abaixo da linha de empate ele perde dinheiro; acima, ganha. O anel é o backtest e o ponto que pulsa é a conta ao vivo, com a faixa de acerto que o acaso explica para o número de operações que ele já fez.</p>
+    </div></div>
+    <svg class="plano" id="plano" viewBox="0 0 640 400" role="img" aria-label="Plano acerto × payoff dos robôs, backtest e ao vivo"></svg>
+    <p class="leitura" id="geo-leitura">Passe o dedo ou o mouse no plano para ler qualquer ponto.</p>
+    <div class="legenda" id="geo-leg"></div>
+    <div class="sub2">
+      <h3>Risco de agora <span class="rot2">posições abertas</span></h3>
+      <div class="risco3" id="geo-risco"></div>
+      <div class="rolar"><table class="cmp" id="geo-tab"><thead><tr><th>Robô</th><th>Abertas</th><th>Se os stops baterem</th><th>Se os alvos baterem</th><th>Em aberto</th></tr></thead><tbody></tbody></table></div>
+      <p class="note">Stop no preço de entrada (zero a zero) conta como US$ 0. Valores sem swap e sem comissão.</p>
+    </div>
+  </section>
+
+  <section class="bloco" id="linha" data-pag="linha">
+    <div class="cab"><div>
+      <p class="sec">01 <b>Linha do tempo</b></p>
+      <h2>A história da <em>conta</em></h2>
+      <p class="s">Corretoras, robôs e versões, do primeiro dia até agora.</p>
+    </div></div>
+    <ol class="linha-t" id="linha-lista"></ol>
   </section>
 
   <footer style="display:flex;flex-direction:column;gap:6px">
@@ -503,6 +574,103 @@ function graficoCurva(el,S,V){
 let DADOS=null;
 function desenhar(){if(!DADOS||!window.d3||!EST)return;const S=EST.escopos.find(s=>s.id===XT.esc)||EST.escopos[0];graficoCurva(document.getElementById("g-curva"),S,XT.V)}
 
+// ---------- XGold: esperado × vivo, geometria e linha do tempo ----------
+let ADER=null,PAG="geral";
+const pctV=v=>v==null?"—":String(+(v*100).toFixed(1)).replace(".",",")+"%";
+const numV=(v,d=2)=>v==null||!isFinite(v)?"—":v.toFixed(d).replace(".",",");
+const dpA=(p,n)=>Math.sqrt(p*(1-p)/n);  // desvio do acerto que o acaso explica em n operações
+// maior sequência de perdas esperada em n operações com chance de perda q (aprox. log)
+const seqEsp=(n,q)=>n<2?1:Math.max(1,Math.round(Math.log(n*(1-q))/Math.log(1/q)));
+const MIN_JULGAR=20;
+function estadoRobo(a){
+  const v=a.vivo,r=a.ref;
+  if(v.seq_atual>r.recorde_seq)return["bad","fora da estatística"];
+  if(v.trades<MIN_JULGAR)return["mudo",`aquecendo · ${v.trades} de ${MIN_JULGAR}`];
+  const z=(v.acerto-r.acerto)/dpA(r.acerto,v.trades);
+  if((v.fl||0)>=1&&z>-2)return["ok","dentro do backtest"];
+  return["warn","abaixo do backtest"];
+}
+function pagina(id){
+  PAG=id;document.getElementById("conteudo").dataset.pagOn=id;
+  document.querySelectorAll("#subabas button").forEach(b=>b.setAttribute("aria-selected",String(b.dataset.sub===id)));
+  if(id==="geral")setTimeout(()=>{window.dispatchEvent(new Event("resize"));desenhar()},30);
+  if(id==="geometria")plano();
+}
+document.querySelectorAll("#subabas button").forEach(b=>b.addEventListener("click",()=>pagina(b.dataset.sub)));
+function corRobo(a){const i=EST?EST.escopos.findIndex(s=>s.id===a.robo):-1;return corEsc(i<0?1:i)}
+function el(tag,cls,txt){const e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e}
+function aderencia(A){
+  const box=document.getElementById("ad-robos");box.textContent="";
+  document.getElementById("ad-sub").textContent=`Cada robô contra o próprio backtest (${A[0].periodo_ref}). A nota só vale a partir de ${MIN_JULGAR} operações; antes disso o robô está aquecendo.`;
+  A.forEach(a=>{
+    const r=a.ref,v=a.vivo,[est,txt]=estadoRobo(a),c=el("section","card");
+    const h=el("div","robo-h"),t=el("h3"),dot=el("i");dot.style.background=corRobo(a);t.append(dot,document.createTextNode(a.nome));
+    h.append(t,el("span","pill "+est,txt));c.append(h);
+    c.append(el("p","s",`${v.trades} operação(ões) ao vivo${v.desde?" desde "+FMT.dia(v.desde.slice(0,10)):""} · backtest com ${r.trades.toLocaleString("pt-BR")} · ${r.versao}${r.obs?" · "+r.obs:""}`));
+    const tab=el("table","cmp"),th=el("thead"),trh=el("tr");["Métrica","Backtest","Ao vivo"].forEach(x=>trh.append(el("th",null,x)));th.append(trh);tab.append(th);
+    const tb=el("tbody");tab.append(tb);
+    const faixa=v.trades?[Math.max(0,r.acerto-1.96*dpA(r.acerto,v.trades)),Math.min(1,r.acerto+1.96*dpA(r.acerto,v.trades))]:null;
+    const linha=(nome,bt,vv,nota,bom)=>{const tr=el("tr");tr.append(el("td",null,nome),el("td",null,bt));const td=el("td",null,vv);
+      if(bom!=null)td.classList.add(bom?"pos":"neg");if(nota)td.append(el("small",null,nota));tr.append(td);tb.append(tr)};
+    linha("Acerto",pctV(r.acerto),pctV(v.acerto),faixa?`faixa do acaso ${pctV(faixa[0])}–${pctV(faixa[1])}`:null,v.acerto==null?null:v.acerto>=faixa[0]);
+    linha("Payoff",numV(r.payoff),numV(v.payoff),"ganho médio ÷ perda média",v.payoff==null?null:v.payoff>=r.payoff*.8);
+    linha("Fator de lucro",numV(r.fl),numV(v.fl),null,v.fl==null?null:v.fl>=1);
+    linha("Expectativa",numV(r.acerto*r.payoff-(1-r.acerto)),v.payoff==null?"—":numV(v.acerto*v.payoff-(1-v.acerto)),"ganho por operação, em perdas médias",v.payoff==null?null:v.acerto*v.payoff-(1-v.acerto)>0);
+    linha("Operações por semana",numV(r.por_mes*12/52,1),numV(v.por_semana,1),null,null);
+    linha("Perdas seguidas",`recorde ${r.recorde_seq}`,`agora ${v.seq_atual} · maior ${v.seq_max}`,v.trades?`esperado até ~${seqEsp(v.trades,1-r.acerto)} em ${v.trades} operações`:null,v.seq_atual<=r.recorde_seq);
+    c.append(Object.assign(el("div","rolar"),{}),tab);box.append(c)});
+  const o=A.map(a=>`${a.nome} ${numV(a.ref.r_oos)} contra ${numV(a.ref.r_trade)} do risco`).join("; ");
+  document.getElementById("ad-nota").textContent=`Backtest não é promessa. No teste fora da amostra (meses que o robô não viu na escolha dos parâmetros), o ganho médio por operação caiu para cerca de metade: ${o}. Planejamos a carteira com ~50% do backtest.`;
+}
+function plano(){
+  const A=ADER;if(!A||!window.d3||PAG!=="geometria")return;
+  const svg=d3.select("#plano");svg.selectAll("*").remove();
+  const W=640,H=400,m={l:52,r:16,t:14,b:40},x=d3.scaleLinear([0,3.5],[m.l,W-m.r]),y=d3.scaleLinear([0,.8],[H-m.b,m.t]);
+  const empate=d3.range(.25,3.51,.05).map(R=>[R,1/(1+R)]);
+  svg.append("path").datum([...empate,[3.5,.8],[.25,.8]]).attr("d",d3.line().x(d=>x(d[0])).y(d=>y(Math.min(.8,d[1])))).style("fill",css("--pos")).style("opacity",.06);
+  svg.append("g").selectAll("line").data(y.ticks(4)).join("line").attr("x1",m.l).attr("x2",W-m.r).attr("y1",y).attr("y2",y).style("stroke",css("--grid"));
+  svg.append("g").selectAll("text").data(y.ticks(4)).join("text").attr("x",m.l-8).attr("y",y).attr("dy",".32em").attr("text-anchor","end").style("font","11px var(--mono)").style("fill",css("--muted")).text(d=>Math.round(d*100)+"%");
+  svg.append("g").selectAll("text").data(x.ticks(7)).join("text").attr("x",x).attr("y",H-m.b+16).attr("text-anchor","middle").style("font","11px var(--mono)").style("fill",css("--muted")).text(d=>String(d).replace(".",","));
+  svg.append("text").attr("x",(m.l+W-m.r)/2).attr("y",H-4).attr("text-anchor","middle").style("font","11px var(--mono)").style("fill",css("--muted")).text("payoff (ganho médio ÷ perda média)");
+  svg.append("text").attr("transform",`translate(12,${(m.t+H-m.b)/2}) rotate(-90)`).attr("text-anchor","middle").style("font","11px var(--mono)").style("fill",css("--muted")).text("acerto");
+  svg.append("path").datum(empate.filter(d=>d[1]<=.8)).attr("d",d3.line().x(d=>x(d[0])).y(d=>y(d[1]))).style("fill","none").style("stroke",css("--muted")).style("stroke-dasharray","4 4");
+  svg.append("text").attr("x",x(3.42)).attr("y",y(1/4.42)-8).attr("text-anchor","end").style("font","10.5px var(--mono)").style("fill",css("--muted")).text("linha de empate");
+  const leg=document.getElementById("geo-leg");leg.textContent="";
+  A.forEach(a=>{const r=a.ref,v=a.vivo,cor=corRobo(a),cx=R=>x(Math.min(3.45,R));
+    svg.append("circle").attr("cx",cx(r.payoff)).attr("cy",y(r.acerto)).attr("r",9).style("fill","none").style("stroke",cor).style("stroke-width",2);
+    if(v.payoff!=null&&v.acerto!=null){
+      const d=1.96*dpA(r.acerto,v.trades);
+      svg.append("line").attr("x1",cx(r.payoff)).attr("y1",y(r.acerto)).attr("x2",cx(v.payoff)).attr("y2",y(v.acerto)).style("stroke",cor).style("stroke-dasharray","2 3").style("opacity",.7);
+      svg.append("line").attr("x1",cx(v.payoff)).attr("x2",cx(v.payoff)).attr("y1",y(Math.max(0,v.acerto-d))).attr("y2",y(Math.min(.8,v.acerto+d))).style("stroke",cor).style("stroke-width",6).style("opacity",.18).style("stroke-linecap","round");
+      svg.append("circle").attr("class","resp").attr("cx",cx(v.payoff)).attr("cy",y(v.acerto)).attr("r",6).style("fill",cor);
+      svg.append("text").attr("x",cx(v.payoff)+10).attr("y",y(v.acerto)-8).style("font","500 11.5px var(--mono)").style("fill",css("--ink")).text(a.nome);}
+    const s=el("span"),q=el("i");q.style.background=cor;q.style.borderRadius="50%";s.append(q,document.createTextNode(`${a.nome}: anel = backtest, ponto = ao vivo (${v.trades} op.)`));leg.append(s)});
+  const lt=document.getElementById("geo-leitura");
+  svg.append("rect").attr("x",m.l).attr("y",m.t).attr("width",W-m.l-m.r).attr("height",H-m.t-m.b).style("fill","transparent").style("cursor","crosshair")
+    .on("pointermove",ev=>{const[px,py]=d3.pointer(ev),R=x.invert(px),pp=y.invert(py),e=pp*R-(1-pp);
+      lt.innerHTML="";lt.append("payoff ",el("b",null,numV(R)),", acerto ",el("b",null,pctV(pp))," → ",el("b",e>0?"pos":"neg",(e>0?"+":"")+numV(e)),` perda(s) média(s) por operação · empate com ${pctV(1/(1+R))} de acerto`)});
+}
+function risco(A){
+  const t={pos:0,stop:0,alvo:0,flu:0,sem:0};A.forEach(a=>{const o=a.aberto;t.pos+=o.posicoes;t.stop+=o.no_stop;t.alvo+=o.no_alvo;t.flu+=o.flutuante;t.sem+=o.sem_stop});
+  const base=EST?EST.base:1,box=document.getElementById("geo-risco");box.textContent="";
+  const k=(tit,v,sub)=>{const d=el("div","kpi");d.append(el("p","k",tit));const pv=el("p","v2",v==null?"—":FMT.usdS(v));if(v!=null)sinal(pv,v,"usdS");d.append(pv,el("p","s",sub));box.append(d)};
+  k("Se os stops baterem",t.pos?t.stop:0,t.pos?`${FMT.pctS(t.stop/base)} da conta · ${t.pos} posição(ões)${t.sem?` · ${t.sem} sem stop`:""}`:"nenhuma posição aberta");
+  k("Se os alvos baterem",t.pos?t.alvo:0,t.pos?`${FMT.pctS(t.alvo/base)} da conta`:"—");
+  k("Em aberto agora",t.flu,t.pos?"marcado a mercado":"—");
+  const tb=document.querySelector("#geo-tab tbody");tb.textContent="";
+  A.forEach(a=>{const o=a.aberto,tr=el("tr");tr.append(el("td",null,a.nome),el("td",null,String(o.posicoes)));
+    [o.no_stop,o.no_alvo,o.flutuante].forEach(v=>{const td=el("td",null,o.posicoes?FMT.usdS(v):"—");if(o.posicoes)sinal(td,v,"usdS");tr.append(td)});tb.append(tr)});
+}
+function linhaTempo(L){
+  const ol=document.getElementById("linha-lista");ol.textContent="";
+  [...L].reverse().forEach(e=>{const li=el("li",e.previsto?"prev":null);li.append(el("span","q",FMT.dia(e.quando)+"/"+e.quando.slice(0,4)+(e.previsto?" · previsto":"")),el("h3",null,e.titulo),el("p","s",e.texto));ol.append(li)});
+}
+function xgold(ader,linha){
+  const tem=!!(ader&&ader.length);ADER=tem?ader:null;
+  document.getElementById("subabas").hidden=!tem;
+  if(!tem){pagina("geral");return}
+  aderencia(ader);risco(ader);if(linha)linhaTempo(linha);pagina(PAG);
+}
 const AVISO={xm:"Os dados da Carteira Xprime não carregaram. Recarregue a página.",
   bybit:"Os dados da Carteira Xcrypto não carregaram. Recarregue a página."};
 let ABA=null;
@@ -512,13 +680,13 @@ function carregar(id){
   document.getElementById("conteudo").setAttribute("aria-labelledby","aba-"+id);
   const pega=n=>fetch(`dados/${id}/${n}.json?t=${Date.now()}`,{cache:"no-store"}).then(r=>{if(!r.ok)throw new Error(n);return r.json()});
   const extra=[];
-  Promise.all([...["conta","curva","dias","robos","estat"].map(pega),...extra])
-    .then(([conta,curva,dias,robos,est,fech,ativos])=>{if(ABA!==id)return;
+  Promise.all([...["conta","curva","dias","robos","estat"].map(pega),...["aderencia","linha"].map(n=>pega(n).catch(()=>null)),...extra])
+    .then(([conta,curva,dias,robos,est,ader,linha,fech,ativos])=>{if(ABA!==id)return;
       document.getElementById("aviso").hidden=true;document.getElementById("conteudo").hidden=false;
       document.getElementById("salas").hidden=id!=="xm";
       MOEDA=conta[0].moeda==="USC"?"USC ":"US$ ";
       DADOS={conta,curva,dias,robos};XT.V=situacao(conta,dias);XT.robos=robos;EST=est[0];
-      preencher(XT.V,robos);montarEscopos();XT.ouvintes.forEach(f=>f())})
+      preencher(XT.V,robos);montarEscopos();xgold(ader,linha);XT.ouvintes.forEach(f=>f())})
     .catch(e=>{if(ABA!==id)return;console.warn("dados não carregaram",e);
       const a=document.getElementById("aviso");a.textContent=AVISO[id];a.hidden=false;document.getElementById("conteudo").hidden=true});
 }
@@ -530,7 +698,7 @@ carregar(location.hash==="#bybit"?"bybit":"xm");
 // os dados são publicados a cada 6 min; a página relê a cada 2 min, sem recarregar a cena 3D
 setInterval(()=>{if(!document.hidden)carregar(ABA)},2*60e3);
 document.addEventListener("visibilitychange",()=>{if(!document.hidden&&XT.V&&Date.now()-Date.parse(XT.V.exportado)>2*60e3)carregar(ABA)});
-let rt=0;new ResizeObserver(()=>{clearTimeout(rt);rt=setTimeout(desenhar,120)}).observe(document.querySelector(".wrap"));
+let rt=0;new ResizeObserver(()=>{clearTimeout(rt);rt=setTimeout(()=>{desenhar();plano()},120)}).observe(document.querySelector(".wrap"));
 const mq=matchMedia("(prefers-color-scheme: dark)");mq.addEventListener&&mq.addEventListener("change",desenhar);
 new MutationObserver(desenhar).observe(document.documentElement,{attributes:true,attributeFilter:["data-theme"]});
 
