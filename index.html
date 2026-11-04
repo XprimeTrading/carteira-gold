@@ -383,7 +383,7 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
     <div class="kpis" id="bt-kpis"></div>
     <div class="chart baixo" id="g-bt"></div>
     <div class="legenda" id="bt-leg"></div>
-    <div class="rolar"><table class="cmp" id="bt-tab"><thead><tr><th>Escopo</th><th>Resultado</th><th>Queda máx.</th><th>Meses positivos</th><th>Média/mês</th><th>Pior mês</th><th>Pior dia</th></tr></thead><tbody></tbody></table></div>
+    <div class="rolar"><table class="cmp" id="bt-tab"><thead><tr><th>Escopo</th><th>Trades</th><th>Resultado</th><th>Acerto</th><th>FL</th><th>Queda máx.</th><th>Lucro ÷ queda</th><th>Meses positivos</th><th>Média/mês</th><th>Melhor mês</th><th>Pior mês</th><th>Sharpe</th></tr></thead><tbody></tbody></table></div>
     <p class="note" id="bt-nota">—</p>
   </section>
 
@@ -702,12 +702,15 @@ function backtest(B){
   k("Resultado",c.resultado,`${FMT.pctS(c.pct)} sobre ${FMT.usd(B.capital)}`);
   k("Queda máxima",c.queda,`${FMT.pctS(c.queda_pct)} do capital`+(REGRA.total!=null&&-c.queda_pct>REGRA.total?` · passa do limite total de ${pctR(REGRA.total)}`:""));
   k("Média por mês",c.media_mes,`${c.meses_pos} de ${c.meses} meses positivos`);
-  k("Pior mês",c.pior_mes,`pior dia ${FMT.usdS(c.pior_dia)}`);
+  k("Pior mês",c.pior_mes,`melhor mês ${FMT.usdS(c.melhor_mes)} · pior dia ${FMT.usdS(c.pior_dia)}`);
+  {const d=el("div","kpi");d.append(el("p","k","Ano a ano"));const lst=el("p","s");lst.style.cssText="font:500 13px/1.7 var(--mono);color:var(--ink)";
+   Object.entries(c.anos).forEach(([a,v],i)=>{if(i)lst.append(el("br"));const s=el("span",null,FMT.usdS(v));sinal(s,v,"usdS");lst.append(a+(+a===new Date().getUTCFullYear()?"*":"")+"  ",s)});
+   d.append(lst,el("p","s",`Sharpe ${numV(c.sharpe)} · lucro ÷ queda ${numV(c.lucro_queda,1)}`));box.append(d)}
   const tb=document.querySelector("#bt-tab tbody");tb.textContent="";
   [["carteira","XGold (os três)"],["x1","Robo X1"],["x2","Robo X2"],["x3","Robo X3"]].forEach(([id,nome])=>{const x=st[id],tr=el("tr");tr.append(el("td",null,nome));
-    [[FMT.usdS(x.resultado),x.resultado],[FMT.usdS(x.queda)+" ("+FMT.pctS(x.queda_pct)+")",x.queda],[`${x.meses_pos} de ${x.meses}`],[FMT.usdS(x.media_mes),x.media_mes],[FMT.usdS(x.pior_mes),x.pior_mes],[FMT.usdS(x.pior_dia),x.pior_dia]]
+    [[x.trades==null?"—":x.trades.toLocaleString("pt-BR")],[FMT.usdS(x.resultado),x.resultado],[pctV(x.acerto)],[numV(x.fl)],[FMT.usdS(x.queda)+" ("+FMT.pctS(x.queda_pct)+")",x.queda],[numV(x.lucro_queda,1)],[`${x.meses_pos} de ${x.meses}`],[FMT.usdS(x.media_mes),x.media_mes],[FMT.usdS(x.melhor_mes),x.melhor_mes],[FMT.usdS(x.pior_mes),x.pior_mes],[numV(x.sharpe)]]
       .forEach(([t,v])=>{const td=el("td",null,t);if(v!=null)sinal(td,v,"usdS");tr.append(td)});tb.append(tr)});
-  document.getElementById("bt-nota").textContent=`O que vale é o desenho da curva: os percentuais estão sobre ${FMT.usd(B.capital)}, e quem entrar dimensiona o próprio risco. Planejamos com ~50% do lucro: no teste fora da amostra o ganho por operação caiu para cerca de metade.`;
+  document.getElementById("bt-nota").textContent=`O que vale é o desenho da curva: os percentuais estão sobre ${FMT.usd(B.capital)}, e quem entrar dimensiona o próprio risco. Os sets foram escolhidos olhando este mesmo período: ao vivo, planejamos com 50% a 60% do lucro (no teste fora da amostra o ganho por operação caiu para cerca de metade). * ${B.fim.slice(0,4)} até ${FMT.dia(B.fim)}.`;
   graficoBt();
 }
 function graficoBt(){

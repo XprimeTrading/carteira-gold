@@ -3,16 +3,16 @@
   "robo": "robo_x1",
   "nome": "Robo X1",
   "ref": {
-   "trades": 2237,
-   "por_mes": 66.4,
-   "acerto": 0.4367,
-   "payoff": 1.907,
-   "fl": 1.478,
-   "r_trade": 0.178,
-   "recorde_seq": 15,
+   "trades": 2165,
+   "por_mes": 63.7,
+   "acerto": 0.4471,
+   "payoff": 1.86,
+   "fl": 1.504,
+   "r_trade": 0.18,
+   "recorde_seq": 14,
    "r_oos": 0.09,
    "versao": "v1.08",
-   "obs": "sem o range 4, desligado ao vivo"
+   "obs": "ranges 1, 2, 3 e 5; o range 4 fica desligado"
   },
   "periodo_ref": "01/2024 a 10/2026",
   "vivo": {
@@ -20,7 +20,7 @@
    "acerto": 0.5,
    "payoff": 1.8462128475551294,
    "fl": 1.8462128475551296,
-   "por_semana": 40.93026205530067,
+   "por_semana": 40.88899720152279,
    "seq_atual": 0,
    "seq_max": 5,
    "desde": "2026-11-02 07:35:57"
@@ -37,11 +37,11 @@
   "robo": "robo_x2",
   "nome": "Robo X2",
   "ref": {
-   "trades": 952,
-   "por_mes": 28.2,
-   "acerto": 0.4674,
-   "payoff": 1.861,
-   "fl": 1.634,
+   "trades": 951,
+   "por_mes": 28.0,
+   "acerto": 0.47,
+   "payoff": 1.846,
+   "fl": 1.637,
    "r_trade": 0.26,
    "recorde_seq": 9,
    "r_oos": 0.19,
@@ -54,7 +54,7 @@
    "acerto": 0.5,
    "payoff": 2.5784685367702807,
    "fl": 2.5784685367702807,
-   "por_semana": 12.144277033675442,
+   "por_semana": 12.13156292875413,
    "seq_atual": 0,
    "seq_max": 2,
    "desde": "2026-11-02 09:43:41"
@@ -64,7 +64,7 @@
    "sem_stop": 0,
    "no_stop": 0,
    "no_alvo": 17.2,
-   "flutuante": 12.62
+   "flutuante": 11.54
   }
  },
  {
@@ -72,11 +72,11 @@
   "nome": "Robo X3",
   "ref": {
    "trades": 588,
-   "por_mes": 17.4,
-   "acerto": 0.6548,
-   "payoff": 1.248,
-   "fl": 2.366,
-   "r_trade": 0.415,
+   "por_mes": 17.3,
+   "acerto": 0.6514,
+   "payoff": 1.229,
+   "fl": 2.296,
+   "r_trade": 0.43,
    "recorde_seq": 7,
    "r_oos": 0.23,
    "versao": "v1.56.1",
