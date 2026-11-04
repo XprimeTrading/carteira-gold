@@ -882,8 +882,10 @@ function graficoMercado(el,S,V){
   svg.append("text").attr("x",mL-8).attr("y",yb0+6).attr("text-anchor","end").style("font-size","10.5px").style("fill",css("--muted")).text(fp(mx));
   svg.append("text").attr("x",mL-8).attr("y",yb0+hB).attr("text-anchor","end").style("font-size","10.5px").style("fill",css("--muted")).text(fp(-mx));
   svg.append("line").attr("x1",mL).attr("x2",W-mR).attr("y1",yb(0)).attr("y2",yb(0)).style("stroke",css("--grid"));
-  svg.append("g").selectAll("rect").data(bars).join("rect").attr("x",b=>Math.min(W-mR-bw,Math.max(mL,x(d3.utcHour.offset(b.t,12))-bw/2))).attr("width",bw)
-    .attr("y",b=>Math.min(yb(0),yb(b.v))).attr("height",b=>Math.max(1,Math.abs(yb(b.v)-yb(0)))).attr("rx",2).style("fill",b=>b.v>=0?"#3f9e7f":"#c0604a");
+  // cada barra ocupa a largura do seu dia (encostadas, como no Monitor), alinhada ao trecho do dia na curva
+  const bx0=b=>Math.max(mL,x(b.t))+1,bx1=b=>Math.min(W-mR,x(d3.utcDay.offset(b.t,1)))-1;
+  svg.append("g").selectAll("rect").data(bars.filter(b=>bx1(b)>bx0(b))).join("rect").attr("x",bx0).attr("width",b=>bx1(b)-bx0(b))
+    .attr("y",b=>Math.min(yb(0),yb(b.v))).attr("height",b=>Math.max(1,Math.abs(yb(b.v)-yb(0)))).attr("rx",1).style("fill",b=>b.v>=0?"#3f9e7f":"#c0604a").style("opacity",.9);
   // leitura e medição (arrastar)
   const tip=dica(el),bis=d3.bisector(p=>p.t).left,em=px=>Math.max(0,Math.min(pts.length-1,bis(pts,x.invert(px))));
   const vl=svg.append("line").attr("y1",yTop).attr("y2",H-mB).style("stroke",css("--muted")).style("stroke-dasharray","3 3").style("display","none");
