@@ -3,26 +3,26 @@
   "robo": "robo_x1",
   "nome": "Robo X1",
   "magic": null,
-  "status": "ativo",
+  "status": "operando",
   "resultado": 3.96,
   "fechadas": 3,
   "hoje": 0,
   "ganhos": 1,
-  "abertas": 0,
-  "flutuante": 0,
-  "ultima": "2026-11-03 08:46:35"
+  "abertas": 2,
+  "flutuante": 3.11,
+  "ultima": "2026-11-04 05:35:01"
  },
  {
   "robo": "robo_x2",
   "nome": "Robo X2",
   "magic": null,
   "status": "operando",
-  "resultado": 0.58,
-  "fechadas": 11,
-  "hoje": -21.3,
-  "ganhos": 4,
+  "resultado": 9.4,
+  "fechadas": 12,
+  "hoje": -12.48,
+  "ganhos": 5,
   "abertas": 2,
-  "flutuante": 8.54,
-  "ultima": "2026-11-04 05:25:00"
+  "flutuante": 9.77,
+  "ultima": "2026-11-04 05:35:52"
  }
 ]
