@@ -128,6 +128,9 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
 .tab td{padding:8px 10px;border-bottom:1px solid var(--grid);font-family:var(--mono);font-variant-numeric:tabular-nums}
 .tab td:first-child{font-family:var(--body)}
 .tab .n{text-align:right}
+/* no celular a tabela rola para o lado: o nome do escopo fica fixo à esquerda */
+.tab td:first-child,.tab th:first-child{position:sticky;left:0;z-index:1;background:var(--surface)}
+.tab tbody tr.on td:first-child{background:#1d1a12}
 .tab tbody tr[data-esc]{cursor:pointer}
 .tab tbody tr[data-esc]:hover td{background:rgba(255,255,255,.03)}
 .tab tbody tr.on td{background:rgba(224,169,64,.08)}
