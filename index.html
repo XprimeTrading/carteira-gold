@@ -146,8 +146,7 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
 .subabas::-webkit-scrollbar{display:none}
 .subabas button{border:none;border-bottom:2px solid transparent;border-radius:0;background:transparent;color:var(--muted);padding:6px 0 9px;margin-bottom:-1px;font-size:13.5px;white-space:nowrap}
 .subabas button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--gold)}
-.conteudo[data-pag-on="aderencia"] [data-pag]:not([data-pag="aderencia"]),.conteudo[data-pag-on="geometria"] [data-pag]:not([data-pag="geometria"]),
-.conteudo[data-pag-on="linha"] [data-pag]:not([data-pag="linha"]),.conteudo[data-pag-on="geral"] [data-pag]:not([data-pag="geral"]){display:none!important}
+.conteudo[data-pag-on="aderencia"] [data-pag]:not([data-pag="aderencia"]),.conteudo[data-pag-on="geometria"] [data-pag]:not([data-pag="geometria"]),.conteudo[data-pag-on="geral"] [data-pag]:not([data-pag="geral"]){display:none!important}
 .robo-h{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
 .robo-h h3{display:flex;align-items:center;gap:8px}.robo-h h3 i{width:10px;height:10px;border-radius:50%}
 .cmp{width:100%;border-collapse:collapse;font-size:13px}
@@ -162,12 +161,6 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
 .leitura{font:500 12px var(--mono);color:var(--muted);min-height:1.5em}
 .leitura b{color:var(--ink);font-weight:500}
 .risco3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
-.linha-t{list-style:none;margin:0;padding:0 0 0 18px;border-left:1px solid var(--line);display:flex;flex-direction:column;gap:18px}
-.linha-t li{position:relative}
-.linha-t li::before{content:"";position:absolute;left:-24px;top:6px;width:11px;height:11px;border-radius:50%;background:var(--gold)}
-.linha-t li.prev::before{background:var(--bg);border:1.5px dashed var(--gold)}
-.linha-t .q{font:500 11px var(--mono);color:var(--gold);letter-spacing:.08em;text-transform:uppercase}
-.linha-t h3{margin:2px 0}
 @media (max-width:560px){.risco3{grid-template-columns:1fr 1fr}}
 </style>
 
@@ -205,7 +198,6 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
     <button type="button" role="tab" data-sub="geral" aria-selected="true">Visão geral</button>
     <button type="button" role="tab" data-sub="aderencia" aria-selected="false">Esperado × vivo</button>
     <button type="button" role="tab" data-sub="geometria" aria-selected="false">Geometria de risco</button>
-    <button type="button" role="tab" data-sub="linha" aria-selected="false">Linha do tempo</button>
   </nav>
 
   <div class="periodo" data-pag="geral">
@@ -404,14 +396,6 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
     </div>
   </section>
 
-  <section class="bloco" id="linha" data-pag="linha">
-    <div class="cab"><div>
-      <p class="sec">01 <b>Linha do tempo</b></p>
-      <h2>A história da <em>conta</em></h2>
-      <p class="s">Corretoras, robôs e versões, do primeiro dia até agora.</p>
-    </div></div>
-    <ol class="linha-t" id="linha-lista"></ol>
-  </section>
 
   <footer style="display:flex;flex-direction:column;gap:6px">
     <p class="note">Dados lidos da corretora em <b data-v="exportado" data-f="quando">—</b> (UTC); último preço em <b data-v="ultimo_preco" data-f="quando">—</b>, horário do servidor. Início em <b data-v="inicio" data-f="quando">—</b>. Os números são exportados e publicados a cada 6 minutos, enquanto o computador da carteira está ligado; a página relê os dados sozinha.</p>
@@ -689,10 +673,6 @@ function risco(A){
   A.forEach(a=>{const o=a.aberto,tr=el("tr");tr.append(el("td",null,a.nome),el("td",null,String(o.posicoes)));
     [o.no_stop,o.no_alvo,o.flutuante].forEach(v=>{const td=el("td",null,o.posicoes?FMT.usdS(v):"—");if(o.posicoes)sinal(td,v,"usdS");tr.append(td)});tb.append(tr)});
 }
-function linhaTempo(L){
-  const ol=document.getElementById("linha-lista");ol.textContent="";
-  [...L].reverse().forEach(e=>{const li=el("li",e.previsto?"prev":null);li.append(el("span","q",FMT.dia(e.quando)+"/"+e.quando.slice(0,4)+(e.previsto?" · previsto":"")),el("h3",null,e.titulo),el("p","s",e.texto));ol.append(li)});
-}
 // backtest da carteira (X1 + X2 sem o range 4) com o risco de hoje por operação
 let BT=null;
 function backtest(B){
@@ -734,11 +714,11 @@ function graficoBt(){
       const bx=el0.getBoundingClientRect(),kk=bx.width/W;tip.style.left=Math.max(0,Math.min(bx.width-tip.offsetWidth,x(p.t)*kk+12))+"px";tip.style.top="4px"})
     .on("pointerleave",()=>{tip.hidden=true;v.style("display","none")});
 }
-function xgold(ader,linha,bt){
+function xgold(ader,bt){
   const tem=!!(ader&&ader.length);ADER=tem?ader:null;
   document.getElementById("subabas").hidden=!tem;
   if(!tem){pagina("geral");return}
-  aderencia(ader);risco(ader);if(linha)linhaTempo(linha);if(bt)backtest(bt);pagina(PAG);
+  aderencia(ader);risco(ader);if(bt)backtest(bt);pagina(PAG);
 }
 const AVISO={xm:"Os dados da Carteira Xprime não carregaram. Recarregue a página.",
   bybit:"Os dados da Carteira Xcrypto não carregaram. Recarregue a página."};
@@ -749,13 +729,13 @@ function carregar(id){
   document.getElementById("conteudo").setAttribute("aria-labelledby","aba-"+id);
   const pega=n=>fetch(`dados/${id}/${n}.json?t=${Date.now()}`,{cache:"no-store"}).then(r=>{if(!r.ok)throw new Error(n);return r.json()});
   const extra=[];
-  Promise.all([...["conta","curva","dias","robos","estat"].map(pega),...["aderencia","linha","backtest"].map(n=>pega(n).catch(()=>null)),...extra])
-    .then(([conta,curva,dias,robos,est,ader,linha,bt,fech,ativos])=>{if(ABA!==id)return;
+  Promise.all([...["conta","curva","dias","robos","estat"].map(pega),...["aderencia","backtest"].map(n=>pega(n).catch(()=>null)),...extra])
+    .then(([conta,curva,dias,robos,est,ader,bt,fech,ativos])=>{if(ABA!==id)return;
       document.getElementById("aviso").hidden=true;document.getElementById("conteudo").hidden=false;
       document.getElementById("salas").hidden=id!=="xm";
       MOEDA=conta[0].moeda==="USC"?"USC ":"US$ ";
       DADOS={conta,curva,dias,robos};XT.V=situacao(conta,dias);XT.robos=robos;EST=est[0];
-      preencher(XT.V,robos);montarEscopos();xgold(ader,linha,bt);XT.ouvintes.forEach(f=>f())})
+      preencher(XT.V,robos);montarEscopos();xgold(ader,bt);XT.ouvintes.forEach(f=>f())})
     .catch(e=>{if(ABA!==id)return;console.warn("dados não carregaram",e);
       const a=document.getElementById("aviso");a.textContent=AVISO[id];a.hidden=false;document.getElementById("conteudo").hidden=true});
 }
