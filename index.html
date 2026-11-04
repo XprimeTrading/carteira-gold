@@ -146,6 +146,15 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
 @media (max-width:560px){.disj{grid-template-columns:1fr 1fr}.bloco{padding:14px}}
 /* páginas fixas: Quem somos e Como funciona a mineração (gera_paginas.py) */
 .pagina-est{display:flex;flex-direction:column;gap:20px}
+.abas .dir{margin-left:auto}
+.perfil-op{display:inline-flex;align-items:center;gap:8px;font:500 12.5px var(--body);color:var(--ink);text-decoration:none;border:1px solid rgba(240,141,104,.6);background:rgba(240,141,104,.08);border-radius:999px;padding:5px 12px}
+.perfil-op i{width:9px;height:9px;border-radius:50%;background:#f08d68}.perfil-op b{color:#f08d68;font-weight:600}
+.perfil-op:hover{background:rgba(240,141,104,.16)}
+@media (max-width:560px){.abas .dir{margin-left:0}}
+.incub{display:flex;align-items:center;gap:10px;font:600 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+.incub i{width:10px;height:10px;border-radius:50%;background:var(--gold);box-shadow:0 0 10px var(--gold);animation:pulsa 1.8s ease-in-out infinite}
+@keyframes pulsa{50%{opacity:.35}}
+@media (prefers-reduced-motion:reduce){.incub i{animation:none}}
 .pagina-est .txt{display:flex;flex-direction:column;gap:12px;font-size:15.5px;line-height:1.7;max-width:76ch}
 .pagina-est .txt p{margin:0}.pagina-est .txt b{font-weight:600;color:var(--ink)}
 .pagina-est .capa h2{font-size:clamp(24px,4.4vw,34px)}
@@ -250,13 +259,25 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
   </header>
 
   <nav class="abas" role="tablist" aria-label="Contas da carteira">
-    <button type="button" role="tab" id="aba-xm" data-aba="xm" aria-selected="true">Carteira Xprime · Exness</button>
-    <button type="button" role="tab" id="aba-quem" data-aba="quem" aria-selected="false">Quem somos</button>
+    <button type="button" role="tab" id="aba-xm" data-aba="xm" aria-selected="true">Carteira XGold</button>
+    <button type="button" role="tab" id="aba-xcrypto" data-aba="xcrypto" aria-selected="false">Carteira XCrypto</button>
+    <button type="button" role="tab" id="aba-quem" data-aba="quem" aria-selected="false" class="dir">Quem somos</button>
     <button type="button" role="tab" id="aba-mineracao" data-aba="mineracao" aria-selected="false">Como funciona a mineração</button>
   </nav>
 
   <p class="aviso" id="aviso" hidden></p>
   <!--paginas-->
+  <div class="pagina-est" id="pg-xcrypto" hidden>
+  <section class="bloco ouro capa">
+    <p class="incub"><i></i>Em incubação</p>
+    <h2>Carteira <em>XCrypto</em></h2>
+    <div class="txt">
+      <p>A Carteira XCrypto está na <b>fase de incubação</b>: a última etapa da mineração, operando em conta demo com preço ao vivo, para conferir cada ordem, a execução e a aderência ao backtest antes do dinheiro real.</p>
+      <p>Os resultados aparecem aqui quando ela começar a operar em conta real.</p>
+      <p><a href="#mineracao" data-ir="mineracao">Como funciona a mineração →</a></p>
+    </div>
+  </section>
+  </div>
   <div class="pagina-est" id="pg-quem" hidden>
   <section class="bloco ouro capa">
     <p class="sec">XPrime Trading <b>quem somos</b></p>
@@ -347,6 +368,7 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
   <div class="conteudo" id="conteudo" role="tabpanel">
   <div class="titulo">
     <h1>Carteira Prime</h1>
+    <a class="perfil-op" id="perfil-op" href="#gestao" data-sub-ir="gestao" title="Ver os perfis de risco"><i></i>Perfil em operação: <b>Agressivo</b></a>
   </div>
 
   <nav class="subabas" id="subabas" role="tablist" aria-label="Seções da carteira" hidden>
@@ -568,7 +590,7 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
         <p class="para"><b>O equilíbrio entre retorno e risco:</b> perda máxima de 10% e trava diária de 3%.</p>
       </article>
       <article class="perfil" style="--c:#f08d68">
-        <h3><span><i></i>Agressivo</span><span class="tag2">lote da carteira</span></h3>
+        <h3><span><i></i>Agressivo</span><span class="tag2">em operação na XGold</span></h3>
         <div class="grande">
           <div><p class="k">Trava diária</p><b>US$ 41</b><small>4,1% · fecha tudo e volta no dia seguinte</small></div>
           <div><p class="k">Perda total máxima</p><b>US$ 190</b><small>19% · os robôs param</small></div>
@@ -1027,7 +1049,7 @@ function xgold(ader,bt){
 const AVISO={xm:"Os dados da Carteira Xprime não carregaram. Recarregue a página.",
   bybit:"Os dados da Carteira Xcrypto não carregaram. Recarregue a página."};
 let ABA=null;
-const PAGINAS=["quem","mineracao"];  // abas de texto fixo: não leem dados
+const PAGINAS=["xcrypto","quem","mineracao"];  // abas de texto fixo: não leem dados
 function carregar(id){
   ABA=id;
   document.querySelectorAll(".pagina-est").forEach(p=>p.hidden=p.id!=="pg-"+id);
@@ -1042,7 +1064,7 @@ function carregar(id){
   Promise.all([...["conta","curva","dias","robos","estat"].map(pega),...["aderencia","backtest"].map(n=>pega(n).catch(()=>null)),...extra])
     .then(([conta,curva,dias,robos,est,ader,bt,fech,ativos])=>{if(ABA!==id)return;
       document.getElementById("aviso").hidden=true;document.getElementById("conteudo").hidden=false;
-      document.getElementById("salas").hidden=id!=="xm";
+      document.getElementById("salas").hidden=id!=="xm";document.getElementById("perfil-op").hidden=id!=="xm";
       MOEDA=conta[0].moeda==="USC"?"USC ":"US$ ";
       DADOS={conta,curva,dias,robos};XT.V=situacao(conta,dias);XT.robos=robos;EST=est[0];
       preencher(XT.V,robos);montarEscopos();xgold(ader,bt);XT.ouvintes.forEach(f=>f())})
@@ -1053,7 +1075,8 @@ document.querySelectorAll(".abas [data-aba]").forEach(b=>b.addEventListener("cli
   try{history.replaceState(null,"","#"+b.dataset.aba)}catch(e){}carregar(b.dataset.aba)}));
 document.querySelector(".abas")?.addEventListener("keydown",e=>{if(e.key!=="ArrowRight"&&e.key!=="ArrowLeft")return;
   const bs=[...document.querySelectorAll(".abas [data-aba]")],i=bs.findIndex(b=>b.dataset.aba===ABA),n=bs[(i+(e.key==="ArrowRight"?1:bs.length-1))%bs.length];n.focus();n.click()});
-carregar(["quem","mineracao"].includes(location.hash.slice(1))?location.hash.slice(1):"xm");
+carregar(["xcrypto","quem","mineracao"].includes(location.hash.slice(1))?location.hash.slice(1):"xm");
+document.getElementById("perfil-op").addEventListener("click",e=>{e.preventDefault();pagina("gestao");document.getElementById("subabas").scrollIntoView({behavior:"smooth"})});
 document.addEventListener("click",e=>{const a=e.target.closest("[data-ir]");if(!a)return;e.preventDefault();
   try{history.replaceState(null,"","#"+a.dataset.ir)}catch(_){}carregar(a.dataset.ir);window.scrollTo(0,0)});
 // os dados são publicados a cada 6 min; a página relê a cada 2 min, sem recarregar a cena 3D
