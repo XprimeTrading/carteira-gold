@@ -19,5 +19,12 @@
   "realizado": 41.91,
   "saldo_fim": 1000.76,
   "fechadas": 9
+ },
+ {
+  "dia": "2026-11-04",
+  "saldo_inicio": 1000.76,
+  "realizado": -10.77,
+  "saldo_fim": 989.99,
+  "fechadas": 1
  }
 ]
