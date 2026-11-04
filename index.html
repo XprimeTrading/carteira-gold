@@ -191,7 +191,6 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
 
   <nav class="abas" role="tablist" aria-label="Contas da carteira">
     <button type="button" role="tab" id="aba-xm" data-aba="xm" aria-selected="true">Carteira Xprime · Exness</button>
-    <button type="button" role="tab" id="aba-bybit" data-aba="bybit" aria-selected="false">Carteira Xcrypto · Bybit</button>
   </nav>
 
   <p class="aviso" id="aviso" hidden></p>
@@ -694,7 +693,7 @@ document.querySelectorAll(".abas [data-aba]").forEach(b=>b.addEventListener("cli
   try{history.replaceState(null,"","#"+b.dataset.aba)}catch(e){}carregar(b.dataset.aba)}));
 document.querySelector(".abas")?.addEventListener("keydown",e=>{if(e.key!=="ArrowRight"&&e.key!=="ArrowLeft")return;
   const bs=[...document.querySelectorAll(".abas [data-aba]")],i=bs.findIndex(b=>b.dataset.aba===ABA),n=bs[(i+(e.key==="ArrowRight"?1:bs.length-1))%bs.length];n.focus();n.click()});
-carregar(location.hash==="#bybit"?"bybit":"xm");
+carregar("xm");
 // os dados são publicados a cada 6 min; a página relê a cada 2 min, sem recarregar a cena 3D
 setInterval(()=>{if(!document.hidden)carregar(ABA)},2*60e3);
 document.addEventListener("visibilitychange",()=>{if(!document.hidden&&XT.V&&Date.now()-Date.parse(XT.V.exportado)>2*60e3)carregar(ABA)});
