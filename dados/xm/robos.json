@@ -22,20 +22,20 @@
   "hoje": 0,
   "ganhos": 3,
   "abertas": 2,
-  "flutuante": -3.96,
+  "flutuante": -3.91,
   "ultima": "2026-11-05 02:10:01"
  },
  {
   "robo": "robo_x3",
   "nome": "Robo X3",
   "magic": null,
-  "status": "ativo",
+  "status": "operando",
   "resultado": -15.08,
   "fechadas": 7,
   "hoje": -3.93,
   "ganhos": 2,
-  "abertas": 0,
-  "flutuante": 0,
-  "ultima": "2026-11-05 05:33:43"
+  "abertas": 1,
+  "flutuante": 0.3,
+  "ultima": "2026-11-05 13:00:00"
  }
 ]
