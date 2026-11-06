@@ -24,7 +24,7 @@
     "queda": -56.55,
     "queda_pct": -0.056549999999999996,
     "taxas": 0.0,
-    "media_dia": 11.160929207399153,
+    "media_dia": 11.14988174907639,
     "dias_operados": 5,
     "dias_lucro": 2,
     "melhor_dia": {
@@ -227,7 +227,7 @@
     "queda": -30.85,
     "queda_pct": -0.030850000000000002,
     "taxas": 0.0,
-    "media_dia": 11.180422184464417,
+    "media_dia": 11.167973447500701,
     "dias_operados": 4,
     "dias_lucro": 2,
     "melhor_dia": {
@@ -341,7 +341,7 @@
     "tipo": "robo",
     "inicio": "2026-11-02 09:43:41",
     "fim": "2026-11-05 21:53:00",
-    "dias": 3.6,
+    "dias": 3.7,
     "resultado": 24.12,
     "pct": 0.02412,
     "fechamentos": 7,
@@ -357,7 +357,7 @@
     "queda": -13.9,
     "queda_pct": -0.01339087878846265,
     "taxas": 0.0,
-    "media_dia": 6.613127073285484,
+    "media_dia": 6.605584873515743,
     "dias_operados": 4,
     "dias_lucro": 2,
     "melhor_dia": {
@@ -443,7 +443,7 @@
     "queda": -20.43,
     "queda_pct": -0.02043,
     "taxas": 0.0,
-    "media_dia": -3.9323124467713875,
+    "media_dia": -3.927823845586395,
     "dias_operados": 4,
     "dias_lucro": 1,
     "melhor_dia": {
