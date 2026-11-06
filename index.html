@@ -110,6 +110,18 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
 .descr .txt p{margin:0}
 .descr dl{flex:0 1 300px;display:grid;grid-template-columns:auto 1fr;gap:6px 14px;margin:0;font-size:13.5px;align-content:start}
 .descr dt{color:var(--muted)}.descr dd{margin:0;color:var(--text);font-weight:600}
+.mensal{margin-top:14px}
+.cab-mensal{display:flex;justify-content:space-between;align-items:flex-end;gap:12px 24px;flex-wrap:wrap}
+.cab-mensal h3{margin:0 0 4px}
+.cab-mensal .ret{display:flex;flex-direction:column;align-items:flex-end;gap:2px}
+.cab-mensal .ret span{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.cab-mensal .ret b{font-size:clamp(28px,5vw,40px);line-height:1;font-variant-numeric:tabular-nums}
+.cab-mensal .ret small{color:var(--muted)}
+.tab-mensal{min-width:880px}.tab-mensal td,.tab-mensal th{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.tab-mensal td:first-child,.tab-mensal th:first-child{text-align:left;font-weight:700;position:sticky;left:0;z-index:1;background:var(--surface)}
+.tab-mensal .ano{border-left:1px solid var(--line);font-weight:700;padding-left:14px}
+.tab-mensal th.ano{color:var(--gold)}.tab-mensal .vivo{color:var(--gold)}.tab-mensal .mudo{color:var(--muted)}
+@media (max-width:640px){.cab-mensal .ret{align-items:flex-start}}
 .bloco.ouro{border-color:rgba(224,169,64,.45);background:linear-gradient(180deg,rgba(224,169,64,.07),var(--surface) 180px)}
 .cab{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
 .sec{font:500 11px var(--mono);color:var(--muted);letter-spacing:.14em;text-transform:uppercase;margin:0 0 4px}
@@ -400,6 +412,17 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
       <dt>Conta real desde</dt><dd>novembro de 2026</dd>
     </dl>
   </section>
+  <!--mensal-->
+  <section class="bloco mensal" id="mensal" aria-label="Backtest mês a mês">
+    <div class="cab-mensal">
+      <div><h3>Backtest mês a mês</h3><p class="note">Conta de US$ 2.040 · jan/2025 a out/2026 · retorno de cada mês sobre os US$ 2.040 iniciais, com os mesmos lotes, sem reinvestir</p></div>
+      <div class="ret"><span>Retorno no período</span><b class="pos">+282,12%</b><small>+US$ 5.755,32 sobre US$ 2.040</small></div>
+    </div>
+    <div class="rolar"><table class="cmp tab-mensal"><thead><tr><th>Ano</th><th class='n'>Jan</th><th class='n'>Fev</th><th class='n'>Mar</th><th class='n'>Abr</th><th class='n'>Mai</th><th class='n'>Jun</th><th class='n'>Jul</th><th class='n'>Ago</th><th class='n'>Set</th><th class='n'>Out</th><th class='n'>Nov</th><th class='n'>Dez</th><th class="n ano">Ano</th></tr></thead>
+    <tbody><tr><td>2025</td><td class="n pos" title="100,55 US$">+4,93%</td><td class="n pos" title="439,07 US$">+21,52%</td><td class="n pos" title="0,76 US$">+0,04%</td><td class="n pos" title="388,40 US$">+19,04%</td><td class="n pos" title="393,23 US$">+19,28%</td><td class="n pos" title="206,76 US$">+10,14%</td><td class="n pos" title="321,80 US$">+15,77%</td><td class="n pos" title="64,88 US$">+3,18%</td><td class="n pos" title="465,69 US$">+22,83%</td><td class="n pos" title="546,92 US$">+26,81%</td><td class="n pos" title="241,88 US$">+11,86%</td><td class="n pos" title="315,20 US$">+15,45%</td><td class="n ano pos">+170,84%</td></tr><tr><td>2026</td><td class="n pos" title="189,32 US$">+9,28%</td><td class="n pos" title="59,38 US$">+2,91%</td><td class="n pos" title="256,46 US$">+12,57%</td><td class="n pos" title="133,51 US$">+6,54%</td><td class="n pos" title="347,80 US$">+17,05%</td><td class="n pos" title="256,35 US$">+12,57%</td><td class="n pos" title="277,97 US$">+13,63%</td><td class="n pos" title="212,03 US$">+10,39%</td><td class="n pos" title="374,76 US$">+18,37%</td><td class="n pos" title="162,60 US$">+7,97%</td><td class="n vivo">ao vivo</td><td class="n mudo">—</td><td class="n ano pos">+111,28%</td></tr></tbody></table></div>
+    <p class="note">Resultado simulado (backtest). A conta real começou em novembro de 2026. Pior mês do backtest completo (2024–2026): jun/2024, −US$ 83,98; queda máxima: −US$ 193,81. Resultados passados não garantem resultados futuros.</p>
+  </section>
+  <!--/mensal-->
 
   <nav class="subabas" id="subabas" role="tablist" aria-label="Seções da carteira" hidden>
     <button type="button" role="tab" data-sub="geral" aria-selected="true">Visão geral</button>
@@ -1180,7 +1203,7 @@ function carregar(id){
   Promise.all([...["conta","curva","dias","robos","estat"].map(pega),...["aderencia","backtest","mercado"].map(n=>pega(n).catch(()=>null)),...extra])
     .then(([conta,curva,dias,robos,est,ader,bt,merc,fech,ativos])=>{if(ABA!==id)return;MERC=merc&&merc[0]||null;opcoesGrafico();
       document.getElementById("aviso").hidden=true;document.getElementById("conteudo").hidden=false;
-      document.getElementById("salas").hidden=id!=="xm";document.getElementById("perfil-op").hidden=id!=="xm";document.getElementById("descr").hidden=id!=="xm";document.getElementById("titulo-cart").textContent=id==="xm"?"Carteira XForex01":"Bybit · monitor";
+      document.getElementById("salas").hidden=id!=="xm";document.getElementById("perfil-op").hidden=id!=="xm";document.getElementById("descr").hidden=id!=="xm";document.getElementById("mensal").hidden=id!=="xm";document.getElementById("titulo-cart").textContent=id==="xm"?"Carteira XForex01":"Bybit · monitor";
       MOEDA=conta[0].moeda==="USC"?"USC ":"US$ ";
       DADOS={conta,curva,dias,robos};XT.V=situacao(conta,dias);XT.robos=robos;EST=est[0];
       preencher(XT.V,robos);montarEscopos();xgold(ader,bt);XT.ouvintes.forEach(f=>f())})
