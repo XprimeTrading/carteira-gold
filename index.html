@@ -104,6 +104,12 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
 .chip[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:#111;font-weight:600}
 .chip[aria-pressed="true"] i{display:none}
 .bloco{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.descr{flex-direction:row;flex-wrap:wrap;gap:16px 28px;margin-top:4px}
+.descr .txt{flex:1 1 440px;color:var(--muted);line-height:1.6;display:flex;flex-direction:column;gap:10px}
+.descr .txt b{color:var(--text)}
+.descr .txt p{margin:0}
+.descr dl{flex:0 1 300px;display:grid;grid-template-columns:auto 1fr;gap:6px 14px;margin:0;font-size:13.5px;align-content:start}
+.descr dt{color:var(--muted)}.descr dd{margin:0;color:var(--text);font-weight:600}
 .bloco.ouro{border-color:rgba(224,169,64,.45);background:linear-gradient(180deg,rgba(224,169,64,.07),var(--surface) 180px)}
 .cab{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
 .sec{font:500 11px var(--mono);color:var(--muted);letter-spacing:.14em;text-transform:uppercase;margin:0 0 4px}
@@ -225,7 +231,7 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
 .cal-dia.hoje{border-color:var(--gold)}
 .cal-dia.fim .d{opacity:.6}
 @media (max-width:560px){.cal-dia{min-height:50px;padding:4px}.cal-dia .r{font-size:10.5px}.cal-dia .n{display:none}}
-/* XGold no padrão do Monitor: abas Visão geral, Esperado × vivo, Geometria de risco e Linha do tempo */
+/* XForex01 no padrão do Monitor: abas Visão geral, Esperado × vivo, Geometria de risco e Linha do tempo */
 .subabas{display:flex;gap:20px;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid var(--line)}
 .subabas::-webkit-scrollbar{display:none}
 .subabas button{border:none;border-bottom:2px solid transparent;border-radius:0;background:transparent;color:var(--muted);padding:6px 0 9px;margin-bottom:-1px;font-size:13.5px;white-space:nowrap}
@@ -267,7 +273,7 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
   </header>
 
   <nav class="abas" role="tablist" aria-label="Contas da carteira">
-    <button type="button" role="tab" id="aba-xm" data-aba="xm" aria-selected="true">Carteira XGold</button>
+    <button type="button" role="tab" id="aba-xm" data-aba="xm" aria-selected="true">Carteira XForex01</button>
     <button type="button" role="tab" id="aba-xcrypto" data-aba="xcrypto" aria-selected="false">Carteira XCrypto</button>
     <button type="button" role="tab" id="aba-quem" data-aba="quem" aria-selected="false" class="dir">Quem somos</button>
     <button type="button" role="tab" id="aba-mineracao" data-aba="mineracao" aria-selected="false">Como funciona a mineração</button>
@@ -280,6 +286,7 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
     <p class="incub"><i></i>Em incubação</p>
     <h2>Carteira <em>XCrypto</em></h2>
     <div class="txt">
+      <p>A Carteira XCrypto é uma carteira de <b>trading sistemático em contratos de criptomoedas</b>, gerida pela XPrime Trading. Ela reúne um conjunto amplo de estratégias de <b>baixa correlação entre si</b>, espalhadas por vários ativos, tempos gráficos e lógicas de entrada, para que nenhuma aposta isolada domine o resultado. Junto com a Carteira XForex01, ela forma a diversificação da XPrime entre dois mercados diferentes.</p>
       <p>A Carteira XCrypto está na <b>fase de incubação</b>: a última etapa da mineração, operando em conta demo com preço ao vivo, para conferir cada ordem, a execução e a aderência ao backtest antes do dinheiro real.</p>
       <p>Os resultados aparecem aqui quando ela começar a operar em conta real.</p>
       <p><a href="#mineracao" data-ir="mineracao">Como funciona a mineração →</a></p>
@@ -303,7 +310,7 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
   </section>
   <section class="bloco">
     <p class="sec">02 <b>O que fazemos</b></p>
-    <div class="txt"><ul class="lista-txt"><li><b>Carteiras de robôs.</b> Um robô sozinho tem meses ruins. Por isso juntamos robôs que se compensam entre si, e o resultado é medido sempre na carteira inteira.<ul><li><b>XGold:</b> três robôs de ouro (XAUUSD) numa conta real. No backtest de jan/2024 a out/2026, ficou positiva em 33 de 34 meses.</li><li><b>XCrypto:</b> em montagem. Vai para o site quando estiver operando.</li></ul></li><li><b>Risco antes do lucro.</b> Cada conta tem trava diária e perda máxima, aplicadas automaticamente por um robô guardião. O tamanho das operações é decidido antes, nunca no calor do mercado.</li><li><b>Transparência total.</b> Este painel lê a conta real direto da corretora e se atualiza a cada poucos minutos. O pior dia aparece ao lado do melhor, e o que o backtest prometeu fica lado a lado com o que está acontecendo de verdade.</li></ul></div>
+    <div class="txt"><ul class="lista-txt"><li><b>Carteiras de robôs.</b> Um robô sozinho tem meses ruins. Por isso juntamos robôs que se compensam entre si, e o resultado é medido sempre na carteira inteira.<ul><li><b>XForex01:</b> três robôs de ouro (XAUUSD) numa conta real. No backtest de jan/2024 a out/2026, ficou positiva em 33 de 34 meses.</li><li><b>XCrypto:</b> em montagem. Vai para o site quando estiver operando.</li></ul></li><li><b>Risco antes do lucro.</b> Cada conta tem trava diária e perda máxima, aplicadas automaticamente por um robô guardião. O tamanho das operações é decidido antes, nunca no calor do mercado.</li><li><b>Transparência total.</b> Este painel lê a conta real direto da corretora e se atualiza a cada poucos minutos. O pior dia aparece ao lado do melhor, e o que o backtest prometeu fica lado a lado com o que está acontecendo de verdade.</li></ul></div>
   </section>
   <section class="bloco">
     <p class="sec">03 <b>No que acreditamos</b></p>
@@ -357,7 +364,7 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
     <li class="passo"><span class="num">10</span>
       <div class="bloco"><h3>Monte Carlo</h3><div class="txt"><p>Cada estratégia, e depois a carteira inteira, passa por milhares de simulações que embaralham a ordem e o tamanho dos resultados. As réguas:</p>
 <ul class="lista-txt"><li>pelo menos <b>70% das simulações</b> lucrativas;</li><li><b>risco de ruína de no máximo 10%</b>;</li><li>retorno sobre a queda de pelo menos <b>70% do original</b>.</li></ul>
-<p>Na carteira XGold foram <b>20.000 simulações</b>. É delas que saem os perfis da aba Gestão de risco.</p></div></div></li>
+<p>Na carteira XForex01 foram <b>20.000 simulações</b>. É delas que saem os perfis da aba Gestão de risco.</p></div></div></li>
     <li class="passo"><span class="num">11</span>
       <div class="bloco"><h3>Composição e gestão de risco</h3><div class="txt"><p>A carteira não é uma lista de robôs aprovados. O motor:</p>
 <ul class="lista-txt"><li>mede quantas <b>apostas independentes</b> existem de fato;</li><li>roda o backtest da carteira <b>marcado a mercado</b>, com as posições abertas contando;</li><li>dimensiona tudo pela <b>queda</b>, e não pelo lucro.</li></ul>
@@ -375,9 +382,24 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
   <!--/paginas-->
   <div class="conteudo" id="conteudo" role="tabpanel">
   <div class="titulo">
-    <h1 id="titulo-cart">Carteira XGold</h1>
+    <h1 id="titulo-cart">Carteira XForex01</h1>
     <a class="perfil-op" id="perfil-op" href="#gestao" data-sub-ir="gestao" title="Ver os perfis de risco"><i></i>Perfil em operação: <b>Agressivo</b></a>
   </div>
+  <section class="bloco ouro descr" id="descr" aria-label="Sobre a carteira">
+    <div class="txt">
+      <p>A Carteira XForex01 é uma carteira de <b>trading totalmente sistemático</b>, gerida pela XPrime Trading. Hoje ela opera o <b>ouro (XAU/USD)</b> e tem espaço para receber outros ativos que passem pela mesma validação. Três robôs independentes atuam em paralelo, cada um com uma lógica própria: o X1 lê os ciclos da estrutura de preço, o X2 opera rompimentos de canal no gráfico de 5 minutos e o X3 busca o momentum nos horários de maior liquidez. Os robôs operam <b>nos dois sentidos</b>, na compra e na venda, para não depender da direção do mercado.</p>
+      <p>Cada estratégia saiu de um <b>processo completo de mineração de dados</b>: anos de histórico, validação fora da amostra e 15 dias de incubação em conta demo antes do dinheiro real. O risco segue regras fixas: um <b>robô guardião</b> aplica sozinho a trava de perda diária e o limite de perda máxima da conta. Todos os números aparecem sobre uma base de US$ 1.000; cada investidor dimensiona o próprio risco a partir desse formato.</p>
+    </div>
+    <dl>
+      <dt>Mercado</dt><dd>Ouro (XAU/USD)</dd>
+      <dt>Estilo</dt><dd>Sistemático · compra e venda</dd>
+      <dt>Robôs</dt><dd>3 (X1, X2, X3)</dd>
+      <dt>Perfil</dt><dd>Agressivo</dd>
+      <dt>Travas</dt><dd>4,1% ao dia · 19% no total</dd>
+      <dt>Base dos números</dt><dd>US$ 1.000</dd>
+      <dt>Conta real desde</dt><dd>novembro de 2026</dd>
+    </dl>
+  </section>
 
   <nav class="subabas" id="subabas" role="tablist" aria-label="Seções da carteira" hidden>
     <button type="button" role="tab" data-sub="geral" aria-selected="true">Visão geral</button>
@@ -485,9 +507,9 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
     <div>
       <p class="sec">03 <b>Sede</b></p>
       <h2>A sede da XPrime em <em>3D</em></h2>
-      <p class="note" style="margin-top:4px">A Carteira XGold com os robôs e o supervisor, a Carteira XCrypto em incubação, a Sala de Mineração e o resto da empresa. O telão da XGold mostra o resultado do dia desta conta.</p>
+      <p class="note" style="margin-top:4px">A Carteira XForex01 com os robôs e o supervisor, a Carteira XCrypto em incubação, a Sala de Mineração e o resto da empresa. O telão da XForex01 mostra o resultado do dia desta conta.</p>
     </div>
-    <iframe class="sede3d" id="sede3d" data-src="sede.html?embed=1&v=6cdf8902" title="Sede da XPrime em 3D" allow="fullscreen"></iframe>
+    <iframe class="sede3d" id="sede3d" data-src="sede.html?embed=1&v=c0760eaa" title="Sede da XPrime em 3D" allow="fullscreen"></iframe>
     <div class="hint"><a href="sede.html" target="_blank" rel="noopener" id="sede-cheia">Abrir a sede em tela cheia →</a><span>Arraste para girar, pinça ou roda para zoom, toque numa sala. Passeio e Tour guiado andam pelo corredor.</span></div>
     <div class="salas">
       <article class="sala" data-sala="robo_x1" tabindex="0">
@@ -593,7 +615,7 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
         <p class="para"><b>O equilíbrio entre retorno e risco:</b> perda máxima de 10% e trava diária de 3%.</p>
       </article>
       <article class="perfil" style="--c:#f08d68">
-        <h3><span><i></i>Agressivo</span><span class="tag2">em operação na XGold</span></h3>
+        <h3><span><i></i>Agressivo</span><span class="tag2">em operação na XForex01</span></h3>
         <div class="grande">
           <div><p class="k">Trava diária</p><b>US$ 41</b><small>4,1% · fecha tudo e volta no dia seguinte</small></div>
           <div><p class="k">Perda total máxima</p><b>US$ 190</b><small>19% · os robôs param</small></div>
@@ -1005,7 +1027,7 @@ function calendario(S){
 let DADOS=null;
 function desenhar(){if(!DADOS||!window.d3||!EST)return;const S=EST.escopos.find(s=>s.id===XT.esc)||EST.escopos[0];graficoCurva(document.getElementById("g-curva"),S,XT.V);calendario(S)}
 
-// ---------- XGold: esperado × vivo, geometria e linha do tempo ----------
+// ---------- XForex01: esperado × vivo, geometria e linha do tempo ----------
 let ADER=null,PAG="geral";
 const pctV=v=>v==null?"—":String(+(v*100).toFixed(1)).replace(".",",")+"%";
 const numV=(v,d=2)=>v==null||!isFinite(v)?"—":v.toFixed(d).replace(".",",");
@@ -1107,7 +1129,7 @@ function backtest(B){
    Object.entries(c.anos).forEach(([a,v],i)=>{if(i)lst.append(el("br"));const s=el("span",null,FMT.usdS(v));sinal(s,v,"usdS");lst.append(a+(+a===new Date().getUTCFullYear()?"*":"")+"  ",s)});
    d.append(lst,el("p","s",`Sharpe ${numV(c.sharpe)} · lucro ÷ queda ${numV(c.lucro_queda,1)}`));box.append(d)}
   const tb=document.querySelector("#bt-tab tbody");tb.textContent="";
-  [["carteira","XGold (os três)"],["x1","Robo X1"],["x2","Robo X2"],["x3","Robo X3"]].forEach(([id,nome])=>{const x=st[id],tr=el("tr");tr.append(el("td",null,nome));
+  [["carteira","XForex01 (os três)"],["x1","Robo X1"],["x2","Robo X2"],["x3","Robo X3"]].forEach(([id,nome])=>{const x=st[id],tr=el("tr");tr.append(el("td",null,nome));
     [[x.trades==null?"—":x.trades.toLocaleString("pt-BR")],[FMT.usdS(x.resultado),x.resultado],[pctV(x.acerto)],[numV(x.fl)],[FMT.usdS(x.queda)+" ("+FMT.pctS(x.queda_pct)+")",x.queda],[numV(x.lucro_queda,1)],[`${x.meses_pos} de ${x.meses}`],[FMT.usdS(x.media_mes),x.media_mes],[FMT.usdS(x.melhor_mes),x.melhor_mes],[FMT.usdS(x.pior_mes),x.pior_mes],[numV(x.sharpe)]]
       .forEach(([t,v])=>{const td=el("td",null,t);if(v!=null)sinal(td,v,"usdS");tr.append(td)});tb.append(tr)});
   document.getElementById("bt-nota").textContent=`O que vale é o desenho da curva: os percentuais estão sobre ${FMT.usd(B.capital)}, e quem entrar dimensiona o próprio risco. Os sets foram escolhidos olhando este mesmo período: ao vivo, planejamos com 50% a 60% do lucro (no teste fora da amostra o ganho por operação caiu para cerca de metade). * ${B.fim.slice(0,4)} até ${FMT.dia(B.fim)}.`;
@@ -1123,14 +1145,14 @@ function graficoBt(){
   svg.append("g").selectAll("line").data(y.ticks(5)).join("line").attr("x1",m.l).attr("x2",W-m.r).attr("y1",y).attr("y2",y).style("stroke",css("--grid"));
   svg.append("g").selectAll("text").data(y.ticks(5)).join("text").attr("x",m.l-8).attr("y",y).attr("dy",".32em").attr("text-anchor","end").style("font-size","11px").style("fill",css("--muted")).text(fy);
   svg.append("g").selectAll("text").data(x.ticks(Math.max(2,Math.floor(W/120)))).join("text").attr("x",x).attr("y",H-6).attr("text-anchor","middle").style("font-size","11px").style("fill",css("--muted")).text(d3.utcFormat("%m/%y"));
-  const ser=[["x3",corEsc(3),"Robo X3",1.4],["x2",corEsc(2),"Robo X2",1.4],["x1",corEsc(1),"Robo X1",1.4],["c",css("--gold"),"XGold",2.2]];
+  const ser=[["x3",corEsc(3),"Robo X3",1.4],["x2",corEsc(2),"Robo X2",1.4],["x1",corEsc(1),"Robo X1",1.4],["c",css("--gold"),"XForex01",2.2]];
   ser.forEach(([k,cor,,w])=>svg.append("path").datum(pts).style("fill","none").style("stroke",cor).style("stroke-width",w).attr("d",d3.line().x(p=>x(p.t)).y(p=>y(p[k]))));
   const leg=document.getElementById("bt-leg");leg.textContent="";
   [...ser].reverse().forEach(([,cor,nome])=>{const s=el("span"),q=el("i");q.style.background=cor;s.append(q,document.createTextNode(nome));leg.append(s)});
   const tip=dica(el0),bis=d3.bisector(p=>p.t).left,v=svg.append("line").attr("y1",m.t).attr("y2",H-m.b).style("stroke",css("--muted")).style("stroke-dasharray","3 3").style("display","none");
   svg.append("rect").attr("x",m.l).attr("y",0).attr("width",W-m.l-m.r).attr("height",H-m.b).style("fill","transparent")
     .on("pointermove",ev=>{const[px]=d3.pointer(ev),p=pts[Math.min(pts.length-1,bis(pts,x.invert(px)))];v.style("display",null).attr("x1",x(p.t)).attr("x2",x(p.t));
-      tip.hidden=false;tip.innerHTML="";[[d3.utcFormat("%d/%m/%Y")(p.t)],["XGold "+FMT.usdS(p.c),1],["X1 "+FMT.usdS(p.x1)+" · X2 "+FMT.usdS(p.x2)+" · X3 "+FMT.usdS(p.x3)]].forEach(([t,b])=>tip.append(el(b?"b":"span",null,t)));
+      tip.hidden=false;tip.innerHTML="";[[d3.utcFormat("%d/%m/%Y")(p.t)],["XForex01 "+FMT.usdS(p.c),1],["X1 "+FMT.usdS(p.x1)+" · X2 "+FMT.usdS(p.x2)+" · X3 "+FMT.usdS(p.x3)]].forEach(([t,b])=>tip.append(el(b?"b":"span",null,t)));
       const bx=el0.getBoundingClientRect(),kk=bx.width/W;tip.style.left=Math.max(0,Math.min(bx.width-tip.offsetWidth,x(p.t)*kk+12))+"px";tip.style.top="4px"})
     .on("pointerleave",()=>{tip.hidden=true;v.style("display","none")});
 }
@@ -1158,7 +1180,7 @@ function carregar(id){
   Promise.all([...["conta","curva","dias","robos","estat"].map(pega),...["aderencia","backtest","mercado"].map(n=>pega(n).catch(()=>null)),...extra])
     .then(([conta,curva,dias,robos,est,ader,bt,merc,fech,ativos])=>{if(ABA!==id)return;MERC=merc&&merc[0]||null;opcoesGrafico();
       document.getElementById("aviso").hidden=true;document.getElementById("conteudo").hidden=false;
-      document.getElementById("salas").hidden=id!=="xm";document.getElementById("perfil-op").hidden=id!=="xm";document.getElementById("titulo-cart").textContent=id==="xm"?"Carteira XGold":"Bybit · monitor";
+      document.getElementById("salas").hidden=id!=="xm";document.getElementById("perfil-op").hidden=id!=="xm";document.getElementById("descr").hidden=id!=="xm";document.getElementById("titulo-cart").textContent=id==="xm"?"Carteira XForex01":"Bybit · monitor";
       MOEDA=conta[0].moeda==="USC"?"USC ":"US$ ";
       DADOS={conta,curva,dias,robos};XT.V=situacao(conta,dias);XT.robos=robos;EST=est[0];
       preencher(XT.V,robos);montarEscopos();xgold(ader,bt);XT.ouvintes.forEach(f=>f())})
