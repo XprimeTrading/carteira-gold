@@ -1,7 +1,7 @@
 [
  {
   "robo": "robo_x1",
-  "nome": "Robo X1",
+  "nome": "XPrime001",
   "magic": null,
   "status": "ativo",
   "resultado": 36.61,
@@ -14,7 +14,7 @@
  },
  {
   "robo": "robo_x2",
-  "nome": "Robo X2",
+  "nome": "XPrime002",
   "magic": null,
   "status": "ativo",
   "resultado": 24.12,
@@ -27,7 +27,7 @@
  },
  {
   "robo": "robo_x3",
-  "nome": "Robo X3",
+  "nome": "XPrime003",
   "magic": null,
   "status": "ativo",
   "resultado": -14.33,

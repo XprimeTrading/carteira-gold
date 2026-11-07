@@ -24,7 +24,7 @@
     "queda": -56.55,
     "queda_pct": -0.056549999999999996,
     "taxas": 0.0,
-    "media_dia": 7.998520559028593,
+    "media_dia": 7.996252624820158,
     "dias_operados": 6,
     "dias_lucro": 2,
     "melhor_dia": {
@@ -220,7 +220,7 @@
    },
    {
     "id": "robo_x1",
-    "nome": "Robo X1",
+    "nome": "XPrime001",
     "tipo": "robo",
     "inicio": "2026-11-02 07:35:57",
     "fim": "2026-11-06 15:00:00",
@@ -240,7 +240,7 @@
     "queda": -30.85,
     "queda_pct": -0.030850000000000002,
     "taxas": 0.0,
-    "media_dia": 7.703062656505425,
+    "media_dia": 7.700663919521052,
     "dias_operados": 5,
     "dias_lucro": 2,
     "melhor_dia": {
@@ -363,7 +363,7 @@
    },
    {
     "id": "robo_x2",
-    "nome": "Robo X2",
+    "nome": "XPrime002",
     "tipo": "robo",
     "inicio": "2026-11-02 09:43:41",
     "fim": "2026-11-05 21:53:00",
@@ -383,7 +383,7 @@
     "queda": -13.9,
     "queda_pct": -0.01339087878846265,
     "taxas": 0.0,
-    "media_dia": 5.171580482725797,
+    "media_dia": 5.169939431267924,
     "dias_operados": 4,
     "dias_lucro": 2,
     "melhor_dia": {
@@ -449,7 +449,7 @@
    },
    {
     "id": "robo_x3",
-    "nome": "Robo X3",
+    "nome": "XPrime003",
     "tipo": "robo",
     "inicio": "2026-11-02 09:48:11",
     "fim": "2026-11-05 14:37:41",
@@ -469,7 +469,7 @@
     "queda": -20.43,
     "queda_pct": -0.02043,
     "taxas": 0.0,
-    "media_dia": -3.074562060366363,
+    "media_dia": -3.073585783110188,
     "dias_operados": 4,
     "dias_lucro": 1,
     "melhor_dia": {
