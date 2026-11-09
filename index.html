@@ -481,44 +481,6 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
     </div>
     <p class="vt-aviso">Números da conta real sobre a base de US$ 1.000. Meses positivos vêm do backtest (simulado). Não é recomendação de investimento; resultados passados não garantem resultados futuros.</p>
   </section>
-  <section class="bloco ouro descr" id="descr" aria-label="Sobre a carteira">
-    <div class="txt">
-      <p>A Carteira XForex01 é uma carteira de <b>trading totalmente sistemático</b>, gerida pela XPrime Trading. Hoje ela opera o <b>ouro (XAU/USD)</b> e tem espaço para receber outros ativos que passem pela mesma validação. Três robôs independentes atuam em paralelo, cada um com uma lógica própria: o XPrime001 lê os ciclos da estrutura de preço, o XPrime002 opera rompimentos de canal no gráfico de 5 minutos e o XPrime003 busca o momentum nos horários de maior liquidez. Os robôs operam <b>nos dois sentidos</b>, na compra e na venda, para não depender da direção do mercado.</p>
-      <p>Cada estratégia saiu de um <b>processo completo de mineração de dados</b>: anos de histórico, validação fora da amostra e 15 dias de incubação em conta demo antes do dinheiro real. O risco segue regras fixas: um <b>robô guardião</b> aplica sozinho a trava de perda diária e o limite de perda máxima da conta. Todos os números aparecem sobre uma base de US$ 1.000; cada investidor dimensiona o próprio risco a partir desse formato.</p>
-    </div>
-    <dl>
-      <dt>Mercado</dt><dd>Ouro (XAU/USD)</dd>
-      <dt>Estilo</dt><dd>Sistemático · compra e venda</dd>
-      <dt>Robôs</dt><dd>3 (XPrime001, 002 e 003)</dd>
-      <dt>Perfil</dt><dd>Agressivo</dd>
-      <dt>Travas</dt><dd>4,1% ao dia · 19% no total</dd>
-      <dt>Base dos números</dt><dd>US$ 1.000</dd>
-      <dt>Conta real desde</dt><dd>novembro de 2026</dd>
-    </dl>
-  </section>
-  <!--mensal-->
-  <section class="bloco mensal" id="mensal" aria-label="Backtest mês a mês">
-    <div class="cab-mensal">
-      <div><h3>Backtest mês a mês</h3><p class="note">Conta de US$ 2.040 · jan/2025 a out/2026 · retorno de cada mês sobre os US$ 2.040 iniciais, com os mesmos lotes, sem reinvestir</p></div>
-      <div class="ret"><span>Retorno no período</span><b class="pos">+282,12%</b><small>+US$ 5.755,32 sobre US$ 2.040</small></div>
-    </div>
-    <div class="rolar"><table class="cmp tab-mensal"><thead><tr><th>Ano</th><th class='n'>Jan</th><th class='n'>Fev</th><th class='n'>Mar</th><th class='n'>Abr</th><th class='n'>Mai</th><th class='n'>Jun</th><th class='n'>Jul</th><th class='n'>Ago</th><th class='n'>Set</th><th class='n'>Out</th><th class='n'>Nov</th><th class='n'>Dez</th><th class="n ano">Ano</th></tr></thead>
-    <tbody><tr><td>2025</td><td class="n pos" title="100,55 US$">+4,93%</td><td class="n pos" title="439,07 US$">+21,52%</td><td class="n pos" title="0,76 US$">+0,04%</td><td class="n pos" title="388,40 US$">+19,04%</td><td class="n pos" title="393,23 US$">+19,28%</td><td class="n pos" title="206,76 US$">+10,14%</td><td class="n pos" title="321,80 US$">+15,77%</td><td class="n pos" title="64,88 US$">+3,18%</td><td class="n pos" title="465,69 US$">+22,83%</td><td class="n pos" title="546,92 US$">+26,81%</td><td class="n pos" title="241,88 US$">+11,86%</td><td class="n pos" title="315,20 US$">+15,45%</td><td class="n ano pos">+170,84%</td></tr><tr><td>2026</td><td class="n pos" title="189,32 US$">+9,28%</td><td class="n pos" title="59,38 US$">+2,91%</td><td class="n pos" title="256,46 US$">+12,57%</td><td class="n pos" title="133,51 US$">+6,54%</td><td class="n pos" title="347,80 US$">+17,05%</td><td class="n pos" title="256,35 US$">+12,57%</td><td class="n pos" title="277,97 US$">+13,63%</td><td class="n pos" title="212,03 US$">+10,39%</td><td class="n pos" title="374,76 US$">+18,37%</td><td class="n pos" title="162,60 US$">+7,97%</td><td class="n vivo">ao vivo</td><td class="n mudo">—</td><td class="n ano pos">+111,28%</td></tr></tbody></table></div>
-    <p class="note">Resultado simulado (backtest). A conta real começou em novembro de 2026. Pior mês do backtest completo (2024–2026): jun/2024, −US$ 83,98; queda máxima: −US$ 193,81. Resultados passados não garantem resultados futuros.</p>
-  </section>
-  <!--/mensal-->
-  <section class="bloco simular" id="simular" aria-label="Simulador de entrada">
-    <div class="cab-mensal"><div><h3>Se eu tivesse entrado em…</h3><p class="note">Proporcional à conta real: escolha o dia de entrada e o valor, e veja como estaria hoje.</p></div></div>
-    <div class="campos">
-      <label>Dia de entrada<select id="sim-dia"></select></label>
-      <label>Valor (US$)<input id="sim-valor" type="number" min="100" step="100" value="1000" inputmode="numeric"></label>
-    </div>
-    <div class="res"><div><p class="note" style="margin:0">Hoje estaria em</p><p class="v" id="sim-hoje">—</p></div>
-      <div><p class="note" style="margin:0">Resultado</p><p class="v" id="sim-res">—</p></div>
-      <div><p class="note" style="margin:0">Pior momento no caminho</p><p class="v neg" id="sim-pior">—</p></div></div>
-    <p class="note">Cálculo sobre o fechamento diário da conta real, sem custos de entrada e sem reinvestir. Não é recomendação de investimento.</p>
-  </section>
-
   <nav class="subabas" id="subabas" role="tablist" aria-label="Seções da carteira" hidden>
     <button type="button" role="tab" data-sub="geral" aria-selected="true">Visão geral</button>
     <button type="button" role="tab" data-sub="gestao" aria-selected="false">Gestão de risco</button>
@@ -583,6 +545,44 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
       </div>
       <p class="note">Curva = soma dos fechamentos (lucro, comissões e swap), sem aportes e saques; o que está aberto fica de fora e aparece em "Agora". % sobre <b data-v="base_pct" data-f="usd">—</b><span data-nom hidden>, o capital com que os robôs operam</span>.</p>
     </div>
+  </section>
+
+  <section class="bloco ouro descr" id="descr" data-pag="geral" aria-label="Sobre a carteira">
+    <div class="txt">
+      <p>A Carteira XForex01 é uma carteira de <b>trading totalmente sistemático</b>, gerida pela XPrime Trading. Hoje ela opera o <b>ouro (XAU/USD)</b> e tem espaço para receber outros ativos que passem pela mesma validação. Três robôs independentes atuam em paralelo, cada um com uma lógica própria: o XPrime001 lê os ciclos da estrutura de preço, o XPrime002 opera rompimentos de canal no gráfico de 5 minutos e o XPrime003 busca o momentum nos horários de maior liquidez. Os robôs operam <b>nos dois sentidos</b>, na compra e na venda, para não depender da direção do mercado.</p>
+      <p>Cada estratégia saiu de um <b>processo completo de mineração de dados</b>: anos de histórico, validação fora da amostra e 15 dias de incubação em conta demo antes do dinheiro real. O risco segue regras fixas: um <b>robô guardião</b> aplica sozinho a trava de perda diária e o limite de perda máxima da conta. Todos os números aparecem sobre uma base de US$ 1.000; cada investidor dimensiona o próprio risco a partir desse formato.</p>
+    </div>
+    <dl>
+      <dt>Mercado</dt><dd>Ouro (XAU/USD)</dd>
+      <dt>Estilo</dt><dd>Sistemático · compra e venda</dd>
+      <dt>Robôs</dt><dd>3 (XPrime001, 002 e 003)</dd>
+      <dt>Perfil</dt><dd>Agressivo</dd>
+      <dt>Travas</dt><dd>4,1% ao dia · 19% no total</dd>
+      <dt>Base dos números</dt><dd>US$ 1.000</dd>
+      <dt>Conta real desde</dt><dd>novembro de 2026</dd>
+    </dl>
+  </section>
+  <!--mensal-->
+  <section class="bloco mensal" id="mensal" data-pag="geral" aria-label="Backtest mês a mês">
+    <div class="cab-mensal">
+      <div><h3>Backtest mês a mês</h3><p class="note">Conta de US$ 2.040 · jan/2025 a out/2026 · retorno de cada mês sobre os US$ 2.040 iniciais, com os mesmos lotes, sem reinvestir</p></div>
+      <div class="ret"><span>Retorno no período</span><b class="pos">+282,12%</b><small>+US$ 5.755,32 sobre US$ 2.040</small></div>
+    </div>
+    <div class="rolar"><table class="cmp tab-mensal"><thead><tr><th>Ano</th><th class='n'>Jan</th><th class='n'>Fev</th><th class='n'>Mar</th><th class='n'>Abr</th><th class='n'>Mai</th><th class='n'>Jun</th><th class='n'>Jul</th><th class='n'>Ago</th><th class='n'>Set</th><th class='n'>Out</th><th class='n'>Nov</th><th class='n'>Dez</th><th class="n ano">Ano</th></tr></thead>
+    <tbody><tr><td>2025</td><td class="n pos" title="100,55 US$">+4,93%</td><td class="n pos" title="439,07 US$">+21,52%</td><td class="n pos" title="0,76 US$">+0,04%</td><td class="n pos" title="388,40 US$">+19,04%</td><td class="n pos" title="393,23 US$">+19,28%</td><td class="n pos" title="206,76 US$">+10,14%</td><td class="n pos" title="321,80 US$">+15,77%</td><td class="n pos" title="64,88 US$">+3,18%</td><td class="n pos" title="465,69 US$">+22,83%</td><td class="n pos" title="546,92 US$">+26,81%</td><td class="n pos" title="241,88 US$">+11,86%</td><td class="n pos" title="315,20 US$">+15,45%</td><td class="n ano pos">+170,84%</td></tr><tr><td>2026</td><td class="n pos" title="189,32 US$">+9,28%</td><td class="n pos" title="59,38 US$">+2,91%</td><td class="n pos" title="256,46 US$">+12,57%</td><td class="n pos" title="133,51 US$">+6,54%</td><td class="n pos" title="347,80 US$">+17,05%</td><td class="n pos" title="256,35 US$">+12,57%</td><td class="n pos" title="277,97 US$">+13,63%</td><td class="n pos" title="212,03 US$">+10,39%</td><td class="n pos" title="374,76 US$">+18,37%</td><td class="n pos" title="162,60 US$">+7,97%</td><td class="n vivo">ao vivo</td><td class="n mudo">—</td><td class="n ano pos">+111,28%</td></tr></tbody></table></div>
+    <p class="note">Resultado simulado (backtest). A conta real começou em novembro de 2026. Pior mês do backtest completo (2024–2026): jun/2024, −US$ 83,98; queda máxima: −US$ 193,81. Resultados passados não garantem resultados futuros.</p>
+  </section>
+  <!--/mensal-->
+  <section class="bloco simular" id="simular" data-pag="geral" aria-label="Simulador de entrada">
+    <div class="cab-mensal"><div><h3>Se eu tivesse entrado em…</h3><p class="note">Proporcional à conta real: escolha o dia de entrada e o valor, e veja como estaria hoje.</p></div></div>
+    <div class="campos">
+      <label>Dia de entrada<select id="sim-dia"></select></label>
+      <label>Valor (US$)<input id="sim-valor" type="number" min="100" step="100" value="1000" inputmode="numeric"></label>
+    </div>
+    <div class="res"><div><p class="note" style="margin:0">Hoje estaria em</p><p class="v" id="sim-hoje">—</p></div>
+      <div><p class="note" style="margin:0">Resultado</p><p class="v" id="sim-res">—</p></div>
+      <div><p class="note" style="margin:0">Pior momento no caminho</p><p class="v neg" id="sim-pior">—</p></div></div>
+    <p class="note">Cálculo sobre o fechamento diário da conta real, sem custos de entrada e sem reinvestir. Não é recomendação de investimento.</p>
   </section>
 
   <section class="bloco" id="agora" data-pag="geral">
