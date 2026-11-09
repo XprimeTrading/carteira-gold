@@ -52,5 +52,14 @@
   "fechadas": 2,
   "ganhos": 1,
   "perdas": 1
+ },
+ {
+  "dia": "2026-11-09",
+  "saldo_inicio": 1041.75,
+  "realizado": -4.33,
+  "saldo_fim": 1037.42,
+  "fechadas": 1,
+  "ganhos": 0,
+  "perdas": 1
  }
 ]
