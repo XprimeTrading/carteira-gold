@@ -481,6 +481,15 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
     </div>
     <p class="vt-aviso">Números da conta real sobre a base de US$ 1.000. Meses positivos vêm do backtest (simulado). Não é recomendação de investimento; resultados passados não garantem resultados futuros.</p>
   </section>
+  <section class="bloco" id="sede" aria-label="A sede da XPrime em 3D">
+    <div>
+      <p class="sec"><b>Sede</b></p>
+      <h2>A sede da XPrime em <em>3D</em></h2>
+      <p class="note" style="margin-top:4px">A Carteira XForex01 com os robôs e o supervisor, a Carteira XCrypto em incubação, a Sala de Mineração e o resto da empresa. O telão da XForex01 mostra o resultado do dia desta conta.</p>
+    </div>
+    <iframe class="sede3d" id="sede3d" data-src="sede.html?embed=1&v=c0760eaa" title="Sede da XPrime em 3D" allow="fullscreen"></iframe>
+    <div class="hint"><a href="sede.html" target="_blank" rel="noopener" id="sede-cheia">Abrir a sede em tela cheia →</a><span>Arraste para girar, pinça ou roda para zoom, toque numa sala. Passeio e Tour guiado andam pelo corredor.</span></div>
+  </section>
   <nav class="subabas" id="subabas" role="tablist" aria-label="Seções da carteira" hidden>
     <button type="button" role="tab" data-sub="geral" aria-selected="true">Visão geral</button>
     <button type="button" role="tab" data-sub="gestao" aria-selected="false">Gestão de risco</button>
@@ -622,13 +631,7 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
 
 
   <section class="bloco" id="salas" data-pag="geral">
-    <div>
-      <p class="sec">03 <b>Sede</b></p>
-      <h2>A sede da XPrime em <em>3D</em></h2>
-      <p class="note" style="margin-top:4px">A Carteira XForex01 com os robôs e o supervisor, a Carteira XCrypto em incubação, a Sala de Mineração e o resto da empresa. O telão da XForex01 mostra o resultado do dia desta conta.</p>
-    </div>
-    <iframe class="sede3d" id="sede3d" data-src="sede.html?embed=1&v=c0760eaa" title="Sede da XPrime em 3D" allow="fullscreen"></iframe>
-    <div class="hint"><a href="sede.html" target="_blank" rel="noopener" id="sede-cheia">Abrir a sede em tela cheia →</a><span>Arraste para girar, pinça ou roda para zoom, toque numa sala. Passeio e Tour guiado andam pelo corredor.</span></div>
+    <div><p class="sec">03 <b>Robôs</b></p><h2>Os robôs da <em>carteira</em></h2></div>
     <div class="salas">
       <article class="sala" data-sala="robo_x1" tabindex="0">
         <h3><span>XPrime001</span><span class="num">Sala 1</span></h3>
@@ -1350,7 +1353,7 @@ function carregar(id){
   Promise.all([...["conta","curva","dias","robos","estat"].map(pega),...["aderencia","backtest","mercado"].map(n=>pega(n).catch(()=>null)),...extra])
     .then(([conta,curva,dias,robos,est,ader,bt,merc,fech,ativos])=>{if(ABA!==id)return;MERC=merc&&merc[0]||null;opcoesGrafico();
       document.getElementById("aviso").hidden=true;document.getElementById("conteudo").hidden=false;
-      document.getElementById("salas").hidden=id!=="xm";document.getElementById("perfil-op").hidden=id!=="xm";document.getElementById("descr").hidden=id!=="xm";document.getElementById("mensal").hidden=id!=="xm";["vitrine","simular"].forEach(n=>document.getElementById(n).hidden=id!=="xm");document.getElementById("titulo-cart").textContent=id==="xm"?"Carteira XForex01":"Bybit · monitor";
+      document.getElementById("salas").hidden=id!=="xm";document.getElementById("sede").hidden=id!=="xm";document.getElementById("perfil-op").hidden=id!=="xm";document.getElementById("descr").hidden=id!=="xm";document.getElementById("mensal").hidden=id!=="xm";["vitrine","simular"].forEach(n=>document.getElementById(n).hidden=id!=="xm");document.getElementById("titulo-cart").textContent=id==="xm"?"Carteira XForex01":"Bybit · monitor";
       MOEDA=conta[0].moeda==="USC"?"USC ":"US$ ";
       DADOS={conta,curva,dias,robos};XT.V=situacao(conta,dias);XT.robos=robos;EST=est[0];
       preencher(XT.V,robos);if(id==="xm")vitrine(XT.V,EST,dias,bt);montarEscopos();xgold(ader,bt);XT.ouvintes.forEach(f=>f())})
