@@ -104,6 +104,46 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
 .chip[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:#111;font-weight:600}
 .chip[aria-pressed="true"] i{display:none}
 .bloco{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px;display:flex;flex-direction:column;gap:14px;min-width:0}
+/* vitrine para investidor (08/11/2026): resumo no topo, travas, simulador e contato */
+.vitrine{display:flex;flex-direction:column;gap:14px;background:linear-gradient(180deg,rgba(224,169,64,.09),var(--surface) 220px);border:1px solid rgba(224,169,64,.45);border-radius:16px;padding:18px 20px}
+.vt-topo{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;font:500 12px var(--mono);color:var(--muted)}
+.selo{display:inline-flex;align-items:center;gap:7px;border:1px solid rgba(76,201,166,.5);color:var(--pos);border-radius:999px;padding:4px 11px;letter-spacing:.06em;text-transform:uppercase;font-size:11px}
+.selo i{width:8px;height:8px;border-radius:50%;background:var(--pos);animation:pulso 1.8s ease-in-out infinite}
+@keyframes pulso{0%{box-shadow:0 0 0 0 rgba(76,201,166,.7)}70%{box-shadow:0 0 0 8px rgba(76,201,166,0)}100%{box-shadow:0 0 0 0 rgba(76,201,166,0)}}
+#vt-atual.velho{color:var(--warn)}
+.vt-verif{color:var(--gold);text-decoration:none;border:1px solid rgba(224,169,64,.5);border-radius:999px;padding:4px 11px}
+.vt-kpis{display:grid;grid-template-columns:1.5fr repeat(4,minmax(0,1fr));gap:10px}
+.vt-k{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:3px;min-width:0}
+.vt-k .k{font:500 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0}
+.vt-k .v{font:600 clamp(22px,3.2vw,30px)/1.1 var(--display);font-variant-numeric:tabular-nums;margin:0}
+.vt-k.grande .v{font-size:clamp(34px,5.4vw,52px)}
+.vt-k .s{font-size:12.5px;color:var(--muted);margin:0}
+.vt-k .sim{color:var(--gold);font:500 10.5px var(--mono);letter-spacing:.1em;text-transform:uppercase}
+.vt-k a{color:inherit}
+.vt-travas{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.trava{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:7px}
+.trava .lin{display:flex;justify-content:space-between;gap:10px;font-size:13px;flex-wrap:wrap}
+.trava .lin b{font-family:var(--mono);font-weight:500}
+.medidor{position:relative;height:10px;border-radius:999px;background:var(--grid);overflow:visible}
+.medidor .uso{position:absolute;left:0;top:0;bottom:0;border-radius:999px;background:var(--pos);transition:width .6s ease}
+.medidor .uso.alto{background:var(--warn)}.medidor .uso.critico{background:var(--neg)}
+.medidor .pior{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--neg)}
+.trava .s{font-size:12px;color:var(--muted);margin:0}
+.vt-cta{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.cta{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:#111;font:600 14px var(--display);border-radius:999px;padding:10px 20px;text-decoration:none}
+.cta2{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);color:var(--ink);font:500 13.5px var(--body);border-radius:999px;padding:9px 18px;text-decoration:none;background:transparent;cursor:pointer}
+.cta2:hover,.cta:hover{filter:brightness(1.08)}
+.vt-aviso{font-size:11.5px;color:var(--muted);margin:0}
+.simular .campos{display:flex;flex-wrap:wrap;gap:12px 18px;align-items:flex-end}
+.simular label{display:flex;flex-direction:column;gap:5px;font:500 11px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.simular select,.simular input{font:500 15px var(--body);color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:8px 10px;min-width:150px}
+.simular .res{display:flex;flex-wrap:wrap;gap:10px 28px;align-items:baseline}
+.simular .res .v{font:600 clamp(26px,4vw,38px)/1.1 var(--display);font-variant-numeric:tabular-nums}
+@media (max-width:1180px){.vt-kpis{grid-template-columns:repeat(4,minmax(0,1fr))}.vt-k.grande{grid-column:1/-1}}
+@media (max-width:640px){.vt-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.vt-k .v.dupla{font-size:clamp(18px,2.4vw,24px);white-space:nowrap}
+@media (max-width:560px){.vt-travas{grid-template-columns:1fr}.vitrine{padding:14px}}
+@media (prefers-reduced-motion:reduce){.selo i{animation:none}.medidor .uso{transition:none}}
 .descr{flex-direction:row;flex-wrap:wrap;gap:16px 28px;margin-top:4px}
 .descr .txt{flex:1 1 440px;color:var(--muted);line-height:1.6;display:flex;flex-direction:column;gap:10px}
 .descr .txt b{color:var(--text)}
@@ -397,6 +437,35 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
     <h1 id="titulo-cart">Carteira XForex01</h1>
     <a class="perfil-op" id="perfil-op" href="#gestao" data-sub-ir="gestao" title="Ver os perfis de risco"><i></i>Perfil em operação: <b>Agressivo</b></a>
   </div>
+  <section class="vitrine" id="vitrine" aria-label="Resumo da carteira">
+    <div class="vt-topo">
+      <span class="selo"><i></i>Conta real · ao vivo</span>
+      <span id="vt-atual">atualizando…</span>
+      <a class="vt-verif" id="vt-verif" target="_blank" rel="noopener" hidden>Verificado por terceiro ↗</a>
+    </div>
+    <div class="vt-kpis">
+      <div class="vt-k grande"><p class="k">Retorno desde o início</p><p class="v" id="vt-ret">—</p><p class="s" id="vt-ret-s">—</p></div>
+      <div class="vt-k"><p class="k">Queda máxima</p><p class="v neg" id="vt-queda">—</p><p class="s" id="vt-queda-s">—</p></div>
+      <div class="vt-k"><p class="k">Dias ao vivo</p><p class="v" id="vt-dias">—</p><p class="s" id="vt-dias-s">—</p></div>
+      <div class="vt-k"><p class="k">Pior e melhor dia</p><p class="v dupla" id="vt-dia"><span class="neg">—</span></p><p class="s" id="vt-dia-s">—</p></div>
+      <div class="vt-k"><p class="k">Meses positivos</p><p class="v" id="vt-meses">—</p><p class="s"><span class="sim">simulado</span> · <a href="#mensal" id="vt-ir-mensal">backtest mês a mês</a></p></div>
+    </div>
+    <div class="vt-travas">
+      <div class="trava"><div class="lin"><span>Trava diária <b id="vt-tdia-r">—</b></span><span>usado hoje <b id="vt-tdia">—</b></span></div>
+        <div class="medidor"><div class="uso" id="vt-tdia-b"></div></div>
+        <p class="s">Se a perda do dia chegar à trava, o robô guardião fecha tudo e só volta no dia seguinte.</p></div>
+      <div class="trava"><div class="lin"><span>Perda máxima da conta <b id="vt-ttot-r">—</b></span><span>usado agora <b id="vt-ttot">—</b></span></div>
+        <div class="medidor"><div class="uso" id="vt-ttot-b"></div><div class="pior" id="vt-ttot-p" title="pior momento"></div></div>
+        <p class="s" id="vt-ttot-s">—</p></div>
+    </div>
+    <div class="vt-cta">
+      <a class="cta" id="vt-contato" target="_blank" rel="noopener" hidden>Quero acompanhar a carteira</a>
+      <a class="cta2" id="vt-insta" target="_blank" rel="noopener" hidden>Instagram @xprimetrading</a>
+      <a class="cta2" href="#simular" id="vt-ir-sim">Simular uma entrada</a>
+      <a class="cta2" href="dados/xforex01_lamina.pdf" download>Baixar a lâmina (PDF)</a>
+    </div>
+    <p class="vt-aviso">Números da conta real sobre a base de US$ 1.000. Meses positivos vêm do backtest (simulado). Não é recomendação de investimento; resultados passados não garantem resultados futuros.</p>
+  </section>
   <section class="bloco ouro descr" id="descr" aria-label="Sobre a carteira">
     <div class="txt">
       <p>A Carteira XForex01 é uma carteira de <b>trading totalmente sistemático</b>, gerida pela XPrime Trading. Hoje ela opera o <b>ouro (XAU/USD)</b> e tem espaço para receber outros ativos que passem pela mesma validação. Três robôs independentes atuam em paralelo, cada um com uma lógica própria: o XPrime001 lê os ciclos da estrutura de preço, o XPrime002 opera rompimentos de canal no gráfico de 5 minutos e o XPrime003 busca o momentum nos horários de maior liquidez. Os robôs operam <b>nos dois sentidos</b>, na compra e na venda, para não depender da direção do mercado.</p>
@@ -423,6 +492,17 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
     <p class="note">Resultado simulado (backtest). A conta real começou em novembro de 2026. Pior mês do backtest completo (2024–2026): jun/2024, −US$ 83,98; queda máxima: −US$ 193,81. Resultados passados não garantem resultados futuros.</p>
   </section>
   <!--/mensal-->
+  <section class="bloco simular" id="simular" aria-label="Simulador de entrada">
+    <div class="cab-mensal"><div><h3>Se eu tivesse entrado em…</h3><p class="note">Proporcional à conta real: escolha o dia de entrada e o valor, e veja como estaria hoje.</p></div></div>
+    <div class="campos">
+      <label>Dia de entrada<select id="sim-dia"></select></label>
+      <label>Valor (US$)<input id="sim-valor" type="number" min="100" step="100" value="1000" inputmode="numeric"></label>
+    </div>
+    <div class="res"><div><p class="note" style="margin:0">Hoje estaria em</p><p class="v" id="sim-hoje">—</p></div>
+      <div><p class="note" style="margin:0">Resultado</p><p class="v" id="sim-res">—</p></div>
+      <div><p class="note" style="margin:0">Pior momento no caminho</p><p class="v neg" id="sim-pior">—</p></div></div>
+    <p class="note">Cálculo sobre o fechamento diário da conta real, sem custos de entrada e sem reinvestir. Não é recomendação de investimento.</p>
+  </section>
 
   <nav class="subabas" id="subabas" role="tablist" aria-label="Seções da carteira" hidden>
     <button type="button" role="tab" data-sub="geral" aria-selected="true">Visão geral</button>
@@ -1179,6 +1259,58 @@ function graficoBt(){
       const bx=el0.getBoundingClientRect(),kk=bx.width/W;tip.style.left=Math.max(0,Math.min(bx.width-tip.offsetWidth,x(p.t)*kk+12))+"px";tip.style.top="4px"})
     .on("pointerleave",()=>{tip.hidden=true;v.style("display","none")});
 }
+// ---------- vitrine para investidor (08/11/2026) ----------
+// endereços que a Presidência define; vazios = o botão/selo não aparece
+const CONTATO="https://wa.me/559898216010?text=Ol%C3%A1!%20Quero%20acompanhar%20a%20Carteira%20XForex01";  // WhatsApp da XPrime (08/11/2026)
+const INSTAGRAM="https://www.instagram.com/xprimetrading/";
+const VERIFICADO="";   // ex.: link público do FX Blue ou Myfxbook
+let VT_EXP=null;
+function vtAtual(){const e=document.getElementById("vt-atual");if(!e||!VT_EXP)return;const m=Math.max(0,Math.round((Date.now()-VT_EXP)/60000));
+  e.textContent=m<1?"atualizado agora":m<60?`atualizado há ${m} min`:`atualizado há ${Math.floor(m/60)} h ${m%60} min`;e.classList.toggle("velho",m>20)}
+setInterval(vtAtual,30000);
+const pctBR=(v,c=2)=>(v>0?"+":v<0?"−":"")+Math.abs(v*100).toFixed(c).replace(".",",")+"%";
+const usdBR=v=>(v<0?"−":"")+"US$ "+Math.abs(v).toLocaleString("pt-BR",{minimumFractionDigits:2,maximumFractionDigits:2});
+const diaBR=s=>String(s).slice(8,10)+"/"+String(s).slice(5,7);
+function vitrine(V,est,dias,bt){
+  const c=DADOS.conta[0],S=est&&est.escopos?est.escopos.find(s=>s.id==="conta")||est.escopos[0]:null,ini=+c.saldo_inicial;
+  VT_EXP=parseT(c.exportado).getTime();vtAtual();
+  const set=(id,txt,cls)=>{const e=document.getElementById(id);if(!e)return;e.textContent=txt;if(cls!==undefined){e.classList.remove("pos","neg");if(cls)e.classList.add(cls)}};
+  set("vt-ret",pctBR(V.resultado_pct),V.resultado>=0?"pos":"neg");
+  set("vt-ret-s",`${V.resultado>0?"+":""}${usdBR(V.resultado)} sobre US$ 1.000 · conta real desde ${diaBR(c.inicio)}/${String(c.inicio).slice(0,4)}`);
+  if(S){set("vt-queda",pctBR(S.queda_pct));set("vt-queda-s",`${usdBR(S.queda)} do pico ao fundo`);
+    const pd=S.pior_dia,md=S.melhor_dia,e=document.getElementById("vt-dia");
+    if(pd&&md){e.innerHTML="";const a=el("span","neg",pctBR(pd.v/ini,1)),b=el("span","pos",pctBR(md.v/ini,1));e.append(a,el("span",null," / "),b);
+      set("vt-dia-s",`pior ${diaBR(pd.dia)} · melhor ${diaBR(md.dia)}`)}}
+  const d0=parseT(c.inicio),nd=Math.max(1,Math.floor((Date.now()-d0.getTime())/864e5)+1);
+  set("vt-dias",String(nd));set("vt-dias-s",`${dias.length} dias com operação · ${S?S.fechamentos:"—"} fechamentos`);
+  const b0=Array.isArray(bt)?bt[0]:bt,st=b0&&b0.stats&&b0.stats.carteira;
+  if(st)set("vt-meses",`${st.meses_pos} de ${st.meses}`);
+  // travas: quanto já foi usado
+  const tr=(bar,txt,uso)=>{const u=Math.max(0,Math.min(1,uso)),b=document.getElementById(bar);b.style.width=(u*100)+"%";b.classList.toggle("alto",u>=.5&&u<.8);b.classList.toggle("critico",u>=.8);set(txt,pctBR(u,0).replace("+",""))};
+  set("vt-tdia-r",pctR(REGRA.dia));set("vt-ttot-r",pctR(REGRA.total));
+  tr("vt-tdia-b","vt-tdia",V.perda_hoje_pct||0);
+  const limT=ini*REGRA.total;tr("vt-ttot-b","vt-ttot",Math.max(0,ini-(+c.patrimonio))/limT);
+  if(S){const pior=Math.min(1,Math.abs(S.queda)/limT);document.getElementById("vt-ttot-p").style.left=(pior*100)+"%";
+    set("vt-ttot-s",`O pior momento até hoje usou ${Math.round(pior*100)}% da perda máxima (a marca vermelha). A trava é aplicada pelo robô guardião.`)}
+  const ct=document.getElementById("vt-contato");ct.hidden=!CONTATO;if(CONTATO)ct.href=CONTATO;
+  const ig=document.getElementById("vt-insta");ig.hidden=!INSTAGRAM;if(INSTAGRAM)ig.href=INSTAGRAM;
+  const vf=document.getElementById("vt-verif");vf.hidden=!VERIFICADO;if(VERIFICADO)vf.href=VERIFICADO;
+  simulador(dias,c);
+}
+function simulador(dias,c){
+  const sel=document.getElementById("sim-dia"),inp=document.getElementById("sim-valor");
+  const ant=sel.value;sel.innerHTML="";dias.forEach(d=>{const o=document.createElement("option");o.value=d.dia;o.textContent=diaBR(d.dia)+"/"+d.dia.slice(0,4);sel.append(o)});
+  sel.value=ant&&dias.some(d=>d.dia===ant)?ant:dias[0].dia;
+  const calc=()=>{const i=dias.findIndex(d=>d.dia===sel.value),v=Math.max(0,+inp.value||0);if(i<0)return;
+    const s0=+dias[i].saldo_inicio,pat=+c.patrimonio,r=(pat-s0)/s0;
+    let min=s0;dias.slice(i).forEach(d=>{min=Math.min(min,+d.saldo_fim)});const piorR=Math.min(0,(min-s0)/s0);
+    const set=(id,t,cls)=>{const e=document.getElementById(id);e.textContent=t;e.classList.remove("pos","neg");if(cls)e.classList.add(cls)};
+    set("sim-hoje",usdBR(v*(1+r)));set("sim-res",`${usdBR(v*r).replace(/^US/,r>=0?"+US":"US")} (${pctBR(r)})`,r>=0?"pos":"neg");
+    set("sim-pior",piorR<0?`${usdBR(v*piorR)} (${pctBR(piorR)})`:"sem queda no fechamento",piorR<0?"neg":"pos")};
+  sel.onchange=calc;inp.oninput=calc;calc();
+}
+document.addEventListener("click",e=>{const a=e.target.closest("#vt-ir-sim,#vt-ir-mensal");if(!a)return;e.preventDefault();
+  document.getElementById(a.id==="vt-ir-sim"?"simular":"mensal").scrollIntoView({behavior:"smooth",block:"start"})});
 function xgold(ader,bt){
   const tem=!!(ader&&ader.length);ADER=tem?ader:null;
   document.getElementById("subabas").hidden=!tem;
@@ -1203,10 +1335,10 @@ function carregar(id){
   Promise.all([...["conta","curva","dias","robos","estat"].map(pega),...["aderencia","backtest","mercado"].map(n=>pega(n).catch(()=>null)),...extra])
     .then(([conta,curva,dias,robos,est,ader,bt,merc,fech,ativos])=>{if(ABA!==id)return;MERC=merc&&merc[0]||null;opcoesGrafico();
       document.getElementById("aviso").hidden=true;document.getElementById("conteudo").hidden=false;
-      document.getElementById("salas").hidden=id!=="xm";document.getElementById("perfil-op").hidden=id!=="xm";document.getElementById("descr").hidden=id!=="xm";document.getElementById("mensal").hidden=id!=="xm";document.getElementById("titulo-cart").textContent=id==="xm"?"Carteira XForex01":"Bybit · monitor";
+      document.getElementById("salas").hidden=id!=="xm";document.getElementById("perfil-op").hidden=id!=="xm";document.getElementById("descr").hidden=id!=="xm";document.getElementById("mensal").hidden=id!=="xm";["vitrine","simular"].forEach(n=>document.getElementById(n).hidden=id!=="xm");document.getElementById("titulo-cart").textContent=id==="xm"?"Carteira XForex01":"Bybit · monitor";
       MOEDA=conta[0].moeda==="USC"?"USC ":"US$ ";
       DADOS={conta,curva,dias,robos};XT.V=situacao(conta,dias);XT.robos=robos;EST=est[0];
-      preencher(XT.V,robos);montarEscopos();xgold(ader,bt);XT.ouvintes.forEach(f=>f())})
+      preencher(XT.V,robos);if(id==="xm")vitrine(XT.V,EST,dias,bt);montarEscopos();xgold(ader,bt);XT.ouvintes.forEach(f=>f())})
     .catch(e=>{if(ABA!==id)return;console.warn("dados não carregaram",e);
       const a=document.getElementById("aviso");a.textContent=AVISO[id];a.hidden=false;document.getElementById("conteudo").hidden=true});
 }
