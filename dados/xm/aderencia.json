@@ -20,7 +20,7 @@
    "acerto": 0.43478260869565216,
    "payoff": 1.7461186717474142,
    "fl": 1.3431682090364727,
-   "por_semana": 23.142750944761946,
+   "por_semana": 23.128900053859248,
    "seq_atual": 1,
    "seq_max": 5,
    "desde": "2026-11-02 07:35:57"
@@ -30,7 +30,7 @@
    "sem_stop": 0,
    "no_stop": -10.77,
    "no_alvo": 16.18,
-   "flutuante": -0.15
+   "flutuante": 0.41
   }
  },
  {
@@ -54,7 +54,7 @@
    "acerto": 0.42857142857142855,
    "payoff": 2.5204872646733105,
    "fl": 1.8903654485049832,
-   "por_semana": 7.134414049236383,
+   "por_semana": 7.130089002500507,
    "seq_atual": 2,
    "seq_max": 2,
    "desde": "2026-11-02 09:43:41"
@@ -64,7 +64,7 @@
    "sem_stop": 0,
    "no_stop": -17.42,
    "no_alvo": 34.93,
-   "flutuante": -5.25
+   "flutuante": -5.6
   }
  },
  {
@@ -84,21 +84,21 @@
   },
   "periodo_ref": "01/2024 a 10/2026",
   "vivo": {
-   "trades": 8,
-   "acerto": 0.375,
-   "payoff": 1.0048951694836983,
-   "fl": 0.602937101690219,
-   "por_semana": 8.157327647658779,
-   "seq_atual": 0,
+   "trades": 9,
+   "acerto": 0.3333333333333333,
+   "payoff": 1.0048487647194644,
+   "fl": 0.5024243823597323,
+   "por_semana": 9.171427767006952,
+   "seq_atual": 1,
    "seq_max": 2,
    "desde": "2026-11-02 09:48:11"
   },
   "aberto": {
-   "posicoes": 1,
+   "posicoes": 0,
    "sem_stop": 0,
-   "no_stop": -7.22,
-   "no_alvo": 36.58,
-   "flutuante": -6.88
+   "no_stop": 0,
+   "no_alvo": 0,
+   "flutuante": 0
   }
  }
 ]
