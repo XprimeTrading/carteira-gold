@@ -20,17 +20,17 @@
    "acerto": 0.5,
    "payoff": 1.577743109724389,
    "fl": 1.577743109724389,
-   "por_semana": 21.83199600197886,
+   "por_semana": 21.82187227265486,
    "seq_atual": 0,
    "seq_max": 5,
    "desde": "2026-11-02 07:35:57"
   },
   "aberto": {
-   "posicoes": 2,
+   "posicoes": 3,
    "sem_stop": 0,
-   "no_stop": -10.75,
-   "no_alvo": 30.67,
-   "flutuante": 15.18
+   "no_stop": -21.38,
+   "no_alvo": 46.62,
+   "flutuante": 14.34
   }
  },
  {
@@ -54,7 +54,7 @@
    "acerto": 0.5555555555555556,
    "payoff": 1.6020671834625322,
    "fl": 2.0025839793281652,
-   "por_semana": 7.087454917372949,
+   "por_semana": 7.0841356077133035,
    "seq_atual": 0,
    "seq_max": 2,
    "desde": "2026-11-02 09:43:41"
@@ -64,7 +64,7 @@
    "sem_stop": 0,
    "no_stop": -17.28,
    "no_alvo": 34.56,
-   "flutuante": 7.97
+   "flutuante": 7.61
   }
  },
  {
@@ -88,7 +88,7 @@
    "acerto": 0.3,
    "payoff": 1.0732051011061792,
    "fl": 0.4599450433312197,
-   "por_semana": 7.877719401302703,
+   "por_semana": 7.874028685504222,
    "seq_atual": 2,
    "seq_max": 2,
    "desde": "2026-11-02 09:48:11"
@@ -98,7 +98,7 @@
    "sem_stop": 0,
    "no_stop": -7.88,
    "no_alvo": 35.92,
-   "flutuante": 2.94
+   "flutuante": 2.66
   }
  }
 ]
