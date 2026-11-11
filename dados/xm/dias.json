@@ -74,10 +74,10 @@
  {
   "dia": "2026-11-11",
   "saldo_inicio": 1040.72,
-  "realizado": 5.31,
-  "saldo_fim": 1046.03,
-  "fechadas": 3,
+  "realizado": -7.39,
+  "saldo_fim": 1033.34,
+  "fechadas": 5,
   "ganhos": 1,
-  "perdas": 3
+  "perdas": 5
  }
 ]
