@@ -5,12 +5,12 @@
   "magic": null,
   "status": "operando",
   "resultado": 55.55,
-  "fechadas": 28,
+  "fechadas": 29,
   "hoje": 11.79,
   "ganhos": 14,
-  "abertas": 3,
-  "flutuante": -7.74,
-  "ultima": "2026-11-11 07:05:00"
+  "abertas": 2,
+  "flutuante": -9.13,
+  "ultima": "2026-11-11 09:38:09"
  },
  {
   "robo": "robo_x2",
@@ -22,7 +22,7 @@
   "hoje": 0,
   "ganhos": 5,
   "abertas": 2,
-  "flutuante": -3.57,
+  "flutuante": -4.23,
   "ultima": "2026-11-11 05:15:00"
  },
  {
@@ -35,7 +35,7 @@
   "hoje": 0,
   "ganhos": 3,
   "abertas": 1,
-  "flutuante": -6.05,
+  "flutuante": -6.56,
   "ultima": "2026-11-11 05:30:00"
  }
 ]
