@@ -24,7 +24,7 @@
     "queda": -61.85,
     "queda_pct": -0.057379558590234796,
     "taxas": 0.0,
-    "media_dia": 1.6189991864351883,
+    "media_dia": 1.6183194986850202,
     "dias_operados": 9,
     "dias_lucro": 3,
     "melhor_dia": {
@@ -327,7 +327,7 @@
     "queda": -30.85,
     "queda_pct": -0.030850000000000002,
     "taxas": 0.0,
-    "media_dia": 4.682285693958151,
+    "media_dia": 4.680222893959112,
     "dias_operados": 8,
     "dias_lucro": 5,
     "melhor_dia": {
@@ -529,7 +529,7 @@
     "queda": -28.14,
     "queda_pct": -0.027109304252326546,
     "taxas": 0.0,
-    "media_dia": 1.0551108965899607,
+    "media_dia": 1.0546416618331087,
     "dias_operados": 6,
     "dias_lucro": 3,
     "melhor_dia": {
@@ -641,7 +641,7 @@
     "queda": -33.43,
     "queda_pct": -0.03343,
     "taxas": 0.0,
-    "media_dia": -3.571268475342786,
+    "media_dia": -3.5696797110857093,
     "dias_operados": 6,
     "dias_lucro": 1,
     "melhor_dia": {
