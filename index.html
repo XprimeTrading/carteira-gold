@@ -716,7 +716,7 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
     <div class="vt-travas">
       <div class="trava"><div class="lin"><span>Trava diária <b id="vt-tdia-r">—</b></span><span>usado hoje <b id="vt-tdia">—</b></span></div>
         <div class="medidor"><div class="uso" id="vt-tdia-b"></div></div>
-        <p class="s">Se a perda do dia chegar à trava, o robô guardião fecha tudo e só volta no dia seguinte.</p></div>
+        <p class="s" id="vt-tdia-s">Se a perda do dia chegar à trava, o robô guardião fecha tudo e só volta no dia seguinte.</p></div>
       <div class="trava"><div class="lin"><span>Perda máxima da conta <b id="vt-ttot-r">—</b></span><span>usado agora <b id="vt-ttot">—</b></span></div>
         <div class="medidor"><div class="uso" id="vt-ttot-b"></div><div class="pior" id="vt-ttot-p" title="pior momento"></div></div>
         <p class="s" id="vt-ttot-s">—</p></div>
@@ -1584,7 +1584,7 @@ function vitrine(V,est,dias,bt){
   VT_EXP=parseT(c.exportado).getTime();vtAtual();
   const set=(id,txt,cls)=>{const e=document.getElementById(id);if(!e)return;e.textContent=txt;if(cls!==undefined){e.classList.remove("pos","neg");if(cls)e.classList.add(cls)}};
   set("vt-ret",pctBR(V.resultado_pct),V.resultado>=0?"pos":"neg");
-  set("vt-ret-s",`${V.resultado>0?"+":""}${usdBR(V.resultado)} sobre US$ 1.000 · conta real desde ${diaBR(c.inicio)}/${String(c.inicio).slice(0,4)}`);
+  set("vt-ret-s",`${V.resultado>0?"+":""}${usdBR(V.resultado)} sobre ${usdBR(ini)} · conta real desde ${diaBR(c.inicio)}/${String(c.inicio).slice(0,4)}`);
   if(S){set("vt-queda",pctBR(S.queda_pct));set("vt-queda-s",`${usdBR(S.queda)} do pico ao fundo`);
     const pd=S.pior_dia,md=S.melhor_dia,e=document.getElementById("vt-dia");
     if(pd&&md){e.innerHTML="";const a=el("span","neg",pctBR(pd.v/ini,1)),b=el("span","pos",pctBR(md.v/ini,1));e.append(a,el("span",null," / "),b);
@@ -1599,11 +1599,12 @@ function vitrine(V,est,dias,bt){
   tr("vt-tdia-b","vt-tdia",V.perda_hoje_pct||0);
   const limT=ini*REGRA.total;tr("vt-ttot-b","vt-ttot",Math.max(0,ini-(+c.patrimonio))/limT);
   if(S){const pior=Math.min(1,Math.abs(S.queda)/limT);document.getElementById("vt-ttot-p").style.left=(pior*100)+"%";
-    set("vt-ttot-s",`O pior momento até hoje usou ${Math.round(pior*100)}% da perda máxima (a marca vermelha). A trava é aplicada pelo robô guardião.`)}
+    set("vt-ttot-s",`O pior momento até hoje usou ${Math.round(pior*100)}% da perda máxima (a marca vermelha). ${ABA==="xm"?"A trava é aplicada pelo robô guardião.":"A trava é aplicada automaticamente."}`)}
   const ct=document.getElementById("vt-contato");ct.hidden=!CONTATO;if(CONTATO)ct.href=CONTATO;
   const ac=document.getElementById("ap-contato");ac.hidden=!CONTATO;if(CONTATO)ac.href=CONTATO;
   const ig=document.getElementById("vt-insta");ig.hidden=!INSTAGRAM;if(INSTAGRAM)ig.href=INSTAGRAM;
   const vf=document.getElementById("vt-verif");vf.hidden=!VERIFICADO;if(VERIFICADO)vf.href=VERIFICADO;
+  set("vt-tdia-s",ABA==="xm"?"Se a perda do dia chegar à trava, o robô guardião fecha tudo e só volta no dia seguinte.":"Se a perda do dia chegar à trava, as estratégias param e só voltam no dia seguinte.");
   simulador(dias,c);
 }
 function simulador(dias,c){
@@ -1619,7 +1620,8 @@ function simulador(dias,c){
   sel.onchange=calc;inp.oninput=calc;calc();
 }
 document.addEventListener("click",e=>{const a=e.target.closest("#vt-ir-sim,#vt-ir-mensal,#vt-ir-aporte");if(!a)return;e.preventDefault();
-  document.getElementById({"vt-ir-sim":"simular","vt-ir-mensal":"mensal","vt-ir-aporte":"aporte"}[a.id]).scrollIntoView({behavior:"smooth",block:"start"})});
+  const alvo=ABA==="xcrypto"&&a.id!=="vt-ir-sim"?document.querySelector(a.id==="vt-ir-mensal"?"#pg-xcrypto .mensal":"#pg-xcrypto .aporte"):document.getElementById({"vt-ir-sim":"simular","vt-ir-mensal":"mensal","vt-ir-aporte":"aporte"}[a.id]);
+  alvo.scrollIntoView({behavior:"smooth",block:"start"})});
 // ---------- corretora a corretora e faixa do backtest (12/11/2026, ideias do monitor do motor) ----------
 let FASES=null,BTF=null;
 function tabelaFases(){
@@ -1707,7 +1709,7 @@ function fdCal(){  // calendário do fundo: resultado de cada dia das duas conta
 }
 function fundoVivo(){  // resultado unificado do fundo (12/11/2026): US$ das duas contas somados, sobre US$ 4.000
   const BASE=4000,pega=n=>fetch(`dados/${n}.json?t=${Date.now()}`,{cache:"no-store"}).then(r=>{if(!r.ok)throw 0;return r.json()}).catch(()=>null);
-  Promise.all(["xm/conta","xm/dias","xcrypto01/conta","xcrypto01/dias"].map(pega)).then(([cf,df,cc,dc])=>{
+  Promise.all(["xm/conta","xm/dias","xcrypto/conta","xcrypto/dias"].map(pega)).then(([cf,df,cc,dc])=>{
     const um=x=>Array.isArray(x)?x[0]:x;cf=um(cf);cc=um(cc);df=df||[];dc=dc||[];
     const dias={};[[df,"fx"],[dc,"cr"]].forEach(([arr,k])=>arr.forEach(d=>{const o=dias[d.dia]||(dias[d.dia]={fx:0,cr:0});o[k]+=+d.realizado||0}));
     const fl=c=>c?(+c.flutuante||0):0,real=a=>a.reduce((s,d)=>s+(+d.realizado||0),0);
@@ -1737,10 +1739,14 @@ function fundoVivo(){  // resultado unificado do fundo (12/11/2026): US$ das dua
     FD_DIAS=dias;fdCal();
   });
 }
+let CR_VIVO=null;  // a XCrypto01 tem dados da conta real publicados? (null = ainda não testado)
 function carregar(id){
+  if(id==="xcrypto"&&CR_VIVO===null){fetch(`dados/xcrypto/conta.json?t=${Date.now()}`,{cache:"no-store"}).then(r=>{CR_VIVO=r.ok}).catch(()=>{CR_VIVO=false}).then(()=>carregar(id));return}
   ABA=id;
+  {const pgx=document.getElementById("pg-xcrypto"),ct=document.getElementById("conteudo");if(pgx&&ct&&ct.nextElementSibling!==pgx)ct.after(pgx);
+   const cp=pgx&&pgx.querySelector(".fd-capa");if(cp)cp.hidden=id==="xcrypto"&&CR_VIVO===true}
   document.querySelectorAll(".pagina-est").forEach(p=>p.hidden=p.id!=="pg-"+id);
-  if(PAGINAS.includes(id)){document.querySelectorAll(".abas [data-aba]").forEach(b=>b.setAttribute("aria-selected",String(b.dataset.aba===id)));
+  if(PAGINAS.includes(id)&&!(id==="xcrypto"&&CR_VIVO)){document.querySelectorAll(".abas [data-aba]").forEach(b=>b.setAttribute("aria-selected",String(b.dataset.aba===id)));
     document.getElementById("aviso").hidden=true;document.getElementById("conteudo").hidden=true;if(id==="fundo")fundoVivo();
     document.querySelector(".barra .vivo").style.visibility=XT.V?"":"hidden";return}
   document.querySelector(".barra .vivo").style.visibility="";
@@ -1751,10 +1757,10 @@ function carregar(id){
   Promise.all([...["conta","curva","dias","robos","estat"].map(pega),...["aderencia","backtest","mercado","fases"].map(n=>pega(n).catch(()=>null)),...extra])
     .then(([conta,curva,dias,robos,est,ader,bt,merc,fz,fech,ativos])=>{FASES=fz;BTF=bt?(Array.isArray(bt)?bt[0]:bt):null;if(ABA!==id)return;MERC=merc&&merc[0]||null;opcoesGrafico();
       document.getElementById("aviso").hidden=true;document.getElementById("conteudo").hidden=false;
-      document.getElementById("salas").hidden=id!=="xm";document.getElementById("sede").hidden=true;document.getElementById("perfil-op").hidden=true;document.getElementById("descr").hidden=id!=="xm";document.getElementById("mensal").hidden=id!=="xm";["vitrine","simular","aporte","fases","faixa"].forEach(n=>document.getElementById(n).hidden=id!=="xm");document.getElementById("titulo-cart").textContent=id==="xm"?"Carteira XForex01":"Bybit · monitor";
+      document.getElementById("salas").hidden=id!=="xm";document.getElementById("sede").hidden=true;document.getElementById("perfil-op").hidden=true;document.getElementById("descr").hidden=id!=="xm";document.getElementById("mensal").hidden=id!=="xm";["vitrine","simular"].forEach(n=>document.getElementById(n).hidden=id!=="xm"&&id!=="xcrypto");["aporte","fases","faixa"].forEach(n=>document.getElementById(n).hidden=id!=="xm");document.getElementById("titulo-cart").textContent=id==="xm"?"Carteira XForex01":id==="xcrypto"?"Carteira XCrypto01":"Bybit · monitor";
       MOEDA=conta[0].moeda==="USC"?"USC ":"US$ ";
       DADOS={conta,curva,dias,robos};XT.V=situacao(conta,dias);XT.robos=robos;EST=est[0];
-      preencher(XT.V,robos);if(id==="xm")vitrine(XT.V,EST,dias,bt);tabelaFases();faixaBacktest();montarEscopos();xgold(ader,bt);XT.ouvintes.forEach(f=>f())})
+      preencher(XT.V,robos);if(id==="xm"||id==="xcrypto")vitrine(XT.V,EST,dias,bt);tabelaFases();faixaBacktest();montarEscopos();xgold(ader,bt);XT.ouvintes.forEach(f=>f())})
     .catch(e=>{if(ABA!==id)return;console.warn("dados não carregaram",e);
       const a=document.getElementById("aviso");a.textContent=AVISO[id];a.hidden=false;document.getElementById("conteudo").hidden=true});
 }
