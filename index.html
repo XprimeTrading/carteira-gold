@@ -237,6 +237,9 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
 /*fundo*/
 .pagina-est a.cta{color:#111!important}
 .fd-sub{margin:4px 0 0;font:600 15px var(--display)}
+.fd-lk{text-decoration:none;color:var(--ink)!important}.fd-lk:hover{border-color:rgba(224,169,64,.6)}
+.fd-ug{width:100%;min-height:220px}
+.fd-ug svg{width:100%;height:auto;display:block}
 .fd-div{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .fd-div div{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:2px}
 .fd-div b{font:600 clamp(26px,4vw,34px)/1.1 var(--display);color:var(--gold)}
@@ -428,7 +431,13 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
     </div>
     <div class="fd-gbox"><div id="fd-u-g" class="fd-ug"></div>
       <div class="fd-leg"><span><i></i>Fundo, % sobre US$ 4.000</span></div></div>
-    <div class="fd-cal" id="fd-u-cal"></div>
+    <section class="cal" aria-label="Resultado do fundo por dia no calendário">
+      <div class="cal-cab">
+        <h3><span id="fd-cal-mes">—</span><span class="tot" id="fd-cal-tot"></span></h3>
+        <div class="cal-nav"><button type="button" id="fd-cal-ant" aria-label="Mês anterior">‹</button><button type="button" id="fd-cal-prox" aria-label="Próximo mês">›</button></div>
+      </div>
+      <div class="cal-grade" id="fd-cal-grade"></div>
+    </section>
     <p class="note">Resultado em US$ das duas contas somado (fechado + o que está aberto agora) e dividido por US$ 4.000. A XForex01 conta desde 01/11/2026 e a XCrypto01 desde 12/11/2026.</p>
   </section>
 
@@ -1672,6 +1681,29 @@ const AVISO={xm:"Os dados da Carteira Xprime não carregaram. Recarregue a pági
   bybit:"Os dados da Carteira Xcrypto não carregaram. Recarregue a página."};
 let ABA=null;
 const PAGINAS=["fundo","xcrypto","quem","mineracao"];
+let FD_DIAS={},FD_MES=null;
+function fdCal(){  // calendário do fundo: resultado de cada dia das duas contas somado, em US$ e em % de US$ 4.000
+  const BASE=4000,ks=Object.keys(FD_DIAS).sort(),hoje=ks[ks.length-1]||new Date().toISOString().slice(0,10);
+  const ini=(ks[0]||hoje).slice(0,7),fim=hoje.slice(0,7);if(!FD_MES||FD_MES<ini||FD_MES>fim)FD_MES=fim;
+  const pc=v=>(v>0?"+":v<0?"−":"")+Math.abs(v*100).toFixed(2).replace(".",",")+"%",us=v=>(v>0?"+":v<0?"−":"")+Math.abs(v).toFixed(2).replace(".",",");
+  const[a,m]=FD_MES.split("-").map(Number),nd=new Date(Date.UTC(a,m,0)).getUTCDate(),pri=new Date(Date.UTC(a,m-1,1)).getUTCDay();
+  const g=document.getElementById("fd-cal-grade");g.textContent="";
+  ["Dom","Seg","Ter","Qua","Qui","Sex","Sáb"].forEach(d=>g.append(el("div","cal-sem",d)));
+  for(let i=0;i<pri;i++)g.append(el("div","cal-dia fora"));
+  const val=k=>FD_DIAS[k]?FD_DIAS[k].fx+FD_DIAS[k].cr:null;
+  const mx=Math.max(1,...ks.filter(k=>k.startsWith(FD_MES)).map(k=>Math.abs(val(k))));let tot=0,n=0,pos=0;
+  for(let d=1;d<=nd;d++){const k=`${FD_MES}-${String(d).padStart(2,"0")}`,v=val(k),dw=(pri+d-1)%7,c=el("div","cal-dia");
+    if(k===hoje)c.classList.add("hoje");if(dw===0||dw===6)c.classList.add("fim");c.append(el("span","d",String(d)));
+    if(v!=null){tot+=v;n++;if(v>0)pos++;const r=el("span","r",us(v)),p=el("span","p",pc(v/BASE));[r,p].forEach(e=>e.classList.add(v>=0?"pos":"neg"));
+      const cor=v>=0?"76,201,166":"240,141,104";c.style.background=`rgba(${cor},${(.08+.32*Math.abs(v)/mx).toFixed(2)})`;
+      const f=FD_DIAS[k];c.title=`${FMT.dia(k)}: ${us(v)} US$ (${pc(v/BASE)} sobre US$ 4.000) · ouro ${us(f.fx)} · cripto ${us(f.cr)}`;c.append(r,p)}
+    g.append(c)}
+  document.getElementById("fd-cal-mes").textContent=`${MESES[m-1]} ${a}`;
+  const tt=document.getElementById("fd-cal-tot");tt.textContent=n?`${tot>=0?"+":"−"}US$ ${Math.abs(tot).toFixed(2).replace(".",",")} (${pc(tot/BASE)}) · ${pos} de ${n} dias no lucro`:"sem fechamentos no mês";tt.classList.remove("pos","neg");if(n)tt.classList.add(tot>=0?"pos":"neg");
+  const mv=k=>{const[y,mm]=FD_MES.split("-").map(Number);return new Date(Date.UTC(y,mm-1+k,1)).toISOString().slice(0,7)};
+  const ant=document.getElementById("fd-cal-ant"),prox=document.getElementById("fd-cal-prox");ant.disabled=FD_MES<=ini;prox.disabled=FD_MES>=fim;
+  ant.onclick=()=>{FD_MES=mv(-1);fdCal()};prox.onclick=()=>{FD_MES=mv(1);fdCal()};
+}
 function fundoVivo(){  // resultado unificado do fundo (12/11/2026): US$ das duas contas somados, sobre US$ 4.000
   const BASE=4000,pega=n=>fetch(`dados/${n}.json?t=${Date.now()}`,{cache:"no-store"}).then(r=>{if(!r.ok)throw 0;return r.json()}).catch(()=>null);
   Promise.all(["xm/conta","xm/dias","xcrypto01/conta","xcrypto01/dias"].map(pega)).then(([cf,df,cc,dc])=>{
@@ -1693,8 +1725,7 @@ function fundoVivo(){  // resultado unificado do fundo (12/11/2026): US$ das dua
     const rot=pts.map((p,i)=>p.d&&(i%Math.ceil(pts.length/8)===0||i===pts.length-1)?`<text x="${X(i).toFixed(1)}" y="${H-6}" class="fd-ex" text-anchor="middle">${FMT.dia(p.d)}</text>`:"").join("");
     const lin=pts.map((p,i)=>`${i?"L":"M"}${X(i).toFixed(1)},${Y(p.v).toFixed(1)}`).join(" ");
     box.innerHTML=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Resultado do fundo ao vivo: ${pctBR(tot/BASE)} sobre US$ 4.000">${grade}${rot}<path d="${lin} L${X(pts.length-1).toFixed(1)},${Y(0).toFixed(1)} L${X(0)},${Y(0).toFixed(1)} Z" class="fd-ar"/><line x1="${m.l}" x2="${W-m.r}" y1="${Y(0).toFixed(1)}" y2="${Y(0).toFixed(1)}" stroke="var(--line)"/><path d="${lin}" class="fd-fu"/><circle cx="${X(pts.length-1).toFixed(1)}" cy="${Y(pts[pts.length-1].v).toFixed(1)}" r="4.5" class="fd-pt"/></svg>`;
-    const cal=$("fd-u-cal");cal.textContent="";ks.slice().reverse().forEach(k=>{const v=dias[k].fx+dias[k].cr,c=document.createElement("div");if(v)c.className=v>0?"pos":"neg";
-      c.innerHTML=`<span>${FMT.dia(k)}</span><b class="${v>0?"pos":v<0?"neg":""}">${pctBR(v/BASE,2)}</b><small>${v>=0?"+":"−"}US$ ${Math.abs(v).toFixed(2).replace(".",",")}</small>`;cal.append(c)});
+    FD_DIAS=dias;fdCal();
   });
 }
 function carregar(id){
