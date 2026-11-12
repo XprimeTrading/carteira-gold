@@ -442,7 +442,7 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
       <div class="vt-k"><p class="k">Hoje</p><p class="v" id="fd-u-hoje">—</p><p class="s" id="fd-u-hoje-s">—</p></div>
     </div>
     <div class="fd-gbox"><div id="fd-u-g" class="fd-ug"></div>
-      <div class="fd-leg"><span><i></i>Fundo, % sobre US$ 4.000</span></div></div>
+      <div class="fd-leg"><span><i></i>Fundo, % sobre US$ 4.000</span><span><i class="cr"></i>12/11/2026: a XCrypto01 entra; antes disso, só a XForex01</span></div></div>
     <section class="cal" aria-label="Resultado do fundo por dia no calendário">
       <div class="cal-cab">
         <h3><span id="fd-cal-mes">—</span><span class="tot" id="fd-cal-tot"></span></h3>
@@ -1694,10 +1694,10 @@ function fdCal(){  // calendário do fundo: resultado de cada dia das duas conta
   const val=k=>FD_DIAS[k]?FD_DIAS[k].fx+FD_DIAS[k].cr:null;
   const mx=Math.max(1,...ks.filter(k=>k.startsWith(FD_MES)).map(k=>Math.abs(val(k))));let tot=0,n=0,pos=0;
   for(let d=1;d<=nd;d++){const k=`${FD_MES}-${String(d).padStart(2,"0")}`,v=val(k),dw=(pri+d-1)%7,c=el("div","cal-dia");
-    if(k===hoje)c.classList.add("hoje");if(dw===0||dw===6)c.classList.add("fim");c.append(el("span","d",String(d)));
+    if(k===hoje)c.classList.add("hoje");if(dw===0||dw===6)c.classList.add("fim");c.append(el("span","d",String(d)));if(k==="2026-11-12")c.style.boxShadow="inset 3px 0 0 #6fa8dc";
     if(v!=null){tot+=v;n++;if(v>0)pos++;const r=el("span","r",us(v)),p=el("span","p",pc(v/BASE));[r,p].forEach(e=>e.classList.add(v>=0?"pos":"neg"));
       const cor=v>=0?"76,201,166":"240,141,104";c.style.background=`rgba(${cor},${(.08+.32*Math.abs(v)/mx).toFixed(2)})`;
-      const f=FD_DIAS[k];c.title=`${FMT.dia(k)}: ${us(v)} US$ (${pc(v/BASE)} sobre US$ 4.000) · ouro ${us(f.fx)} · cripto ${us(f.cr)}`;c.append(r,p)}
+      if(k==="2026-11-12")c.append(el("span","n","início cripto"));const f=FD_DIAS[k];c.title=`${FMT.dia(k)}: ${us(v)} US$ (${pc(v/BASE)} sobre US$ 4.000) · ouro ${us(f.fx)} · cripto ${us(f.cr)}`;c.append(r,p)}
     g.append(c)}
   document.getElementById("fd-cal-mes").textContent=`${MESES[m-1]} ${a}`;
   const tt=document.getElementById("fd-cal-tot");tt.textContent=n?`${tot>=0?"+":"−"}US$ ${Math.abs(tot).toFixed(2).replace(".",",")} (${pc(tot/BASE)}) · ${pos} de ${n} dias no lucro`:"sem fechamentos no mês";tt.classList.remove("pos","neg");if(n)tt.classList.add(tot>=0?"pos":"neg");
@@ -1725,7 +1725,15 @@ function fundoVivo(){  // resultado unificado do fundo (12/11/2026): US$ das dua
     const grade=[0,.25,.5,.75,1].map(f=>lo+(hi-lo)*f).map(v=>`<line x1="${m.l}" x2="${W-m.r}" y1="${Y(v).toFixed(1)}" y2="${Y(v).toFixed(1)}" class="fd-gr"/><text x="${m.l-6}" y="${(Y(v)+4).toFixed(1)}" class="fd-ex" text-anchor="end">${pctBR(v,1).replace("+","")}</text>`).join("");
     const rot=pts.map((p,i)=>p.d&&(i%Math.ceil(pts.length/8)===0||i===pts.length-1)?`<text x="${X(i).toFixed(1)}" y="${H-6}" class="fd-ex" text-anchor="middle">${FMT.dia(p.d)}</text>`:"").join("");
     const lin=pts.map((p,i)=>`${i?"L":"M"}${X(i).toFixed(1)},${Y(p.v).toFixed(1)}`).join(" ");
-    box.innerHTML=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Resultado do fundo ao vivo: ${pctBR(tot/BASE)} sobre US$ 4.000">${grade}${rot}<path d="${lin} L${X(pts.length-1).toFixed(1)},${Y(0).toFixed(1)} L${X(0)},${Y(0).toFixed(1)} Z" class="fd-ar"/><line x1="${m.l}" x2="${W-m.r}" y1="${Y(0).toFixed(1)}" y2="${Y(0).toFixed(1)}" stroke="var(--line)"/><path d="${lin}" class="fd-fu"/><circle cx="${X(pts.length-1).toFixed(1)}" cy="${Y(pts[pts.length-1].v).toFixed(1)}" r="4.5" class="fd-pt"/></svg>`;
+    // barreira (12/11/2026): antes dela o fundo era só a XForex01; dali em diante, XForex01 + XCrypto01
+    const INI_CR="2026-11-12",ib=pts.findIndex(p=>p.d&&p.d>=INI_CR);let barr="";
+    if(ib>0){const xb=(X(ib-1)+X(ib))/2;
+      barr=`<rect x="${m.l}" y="${m.t}" width="${(xb-m.l).toFixed(1)}" height="${H-m.t-m.b}" fill="rgba(255,255,255,.035)"/>`+
+        `<line x1="${xb.toFixed(1)}" x2="${xb.toFixed(1)}" y1="${m.t}" y2="${H-m.b}" stroke="#6fa8dc" stroke-width="1.6" stroke-dasharray="5 4"/>`+
+        `<text x="${(xb-6).toFixed(1)}" y="${m.t+12}" class="fd-ex" text-anchor="end">só XForex01</text>`+
+        (W-m.r-xb>170?`<text x="${(xb+6).toFixed(1)}" y="${m.t+12}" class="fd-ex" text-anchor="start" style="fill:#6fa8dc">XForex01 + XCrypto01 →</text>`
+          :`<text x="${(xb-6).toFixed(1)}" y="${m.t+27}" class="fd-ex" text-anchor="end" style="fill:#6fa8dc">XForex01 + XCrypto01 a partir daqui →</text>`)}
+    box.innerHTML=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Resultado do fundo ao vivo: ${pctBR(tot/BASE)} sobre US$ 4.000">${barr}${grade}${rot}<path d="${lin} L${X(pts.length-1).toFixed(1)},${Y(0).toFixed(1)} L${X(0)},${Y(0).toFixed(1)} Z" class="fd-ar"/><line x1="${m.l}" x2="${W-m.r}" y1="${Y(0).toFixed(1)}" y2="${Y(0).toFixed(1)}" stroke="var(--line)"/><path d="${lin}" class="fd-fu"/><circle cx="${X(pts.length-1).toFixed(1)}" cy="${Y(pts[pts.length-1].v).toFixed(1)}" r="4.5" class="fd-pt"/></svg>`;
     FD_DIAS=dias;fdCal();
   });
 }
