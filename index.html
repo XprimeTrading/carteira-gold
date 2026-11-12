@@ -434,7 +434,7 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
 
   <section class="bloco ouro" id="fd-unif" aria-label="Resultado do fundo ao vivo">
     <div class="cab-mensal"><div><p class="sec"><b>Ao vivo</b></p><h2>Resultado do <em>fundo</em></h2>
-      <p class="note" id="fd-u-sub">Contas reais, lidas direto da corretora. Tudo somado e dividido por US$ 4.000.</p></div>
+      <p class="note" id="fd-u-sub">Contas reais, lidas direto da corretora. O % de cada carteira é sobre os US$ 4.000 do fundo; o patrimônio é o saldo de cada conta agora.</p></div>
       <div class="ret"><span>Sobre US$ 4.000</span><b id="fd-u-pct">—</b><small id="fd-u-usd">—</small></div></div>
     <div class="vt-kpis fd-k3">
       <a class="vt-k fd-lk" href="#xm" data-ir="xm"><p class="k">XForex01 · ouro</p><p class="v" id="fd-u-fx">—</p><p class="s" id="fd-u-fx-s">—</p></a>
@@ -1584,7 +1584,7 @@ function vitrine(V,est,dias,bt){
   VT_EXP=parseT(c.exportado).getTime();vtAtual();
   const set=(id,txt,cls)=>{const e=document.getElementById(id);if(!e)return;e.textContent=txt;if(cls!==undefined){e.classList.remove("pos","neg");if(cls)e.classList.add(cls)}};
   set("vt-ret",pctBR(V.resultado_pct),V.resultado>=0?"pos":"neg");
-  set("vt-ret-s",`${V.resultado>0?"+":""}${usdBR(V.resultado)} sobre ${usdBR(ini)} · conta real desde ${diaBR(c.inicio)}/${String(c.inicio).slice(0,4)}`);
+  set("vt-ret-s",`${V.resultado>0?"+":""}${usdBR(V.resultado)} sobre ${usdBR(ini)} · patrimônio agora ${usdBR(+c.patrimonio)} · conta real desde ${diaBR(c.inicio)}/${String(c.inicio).slice(0,4)}`);
   if(S){set("vt-queda",pctBR(S.queda_pct));set("vt-queda-s",`${usdBR(S.queda)} do pico ao fundo`);
     const pd=S.pior_dia,md=S.melhor_dia,e=document.getElementById("vt-dia");
     if(pd&&md){e.innerHTML="";const a=el("span","neg",pctBR(pd.v/ini,1)),b=el("span","pos",pctBR(md.v/ini,1));e.append(a,el("span",null," / "),b);
@@ -1715,9 +1715,9 @@ function fundoVivo(){  // resultado unificado do fundo (12/11/2026): US$ das dua
     const fl=c=>c?(+c.flutuante||0):0,real=a=>a.reduce((s,d)=>s+(+d.realizado||0),0);
     const fx=real(df)+fl(cf),cr=real(dc)+fl(cc),tot=fx+cr,cor=(el,v)=>{el.classList.remove("pos","neg");if(v)el.classList.add(v>0?"pos":"neg")};
     const $=id=>document.getElementById(id),put=(id,txt,v)=>{const e=$(id);e.textContent=txt;if(v!==undefined)cor(e,v)};
-    put("fd-u-pct",pctBR(tot/BASE),tot);put("fd-u-usd",`${tot>=0?"+":"−"}US$ ${Math.abs(tot).toFixed(2).replace(".",",")}`);
-    put("fd-u-fx",pctBR(fx/BASE),fx);put("fd-u-fx-s",`${fx>=0?"+":"−"}US$ ${Math.abs(fx).toFixed(2).replace(".",",")} · % do fundo · desde 01/11`);
-    put("fd-u-cr",pctBR(cr/BASE),cr);put("fd-u-cr-s",cc?`${cr>=0?"+":"−"}US$ ${Math.abs(cr).toFixed(2).replace(".",",")} · % do fundo · desde 12/11`:"conta real desde 12/11 · sem operações fechadas ainda");
+    put("fd-u-pct",pctBR(tot/BASE),tot);const pat=c=>c?(+c.patrimonio||0):0,pf=pat(cf),pc=pat(cc);put("fd-u-usd",`${tot>=0?"+":"−"}${usdBR(Math.abs(tot))} · patrimônio ${usdBR(pf+pc)}`);
+    put("fd-u-fx",pctBR(fx/BASE),fx);put("fd-u-fx-s",`patrimônio ${usdBR(pf)} · ${fx>=0?"+":"−"}${usdBR(Math.abs(fx))} desde 01/11`);
+    put("fd-u-cr",pctBR(cr/BASE),cr);put("fd-u-cr-s",cc?`patrimônio ${usdBR(pc)} · ${cr>=0?"+":"−"}${usdBR(Math.abs(cr))} desde 12/11`:"conta real desde 12/11 · sem operações fechadas ainda");
     const ks=Object.keys(dias).sort(),hoje=ks[ks.length-1],vh=hoje?dias[hoje].fx+dias[hoje].cr+fl(cf)+fl(cc):0;
     put("fd-u-hoje",pctBR(vh/BASE),vh);put("fd-u-hoje-s",hoje?`${FMT.dia(hoje)} · fechado + aberto`:"—");
     // curva acumulada e dias, em % de US$ 4.000
