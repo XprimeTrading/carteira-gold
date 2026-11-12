@@ -13,7 +13,7 @@
 <meta property="og:url" content="https://xprimetrading.github.io/carteira-gold/">
 <meta property="og:title" content="XPrime Trading · Carteira XForex01">
 <meta property="og:description" content="Carteira de trading sistemático em ouro, com robôs próprios. Conta real aberta ao público, ao vivo: retorno, queda máxima, travas de risco e backtest mês a mês.">
-<meta property="og:image" content="https://xprimetrading.github.io/carteira-gold/dados/og_xforex01.png?v=20261108">
+<meta property="og:image" content="https://xprimetrading.github.io/carteira-gold/dados/og_xforex01.png?v=20261112">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Carteira XForex01: retorno, queda máxima e travas da conta real">
@@ -145,6 +145,13 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
 .medidor .pior{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--neg)}
 .trava .s{font-size:12px;color:var(--muted);margin:0}
 .vt-cta{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.aporte .ap-passos{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:10px;counter-reset:p}
+.aporte .ap-passos li{counter-increment:p;background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:14px;color:var(--muted)}
+.aporte .ap-passos li::before{content:counter(p);display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--gold);color:#111;font:600 13px var(--display);margin-bottom:8px}
+.aporte .ap-passos b{color:var(--ink)}
+.aporte .ficha{display:flex;flex-wrap:wrap;gap:8px}
+.aporte .ficha span{border:1px solid var(--line);border-radius:999px;padding:5px 12px;font-size:12.5px;color:var(--muted)}
+.aporte .ficha b{color:var(--ink);font-weight:600}
 .cta{display:inline-flex;align-items:center;gap:8px;background:var(--gold);color:#111;font:600 14px var(--display);border-radius:999px;padding:10px 20px;text-decoration:none}
 .cta2{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);color:var(--ink);font:500 13.5px var(--body);border-radius:999px;padding:9px 18px;text-decoration:none;background:transparent;cursor:pointer}
 .cta2:hover,.cta:hover{filter:brightness(1.08)}
@@ -395,7 +402,7 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
 <p>Um <b>motor de mineração de dados</b> alimenta a nossa <b>IA</b> com anos de histórico do mercado. A IA gera milhares de estratégias candidatas, e o motor as submete a uma sequência de portões. Cada portão tem uma régua fixa, que não se negocia. Se a estratégia passa, segue; se não passa, sai.</p>
 <p>São 12 etapas, da ideia até a carteira que opera com dinheiro real. O funil é severo de propósito: numa campanha medida, <b>40.750 avaliações viraram 9 estratégias</b>.</p></div>
   </section>
-  <ol class="passos">
+  <ol class="ap-passos">
     <li class="passo"><span class="num">01</span>
       <div class="bloco"><h3>O mandato</h3><div class="txt"><p>Antes de minerar qualquer coisa, a carteira ganha um mandato com quatro números:</p>
 <ul class="lista-txt"><li>quanto capital ela vai operar;</li><li>qual é a perda máxima tolerada;</li><li>qual é o objetivo (crescimento ou consistência);</li><li>qual é o horizonte.</li></ul>
@@ -474,7 +481,9 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
         <p class="s" id="vt-ttot-s">—</p></div>
     </div>
     <div class="vt-cta">
-      <a class="cta" id="vt-contato" target="_blank" rel="noopener" hidden>Quero acompanhar a carteira</a>
+      <a class="cta" href="https://app.qmc.finance/en/xprime" target="_blank" rel="noopener" id="vt-aporte">Aportar pelo vault QMC ↗</a>
+      <a class="cta2" href="#aporte" id="vt-ir-aporte">Como funciona o aporte</a>
+      <a class="cta2" id="vt-contato" target="_blank" rel="noopener" hidden>Falar no WhatsApp</a>
       <a class="cta2" id="vt-insta" target="_blank" rel="noopener" hidden>Instagram @xprimetrading</a>
       <a class="cta2" href="#simular" id="vt-ir-sim">Simular uma entrada</a>
       <a class="cta2" href="dados/xforex01_lamina.pdf" download>Baixar a lâmina (PDF)</a>
@@ -582,6 +591,19 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
     <p class="note">Resultado simulado (backtest). A conta real começou em novembro de 2026. Pior mês do backtest completo (2024–2026): jun/2024, −US$ 83,98; queda máxima: −US$ 193,81. Resultados passados não garantem resultados futuros.</p>
   </section>
   <!--/mensal-->
+  <section class="bloco ouro aporte" id="aporte" data-pag="geral" aria-label="Como aportar">
+    <div class="cab-mensal"><div><h3>Como aportar na Carteira XForex01</h3>
+      <p class="note">A XPrime Trading é credenciada na QMC Finance, plataforma de vaults on-chain. Os aportes não são feitos à XPrime diretamente: passam pelo vault XPrime Quant Strategy, que acompanha o resultado desta carteira.</p></div></div>
+    <ol class="ap-passos">
+      <li><b>Abra o vault</b> XPrime Quant Strategy na QMC Finance.</li>
+      <li><b>Conecte uma carteira digital</b> (por exemplo, MetaMask) na rede Ethereum.</li>
+      <li><b>Escolha USDC ou USDT</b> e o valor do aporte; o mínimo é de 100 USDC.</li>
+      <li><b>Confirme o depósito.</b> Você recebe cotas XPRQS, que sobem e descem com o resultado da carteira. O resgate é pedido na mesma página.</li>
+    </ol>
+    <div class="ficha"><span>Rede <b>Ethereum</b></span><span>Moedas <b>USDC · USDT</b></span><span>Mínimo <b>100 USDC</b></span><span>Cota <b>XPRQS</b></span><span>Contratos auditados por <b>ChainSecurity</b></span></div>
+    <div class="vt-cta"><a class="cta" href="https://app.qmc.finance/en/xprime" target="_blank" rel="noopener">Abrir o vault na QMC ↗</a><a class="cta2" id="ap-contato" target="_blank" rel="noopener" hidden>Dúvidas? Fale no WhatsApp</a></div>
+    <p class="note">Aportar envolve risco de perda do capital, inclusive riscos de contrato inteligente e de stablecoin. Taxas, prazos e regras de resgate estão na página do vault. Resultados passados não garantem resultados futuros; este conteúdo não é recomendação de investimento.</p>
+  </section>
   <section class="bloco simular" id="simular" data-pag="geral" aria-label="Simulador de entrada">
     <div class="cab-mensal"><div><h3>Se eu tivesse entrado em…</h3><p class="note">Proporcional à conta real: escolha o dia de entrada e o valor, e veja como estaria hoje.</p></div></div>
     <div class="campos">
@@ -1311,6 +1333,7 @@ function vitrine(V,est,dias,bt){
   if(S){const pior=Math.min(1,Math.abs(S.queda)/limT);document.getElementById("vt-ttot-p").style.left=(pior*100)+"%";
     set("vt-ttot-s",`O pior momento até hoje usou ${Math.round(pior*100)}% da perda máxima (a marca vermelha). A trava é aplicada pelo robô guardião.`)}
   const ct=document.getElementById("vt-contato");ct.hidden=!CONTATO;if(CONTATO)ct.href=CONTATO;
+  const ac=document.getElementById("ap-contato");ac.hidden=!CONTATO;if(CONTATO)ac.href=CONTATO;
   const ig=document.getElementById("vt-insta");ig.hidden=!INSTAGRAM;if(INSTAGRAM)ig.href=INSTAGRAM;
   const vf=document.getElementById("vt-verif");vf.hidden=!VERIFICADO;if(VERIFICADO)vf.href=VERIFICADO;
   simulador(dias,c);
@@ -1327,8 +1350,8 @@ function simulador(dias,c){
     set("sim-pior",piorR<0?`${usdBR(v*piorR)} (${pctBR(piorR)})`:"sem queda no fechamento",piorR<0?"neg":"pos")};
   sel.onchange=calc;inp.oninput=calc;calc();
 }
-document.addEventListener("click",e=>{const a=e.target.closest("#vt-ir-sim,#vt-ir-mensal");if(!a)return;e.preventDefault();
-  document.getElementById(a.id==="vt-ir-sim"?"simular":"mensal").scrollIntoView({behavior:"smooth",block:"start"})});
+document.addEventListener("click",e=>{const a=e.target.closest("#vt-ir-sim,#vt-ir-mensal,#vt-ir-aporte");if(!a)return;e.preventDefault();
+  document.getElementById({"vt-ir-sim":"simular","vt-ir-mensal":"mensal","vt-ir-aporte":"aporte"}[a.id]).scrollIntoView({behavior:"smooth",block:"start"})});
 function xgold(ader,bt){
   const tem=!!(ader&&ader.length);ADER=tem?ader:null;
   document.getElementById("subabas").hidden=!tem;
@@ -1353,7 +1376,7 @@ function carregar(id){
   Promise.all([...["conta","curva","dias","robos","estat"].map(pega),...["aderencia","backtest","mercado"].map(n=>pega(n).catch(()=>null)),...extra])
     .then(([conta,curva,dias,robos,est,ader,bt,merc,fech,ativos])=>{if(ABA!==id)return;MERC=merc&&merc[0]||null;opcoesGrafico();
       document.getElementById("aviso").hidden=true;document.getElementById("conteudo").hidden=false;
-      document.getElementById("salas").hidden=id!=="xm";document.getElementById("sede").hidden=id!=="xm";document.getElementById("perfil-op").hidden=id!=="xm";document.getElementById("descr").hidden=id!=="xm";document.getElementById("mensal").hidden=id!=="xm";["vitrine","simular"].forEach(n=>document.getElementById(n).hidden=id!=="xm");document.getElementById("titulo-cart").textContent=id==="xm"?"Carteira XForex01":"Bybit · monitor";
+      document.getElementById("salas").hidden=id!=="xm";document.getElementById("sede").hidden=id!=="xm";document.getElementById("perfil-op").hidden=id!=="xm";document.getElementById("descr").hidden=id!=="xm";document.getElementById("mensal").hidden=id!=="xm";["vitrine","simular","aporte"].forEach(n=>document.getElementById(n).hidden=id!=="xm");document.getElementById("titulo-cart").textContent=id==="xm"?"Carteira XForex01":"Bybit · monitor";
       MOEDA=conta[0].moeda==="USC"?"USC ":"US$ ";
       DADOS={conta,curva,dias,robos};XT.V=situacao(conta,dias);XT.robos=robos;EST=est[0];
       preencher(XT.V,robos);if(id==="xm")vitrine(XT.V,EST,dias,bt);montarEscopos();xgold(ader,bt);XT.ouvintes.forEach(f=>f())})
