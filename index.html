@@ -302,9 +302,10 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
 .cal-dia .d{font:500 11px var(--mono);color:var(--muted)}
 .cal-dia .r{font:500 12.5px var(--mono);font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .cal-dia .n{font:400 10px var(--mono);color:var(--muted);text-align:right}
+.cal-dia .p{font:500 11px var(--mono);font-variant-numeric:tabular-nums;text-align:right;opacity:.9}
 .cal-dia.hoje{border-color:var(--gold)}
 .cal-dia.fim .d{opacity:.6}
-@media (max-width:560px){.cal-dia{min-height:50px;padding:4px}.cal-dia .r{font-size:10.5px}.cal-dia .n{display:none}}
+@media (max-width:560px){.cal-dia{min-height:50px;padding:4px}.cal-dia .r{font-size:10.5px}.cal-dia .p{font-size:9.5px}.cal-dia .n{display:none}}
 /* XForex01 no padrão do Monitor: abas Visão geral, Esperado × vivo, Geometria de risco e Linha do tempo */
 .subabas{display:flex;gap:20px;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid var(--line)}
 .subabas::-webkit-scrollbar{display:none}
@@ -1154,6 +1155,10 @@ let CAL_MES=null;
 function calendario(S){
   const V=XT.V,hoje=String(V.ultimo_preco||"").slice(0,10),por={},estreito=matchMedia("(max-width:560px)").matches;
   S.barras.forEach(b=>por[b.dia]={v:+b.v,n:b.n});
+  // capital do início de cada dia (a conta toda): o % do dia é sobre ele, também no escopo de cada robô
+  const cap={};(DADOS.dias||[]).forEach(d=>cap[d.dia]=+d.saldo_inicio);const base=+(DADOS.conta[0].saldo_inicial)||1000;
+  const capDe=k=>cap[k]||base,pctD=v=>(v>0?"+":v<0?"−":"")+Math.abs(v*100).toFixed(2).replace(".",",")+"%";
+  let capMes=null;
   const ini=String(S.inicio||V.inicio||hoje).slice(0,7),fim=hoje.slice(0,7)||ini;
   if(!CAL_MES||CAL_MES<ini||CAL_MES>fim)CAL_MES=fim;
   const[a,m]=CAL_MES.split("-").map(Number),dias=new Date(Date.UTC(a,m,0)).getUTCDate(),pri=new Date(Date.UTC(a,m-1,1)).getUTCDay();
@@ -1166,13 +1171,14 @@ function calendario(S){
     const k=`${CAL_MES}-${String(d).padStart(2,"0")}`,x=por[k],dw=(pri+d-1)%7,c=el("div","cal-dia");
     if(k===hoje)c.classList.add("hoje");if(dw===0||dw===6)c.classList.add("fim");
     c.append(el("span","d",String(d)));
-    if(x){tot+=x.v;nd++;if(x.v>0)pos++;
+    if(x){tot+=x.v;nd++;if(x.v>0)pos++;if(capMes==null)capMes=capDe(k);const pc=x.v/capDe(k);
       const r=el("span","r",estreito?(x.v>0?"+":x.v<0?"−":"")+(Math.abs(x.v)>=10?Math.round(Math.abs(x.v)):Math.abs(x.v).toFixed(1)):FMT.usdS(x.v).replace("US$ ",""));sinal(r,x.v,"usdS");
       const cor=x.v>=0?"76,201,166":"240,141,104";c.style.background=`rgba(${cor},${(.08+.32*Math.abs(x.v)/mx).toFixed(2)})`;
-      c.title=`${FMT.dia(k)}: ${FMT.usdS(x.v)} · ${x.n} fechamento(s)`;c.append(r,el("span","n",x.n+" fech."))}
+      c.title=`${FMT.dia(k)}: ${FMT.usdS(x.v)} (${pctD(pc)} sobre ${FMT.usd(capDe(k))}) · ${x.n} trade(s)`;
+      const pe=el("span","p",pctD(pc));sinal(pe,pc,"pctS");c.append(r,pe,el("span","n",x.n+(x.n===1?" trade":" trades")))}
     g.append(c)}
   document.getElementById("cal-mes").textContent=`${MESES[m-1]} ${a}`;
-  const tt=document.getElementById("cal-tot");tt.textContent=nd?`${FMT.usdS(tot)} · ${pos} de ${nd} dias no lucro`:"sem fechamentos no mês";tt.classList.remove("pos","neg");if(nd)sinal(tt,tot,"usdS");
+  const tt=document.getElementById("cal-tot");tt.textContent=nd?`${FMT.usdS(tot)} (${pctD(tot/(capMes||base))}) · ${pos} de ${nd} dias no lucro`:"sem fechamentos no mês";tt.classList.remove("pos","neg");if(nd)sinal(tt,tot,"usdS");
   const mv=k=>{const[y,mm]=CAL_MES.split("-").map(Number),dt=new Date(Date.UTC(y,mm-1+k,1));return dt.toISOString().slice(0,7)};
   const ant=document.getElementById("cal-ant"),prox=document.getElementById("cal-prox");
   ant.disabled=CAL_MES<=ini;prox.disabled=CAL_MES>=fim;
