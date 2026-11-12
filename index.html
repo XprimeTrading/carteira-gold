@@ -420,6 +420,18 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
   <p class="aviso" id="aviso" hidden></p>
   <!--paginas-->
   <div class="pagina-est" id="pg-fundo" hidden>
+  <section class="vitrine fd-capa">
+    <div class="vt-topo"><span class="selo"><i></i>Contas reais</span><span>duas carteiras · ouro e cripto</span><a class="vt-verif" href="https://app.qmc.finance/en/xprime" target="_blank" rel="noopener">Gestão QMC Finance ↗</a></div>
+    <h2 class="fd-h">Fundo <em>XPrime</em></h2>
+    <div class="txt"><p>Duas carteiras automáticas: <b>ouro</b> (XForex01) e <b>cripto</b> (XCrypto01). Cada carteira tem uma perda máxima por dia e uma perda máxima total. Batendo o limite, ela para.</p><p>O Fundo XPrime opera sob a gestão da <b>QMC Finance</b>. As contas são auditadas pela QMC, que comprova o resultado real das operações.</p></div>
+    <div class="vt-kpis fd-k3">
+      <div class="vt-k"><p class="k">Perda máxima em um dia</p><p class="v">5%</p><p class="s">US$ 200 do fundo, as duas travas do dia somadas</p></div>
+      <div class="vt-k"><p class="k">Perda máxima total</p><p class="v">17,25%</p><p class="s">US$ 690, se as duas carteiras baterem o limite</p></div>
+      <div class="vt-k"><p class="k">Pior queda no backtest</p><p class="v neg">−5,5%</p><p class="s">−US$ 219 · <span class="sim">simulado</span></p></div>
+    </div>
+    <div class="vt-cta"><a class="cta" href="#aporte-fundo">Como aportar e sacar</a><a class="cta2" href="https://wa.me/5598982160100?text=Ol%C3%A1!%20Quero%20saber%20do%20Fundo%20XPrime" target="_blank" rel="noopener">Falar no WhatsApp</a></div>
+  </section>
+
   <section class="bloco ouro" id="fd-unif" aria-label="Resultado do fundo ao vivo">
     <div class="cab-mensal"><div><p class="sec"><b>Ao vivo</b></p><h2>Resultado do <em>fundo</em></h2>
       <p class="note" id="fd-u-sub">Contas reais, lidas direto da corretora. Tudo somado e dividido por US$ 4.000.</p></div>
@@ -451,17 +463,6 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
     <div class="hint"><a href="sede.html" target="_blank" rel="noopener">Abrir a sede em tela cheia →</a><span>Arraste para girar, pinça ou roda para zoom, toque numa sala. Passeio e Tour guiado andam pelo corredor.</span></div>
   </section>
 
-  <section class="vitrine fd-capa">
-    <div class="vt-topo"><span class="selo"><i></i>Contas reais</span><span>duas carteiras · ouro e cripto</span><a class="vt-verif" href="https://app.qmc.finance/en/xprime" target="_blank" rel="noopener">Gestão QMC Finance ↗</a></div>
-    <h2 class="fd-h">Fundo <em>XPrime</em></h2>
-    <div class="txt"><p>Duas carteiras automáticas: <b>ouro</b> (XForex01) e <b>cripto</b> (XCrypto01). Cada carteira tem uma perda máxima por dia e uma perda máxima total. Batendo o limite, ela para.</p><p>O Fundo XPrime opera sob a gestão da <b>QMC Finance</b>. As contas são auditadas pela QMC, que comprova o resultado real das operações.</p></div>
-    <div class="vt-kpis fd-k3">
-      <div class="vt-k"><p class="k">Perda máxima em um dia</p><p class="v">5%</p><p class="s">US$ 200 do fundo, as duas travas do dia somadas</p></div>
-      <div class="vt-k"><p class="k">Perda máxima total</p><p class="v">17,25%</p><p class="s">US$ 690, se as duas carteiras baterem o limite</p></div>
-      <div class="vt-k"><p class="k">Pior queda no backtest</p><p class="v neg">−5,5%</p><p class="s">−US$ 219 · <span class="sim">simulado</span></p></div>
-    </div>
-    <div class="vt-cta"><a class="cta" href="#aporte-fundo">Como aportar e sacar</a><a class="cta2" href="https://wa.me/5598982160100?text=Ol%C3%A1!%20Quero%20saber%20do%20Fundo%20XPrime" target="_blank" rel="noopener">Falar no WhatsApp</a></div>
-  </section>
 
 
   <section class="bloco">
@@ -730,7 +731,7 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
     </div>
     <p class="vt-aviso">Números da conta real sobre a base de US$ 1.000. Meses positivos vêm do backtest (simulado). Não é recomendação de investimento; resultados passados não garantem resultados futuros.</p>
   </section>
-  <section class="bloco" id="sede" aria-label="A sede da XPrime em 3D">
+  <section class="bloco" id="sede" hidden aria-label="A sede da XPrime em 3D">
     <div>
       <p class="sec"><b>Sede</b></p>
       <h2>A sede da XPrime em <em>3D</em></h2>
@@ -1742,7 +1743,7 @@ function carregar(id){
   Promise.all([...["conta","curva","dias","robos","estat"].map(pega),...["aderencia","backtest","mercado","fases"].map(n=>pega(n).catch(()=>null)),...extra])
     .then(([conta,curva,dias,robos,est,ader,bt,merc,fz,fech,ativos])=>{FASES=fz;BTF=bt?(Array.isArray(bt)?bt[0]:bt):null;if(ABA!==id)return;MERC=merc&&merc[0]||null;opcoesGrafico();
       document.getElementById("aviso").hidden=true;document.getElementById("conteudo").hidden=false;
-      document.getElementById("salas").hidden=id!=="xm";document.getElementById("sede").hidden=id!=="xm";document.getElementById("perfil-op").hidden=true;document.getElementById("descr").hidden=id!=="xm";document.getElementById("mensal").hidden=id!=="xm";["vitrine","simular","aporte","fases","faixa"].forEach(n=>document.getElementById(n).hidden=id!=="xm");document.getElementById("titulo-cart").textContent=id==="xm"?"Carteira XForex01":"Bybit · monitor";
+      document.getElementById("salas").hidden=id!=="xm";document.getElementById("sede").hidden=true;document.getElementById("perfil-op").hidden=true;document.getElementById("descr").hidden=id!=="xm";document.getElementById("mensal").hidden=id!=="xm";["vitrine","simular","aporte","fases","faixa"].forEach(n=>document.getElementById(n).hidden=id!=="xm");document.getElementById("titulo-cart").textContent=id==="xm"?"Carteira XForex01":"Bybit · monitor";
       MOEDA=conta[0].moeda==="USC"?"USC ":"US$ ";
       DADOS={conta,curva,dias,robos};XT.V=situacao(conta,dias);XT.robos=robos;EST=est[0];
       preencher(XT.V,robos);if(id==="xm")vitrine(XT.V,EST,dias,bt);tabelaFases();faixaBacktest();montarEscopos();xgold(ader,bt);XT.ouvintes.forEach(f=>f())})
