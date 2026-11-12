@@ -236,6 +236,7 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
 .pagina-est{display:flex;flex-direction:column;gap:20px}
 /*fundo*/
 .pagina-est a.cta{color:#111!important}
+.fd-sub{margin:4px 0 0;font:600 15px var(--display)}
 .fd-h{font-size:clamp(28px,5vw,40px)!important;margin:0}
 .fd-capa .txt{max-width:76ch}
 .fd-k3{grid-template-columns:repeat(3,minmax(0,1fr))!important}
@@ -421,7 +422,7 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
       <div class="vt-k"><p class="k">Perda máxima total</p><p class="v">17,25%</p><p class="s">US$ 690, se as duas carteiras baterem o limite</p></div>
       <div class="vt-k"><p class="k">Pior queda no backtest</p><p class="v neg">−5,5%</p><p class="s">−US$ 219 · <span class="sim">simulado</span></p></div>
     </div>
-    <div class="vt-cta"><a class="cta" href="#aporte-fundo">Como aportar</a><a class="cta2" href="https://wa.me/5598982160100?text=Ol%C3%A1!%20Quero%20saber%20do%20Fundo%20XPrime" target="_blank" rel="noopener">Falar no WhatsApp</a></div>
+    <div class="vt-cta"><a class="cta" href="#aporte-fundo">Como aportar e sacar</a><a class="cta2" href="https://wa.me/5598982160100?text=Ol%C3%A1!%20Quero%20saber%20do%20Fundo%20XPrime" target="_blank" rel="noopener">Falar no WhatsApp</a></div>
   </section>
 
   <section class="bloco ouro" id="fd-unif" aria-label="Resultado do fundo ao vivo">
@@ -500,15 +501,23 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
 
   <div id="aporte-fundo"></div>
   <section class="bloco ouro aporte">
-    <h2>Como <em>aportar</em></h2>
+    <h2>Como <em>aportar</em> e <em>sacar</em></h2>
     <div class="txt">
       <p>A XPrime Trading é credenciada na <b>QMC Finance</b>, plataforma de vaults on-chain. O Fundo XPrime opera sob a gestão da QMC: as contas são auditadas pela QMC, que comprova o resultado real das operações. O aporte não é feito à XPrime diretamente: passa pelo vault <b>XPrime Quant Strategy</b> na QMC.</p>
     </div>
+    <h3 class="fd-sub">Como aportar</h3>
     <ol class="ap-passos">
       <li>Abra o vault <b>XPrime Quant Strategy</b> na QMC Finance.</li>
       <li>Conecte uma carteira digital (por exemplo, MetaMask) na rede <b>Ethereum</b>.</li>
       <li>Escolha <b>USDC ou USDT</b> e o valor. O mínimo é de <b>100 USDC</b>.</li>
-      <li>Confirme. Você recebe cotas <b>XPRQS</b>, que sobem e descem com o resultado. O resgate é pedido na mesma página.</li>
+      <li>Confirme. Você recebe cotas <b>XPRQS</b>, que sobem e descem com o resultado.</li>
+    </ol>
+    <h3 class="fd-sub">Como sacar</h3>
+    <ol class="ap-passos">
+      <li><b>Abra o vault</b> XPrime Quant Strategy na QMC Finance e conecte <b>a mesma carteira digital</b> usada no aporte.</li>
+      <li>Vá na aba <b>Withdraw</b> (sacar) e informe quanto quer resgatar.</li>
+      <li><b>Confirme o pedido</b> na carteira digital. O pedido aparece em <b>Your requests</b> (seus pedidos).</li>
+      <li>Quando o resgate for liberado, as <b>cotas viram USDC/USDT</b> de volta na sua carteira, pelo valor da cota no dia.</li>
     </ol>
     <div class="vt-cta">
       <a class="cta" href="https://app.qmc.finance/en/xprime" target="_blank" rel="noopener">Abrir o vault na QMC ↗</a>
@@ -554,15 +563,23 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
     </div>
   </section>
   <section class="bloco ouro aporte">
-    <h2>Como <em>aportar</em></h2>
+    <h2>Como <em>aportar</em> e <em>sacar</em></h2>
     <div class="txt">
       <p>A XPrime Trading é credenciada na <b>QMC Finance</b>, plataforma de vaults on-chain. O Fundo XPrime opera sob a gestão da QMC: as contas são auditadas pela QMC, que comprova o resultado real das operações. O aporte não é feito à XPrime diretamente: passa pelo vault <b>XPrime Quant Strategy</b> na QMC.</p>
     </div>
+    <h3 class="fd-sub">Como aportar</h3>
     <ol class="ap-passos">
       <li>Abra o vault <b>XPrime Quant Strategy</b> na QMC Finance.</li>
       <li>Conecte uma carteira digital (por exemplo, MetaMask) na rede <b>Ethereum</b>.</li>
       <li>Escolha <b>USDC ou USDT</b> e o valor. O mínimo é de <b>100 USDC</b>.</li>
-      <li>Confirme. Você recebe cotas <b>XPRQS</b>, que sobem e descem com o resultado. O resgate é pedido na mesma página.</li>
+      <li>Confirme. Você recebe cotas <b>XPRQS</b>, que sobem e descem com o resultado.</li>
+    </ol>
+    <h3 class="fd-sub">Como sacar</h3>
+    <ol class="ap-passos">
+      <li><b>Abra o vault</b> XPrime Quant Strategy na QMC Finance e conecte <b>a mesma carteira digital</b> usada no aporte.</li>
+      <li>Vá na aba <b>Withdraw</b> (sacar) e informe quanto quer resgatar.</li>
+      <li><b>Confirme o pedido</b> na carteira digital. O pedido aparece em <b>Your requests</b> (seus pedidos).</li>
+      <li>Quando o resgate for liberado, as <b>cotas viram USDC/USDT</b> de volta na sua carteira, pelo valor da cota no dia.</li>
     </ol>
     <div class="vt-cta">
       <a class="cta" href="https://app.qmc.finance/en/xprime" target="_blank" rel="noopener">Abrir o vault na QMC ↗</a>
@@ -807,13 +824,21 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
   </section>
   <!--/mensal-->
   <section class="bloco ouro aporte" id="aporte" data-pag="geral" aria-label="Como aportar">
-    <div class="cab-mensal"><div><h3>Como aportar na Carteira XForex01</h3>
+    <div class="cab-mensal"><div><h3>Como aportar e sacar</h3>
       <p class="note">A XPrime Trading é credenciada na QMC Finance, plataforma de vaults on-chain. Os aportes não são feitos à XPrime diretamente: passam pelo vault XPrime Quant Strategy, que acompanha o resultado desta carteira.</p></div></div>
+    <h3 class="fd-sub">Como aportar</h3>
     <ol class="ap-passos">
       <li><b>Abra o vault</b> XPrime Quant Strategy na QMC Finance.</li>
       <li><b>Conecte uma carteira digital</b> (por exemplo, MetaMask) na rede Ethereum.</li>
       <li><b>Escolha USDC ou USDT</b> e o valor do aporte; o mínimo é de 100 USDC.</li>
-      <li><b>Confirme o depósito.</b> Você recebe cotas XPRQS, que sobem e descem com o resultado da carteira. O resgate é pedido na mesma página.</li>
+      <li><b>Confirme o depósito.</b> Você recebe cotas XPRQS, que sobem e descem com o resultado da carteira.</li>
+    </ol>
+    <h3 class="fd-sub">Como sacar</h3>
+    <ol class="ap-passos">
+      <li><b>Abra o vault</b> XPrime Quant Strategy na QMC Finance e conecte <b>a mesma carteira digital</b> usada no aporte.</li>
+      <li>Vá na aba <b>Withdraw</b> (sacar) e informe quanto quer resgatar.</li>
+      <li><b>Confirme o pedido</b> na carteira digital. O pedido aparece em <b>Your requests</b> (seus pedidos).</li>
+      <li>Quando o resgate for liberado, as <b>cotas viram USDC/USDT</b> de volta na sua carteira, pelo valor da cota no dia.</li>
     </ol>
     <div class="ficha"><span>Rede <b>Ethereum</b></span><span>Moedas <b>USDC · USDT</b></span><span>Mínimo <b>100 USDC</b></span><span>Cota <b>XPRQS</b></span><span>Contratos auditados por <b>ChainSecurity</b></span></div>
     <div class="vt-cta"><a class="cta" href="https://app.qmc.finance/en/xprime" target="_blank" rel="noopener">Abrir o vault na QMC ↗</a><a class="cta2" id="ap-contato" target="_blank" rel="noopener" hidden>Dúvidas? Fale no WhatsApp</a></div>
