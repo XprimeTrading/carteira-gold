@@ -1723,11 +1723,11 @@ function fundoVivo(){  // resultado unificado do fundo (12/11/2026): US$ das dua
     const box=$("fd-u-g"),W=Math.max(300,box.clientWidth||900),H=220,m={l:52,r:12,t:12,b:24};
     const lo=Math.min(0,...pts.map(p=>p.v)),hi=Math.max(.001,...pts.map(p=>p.v)),X=i=>m.l+(W-m.l-m.r)*i/Math.max(1,pts.length-1),Y=v=>m.t+(H-m.t-m.b)*(1-(v-lo)/(hi-lo||1));
     const grade=[0,.25,.5,.75,1].map(f=>lo+(hi-lo)*f).map(v=>`<line x1="${m.l}" x2="${W-m.r}" y1="${Y(v).toFixed(1)}" y2="${Y(v).toFixed(1)}" class="fd-gr"/><text x="${m.l-6}" y="${(Y(v)+4).toFixed(1)}" class="fd-ex" text-anchor="end">${pctBR(v,1).replace("+","")}</text>`).join("");
-    const rot=pts.map((p,i)=>p.d&&(i%Math.ceil(pts.length/8)===0||i===pts.length-1)?`<text x="${X(i).toFixed(1)}" y="${H-6}" class="fd-ex" text-anchor="middle">${FMT.dia(p.d)}</text>`:"").join("");
+    const rot=pts.map((p,i)=>p.d&&(i%Math.ceil(pts.length/8)===0||i===pts.length-1)?`<text x="${X(i).toFixed(1)}" y="${H-6}" class="fd-ex" text-anchor="${i===pts.length-1?"end":"middle"}">${FMT.dia(p.d)}</text>`:"").join("");
     const lin=pts.map((p,i)=>`${i?"L":"M"}${X(i).toFixed(1)},${Y(p.v).toFixed(1)}`).join(" ");
     // barreira (12/11/2026): antes dela o fundo era só a XForex01; dali em diante, XForex01 + XCrypto01
     const INI_CR="2026-11-12",ib=pts.findIndex(p=>p.d&&p.d>=INI_CR);let barr="";
-    if(ib>0){const xb=(X(ib-1)+X(ib))/2;
+    if(ib>0){const xb=X(ib);  // a cripto começou no fim do pregão de 12/11: a barreira fica no ponto desse dia
       barr=`<rect x="${m.l}" y="${m.t}" width="${(xb-m.l).toFixed(1)}" height="${H-m.t-m.b}" fill="rgba(255,255,255,.035)"/>`+
         `<line x1="${xb.toFixed(1)}" x2="${xb.toFixed(1)}" y1="${m.t}" y2="${H-m.b}" stroke="#6fa8dc" stroke-width="1.6" stroke-dasharray="5 4"/>`+
         `<text x="${(xb-6).toFixed(1)}" y="${m.t+12}" class="fd-ex" text-anchor="end">só XForex01</text>`+
