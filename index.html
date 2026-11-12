@@ -237,6 +237,10 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
 /*fundo*/
 .pagina-est a.cta{color:#111!important}
 .fd-sub{margin:4px 0 0;font:600 15px var(--display)}
+.fd-div{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.fd-div div{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:2px}
+.fd-div b{font:600 clamp(26px,4vw,34px)/1.1 var(--display);color:var(--gold)}
+.fd-div span{font-size:13.5px;color:var(--muted)}
 .fd-h{font-size:clamp(28px,5vw,40px)!important;margin:0}
 .fd-capa .txt{max-width:76ch}
 .fd-k3{grid-template-columns:repeat(3,minmax(0,1fr))!important}
@@ -501,7 +505,7 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
 
   <div id="aporte-fundo"></div>
   <section class="bloco ouro aporte">
-    <h2>Como <em>aportar</em> e <em>sacar</em></h2>
+    <h2>Como <em>aportar</em>, divisão do lucro e <em>saque</em></h2>
     <div class="txt">
       <p>A XPrime Trading é credenciada na <b>QMC Finance</b>, plataforma de vaults on-chain. O Fundo XPrime opera sob a gestão da QMC: as contas são auditadas pela QMC, que comprova o resultado real das operações. O aporte não é feito à XPrime diretamente: passa pelo vault <b>XPrime Quant Strategy</b> na QMC.</p>
     </div>
@@ -512,6 +516,9 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
       <li>Escolha <b>USDC ou USDT</b> e o valor. O mínimo é de <b>100 USDC</b>.</li>
       <li>Confirme. Você recebe cotas <b>XPRQS</b>, que sobem e descem com o resultado.</li>
     </ol>
+    <h3 class="fd-sub">Divisão do lucro</h3>
+    <div class="fd-div"><div><b>80%</b><span>do lucro líquido fica com o cliente</span></div><div><b>20%</b><span>do lucro líquido fica com o fundo</span></div></div>
+    <p class="note">A divisão vale só sobre o lucro líquido. Se não houver lucro, o fundo não recebe nada.</p>
     <h3 class="fd-sub">Como sacar</h3>
     <ol class="ap-passos">
       <li><b>Abra o vault</b> XPrime Quant Strategy na QMC Finance e conecte <b>a mesma carteira digital</b> usada no aporte.</li>
@@ -563,7 +570,7 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
     </div>
   </section>
   <section class="bloco ouro aporte">
-    <h2>Como <em>aportar</em> e <em>sacar</em></h2>
+    <h2>Como <em>aportar</em>, divisão do lucro e <em>saque</em></h2>
     <div class="txt">
       <p>A XPrime Trading é credenciada na <b>QMC Finance</b>, plataforma de vaults on-chain. O Fundo XPrime opera sob a gestão da QMC: as contas são auditadas pela QMC, que comprova o resultado real das operações. O aporte não é feito à XPrime diretamente: passa pelo vault <b>XPrime Quant Strategy</b> na QMC.</p>
     </div>
@@ -574,6 +581,9 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
       <li>Escolha <b>USDC ou USDT</b> e o valor. O mínimo é de <b>100 USDC</b>.</li>
       <li>Confirme. Você recebe cotas <b>XPRQS</b>, que sobem e descem com o resultado.</li>
     </ol>
+    <h3 class="fd-sub">Divisão do lucro</h3>
+    <div class="fd-div"><div><b>80%</b><span>do lucro líquido fica com o cliente</span></div><div><b>20%</b><span>do lucro líquido fica com o fundo</span></div></div>
+    <p class="note">A divisão vale só sobre o lucro líquido. Se não houver lucro, o fundo não recebe nada.</p>
     <h3 class="fd-sub">Como sacar</h3>
     <ol class="ap-passos">
       <li><b>Abra o vault</b> XPrime Quant Strategy na QMC Finance e conecte <b>a mesma carteira digital</b> usada no aporte.</li>
@@ -824,7 +834,7 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
   </section>
   <!--/mensal-->
   <section class="bloco ouro aporte" id="aporte" data-pag="geral" aria-label="Como aportar">
-    <div class="cab-mensal"><div><h3>Como aportar e sacar</h3>
+    <div class="cab-mensal"><div><h3>Como aportar, divisão do lucro e saque</h3>
       <p class="note">A XPrime Trading é credenciada na QMC Finance, plataforma de vaults on-chain. Os aportes não são feitos à XPrime diretamente: passam pelo vault XPrime Quant Strategy, que acompanha o resultado desta carteira.</p></div></div>
     <h3 class="fd-sub">Como aportar</h3>
     <ol class="ap-passos">
@@ -833,6 +843,9 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
       <li><b>Escolha USDC ou USDT</b> e o valor do aporte; o mínimo é de 100 USDC.</li>
       <li><b>Confirme o depósito.</b> Você recebe cotas XPRQS, que sobem e descem com o resultado da carteira.</li>
     </ol>
+    <h3 class="fd-sub">Divisão do lucro</h3>
+    <div class="fd-div"><div><b>80%</b><span>do lucro líquido fica com o cliente</span></div><div><b>20%</b><span>do lucro líquido fica com o fundo</span></div></div>
+    <p class="note">A divisão vale só sobre o lucro líquido. Se não houver lucro, o fundo não recebe nada.</p>
     <h3 class="fd-sub">Como sacar</h3>
     <ol class="ap-passos">
       <li><b>Abra o vault</b> XPrime Quant Strategy na QMC Finance e conecte <b>a mesma carteira digital</b> usada no aporte.</li>
