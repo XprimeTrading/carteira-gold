@@ -5,6 +5,9 @@
   "realizado": -0.15,
   "saldo_fim": 999.85,
   "fechadas": 1,
+  "pct": -0.00015,
+  "twr": -0.00014999999999998348,
+  "fluxo": 0.0,
   "ganhos": 0,
   "perdas": 1
  },
@@ -14,6 +17,9 @@
   "realizado": -41.0,
   "saldo_fim": 958.85,
   "fechadas": 7,
+  "pct": -0.041006150922638394,
+  "twr": -0.04114999999999991,
+  "fluxo": 0.0,
   "ganhos": 0,
   "perdas": 8
  },
@@ -23,6 +29,9 @@
   "realizado": 41.91,
   "saldo_fim": 1000.76,
   "fechadas": 9,
+  "pct": 0.04370860927152318,
+  "twr": 0.0007600000000000939,
+  "fluxo": 0.0,
   "ganhos": 6,
   "perdas": 3
  },
@@ -32,6 +41,9 @@
   "realizado": 65.6,
   "saldo_fim": 1066.36,
   "fechadas": 10,
+  "pct": 0.06554818338063073,
+  "twr": 0.06635800000000014,
+  "fluxo": 0.0,
   "ganhos": 6,
   "perdas": 3
  },
@@ -41,6 +53,9 @@
   "realizado": -19.44,
   "saldo_fim": 1046.92,
   "fechadas": 8,
+  "pct": -0.018229337614572218,
+  "twr": 0.046919000000000155,
+  "fluxo": 0.0,
   "ganhos": 2,
   "perdas": 6
  },
@@ -50,6 +65,9 @@
   "realizado": -5.16,
   "saldo_fim": 1041.75,
   "fechadas": 2,
+  "pct": -0.004932568804272347,
+  "twr": 0.04175500000000021,
+  "fluxo": 0.0,
   "ganhos": 1,
   "perdas": 1
  },
@@ -59,6 +77,9 @@
   "realizado": -6.83,
   "saldo_fim": 1034.93,
   "fechadas": 9,
+  "pct": -0.0065514444375117005,
+  "twr": 0.03493000000000035,
+  "fluxo": 0.0,
   "ganhos": 5,
   "perdas": 4
  },
@@ -68,6 +89,9 @@
   "realizado": 5.79,
   "saldo_fim": 1040.72,
   "fechadas": 1,
+  "pct": 0.005596513773878428,
+  "twr": 0.04072200000000037,
+  "fluxo": 0.0,
   "ganhos": 1,
   "perdas": 0
  },
@@ -77,15 +101,21 @@
   "realizado": -24.67,
   "saldo_fim": 1016.06,
   "fechadas": 7,
+  "pct": -0.023700853830321653,
+  "twr": 0.016056000000000292,
+  "fluxo": 0.0,
   "ganhos": 1,
   "perdas": 7
  },
  {
   "dia": "2026-11-12",
-  "saldo_inicio": 1016.06,
+  "saldo_inicio": 1016.38,
   "realizado": 71.49,
-  "saldo_fim": 1087.54,
+  "saldo_fim": 1087.86,
   "fechadas": 7,
+  "pct": 0.07033617480145143,
+  "twr": 0.08752149242406393,
+  "fluxo": 0.32,
   "ganhos": 7,
   "perdas": 1
  }

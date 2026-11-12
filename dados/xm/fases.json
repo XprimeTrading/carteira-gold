@@ -1,0 +1,47 @@
+[
+ {
+  "nome": "Exness",
+  "de": "2026-11-04 01:14:02",
+  "ate": "2026-11-12 13:18:23",
+  "dias": 7,
+  "resultado": 86.79,
+  "pct": 0.08669560376520224,
+  "trades": 45,
+  "acerto": 0.5111111111111111,
+  "fl": 1.6218385039764995,
+  "queda": -61.85,
+  "queda_pct": -0.05687094846213967,
+  "capital_inicio": 1000.76,
+  "atual": true
+ },
+ {
+  "nome": "HFM",
+  "de": "2026-11-13 00:00:00",
+  "ate": null,
+  "dias": 0,
+  "resultado": 0.0,
+  "pct": null,
+  "trades": 0,
+  "acerto": null,
+  "fl": null,
+  "queda": -0.0,
+  "queda_pct": null,
+  "capital_inicio": null,
+  "atual": false
+ },
+ {
+  "nome": "Conta inteira",
+  "de": "2026-11-01 20:23:23",
+  "ate": "2026-11-12 13:18:23",
+  "dias": 10,
+  "resultado": 87.55,
+  "pct": 0.08752149242406393,
+  "trades": 63,
+  "acerto": 0.4603174603174603,
+  "fl": 1.4136546184738954,
+  "queda": -61.85,
+  "queda_pct": -0.05687094846213967,
+  "capital_inicio": 1000.0,
+  "conta": true
+ }
+]

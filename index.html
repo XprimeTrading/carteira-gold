@@ -302,6 +302,16 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
 .cal-dia .d{font:500 11px var(--mono);color:var(--muted)}
 .cal-dia .r{font:500 12.5px var(--mono);font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .cal-dia .n{font:400 10px var(--mono);color:var(--muted);text-align:right}
+.tab-fases td,.tab-fases th{white-space:nowrap;font-variant-numeric:tabular-nums}
+.tab-fases td:first-child{font-weight:600}
+.tab-fases tr.atual td:first-child::after{content:"no ar";margin-left:8px;font:600 10px var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--pos);border:1px solid rgba(76,201,166,.5);border-radius:999px;padding:1px 7px}
+.tab-fases tr.total td{border-top:1px solid var(--line);font-weight:600}
+.tab-fases tr.futura td{color:var(--muted)}
+.g-faixa{position:relative;width:100%;min-height:260px}
+.leg-faixa{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12px;color:var(--muted)}
+.leg-faixa i{display:inline-block;width:18px;height:8px;border-radius:3px;margin-right:6px;vertical-align:middle}
+.l-vivo{background:var(--gold)}.l-med{border-top:2px dashed var(--muted);height:0!important;border-radius:0!important}
+.l-50{background:rgba(76,201,166,.35)}.l-90{background:rgba(76,201,166,.14)}
 .cal-dia .p{font:500 11px var(--mono);font-variant-numeric:tabular-nums;text-align:right;opacity:.9}
 .cal-dia.hoje{border-color:var(--gold)}
 .cal-dia.fim .d{opacity:.6}
@@ -578,6 +588,18 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
     </div>
   </section>
 
+  <section class="bloco" id="fases" data-pag="geral" aria-label="Corretora a corretora" hidden>
+    <div class="cab-mensal"><div><h3>Corretora a corretora</h3><p class="note">A mesma carteira, com os mesmos robôs e o mesmo perfil, em cada corretora por onde passou. O % é ponderado no tempo: cada dia sobre o capital daquele dia, então aportes e saques não inflam nem diluem o resultado.</p></div></div>
+    <div class="rolar"><table class="cmp tab-fases"><thead><tr><th>Corretora</th><th>Período</th><th class="n">Dias</th><th class="n">Resultado</th><th class="n">Trades</th><th class="n">Acerto</th><th class="n">Fator de lucro</th><th class="n">Queda máx.</th></tr></thead><tbody id="fases-corpo"></tbody></table></div>
+    <p class="note" id="fases-nota"></p>
+  </section>
+  <section class="bloco" id="faixa" data-pag="geral" aria-label="Conta real dentro da faixa do backtest" hidden>
+    <div class="cab-mensal"><div><h3>Conta real × faixa esperada do backtest</h3><p class="note" id="faixa-sub">—</p></div>
+      <div class="ret"><span>Posição hoje</span><b id="faixa-pct">—</b><small id="faixa-s">—</small></div></div>
+    <div class="g-faixa" id="g-faixa"></div>
+    <div class="leg-faixa"><span><i class="l-vivo"></i>conta real</span><span><i class="l-med"></i>mediana do backtest</span><span><i class="l-50"></i>metade central (p25–p75)</span><span><i class="l-90"></i>90% das janelas (p5–p95)</span></div>
+    <p class="note">Cada faixa vem de todas as janelas de mesmo tamanho do backtest de jan/2024 a out/2026, no perfil Agressivo (o mesmo lote da conta). O backtest usa o período em que os parâmetros foram escolhidos, então o ao vivo tende a ficar abaixo da mediana. Resultado simulado; não é promessa de retorno.</p>
+  </section>
   <section class="bloco ouro descr" id="descr" data-pag="geral" aria-label="Sobre a carteira">
     <div class="txt">
       <p>A Carteira XForex01 é uma carteira de <b>trading totalmente sistemático</b>, gerida pela XPrime Trading. Hoje ela opera o <b>ouro (XAU/USD)</b> e tem espaço para receber outros ativos que passem pela mesma validação. Três robôs independentes atuam em paralelo, cada um com uma lógica própria: o XPrime001 lê os ciclos da estrutura de preço, o XPrime002 opera rompimentos de canal no gráfico de 5 minutos e o XPrime003 busca o momentum nos horários de maior liquidez. Os robôs operam <b>nos dois sentidos</b>, na compra e na venda, para não depender da direção do mercado.</p>
@@ -927,7 +949,7 @@ function situacao(conta,dias){
   const base=ult&&ult.dia===String(c.ultimo_preco).slice(0,10)?+ult.saldo_inicio:Math.max(sal,pat),res=pat-ini;
   // capital nominal: conta operada como se tivesse mais do que o depositado; metas e limites em US$ saem dele
   const N=c.nominal?+c.nominal:null,bD=N||(c.modo==="conta"?ini:base),bT=N||ini;  // conta própria: o dia também sobre o depósito; mesa: sobre o saldo de abertura do dia
-  return{modo:"conta",...c,inicial:ini,nominal:N,resultado:res,resultado_pct:res/bT,
+  return{modo:"conta",...c,inicial:ini,nominal:N,resultado:res,resultado_pct:c.twr!=null?+c.twr:res/bT,
     meta:q(m=>ini+bT*m,REGRA.meta),falta_meta:q(m=>Math.max(0,ini+bT*m-pat),REGRA.meta),progresso_meta:q(m=>res/(bT*m),REGRA.meta),base_dia:base,perda_dia:bD*REGRA.dia,piso_dia:base-bD*REGRA.dia,folga_dia:pat-base+bD*REGRA.dia,
     folga_dia_pct:(pat-base+bD*REGRA.dia)/(bD*REGRA.dia),piso_total:ini-bT*REGRA.total,folga_total:pat-ini+bT*REGRA.total,
     folga_total_pct:(pat-ini+bT*REGRA.total)/(bT*REGRA.total),piso_casa_dia:q(k=>base-bD*k,REGRA.casaDia),folga_casa_dia:q(k=>pat-base+bD*k,REGRA.casaDia),
@@ -1370,6 +1392,58 @@ function simulador(dias,c){
 }
 document.addEventListener("click",e=>{const a=e.target.closest("#vt-ir-sim,#vt-ir-mensal,#vt-ir-aporte");if(!a)return;e.preventDefault();
   document.getElementById({"vt-ir-sim":"simular","vt-ir-mensal":"mensal","vt-ir-aporte":"aporte"}[a.id]).scrollIntoView({behavior:"smooth",block:"start"})});
+// ---------- corretora a corretora e faixa do backtest (12/11/2026, ideias do monitor do motor) ----------
+let FASES=null,BTF=null;
+function tabelaFases(){
+  const sec=document.getElementById("fases"),corpo=document.getElementById("fases-corpo");
+  if(!FASES||!FASES.length||ABA!=="xm"){sec.hidden=true;return}sec.hidden=false;corpo.textContent="";
+  const dia=s=>s?FMT.dia(s):"—",pc=v=>v==null?"—":pctBR(v),agoraS=String(XT.V.ultimo_preco||"");
+  FASES.forEach(f=>{const fut=!f.conta&&!f.trades&&String(f.de)>agoraS;
+    const tr=el("tr",f.conta?"total":fut?"futura":f.atual?"atual":"");
+    const per=fut?`a partir de ${dia(f.de)}`:`${dia(f.de)} → ${f.atual||f.conta?"agora":dia(f.ate)}`;
+    const res=el("td","n",f.trades?`${pc(f.pct)} · ${usdBR(f.resultado)}`:"—");if(f.trades)res.classList.add(f.resultado>=0?"pos":"neg");
+    [el("td",null,f.nome),el("td",null,per),el("td","n",f.dias?String(f.dias):"—"),res,el("td","n",f.trades?String(f.trades):"—"),
+     el("td","n",f.acerto==null?"—":Math.round(f.acerto*100)+"%"),el("td","n",f.fl==null?"—":f.fl.toFixed(2).replace(".",",")),
+     el("td","n"+(f.trades?" neg":""),f.trades?pc(f.queda_pct):"—")].forEach(td=>tr.append(td));corpo.append(tr)});
+  const tot=FASES.find(f=>f.conta),soma=FASES.filter(f=>!f.conta).reduce((s,f)=>s+f.resultado,0);
+  document.getElementById("fases-nota").textContent=tot&&Math.abs(tot.resultado-soma)>0.005?
+    `A conta inteira começa em ${dia(tot.de)}: os dias antes da Exness (${usdBR(tot.resultado-soma)}) foram em outra corretora e entram só no total.`:"";
+}
+function faixaBacktest(){
+  const sec=document.getElementById("faixa"),box=document.getElementById("g-faixa");
+  const dias=(DADOS&&DADOS.dias)||[];if(!BTF||!BTF.pontos||dias.length<2||ABA!=="xm"||!window.d3){sec.hidden=true;return}sec.hidden=false;
+  if(!box.clientWidth)return;box.querySelectorAll("svg").forEach(s=>s.remove());
+  // resultado diário do backtest (soma dos três robôs, base US$ 1.000, perfil Agressivo = lote da conta)
+  const cum=BTF.pontos.map(p=>p[1]+p[2]+(p[3]||0)),pnl=cum.map((v,i)=>i?v-cum[i-1]:v),cap=+BTF.capital||1000,K=dias.length;
+  const q=(arr,p)=>{const s=arr.slice().sort((a,b)=>a-b),i=(s.length-1)*p,lo=Math.floor(i);return s[lo]+(s[Math.min(lo+1,s.length-1)]-s[lo])*(i-lo)};
+  const faixa=[{k:0,p5:0,p25:0,p50:0,p75:0,p95:0}];let ult=[];
+  for(let k=1;k<=K;k++){const js=[];let s=0;for(let i=0;i<pnl.length;i++){s+=pnl[i];if(i>=k)s-=pnl[i-k];if(i>=k-1)js.push(s/cap)}
+    faixa.push({k,p5:q(js,.05),p25:q(js,.25),p50:q(js,.5),p75:q(js,.75),p95:q(js,.95)});if(k===K)ult=js}
+  const ini0=+DADOS.conta[0].saldo_inicial||1000;
+  const vivo=[{k:0,v:0,dia:null}].concat(dias.map((d,i)=>({k:i+1,v:d.twr!=null?+d.twr:(+d.saldo_fim/ini0-1),dia:d.dia})));
+  const vf=vivo[vivo.length-1].v,pctl=Math.round(100*ult.filter(x=>x<vf).length/ult.length);
+  document.getElementById("faixa-sub").textContent=`${K} dias de conta real (desde ${FMT.dia(dias[0].dia)}) contra ${ult.length} janelas de ${K} dias do backtest. Julga o resultado fechado de cada dia.`;
+  const fp=document.getElementById("faixa-pct");fp.textContent=`percentil ${pctl}`;fp.classList.remove("pos","neg");fp.classList.add(pctl>=25?"pos":"neg");
+  const f=faixa[K];document.getElementById("faixa-s").textContent=`conta ${pctBR(vf)} · mediana ${pctBR(f.p50)} · faixa larga ${pctBR(f.p5)} a ${pctBR(f.p95)}`;
+  const W=Math.max(280,box.clientWidth),H=260,m={l:52,r:14,t:12,b:26};
+  const x=d3.scaleLinear().domain([0,K]).range([m.l,W-m.r]);
+  const lo=Math.min(0,d3.min(faixa,d=>d.p5),d3.min(vivo,d=>d.v)),hi=Math.max(d3.max(faixa,d=>d.p95),d3.max(vivo,d=>d.v));
+  const y=d3.scaleLinear().domain([lo,hi]).nice().range([H-m.b,m.t]);
+  const svg=d3.select(box).append("svg").attr("width",W).attr("height",H).attr("role","img").attr("aria-label",`Conta real no percentil ${pctl} da faixa do backtest`);
+  svg.append("g").attr("transform",`translate(${m.l},0)`).call(d3.axisLeft(y).ticks(5).tickSize(-(W-m.l-m.r)).tickFormat(v=>pctBR(v,0).replace("+","")))
+    .call(g=>{g.select(".domain").remove();g.selectAll("line").attr("stroke",css("--grid"));g.selectAll("text").attr("fill",css("--muted")).style("font","11px var(--mono)")});
+  const rot=k=>k===0?"início":vivo[k]&&vivo[k].dia?FMT.dia(vivo[k].dia):"";
+  svg.append("g").attr("transform",`translate(0,${H-m.b})`).call(d3.axisBottom(x).ticks(Math.min(K,8)).tickFormat(rot))
+    .call(g=>{g.select(".domain").attr("stroke",css("--line"));g.selectAll("line").remove();g.selectAll("text").attr("fill",css("--muted")).style("font","11px var(--mono)")});
+  const area=(a,b)=>d3.area().x(d=>x(d.k)).y0(d=>y(d[a])).y1(d=>y(d[b])).curve(d3.curveMonotoneX);
+  svg.append("path").datum(faixa).attr("d",area("p5","p95")).attr("fill","rgba(76,201,166,.14)");
+  svg.append("path").datum(faixa).attr("d",area("p25","p75")).attr("fill","rgba(76,201,166,.30)");
+  svg.append("path").datum(faixa).attr("d",d3.line().x(d=>x(d.k)).y(d=>y(d.p50)).curve(d3.curveMonotoneX)).attr("fill","none").attr("stroke",css("--muted")).attr("stroke-dasharray","4 4");
+  svg.append("line").attr("x1",m.l).attr("x2",W-m.r).attr("y1",y(0)).attr("y2",y(0)).attr("stroke",css("--line"));
+  svg.append("path").datum(vivo).attr("d",d3.line().x(d=>x(d.k)).y(d=>y(d.v))).attr("fill","none").attr("stroke",css("--gold")).attr("stroke-width",2.4);
+  svg.selectAll("circle.v").data(vivo.slice(1)).join("circle").attr("class","v").attr("cx",d=>x(d.k)).attr("cy",d=>y(d.v)).attr("r",2.8).attr("fill",css("--gold"))
+    .append("title").text(d=>`${FMT.dia(d.dia)}: ${pctBR(d.v)} · faixa do dia ${d.k}: ${pctBR(faixa[d.k].p5)} a ${pctBR(faixa[d.k].p95)}`);
+}
 function xgold(ader,bt){
   const tem=!!(ader&&ader.length);ADER=tem?ader:null;
   document.getElementById("subabas").hidden=!tem;
@@ -1391,13 +1465,13 @@ function carregar(id){
   document.getElementById("conteudo").setAttribute("aria-labelledby","aba-"+id);
   const pega=n=>fetch(`dados/${id}/${n}.json?t=${Date.now()}`,{cache:"no-store"}).then(r=>{if(!r.ok)throw new Error(n);return r.json()});
   const extra=[];
-  Promise.all([...["conta","curva","dias","robos","estat"].map(pega),...["aderencia","backtest","mercado"].map(n=>pega(n).catch(()=>null)),...extra])
-    .then(([conta,curva,dias,robos,est,ader,bt,merc,fech,ativos])=>{if(ABA!==id)return;MERC=merc&&merc[0]||null;opcoesGrafico();
+  Promise.all([...["conta","curva","dias","robos","estat"].map(pega),...["aderencia","backtest","mercado","fases"].map(n=>pega(n).catch(()=>null)),...extra])
+    .then(([conta,curva,dias,robos,est,ader,bt,merc,fz,fech,ativos])=>{FASES=fz;BTF=bt?(Array.isArray(bt)?bt[0]:bt):null;if(ABA!==id)return;MERC=merc&&merc[0]||null;opcoesGrafico();
       document.getElementById("aviso").hidden=true;document.getElementById("conteudo").hidden=false;
-      document.getElementById("salas").hidden=id!=="xm";document.getElementById("sede").hidden=id!=="xm";document.getElementById("perfil-op").hidden=id!=="xm";document.getElementById("descr").hidden=id!=="xm";document.getElementById("mensal").hidden=id!=="xm";["vitrine","simular","aporte"].forEach(n=>document.getElementById(n).hidden=id!=="xm");document.getElementById("titulo-cart").textContent=id==="xm"?"Carteira XForex01":"Bybit · monitor";
+      document.getElementById("salas").hidden=id!=="xm";document.getElementById("sede").hidden=id!=="xm";document.getElementById("perfil-op").hidden=id!=="xm";document.getElementById("descr").hidden=id!=="xm";document.getElementById("mensal").hidden=id!=="xm";["vitrine","simular","aporte","fases","faixa"].forEach(n=>document.getElementById(n).hidden=id!=="xm");document.getElementById("titulo-cart").textContent=id==="xm"?"Carteira XForex01":"Bybit · monitor";
       MOEDA=conta[0].moeda==="USC"?"USC ":"US$ ";
       DADOS={conta,curva,dias,robos};XT.V=situacao(conta,dias);XT.robos=robos;EST=est[0];
-      preencher(XT.V,robos);if(id==="xm")vitrine(XT.V,EST,dias,bt);montarEscopos();xgold(ader,bt);XT.ouvintes.forEach(f=>f())})
+      preencher(XT.V,robos);if(id==="xm")vitrine(XT.V,EST,dias,bt);tabelaFases();faixaBacktest();montarEscopos();xgold(ader,bt);XT.ouvintes.forEach(f=>f())})
     .catch(e=>{if(ABA!==id)return;console.warn("dados não carregaram",e);
       const a=document.getElementById("aviso");a.textContent=AVISO[id];a.hidden=false;document.getElementById("conteudo").hidden=true});
 }
@@ -1412,7 +1486,7 @@ document.addEventListener("click",e=>{const a=e.target.closest("[data-ir]");if(!
 // os dados são publicados a cada 6 min; a página relê a cada 2 min, sem recarregar a cena 3D
 setInterval(()=>{if(!document.hidden)carregar(ABA)},2*60e3);
 document.addEventListener("visibilitychange",()=>{if(!document.hidden&&XT.V&&Date.now()-Date.parse(XT.V.exportado)>2*60e3)carregar(ABA)});
-let rt=0;new ResizeObserver(()=>{clearTimeout(rt);rt=setTimeout(()=>{desenhar();plano();graficoBt()},120)}).observe(document.querySelector(".wrap"));
+let rt=0;new ResizeObserver(()=>{clearTimeout(rt);rt=setTimeout(()=>{desenhar();plano();graficoBt();faixaBacktest()},120)}).observe(document.querySelector(".wrap"));
 const mq=matchMedia("(prefers-color-scheme: dark)");mq.addEventListener&&mq.addEventListener("change",desenhar);
 new MutationObserver(desenhar).observe(document.documentElement,{attributes:true,attributeFilter:["data-theme"]});
 
