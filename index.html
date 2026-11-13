@@ -164,9 +164,9 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
 @media (max-width:1180px){.vt-kpis{grid-template-columns:repeat(4,minmax(0,1fr))}.vt-k.grande{grid-column:1/-1}}
 @media (max-width:640px){.vt-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .vt-hero{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.vt-hero:has(#vt-hoje){grid-template-columns:1.25fr 1fr 1fr}
 .vt-hero .vt-k{padding:16px 18px}.vt-hero .vt-k .v{font-size:clamp(32px,5.4vw,52px)}
-.vt-hero:has(#vt-hoje) .vt-k .v{font-size:clamp(30px,4.2vw,46px)}
+.vt-hero:has(#vt-hoje){grid-template-columns:repeat(3,minmax(0,1fr))}
+.vt-hero:has(#vt-hoje) .vt-k .v{font-size:clamp(26px,3.2vw,44px);white-space:nowrap}
 @media (max-width:900px){.vt-hero:has(#vt-hoje){grid-template-columns:1fr 1fr}.vt-hero:has(#vt-hoje) .vt-k.saldo{grid-column:1/-1}}
 @media (max-width:480px){.vt-hero:has(#vt-hoje){grid-template-columns:1fr}}
 .vt-hero .vt-k.saldo{border-color:rgba(224,169,64,.55);background:rgba(224,169,64,.07)}
@@ -1604,7 +1604,7 @@ function vitrine(V,est,dias,bt){
   set("vt-ret-s",`${V.resultado>0?"+":""}${usdBR(V.resultado)} de resultado · conta real desde ${diaBR(c.inicio)}/${String(c.inicio).slice(0,4)}`);
   const rh=+V.resultado_dia||0;
   set("vt-hoje",(rh>0?"+":"")+usdBR(rh),rh>0?"pos":rh<0?"neg":"");
-  set("vt-hoje-s",`${pctBR(rh/ini)} da carteira · ${V.fech_hoje||0} fechamento${V.fech_hoje===1?"":"s"} hoje${+c.flutuante?" · inclui o aberto":""}`);
+  set("vt-hoje-s",`${pctBR(rh/ini)} da carteira · ${V.fech_hoje||0} fechamento${V.fech_hoje===1?"":"s"}${+c.flutuante?" · com o aberto":""}`);
   set("vt-saldo",usdBR(+c.patrimonio));set("vt-saldo-s",`começou com ${usdBR(ini)}${+c.flutuante?` · ${usdBR(+c.flutuante)} em aberto`:""}`);
   if(S){set("vt-queda",pctBR(S.queda_pct));set("vt-queda-s",`${usdBR(S.queda)} do pico ao fundo`);
     const pd=S.pior_dia,md=S.melhor_dia,e=document.getElementById("vt-dia");
