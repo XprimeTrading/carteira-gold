@@ -13,7 +13,7 @@
 <meta property="og:url" content="https://xprimetrading.github.io/carteira-gold/">
 <meta property="og:title" content="XPrime Trading · XPrime Quant Strategy">
 <meta property="og:description" content="XPrime Quant Strategy: duas carteiras de trading sistemático, ouro (XForex01) e cripto (XCrypto01), em contas reais. Risco de cada carteira em %, travas, resultado ao vivo e backtest mês a mês.">
-<meta property="og:image" content="https://xprimetrading.github.io/carteira-gold/dados/og_quant.png?v=20261112">
+<meta property="og:image" content="https://xprimetrading.github.io/carteira-gold/dados/og_quant.png?v=20261113">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="XPrime Quant Strategy: saldo, retorno e travas das contas reais">
@@ -164,7 +164,11 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
 @media (max-width:1180px){.vt-kpis{grid-template-columns:repeat(4,minmax(0,1fr))}.vt-k.grande{grid-column:1/-1}}
 @media (max-width:640px){.vt-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .vt-hero{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.vt-hero:has(#vt-hoje){grid-template-columns:1.25fr 1fr 1fr}
 .vt-hero .vt-k{padding:16px 18px}.vt-hero .vt-k .v{font-size:clamp(32px,5.4vw,52px)}
+.vt-hero:has(#vt-hoje) .vt-k .v{font-size:clamp(30px,4.2vw,46px)}
+@media (max-width:900px){.vt-hero:has(#vt-hoje){grid-template-columns:1fr 1fr}.vt-hero:has(#vt-hoje) .vt-k.saldo{grid-column:1/-1}}
+@media (max-width:480px){.vt-hero:has(#vt-hoje){grid-template-columns:1fr}}
 .vt-hero .vt-k.saldo{border-color:rgba(224,169,64,.55);background:rgba(224,169,64,.07)}
 .vt-kpis.vt-4{grid-template-columns:repeat(4,minmax(0,1fr))}
 @media (max-width:640px){.vt-hero{grid-template-columns:1fr}.vt-kpis.vt-4{grid-template-columns:repeat(2,minmax(0,1fr))}}
@@ -717,6 +721,7 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
     </div>
     <div class="vt-hero">
       <div class="vt-k saldo"><p class="k">Saldo na conta agora</p><p class="v" id="vt-saldo">—</p><p class="s" id="vt-saldo-s">—</p></div>
+      <div class="vt-k"><p class="k">Resultado de hoje</p><p class="v" id="vt-hoje">—</p><p class="s" id="vt-hoje-s">—</p></div>
       <div class="vt-k"><p class="k">Retorno desde o início</p><p class="v" id="vt-ret">—</p><p class="s" id="vt-ret-s">—</p></div>
     </div>
     <div class="vt-kpis vt-4">
@@ -1597,6 +1602,9 @@ function vitrine(V,est,dias,bt){
   const set=(id,txt,cls)=>{const e=document.getElementById(id);if(!e)return;e.textContent=txt;if(cls!==undefined){e.classList.remove("pos","neg");if(cls)e.classList.add(cls)}};
   set("vt-ret",pctBR(V.resultado_pct),V.resultado>=0?"pos":"neg");
   set("vt-ret-s",`${V.resultado>0?"+":""}${usdBR(V.resultado)} de resultado · conta real desde ${diaBR(c.inicio)}/${String(c.inicio).slice(0,4)}`);
+  const rh=+V.resultado_dia||0;
+  set("vt-hoje",(rh>0?"+":"")+usdBR(rh),rh>0?"pos":rh<0?"neg":"");
+  set("vt-hoje-s",`${pctBR(rh/ini)} da carteira · ${V.fech_hoje||0} fechamento${V.fech_hoje===1?"":"s"} hoje${+c.flutuante?" · inclui o aberto":""}`);
   set("vt-saldo",usdBR(+c.patrimonio));set("vt-saldo-s",`começou com ${usdBR(ini)}${+c.flutuante?` · ${usdBR(+c.flutuante)} em aberto`:""}`);
   if(S){set("vt-queda",pctBR(S.queda_pct));set("vt-queda-s",`${usdBR(S.queda)} do pico ao fundo`);
     const pd=S.pior_dia,md=S.melhor_dia,e=document.getElementById("vt-dia");
