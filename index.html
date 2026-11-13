@@ -165,10 +165,12 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
 @media (max-width:640px){.vt-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .vt-hero{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .vt-hero .vt-k{padding:16px 18px}.vt-hero .vt-k .v{font-size:clamp(32px,5.4vw,52px)}
-.vt-hero:has(#vt-hoje){grid-template-columns:repeat(3,minmax(0,1fr))}
-.vt-hero:has(#vt-hoje) .vt-k .v{font-size:clamp(26px,3.2vw,44px);white-space:nowrap}
-@media (max-width:900px){.vt-hero:has(#vt-hoje){grid-template-columns:1fr 1fr}.vt-hero:has(#vt-hoje) .vt-k.saldo{grid-column:1/-1}}
-@media (max-width:480px){.vt-hero:has(#vt-hoje){grid-template-columns:1fr}}
+.vt-hero:has(#vt-hoje),.vt-hero:has(#fd-u-hoje){grid-template-columns:repeat(3,minmax(0,1fr))}
+.vt-hero:has(#vt-hoje) .vt-k .v,.vt-hero:has(#fd-u-hoje) .vt-k .v{font-size:clamp(26px,3.2vw,44px);white-space:nowrap}
+@media (max-width:900px){.vt-hero:has(#vt-hoje),.vt-hero:has(#fd-u-hoje){grid-template-columns:1fr 1fr}.vt-hero:has(#vt-hoje) .vt-k.saldo,.vt-hero:has(#fd-u-hoje) .vt-k.saldo{grid-column:1/-1}}
+@media (max-width:480px){.vt-hero:has(#vt-hoje),.vt-hero:has(#fd-u-hoje){grid-template-columns:1fr}}
+.fd-k2{grid-template-columns:1fr 1fr!important}
+@media (max-width:640px){.fd-k2{grid-template-columns:1fr!important}}
 .vt-hero .vt-k.saldo{border-color:rgba(224,169,64,.55);background:rgba(224,169,64,.07)}
 .vt-kpis.vt-4{grid-template-columns:repeat(4,minmax(0,1fr))}
 @media (max-width:640px){.vt-hero{grid-template-columns:1fr}.vt-kpis.vt-4{grid-template-columns:repeat(2,minmax(0,1fr))}}
@@ -447,12 +449,12 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
 </div>
     <div class="vt-hero">
       <div class="vt-k saldo"><p class="k">Saldo total agora</p><p class="v" id="fd-u-saldo">—</p><p class="s">as duas contas somadas</p></div>
+      <div class="vt-k"><p class="k">Resultado de hoje</p><p class="v" id="fd-u-hoje">—</p><p class="s" id="fd-u-hoje-s">—</p></div>
       <div class="vt-k"><p class="k">Retorno sobre US$ 4.000</p><p class="v" id="fd-u-pct">—</p><p class="s" id="fd-u-usd">—</p></div>
     </div>
-    <div class="vt-kpis fd-k3">
+    <div class="vt-kpis fd-k2">
       <a class="vt-k fd-lk" href="#xm" data-ir="xm"><p class="k">XForex01 · ouro · saldo</p><p class="v" id="fd-u-fx">—</p><p class="s" id="fd-u-fx-s">—</p></a>
       <a class="vt-k fd-lk" href="#xcrypto" data-ir="xcrypto"><p class="k">XCrypto01 · cripto · saldo</p><p class="v" id="fd-u-cr">—</p><p class="s" id="fd-u-cr-s">—</p></a>
-      <div class="vt-k"><p class="k">Hoje</p><p class="v" id="fd-u-hoje">—</p><p class="s" id="fd-u-hoje-s">—</p></div>
     </div>
     <div class="fd-gbox"><div id="fd-u-g" class="fd-ug"></div>
       <div class="fd-leg"><span><i></i>Estratégia, % sobre US$ 4.000</span><span><i class="cr"></i>12/11/2026: a XCrypto01 entra; antes disso, só a XForex01</span></div></div>
@@ -1742,7 +1744,7 @@ function fundoVivo(){  // resultado unificado do total (12/11/2026): US$ das dua
     linha("fd-u-fx-s",fx,`${fx>=0?"+":"−"}${usdBR(Math.abs(fx))} desde 01/11`);
     if(cc)linha("fd-u-cr-s",cr,`${cr>=0?"+":"−"}${usdBR(Math.abs(cr))} desde 12/11`);else put("fd-u-cr-s","conta real desde 12/11 · sem operações fechadas ainda");
     const ks=Object.keys(dias).sort(),hoje=ks[ks.length-1],vh=hoje?dias[hoje].fx+dias[hoje].cr+fl(cf)+fl(cc):0;
-    put("fd-u-hoje",pctBR(vh/BASE),vh);put("fd-u-hoje-s",hoje?`${FMT.dia(hoje)} · fechado + aberto`:"—");
+    put("fd-u-hoje",(vh>0?"+":"")+usdBR(vh),vh);put("fd-u-hoje-s",hoje?`${pctBR(vh/BASE)} sobre US$ 4.000 · ${FMT.dia(hoje)}, fechado + aberto`:"—");
     // curva acumulada e dias, em % de US$ 4.000
     let acc=0;const pts=[{d:null,v:0}].concat(ks.map(k=>{acc+=dias[k].fx+dias[k].cr;return{d:k,v:acc/BASE}}));pts[pts.length-1].v+=(fl(cf)+fl(cc))/BASE;
     const box=$("fd-u-g"),W=Math.max(300,box.clientWidth||900),H=220,m={l:52,r:12,t:12,b:24};
