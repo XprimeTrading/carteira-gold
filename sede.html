@@ -105,7 +105,7 @@ html.embed .stage{margin:0;width:100vw;height:100vh;transform:none;border:0;bord
     <h2>Carteiras</h2>
     <div class="ops">
       <div class="op"><div class="k">Carteira XForex01 · 3 robôs, 5 estratégias · conta real</div><div class="v" id="op-xgold-v">—</div><div class="s" id="op-xgold-s">resultado do dia, lido da conta</div></div>
-      <div class="op"><div class="k">Carteira XCrypto · em incubação</div><div class="v">—</div><div class="s">12 operadores robôs e 1 agente humano, 15 dias em conta demo antes do dinheiro real.</div></div>
+      <div class="op"><div class="k">Carteira XCrypto · 12 robôs · conta real</div><div class="v" id="op-xcrypto-v">—</div><div class="s" id="op-xcrypto-s">resultado do dia, lido da conta</div></div>
     </div>
     <p class="note">Resultado realizado do dia, em US$, lido direto da conta da carteira. É o mesmo número do telão da sala e do telão da Presidência.</p>
     <div class="flow" style="margin-top:14px"><span class="step">Telão de cada carteira</span><span class="arrow">→</span><span class="step gate">Financeiro consolida por conta</span><span class="arrow">→</span><span class="step you">Relatório e telão da Presidência</span></div>
@@ -119,7 +119,7 @@ html.embed .stage{margin:0;width:100vw;height:100vh;transform:none;border:0;bord
       <div class="op"><div class="k">Poltronas, sofás e banquetas</div><div class="v">5 + 9 + 2</div><div class="s">Recepção, Presidência, Financeiro e o espaço de lazer</div></div>
       <div class="op"><div class="k">Lugares no total</div><div class="v">76</div><div class="s">Inclui a sala de reuniões (21), a reunião da Presidência (6) e o espaço de lazer</div></div>
     </div>
-    <p class="note">Na Carteira XForex01, cada uma das 5 estações é uma estratégia (robô), ligada enquanto o mercado está aberto; a cadeira vermelha é o supervisor, que acompanha a carteira e as travas do Guardião. Na Carteira XCrypto, os 12 operadores robôs rodam em conta demo 24 horas por dia, e o agente humano confere cada ordem durante a incubação.</p>
+    <p class="note">Na Carteira XForex01, cada uma das 5 estações é uma estratégia (robô), ligada enquanto o mercado está aberto; a cadeira vermelha é o supervisor, que acompanha a carteira e as travas do Guardião. Na Carteira XCrypto, os 12 operadores robôs rodam em conta real 24 horas por dia, e o agente humano acompanha as ordens.</p>
   </section>
 
   <section>
@@ -180,7 +180,7 @@ const ROOMS=[
    items:[["est",0,-1.1,FN,{m:3}],["polt",-1.3,1.5,FN]]},
   {id:"xgold",n:"03",nome:"Carteira XForex01",cur:"Carteira XForex01",tipo:"op",txt:"A carteira de ouro em conta real: 5 estratégias em 3 robôs (ciclos, rompimento de range e momentum de horário) e o supervisor, que acompanha a carteira e as travas do Guardião.",ass:"6 estações: 5 estratégias · 1 supervisor · telão",x:[-10,-3],z:[-11,0],door:"e",cor:0xe0a940,painel:true,
    items:[["est",-1.6,-2.2,FW,{robot:1}],["est",-1.6,0,FW,{robot:1}],["est",-1.6,2.2,FW,{robot:1}],["est",.3,-1.1,FW,{robot:1}],["est",.3,1.1,FW,{robot:1}],["est",2.1,0,FW,{m:3,role:"risk"}]]},
-  {id:"xcrypto",n:"04",nome:"Carteira XCrypto",cur:"Carteira XCrypto",tipo:"op",txt:"A carteira de cripto em incubação: 12 operadores robôs rodando em conta demo por 15 dias, acompanhados por um agente humano, antes do dinheiro real.",ass:"13 estações: 12 operadores robôs · 1 agente humano · telão da incubação",x:[-10,-3],z:[0,11],door:"e",cor:0x6a5fd0,painel:true,
+  {id:"xcrypto",n:"04",nome:"Carteira XCrypto",cur:"Carteira XCrypto",tipo:"op",txt:"A carteira de cripto em conta real: 12 operadores robôs rodando 24 horas por dia, acompanhados por um agente humano.",ass:"13 estações: 12 operadores robôs · 1 agente humano · telão do resultado do dia",x:[-10,-3],z:[0,11],door:"e",cor:0x6a5fd0,painel:true,
    items:[["est",-2,-3.6,FW,{robot:1}],["est",-2,-1.2,FW,{robot:1}],["est",-2,1.2,FW,{robot:1}],["est",-2,3.6,FW,{robot:1}],["est",-0.5,-3.6,FW,{robot:1}],["est",-0.5,-1.2,FW,{robot:1}],["est",-0.5,1.2,FW,{robot:1}],["est",-0.5,3.6,FW,{robot:1}],["est",1,-3.6,FW,{robot:1}],["est",1,-1.2,FW,{robot:1}],["est",1,1.2,FW,{robot:1}],["est",1,3.6,FW,{robot:1}],["est",2.6,0,FW,{m:3,role:"risk"}]]},
   {id:"arq",n:"07",nome:"Arquivo",cur:"Arquivo",tipo:"ctl",txt:"Cemitério de estratégias, conferências mensais e histórico de contas.",ass:"1 estação · 3 estantes",x:[3,10],z:[-11,-6.6],door:"w",cor:0x5dcaa5,
    items:[["est",-.8,0,FE],["estante",2.9,-1.2,0],["estante",2.9,0,0],["estante",2.9,1.2,0]]},
@@ -295,16 +295,7 @@ if(window.THREE){
   const corV=v=>v>0?"#4cc9a6":v<0?"#f08d68":"#eef1ee";
   function canvasTex(w,h,draw,bg="#0d1110"){const c=document.createElement("canvas");c.width=w;c.height=h;const g=c.getContext("2d");
     if(bg){g.fillStyle=bg;g.fillRect(0,0,w,h)}draw(g);const t=new THREE.CanvasTexture(c);t.anisotropy=4;return t}
-  // telão da Carteira XCrypto: só a contagem da incubação, sem resultado (a carteira ainda não opera em conta real).
-  // Quando a incubação começar, ponha a data em XCRYPTO_INCUB ("AAAA-MM-DD").
-  const XCRYPTO_INCUB=null,INCUB_DIAS=15;
-  function telaIncub(r){return canvasTex(720,200,g=>{
-    g.fillStyle="#9aa49f";g.font="500 24px system-ui";g.fillText(r.nome.toUpperCase()+" · INCUBAÇÃO EM CONTA DEMO",28,40);
-    let dia=null;if(XCRYPTO_INCUB){dia=Math.floor((Date.now()-Date.parse(XCRYPTO_INCUB+"T00:00:00Z"))/864e5)+1}
-    g.fillStyle="#e0a940";g.font="600 76px system-ui";
-    g.fillText(dia==null?"aguardando início":dia>INCUB_DIAS?"incubação concluída":`dia ${Math.max(1,dia)} de ${INCUB_DIAS}`,28,128);
-    g.fillStyle="#eef1ee";g.font="500 24px system-ui";g.fillText("12 operadores robôs · 1 agente humano · resultado só na conta real",28,180)})}
-  function telaMesa(r){if(r.id==="xcrypto")return telaIncub(r);const m=DIA.mesas[r.id];return canvasTex(720,200,g=>{
+  function telaMesa(r){const m=DIA.mesas[r.id];return canvasTex(720,200,g=>{
     g.fillStyle="#9aa49f";g.font="500 24px system-ui";g.fillText(r.nome.toUpperCase()+" · RESULTADO DO DIA",28,40);
     if(!m){g.fillStyle="#9aa49f";g.font="600 64px ui-monospace,Consolas,monospace";g.fillText("sem fonte",28,130);return}
     g.fillStyle=corV(m.r);g.font="600 92px ui-monospace,Consolas,monospace";g.fillText(fmt(m.r),28,140);
@@ -315,7 +306,7 @@ if(window.THREE){
     [["xgold","Carteira XForex01"],["xcrypto","Carteira XCrypto"]].forEach(([id,n],i)=>{
       const m=DIA.mesas[id],y=128+i*52;g.fillStyle="#eef1ee";g.font="500 28px system-ui";g.fillText(n,28,y);
       g.font="600 32px ui-monospace,Consolas,monospace";g.textAlign="right";g.fillStyle=m?corV(m.r):"#9aa49f";
-      g.fillText(m?fmt(m.r):id==="xcrypto"?"em incubação":"sem fonte",692,y);g.textAlign="left"})})}
+      g.fillText(m?fmt(m.r):"sem fonte",692,y);g.textAlign="left"})})}
   function neon(txt,cor){const hex="#"+new THREE.Color(cor).getHexString();return canvasTex(512,96,g=>{
     g.font="600 46px system-ui";g.textAlign="center";g.textBaseline="middle";g.shadowColor=hex;g.shadowBlur=18;g.fillStyle=hex;
     g.fillText(txt.toUpperCase(),256,50);g.shadowBlur=0;g.fillStyle="#ffffff";g.globalAlpha=.55;g.fillText(txt.toUpperCase(),256,50)},null)}
@@ -613,15 +604,18 @@ if(window.THREE){
   function trocarTelas(){for(const t of TELAS){const old=t.s.material.map;t.s.material.map=t.pres?telaPres(t.pres===true?undefined:t.pres):telaMesa(t.r);t.s.material.needsUpdate=true;old&&old.dispose()}}
   // telões: o arquivo publicado é só o retrato da publicação; o número vivo chega pelo banco do artefato (telao/sede), gravado pela tarefa agendada
   let vivo="";
-  function cartaoXForex01(m){const v=document.getElementById("op-xgold-v"),s=document.getElementById("op-xgold-s");if(!v||!m)return;
+  function cartaoXForex01(m,id="xgold"){const v=document.getElementById("op-"+id+"-v"),s=document.getElementById("op-"+id+"-s");if(!v||!m)return;
     v.textContent=(m.r>0?"+":m.r<0?"−":"")+Math.abs(m.r).toFixed(2).replace(".",",");v.className="v "+(m.r>0?"pos":m.r<0?"neg":"");
     s.textContent=`${m.n} fechamentos hoje · ${m.g} ganhos · ${m.p} perdas · ${m.abertas?m.abertas+" aberta(s), "+fmt(m.a):"nada aberto"}`}
-  function aplicarDados(j){if(j&&j.mesas)cartaoXForex01(j.mesas.xgold);if(!j||!j.pregao||!j.mesas||(vivo&&j.gerado===vivo))return;vivo=j.gerado||"";
+  function aplicarDados(j){if(j&&j.mesas){cartaoXForex01(j.mesas.xgold);cartaoXForex01(j.mesas.xcrypto,"xcrypto")}if(!j||!j.pregao||!j.mesas||(vivo&&j.gerado===vivo))return;vivo=j.gerado||"";
     DIA={pregao:j.pregao.slice(8,10)+"/"+j.pregao.slice(5,7)+"/"+j.pregao.slice(0,4),mesas:j.mesas};trocarTelas();atualizarExpediente()}
-  // site público: o telão da Carteira XForex01 lê os mesmos dados da página da carteira (dados/xm), relidos a cada 2 min
-  function lerSite(){const pg=n=>fetch(`dados/xm/${n}.json?t=${Date.now()}`,{cache:"no-store"}).then(r=>r.json());
-    Promise.all([pg("conta"),pg("dias")]).then(([c,d])=>{const k=c[0],hoje=String(k.ultimo_preco).slice(0,10),x=d.find(z=>z.dia===hoje)||{realizado:0,fechadas:0};
-      aplicarDados({pregao:hoje,gerado:k.exportado,mesas:{xgold:{r:x.realizado,a:k.flutuante,n:x.fechadas,g:x.ganhos??0,p:x.perdas??0,abertas:k.abertas,pendentes:0,por_agente:{}}}})}).catch(()=>{})}
+  // site público: os telões das Carteiras XForex01 e XCrypto leem os mesmos dados da página da carteira (dados/xm e dados/xcrypto), relidos a cada 2 min
+  function lerSite(){const pg=(c,n)=>fetch(`dados/${c}/${n}.json?t=${Date.now()}`,{cache:"no-store"}).then(r=>r.json()).catch(()=>null);
+    const mesa=(c,d)=>{const k=Array.isArray(c)?c[0]:c;if(!k||!Array.isArray(d))return null;const hoje=String(k.ultimo_preco).slice(0,10),x=d.find(z=>z.dia===hoje)||{realizado:0,fechadas:0};
+      return{hoje,gerado:k.exportado,m:{r:x.realizado,a:+k.flutuante||0,n:x.fechadas,g:x.ganhos??0,p:x.perdas??0,abertas:k.abertas,pendentes:0,por_agente:{}}}};
+    Promise.all([pg("xm","conta"),pg("xm","dias"),pg("xcrypto","conta"),pg("xcrypto","dias")]).then(([cf,df,cc,dc])=>{const f=mesa(cf,df),c=mesa(cc,dc),ms={};
+      if(f)ms.xgold=f.m;if(c)ms.xcrypto=c.m;if(!f&&!c)return;const hs=[f,c].filter(Boolean);
+      aplicarDados({pregao:hs.map(z=>z.hoje).sort().pop(),gerado:hs.map(z=>z.gerado).join("|"),mesas:ms})})}
   lerSite();setInterval(()=>{if(!document.hidden)lerSite()},120000);
   atualizarExpediente();setInterval(atualizarExpediente,20000);
 
