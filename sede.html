@@ -494,7 +494,7 @@ if(window.THREE){
     inner.rotation.y=PI;inner.scale.setScalar(tipo==="robo"?.19:1);inner.add(raiz);g.add(inner);
     raiz.traverse(o=>{if(o.isMesh)o.frustumCulled=false});
     const mixer=new THREE.AnimationMixer(raiz),acts={},clips=tipo==="robo"?src.animations:MOD.clips;
-    const nomes=tipo==="robo"?{andar:"Walking",parado:"Idle",sentado:"Sitting",trabalho:"Yes"}
+    const nomes=tipo==="robo"?{andar:"Walking",parado:"Idle",sentado:"Sitting",trabalho:"Yes",dancar:"Dance",jogar:"Punch",acenar:"Wave"}
       :{andar:"Walk",parado:"Idle",sentado:"Sitting",digitar:"Typing",conversar:"SittingTalking",beber:"Drinking"};
     for(const[n,c]of Object.entries(nomes)){const cl=clips.find(a=>a.name===c);if(cl)acts[n]=mixer.clipAction(cl)}
     if(tipo==="robo"&&acts.sentado){acts.sentado.setLoop(THREE.LoopOnce);acts.sentado.clampWhenFinished=true}
@@ -526,9 +526,15 @@ if(window.THREE){
     {p:[[1.5,3.2]],olhar:[0,3.2],acao:"ver"},{p:[[1.9,6.9]],olhar:[1,8.2],acao:"ver"},{p:[[-1.9,6.6]],olhar:[-1.15,8.1],acao:"ver"}];
   const alvoTI=()=>({p:[[2.1,4.4],[3.8,4.4],[8.3,4.4+(rnd()-.5)*2.2]],olhar:[9.3,4.4],acao:"manut"});
   const BREAKS=[],wp=new THREE.Vector3();let proxima=3;
-  // folga dos robôs da XForex01: com o forex fechado saem da mesa e ficam recarregando na TI, lado a lado, até o mercado abrir
-  const alvoRecarga=sp=>{const i=SEATED.filter(s=>s.robot&&s.r.id==="xgold").indexOf(sp),z=3.4+Math.max(0,i)*.5;
-    return{p:[[2.1,4.4],[3.8,4.4],[7.4,z]],olhar:[9.3,z],acao:"recarga"}};
+  // folga dos robôs da XForex01: com o forex fechado vão ao lazer até o mercado abrir — videogame, sofá, caminhada pelo corredor e dança
+  const FOLGA=[
+    {p:[[.55,7.5]],olhar:[.55,8.25],acao:"jogar"},          // arcade azul
+    {p:[[1.75,7.5]],olhar:[1.45,8.25],acao:"jogar"},        // arcade verde
+    {p:[[.5,1.75]],olhar:[.5,3.2],acao:"sofa"},             // sofá de frente para a mesinha
+    {p:[[1.6,-1.2]],olhar:[1.6,0],acao:"passear"},          // caminha pelo corredor
+    {p:[[0,1.75]],olhar:[0,3.2],acao:"sofa"}];
+  const alvoRecarga=sp=>{const i=Math.max(0,SEATED.filter(s=>s.robot&&s.r.id==="xgold").indexOf(sp));return FOLGA[i%FOLGA.length]};
+  const passeio=b=>{const x=b.pos[0]<0?-1.6:1.6,z=-8.5+rnd()*16;b.ida=[[b.pos[0],b.pos[1]],[x,z]];b.fase="ida";b.i=0;b.espera=0};
   function iniciar(sp,folga=false){
     sp.p.g.getWorldPosition(wp);const alvo=folga?alvoRecarga(sp):sp.robot?alvoTI():ALVOS[Math.floor(rnd()*ALVOS.length)];
     const ida=[[wp.x,wp.z],...rota(sp.r,alvo.p)],w=sp.modelo?instancia(sp.robot?"robo":"pessoa",sp.k):pessoa({...sp.p.o,seated:false});
@@ -539,7 +545,8 @@ if(window.THREE){
     for(const sp of SEATED){if(!sp.robot||sp.r.id!=="xgold")continue;
       if(!sp.trab&&!sp.fora){iniciar(sp,true);const b=BREAKS[BREAKS.length-1],f=b.ida[b.ida.length-1],o=b.alvo.olhar;
         b.fase="parado";b.pos=[f[0],f[1]];b.w.g.rotation.y=Math.atan2(-(o[0]-f[0]),-(o[1]-f[1]));b.w.g.position.set(f[0],.06,f[1]);
-        if(b.w.modelo){b.w.tocar("parado",0);b.w.mixer.update(.01)}}
+        const ac=b.alvo.acao,y=ac==="sofa"&&b.w.modelo?.24:.06;b.w.g.position.y=y;
+        if(b.w.modelo){b.w.tocar(ac==="sofa"?"sentado":ac==="jogar"?"jogar":"parado",0);b.w.mixer.update(ac==="sofa"?2:.3)}}
       else if(sp.trab&&sp.fora){const k=BREAKS.findIndex(b=>b.sp===sp&&b.folga);
         if(k>=0){const b=BREAKS[k];S.remove(b.w.g);soltar(b.w);sentar(sp,true);sp.fora=false;BREAKS.splice(k,1)}}}}
   function vida(t,dt){
@@ -555,14 +562,15 @@ if(window.THREE){
         else{const dx=alvo[0]-b.pos[0],dz=alvo[1]-b.pos[1],d=Math.hypot(dx,dz);
           if(d<.03)b.i++;else{const st=Math.min(d,dt*(b.vel||1.05));b.pos[0]+=dx/d*st;b.pos[1]+=dz/d*st;b.w.g.rotation.y=Math.atan2(-dx,-dz)}
           if(b.w.modelo)b.w.tocar("andar");else{const sw=Math.sin(t*6.8+k);A.legs[0].rotation.x=sw*.45;A.legs[1].rotation.x=-sw*.45;A.arms[0].rotation.x=-sw*.35;A.arms[1].rotation.x=sw*.35}}}
+      if(b.fase==="parado"&&b.folga&&b.alvo.acao==="passear"&&!b.sp.trab){passeio(b);continue}
       if(b.fase==="parado"){b.espera-=b.sp.trab?dt*8:b.folga?0:dt;const o=b.alvo.olhar;b.w.g.rotation.y=Math.atan2(-(o[0]-b.pos[0]),-(o[1]-b.pos[1]));
-        if(b.w.modelo)b.w.tocar(b.alvo.acao==="reuniao"?b.alvo.pose:b.alvo.acao==="manut"?"trabalho":b.alvo.acao==="cafe"?"beber":"parado");
+        if(b.w.modelo)b.w.tocar(b.alvo.acao==="reuniao"?b.alvo.pose:b.alvo.acao==="manut"?"trabalho":b.alvo.acao==="cafe"?"beber":b.alvo.acao==="sofa"?"sentado":b.alvo.acao==="jogar"?"jogar":b.alvo.acao==="passear"?"acenar":"parado");
         else{A.legs[0].rotation.x=A.legs[1].rotation.x=0;
         if(b.alvo.acao==="cafe"){A.arms[0].rotation.x=0;A.arms[1].rotation.x=.6+1.4*Math.max(0,Math.sin(t*1.3+k))}
         else if(b.alvo.acao==="manut"){A.arms[0].rotation.x=1.2+Math.sin(t*6)*.15;A.arms[1].rotation.x=1.2+Math.sin(t*6+2)*.15;A.head.rotation.x=.2}
         else{A.arms[0].rotation.x=A.arms[1].rotation.x=0;A.head.rotation.y=Math.sin(t*.8+k)*.45}}
         if(b.espera<=0){b.fase="volta";b.i=0;if(!b.w.modelo)A.head.rotation.set(0,0,0)}}
-      b.w.g.position.set(b.pos[0],b.reu&&b.fase==="parado"&&b.w.modelo?.14:.06,b.pos[1])}}
+      b.w.g.position.set(b.pos[0],b.reu&&b.fase==="parado"&&b.w.modelo?.14:b.folga&&b.alvo.acao==="sofa"&&b.fase==="parado"&&b.w.modelo?.24:.06,b.pos[1])}}
 
   // reunião: a Presidência chama um coordenador de cada setor; cada um caminha até a mesa de 20 lugares e senta, o Presidente na cabeceira
   const btnReu=document.getElementById("btnReu");let REU=null;
