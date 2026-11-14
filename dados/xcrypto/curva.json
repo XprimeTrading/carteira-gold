@@ -290,8 +290,13 @@
   "tipo": "saldo"
  },
  {
-  "quando": "2026-11-14 10:05:30",
-  "saldo": 3028.6,
+  "quando": "2026-11-14 11:57:46",
+  "saldo": 0.0,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-11-14 11:57:46",
+  "saldo": 3027.81,
   "tipo": "patrimonio"
  }
 ]
