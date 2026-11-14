@@ -3,13 +3,13 @@
   "robo": "robo_x1",
   "nome": "165 estratégias",
   "magic": null,
-  "status": "ativo",
-  "resultado": 12.39,
+  "status": "operando",
+  "resultado": 12.34,
   "fechadas": 62,
-  "hoje": 4.69,
+  "hoje": 4.64,
   "ganhos": 39,
-  "abertas": 0,
-  "flutuante": 0,
-  "ultima": "2026-11-14 13:45:46"
+  "abertas": 1,
+  "flutuante": 25.75,
+  "ultima": "2026-11-14 13:50:27"
  }
 ]
