@@ -456,7 +456,7 @@ if(window.THREE){
         walkers.forEach((w,i)=>{const m=instancia("pessoa",i%PESSOAS.length);S.add(m.g);S.remove(w.p.g);w.m=m})
         LAZER.forEach(([p,acao,dy=0],i)=>{const m=instancia("pessoa",(i+2)%PESSOAS.length);m.g.position.copy(p.g.position);m.g.position.y+=dy;
           m.g.rotation.y=p.g.rotation.y;S.add(m.g);p.g.visible=false;m.tocar(acao,0)})}
-      stage.dataset.modelos="ok"}).catch(e=>{stage.dataset.modelos="falhou";console.warn("modelos 3D não carregaram; seguem os bonecos simples",e)})},300);
+      stage.dataset.modelos="ok";if(calm)folgaParada()}).catch(e=>{stage.dataset.modelos="falhou";if(calm)folgaParada();console.warn("modelos 3D não carregaram; seguem os bonecos simples",e)})},300);
 
   // modelos articulados (robô e humano) publicados junto com a página; até carregarem, valem os bonecos simples
   // móveis reais (Poly Haven, CC0) no lugar dos blocos: escala para o mesmo espaço de cada bloco
@@ -526,23 +526,36 @@ if(window.THREE){
     {p:[[1.5,3.2]],olhar:[0,3.2],acao:"ver"},{p:[[1.9,6.9]],olhar:[1,8.2],acao:"ver"},{p:[[-1.9,6.6]],olhar:[-1.15,8.1],acao:"ver"}];
   const alvoTI=()=>({p:[[2.1,4.4],[3.8,4.4],[8.3,4.4+(rnd()-.5)*2.2]],olhar:[9.3,4.4],acao:"manut"});
   const BREAKS=[],wp=new THREE.Vector3();let proxima=3;
-  function iniciar(sp){
-    sp.p.g.getWorldPosition(wp);const alvo=sp.robot?alvoTI():ALVOS[Math.floor(rnd()*ALVOS.length)];
+  // folga dos robôs da XForex01: com o forex fechado saem da mesa e ficam recarregando na TI, lado a lado, até o mercado abrir
+  const alvoRecarga=sp=>{const i=SEATED.filter(s=>s.robot&&s.r.id==="xgold").indexOf(sp),z=3.4+Math.max(0,i)*.5;
+    return{p:[[2.1,4.4],[3.8,4.4],[7.4,z]],olhar:[9.3,z],acao:"recarga"}};
+  function iniciar(sp,folga=false){
+    sp.p.g.getWorldPosition(wp);const alvo=folga?alvoRecarga(sp):sp.robot?alvoTI():ALVOS[Math.floor(rnd()*ALVOS.length)];
     const ida=[[wp.x,wp.z],...rota(sp.r,alvo.p)],w=sp.modelo?instancia(sp.robot?"robo":"pessoa",sp.k):pessoa({...sp.p.o,seated:false});
     S.add(w.g);sentar(sp,false);sp.fora=true;
-    BREAKS.push({sp,w,ida,volta:[...ida].reverse(),fase:"ida",i:0,pos:[wp.x,wp.z],espera:14+rnd()*22,alvo})}
+    BREAKS.push({sp,w,ida,volta:[...ida].reverse(),fase:"ida",i:0,pos:[wp.x,wp.z],espera:folga?2:14+rnd()*22,alvo,folga})}
+  // sem animação (reduzir movimento): o robô de folga aparece direto na recarga e volta direto para a mesa
+  function folgaParada(){if(!MOD.ok&&stage.dataset.modelos!=="falhou")return;  // espera o modelo do robô
+    for(const sp of SEATED){if(!sp.robot||sp.r.id!=="xgold")continue;
+      if(!sp.trab&&!sp.fora){iniciar(sp,true);const b=BREAKS[BREAKS.length-1],f=b.ida[b.ida.length-1],o=b.alvo.olhar;
+        b.fase="parado";b.pos=[f[0],f[1]];b.w.g.rotation.y=Math.atan2(-(o[0]-f[0]),-(o[1]-f[1]));b.w.g.position.set(f[0],.06,f[1]);
+        if(b.w.modelo){b.w.tocar("parado",0);b.w.mixer.update(.01)}}
+      else if(sp.trab&&sp.fora){const k=BREAKS.findIndex(b=>b.sp===sp&&b.folga);
+        if(k>=0){const b=BREAKS[k];S.remove(b.w.g);soltar(b.w);sentar(sp,true);sp.fora=false;BREAKS.splice(k,1)}}}}
   function vida(t,dt){
     proxima-=dt;
     if(proxima<=0){proxima=1.5+rnd()*2.5;
-      const robotFora=BREAKS.some(b=>b.sp.robot),livres=SEATED.filter(s=>!s.fora&&!s.trab&&(!s.robot||!robotFora));
-      if(BREAKS.length<(lowEnd?4:9)&&livres.length)iniciar(livres[Math.floor(rnd()*livres.length)])}
+      const folgado=SEATED.find(s=>s.robot&&s.r.id==="xgold"&&!s.trab&&!s.fora&&s.p.A.trab===false);
+      if(folgado)iniciar(folgado,true);
+      const robotFora=BREAKS.some(b=>b.sp.robot&&!b.folga),livres=SEATED.filter(s=>!s.fora&&!s.trab&&!(s.robot&&s.r.id==="xgold")&&(!s.robot||!robotFora));
+      if(BREAKS.filter(b=>!b.folga).length<(lowEnd?4:9)&&livres.length)iniciar(livres[Math.floor(rnd()*livres.length)])}
     for(let k=BREAKS.length-1;k>=0;k--){const b=BREAKS[k],A=b.w.A;
       if(b.fase!=="parado"){const pts=b[b.fase],alvo=pts[b.i+1];
         if(!alvo){if(b.fase==="ida")b.fase="parado";else{S.remove(b.w.g);soltar(b.w);sentar(b.sp,true);b.sp.fora=false;BREAKS.splice(k,1);continue}}
         else{const dx=alvo[0]-b.pos[0],dz=alvo[1]-b.pos[1],d=Math.hypot(dx,dz);
           if(d<.03)b.i++;else{const st=Math.min(d,dt*(b.vel||1.05));b.pos[0]+=dx/d*st;b.pos[1]+=dz/d*st;b.w.g.rotation.y=Math.atan2(-dx,-dz)}
           if(b.w.modelo)b.w.tocar("andar");else{const sw=Math.sin(t*6.8+k);A.legs[0].rotation.x=sw*.45;A.legs[1].rotation.x=-sw*.45;A.arms[0].rotation.x=-sw*.35;A.arms[1].rotation.x=sw*.35}}}
-      if(b.fase==="parado"){b.espera-=b.sp.trab?dt*8:dt;const o=b.alvo.olhar;b.w.g.rotation.y=Math.atan2(-(o[0]-b.pos[0]),-(o[1]-b.pos[1]));
+      if(b.fase==="parado"){b.espera-=b.sp.trab?dt*8:b.folga?0:dt;const o=b.alvo.olhar;b.w.g.rotation.y=Math.atan2(-(o[0]-b.pos[0]),-(o[1]-b.pos[1]));
         if(b.w.modelo)b.w.tocar(b.alvo.acao==="reuniao"?b.alvo.pose:b.alvo.acao==="manut"?"trabalho":b.alvo.acao==="cafe"?"beber":"parado");
         else{A.legs[0].rotation.x=A.legs[1].rotation.x=0;
         if(b.alvo.acao==="cafe"){A.arms[0].rotation.x=0;A.arms[1].rotation.x=.6+1.4*Math.max(0,Math.sin(t*1.3+k))}
@@ -586,12 +599,14 @@ if(window.THREE){
   const placar=document.getElementById("placar");
   function relogio(){const p=Object.fromEntries(new Intl.DateTimeFormat("en-US",{timeZone:"America/Sao_Paulo",hour12:false,weekday:"short",hour:"2-digit",minute:"2-digit"})
     .formatToParts(new Date()).map(x=>[x.type,x.value]));const h=(+p.hour%24)+(+p.minute)/60;
-    return{h,util:!["Sat","Sun"].includes(p.weekday),txt:`${String(+p.hour%24).padStart(2,"0")}:${p.minute}`}}
+    return{h,wd:p.weekday,util:!["Sat","Sun"].includes(p.weekday),txt:`${String(+p.hour%24).padStart(2,"0")}:${p.minute}`}}
   const plantaoTI=()=>SEATED.find(s=>s.r.id==="ti");
+  // forex (horário de Brasília): abre domingo 19h, fecha sexta 18h, pausa diária 18h–19h
+  const fxAberto=rl=>rl.wd==="Sat"?false:rl.wd==="Sun"?rl.h>=19:rl.wd==="Fri"?rl.h<18:!(rl.h>=18&&rl.h<19);
   function trabalhando(sp,rl){const m=DIA.mesas[sp.r.id],exp=rl.util&&rl.h>=9&&rl.h<18;
     switch(sp.r.id){
-      case"xgold":return sp.robot?rl.util:exp;
-      case"xcrypto":case"dev":return sp.robot?true:exp;  // robôs da incubação e da mineração não param  // cripto opera 24/7: os robôs da incubação não param  // robôs ligados com o mercado aberto; o supervisor no expediente
+      case"xgold":return sp.robot?fxAberto(rl):exp;
+      case"xcrypto":case"dev":return sp.robot?true:exp;  // cripto opera 24/7 e a mineração não para; os robôs da XForex01 só com o forex aberto
       case"xau":{if(!rl.util)return false;
         if((rl.h>=9&&rl.h<10.5)||(rl.h>=16.75&&rl.h<17.5))return true;
         return(sp.role==="risk"||sp.role==="chefe")&&!!(m&&(m.abertas||m.pendentes))}
@@ -599,6 +614,7 @@ if(window.THREE){
       default:return exp}}
   function atualizarExpediente(){const rl=relogio();let n=0;
     for(const sp of SEATED){const antes=sp.trab;sp.trab=trabalhando(sp,rl);sp.p.A.trab=sp.trab;if(sp.trab)n++;if(antes!==sp.trab&&!sp.fora)postura(sp,.6)}
+    if(calm)folgaParada();
     const mercado=rl.util?"mercado aberto":"mercado fechado";
     placar.innerHTML=`${rl.txt} em Brasília · <i>${mercado}</i><br><b>${n} trabalhando</b> · ${SEATED.length-n} de folga`}
   function trocarTelas(){for(const t of TELAS){const old=t.s.material.map;t.s.material.map=t.pres?telaPres(t.pres===true?undefined:t.pres):telaMesa(t.r);t.s.material.needsUpdate=true;old&&old.dispose()}}
