@@ -37,6 +37,11 @@ section{margin-top:40px}
 .fala{position:absolute;transform:translate(-50%,calc(-100% - 8px));max-width:210px;width:max-content;font:500 12px/1.3 var(--body);background:#f6f7f5;color:#15181a;border-radius:10px;padding:5px 9px;box-shadow:0 2px 10px rgba(0,0,0,.45);transition:opacity .25s}
 .fala::after{content:"";position:absolute;left:50%;bottom:-6px;margin-left:-6px;border:6px solid transparent;border-bottom:0;border-top-color:#f6f7f5}
 .fala.festa{background:#ffd23c;font-weight:700}.fala.festa::after{border-top-color:#ffd23c}
+.ficha{position:absolute;left:10px;bottom:10px;width:min(320px,calc(100% - 20px));background:rgba(8,10,10,.9);color:#eef1ee;border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:10px 12px;z-index:3;font:13px/1.4 var(--body)}
+.ficha[hidden]{display:none}.ficha .nome{font:600 15px var(--display)}.ficha .cargo{color:#b9c2bd;font-size:12px;margin:2px 0 4px}.ficha .agora{margin-bottom:4px}
+.ficha .selo{display:inline-block;font:500 10.5px var(--mono);padding:1px 6px;border-radius:999px;border:1px solid #4cc9a6;color:#4cc9a6;margin-left:6px;vertical-align:2px}.ficha .selo.h{border-color:#e0a940;color:#e0a940}
+.ficha .nd{display:grid;grid-template-columns:128px 1fr;gap:6px;align-items:center;font-size:11.5px;color:#b9c2bd;margin-top:3px}.ficha .barra{height:5px;background:#2b3330;border-radius:3px;overflow:hidden}.ficha .barra i{display:block;height:100%;background:#4cc9a6}
+.ficha ul{margin:6px 0 0;padding-left:16px;color:#b9c2bd;font-size:12px}.ficha .x{position:absolute;top:4px;right:6px;background:none;border:0;color:#b9c2bd;font-size:18px;padding:2px 6px}
 .fala.diverge{background:#ffe3d8;box-shadow:0 0 0 2px #f08d68,0 2px 10px rgba(0,0,0,.45)}.fala.diverge::after{border-top-color:#ffe3d8}
 .tag{position:absolute;transform:translate(-50%,-100%);font:500 11px/1.2 var(--mono);background:rgba(8,10,10,.72);color:#eef1ee;border:1px solid rgba(255,255,255,.18);border-radius:6px;padding:3px 6px;white-space:nowrap;pointer-events:auto;cursor:pointer}
 .tag.on{border-color:#e0a940;color:#e0a940}
@@ -91,6 +96,7 @@ html.embed .stage{margin:0;width:100vw;height:100vh;transform:none;border:0;bord
   <div class="eyebrow">Sede virtual · fundada em abril de 2026</div>
   <h1>XPrime Trading</h1>
   <p class="lede">Escritório de operação com capital próprio. As carteiras operam ouro e, em breve, cripto; cada sala tem função, regras e registro. Dinheiro real só é ligado pela Presidência.</p>
+  <p class="lede">Todos os integrantes da sede são agentes de IA ou robôs, cada um com nome, cargo e rotina própria; o Presidente é o único humano. Toque num personagem para ver a ficha dele.</p>
 
   <div class="stage" id="stage"><canvas id="cv" aria-label="Mapa 3D das salas"></canvas><div class="tags" id="tags"></div>
     <div class="hud" id="hud"><button type="button" data-m="aereo" class="on">Vista aérea</button><button type="button" data-m="passeio">Passeio</button><button type="button" data-m="tour">Tour guiado</button></div>
@@ -103,7 +109,7 @@ html.embed .stage{margin:0;width:100vw;height:100vh;transform:none;border:0;bord
     <span class="key"><i class="sw" style="background:#6a5fd0"></i>Operação</span>
     <span class="key"><i class="sw" style="background:#17a07f"></i>Controle</span>
     <span class="key"><i class="sw dash"></i>Fase futura</span>
-    <span>Vista aérea: arraste para girar, pinça para zoom, toque numa sala. Passeio: setas ou W A S D, arraste para olhar em volta.</span>
+    <span>Vista aérea: arraste para girar, pinça para zoom, toque numa sala ou num personagem para ver a ficha dele. Passeio: setas ou W A S D, arraste para olhar em volta.</span>
   </div>
 
   <section>
@@ -181,7 +187,7 @@ const ROOMS=[
    items:[["balcao",-1.8,0,FS],["sofa",2.4,0,FW],["polt",1.3,-1.6,FW],["polt",1.3,1.6,FW]]},
   {id:"pres",n:"01",nome:"Presidência",cur:"Presidência",tipo:"dec",txt:"Decide capital, risco, quem entra e quem sai. Liga o dinheiro real. Recebe o relatório diário do Financeiro e acompanha todas as mesas no telão.",ass:"1 estação executiva · telão de todas as mesas · 2 poltronas · reunião com 6 lugares",x:[-3,3],z:[-23,-17],door:"s",doorAt:2,cor:0x7b827e,
    items:[["est",-.4,-1,FN,{m:3,role:"chefe"}],["polt",2.2,-1.6,FW],["polt",2.2,-.5,FW],["reun",-.9,1.6,FN,{n:6}]]},
-  {id:"fin",n:"02",nome:"Financeiro",cur:"Financeiro",tipo:"ctl",txt:"Colhe o resultado das carteiras, separa por conta e envia o relatório do dia para a Presidência. Cuida também de custos, impostos e da gestão de risco da empresa.",ass:"1 estação: tesouraria e gestão de risco · 1 poltrona",x:[-3,1],z:[-16,-11],door:"s",cor:0x5dcaa5,
+  {id:"fin",n:"02",nome:"Financeiro",cur:"Financeiro",tipo:"ctl",txt:"Colhe o resultado das carteiras, separa por conta e envia o relatório do dia para a Presidência. Cuida também de custos, impostos e da gestão de risco da empresa (Ricardo Menezes, agente de IA, desde 29/10).",ass:"1 estação: tesouraria e gestão de risco · 1 poltrona",x:[-3,1],z:[-16,-11],door:"s",cor:0x5dcaa5,
    items:[["est",0,-1.1,FN,{m:3}],["polt",-1.3,1.5,FN]]},
   {id:"xgold",n:"03",nome:"Carteira XForex01",cur:"Carteira XForex01",tipo:"op",txt:"A carteira de ouro em conta real: 5 estratégias em 3 robôs (ciclos, rompimento de range e momentum de horário) e o supervisor, que acompanha a carteira e as travas do Guardião.",ass:"6 estações: 5 estratégias · 1 supervisor · telão",x:[-10,-3],z:[-11,0],door:"e",cor:0xe0a940,painel:true,
    items:[["est",-1.6,-2.2,FW,{robot:1}],["est",-1.6,0,FW,{robot:1}],["est",-1.6,2.2,FW,{robot:1}],["est",.3,-1.1,FW,{robot:1}],["est",.3,1.1,FW,{robot:1}],["est",2.1,0,FW,{m:3,role:"risk"}]]},
@@ -531,7 +537,7 @@ if(window.THREE){
     {p:[[1.5,3.2]],olhar:[0,3.2],acao:"ver"},{p:[[1.9,6.9]],olhar:[1,8.2],acao:"ver"},{p:[[-1.9,6.6]],olhar:[-1.15,8.1],acao:"ver"}];
   // visita: passa na porta de outra sala para ver como estão os colegas
   const alvoVisita=sp=>{const rs=ROOMS.filter(r=>r.door&&!r.out&&!r.lounge&&r.id!==sp.r.id&&r.id!=="pres"&&r.id!=="reu"&&r.id!=="lazer");
-    const r=rs[Math.floor(rnd()*rs.length)],d=doorOf(r);return{p:[[d[1][0]*.85,d[1][1]]],olhar:d[0],acao:"ver"}};
+    const r=rs[Math.floor(rnd()*rs.length)],d=doorOf(r);return{p:[[d[1][0]*.85,d[1][1]]],olhar:d[0],acao:"ver",visita:r.cur}};
   const alvoTI=()=>({p:[[2.1,4.4],[3.8,4.4],[8.3,4.4+(rnd()-.5)*2.2]],olhar:[9.3,4.4],acao:"manut"});
   const BREAKS=[],wp=new THREE.Vector3();let proxima=3;
   // folga dos robôs: robô sem posição aberta (ou mineração parada) sai da mesa até voltar a operar — videogame, sofá, ping pong, recarga na TI, caminhada
@@ -549,8 +555,11 @@ if(window.THREE){
   const alvoRecarga=sp=>{const usados=new Set(BREAKS.filter(b=>b.folga).map(b=>b.alvo)),livres=FOLGA.filter(f=>!usados.has(f));
     return livres.length?livres[Math.floor(rnd()*livres.length)]:{p:[[rnd()<.5?-1.6:1.6,-8+rnd()*15]],olhar:[0,0],acao:"passear"}};
   const passeio=b=>{const x=b.pos[0]<0?-1.6:1.6,z=-8.5+rnd()*16;b.ida=[[b.pos[0],b.pos[1]],[x,z]];b.fase="ida";b.i=0;b.espera=0};
-  function iniciar(sp,folga=false){
-    sp.p.g.getWorldPosition(wp);const alvo=folga?alvoRecarga(sp):sp.robot?alvoTI():rnd()<.3?alvoVisita(sp):ALVOS[Math.floor(rnd()*ALVOS.length)];
+  const ACAO_TXT={jogar:"jogando no arcade",sofa:"descansando no sofá",ver:"assistindo o lazer",manut:"recarregando na TI",passear:"caminhando pelo corredor",cafe:"tomando café"};
+  function iniciar(sp,folga=false,motivo){
+    sp.p.g.getWorldPosition(wp);const alvo=folga?alvoRecarga(sp):sp.robot?alvoTI():motivo==="cafe"?ALVOS[Math.floor(rnd()*2)]
+      :rnd()<.35?alvoVisita(sp):ALVOS[2+Math.floor(rnd()*(ALVOS.length-2))];
+    anota(sp,folga?`Sem posição aberta: saiu de folga (${ACAO_TXT[alvo.acao]||"lazer"})`:motivo==="cafe"?"Foi tomar café":alvo.visita?`Passou para ver a ${alvo.visita}`:"Levantou para esticar as pernas");
     const ida=[[wp.x,wp.z],...rota(sp.r,alvo.p)],w=sp.modelo?instancia(sp.robot?"robo":"pessoa",sp.k):pessoa({...sp.p.o,seated:false});
     S.add(w.g);sentar(sp,false);sp.fora=true;
     BREAKS.push({sp,w,ida,volta:[...ida].reverse(),fase:"ida",i:0,pos:[wp.x,wp.z],espera:folga?2:14+rnd()*22,alvo,folga})}
@@ -569,14 +578,16 @@ if(window.THREE){
       // robô sem operação sai para a folga (no máximo 10 de uma vez; o resto descansa na cadeira)
       const fol=SEATED.filter(s=>s.robot&&!s.trab&&!s.fora&&s.p.A.trab===false);
       if(fol.length&&BREAKS.filter(b=>b.folga).length<(lowEnd?5:10)&&!REU)iniciar(fol[Math.floor(rnd()*fol.length)],true);
-      // quem está de folga sai mais; quem está trabalhando também levanta quando quer (esticar as pernas, café, visitar outra sala)
-      const pool=SEATED.filter(s=>!s.fora&&!s.robot),
-        folgados=pool.filter(s=>!s.trab),querem=pool.filter(s=>s.trab&&s.r.id!=="pres"&&!s.robot),livres=rnd()<.3&&querem.length?querem:folgados;
-      if(BREAKS.filter(b=>!b.folga&&!b.social).length<(lowEnd?4:9)&&livres.length&&!REU){const sp=livres[Math.floor(rnd()*livres.length)];iniciar(sp);
-        if(sp.trab){const b=BREAKS[BREAKS.length-1];b.livre=true;b.espera=6+rnd()*10}}}
+      // vida própria: cada um levanta pela sua necessidade (café, conversa, cansaço); quem trabalha aguenta mais antes de sair
+      const quer=SEATED.filter(s=>!s.fora&&!s.robot&&s.nd).map(s=>{const n=s.nd,v=Math.max(n.c,n.s,1-n.e);return{s,v:v+rnd()*.1}})
+        .filter(x=>x.v>(x.s.trab?.85:.6)).sort((a,b)=>b.v-a.v);
+      if(quer.length&&BREAKS.filter(b=>!b.folga&&!b.social).length<(lowEnd?4:9)&&!REU){const sp=quer[0].s,n=sp.nd;
+        if(n.s>=n.c&&n.s>=1-n.e&&RODAS.filter(r=>!r.div).length<(lowEnd?1:2))novaRoda(sp);
+        else{iniciar(sp,false,n.c>=1-n.e?"cafe":"descanso");if(sp.trab){const b=BREAKS[BREAKS.length-1];b.livre=true;b.espera=8+rnd()*10}}}}
+    necessidades(dt);
     for(let k=BREAKS.length-1;k>=0;k--){const b=BREAKS[k],A=b.w.A;
       if(b.fase!=="parado"){const pts=b[b.fase],alvo=pts[b.i+1];
-        if(!alvo){if(b.fase==="ida")b.fase="parado";else{S.remove(b.w.g);soltar(b.w);sentar(b.sp,true);b.sp.fora=false;BREAKS.splice(k,1);continue}}
+        if(!alvo){if(b.fase==="ida")b.fase="parado";else{S.remove(b.w.g);soltar(b.w);sentar(b.sp,true);b.sp.fora=false;b.sp.missao=false;BREAKS.splice(k,1);continue}}
         else{const dx=alvo[0]-b.pos[0],dz=alvo[1]-b.pos[1],d=Math.hypot(dx,dz);
           if(d<.03)b.i++;else{const st=Math.min(d,dt*(b.vel||1.05));b.pos[0]+=dx/d*st;b.pos[1]+=dz/d*st;b.w.g.rotation.y=Math.atan2(-dx,-dz)}
           if(b.w.modelo)b.w.tocar("andar");else{const sw=Math.sin(t*6.8+k);A.legs[0].rotation.x=sw*.45;A.legs[1].rotation.x=-sw*.45;A.arms[0].rotation.x=-sw*.35;A.arms[1].rotation.x=sw*.35}}}
@@ -587,9 +598,92 @@ if(window.THREE){
         if(b.alvo.acao==="cafe"){A.arms[0].rotation.x=0;A.arms[1].rotation.x=.6+1.4*Math.max(0,Math.sin(t*1.3+k))}
         else if(b.alvo.acao==="manut"){A.arms[0].rotation.x=1.2+Math.sin(t*6)*.15;A.arms[1].rotation.x=1.2+Math.sin(t*6+2)*.15;A.head.rotation.x=.2}
         else{A.arms[0].rotation.x=A.arms[1].rotation.x=0;A.head.rotation.y=Math.sin(t*.8+k)*.45}}
-        if(b.espera<=0){b.fase="volta";b.i=0;if(!b.w.modelo)A.head.rotation.set(0,0,0)}}
+        if(b.missao)b.fala=b.falaM;
+        if(b.espera<=0){b.fase="volta";b.i=0;if(b.missao)b.fala=null;if(!b.w.modelo)A.head.rotation.set(0,0,0)}}
       b.w.g.position.set(b.pos[0],b.reu&&b.fase==="parado"&&b.w.modelo?.14:b.folga&&b.alvo.acao==="sofa"&&b.fase==="parado"&&b.w.modelo?.24:.06,b.pos[1])}
     social(t,dt)}
+
+  // vida própria: cada integrante tem nome, cargo, necessidades (energia, café, conversa), diário do que fez e rotina do cargo.
+  // Todos são agentes de IA ou robôs; o Presidente é o único humano. As rotinas seguem as regras da casa e só usam números das fontes.
+  const NOMES={pres:[["Presidente","Presidência: decide capital, risco e quem entra",1]],
+    fin:[["Ricardo Menezes","Gestão de risco e tesouraria","risco"]],rec:[["Clara Viana","Recepção e painel do dia"]],
+    arq:[["Henrique Sales","Auditoria e cemitério de estratégias"]],
+    adm:[["Beatriz Prado","Compliance e atas","compliance"],["Laura Antunes","Atas e calendário"]],
+    ti:[["Sérgio Ramos","Infraestrutura · plantão 24 h","ti"],["Davi Nogueira","Infraestrutura · expediente"]],
+    dev:[["Marina Tessler","Quant: comanda a mineração","quant"]],
+    xgold:[["Otávio Lemos","Supervisor da XForex01 e das travas do Guardião","superv"]],
+    xcrypto:[["Helena Duarte","Acompanha as ordens da XCrypto","cripto"]]};
+  const ROBOS={xgold:["XPrime001 · Ciclos","XPrime001 · Ciclos","XPrime002 · Fimathe S1","XPrime002 · Fimathe S2","XPrime003 · Momentum"],
+    xcrypto:Array.from({length:12},(_,i)=>`Operador cripto ${String(i+1).padStart(2,"0")}`),dev:["Minerador 1","Minerador 2","Minerador 3","Minerador 4"]};
+  const CARGO_ROBO={xgold:"Robô da Carteira XForex01 (HFM, conta real)",xcrypto:"Robô da Carteira XCrypto (Bybit, 165 estratégias)",dev:"Robô de mineração do motor"};
+  {const cont={};for(const sp of SEATED){const id=sp.r.id,kk=id+(sp.robot?"R":"H"),i=cont[kk]=(cont[kk]??-1)+1;
+    if(sp.robot){const L=ROBOS[id]||[];sp.perfil={nome:L[i]||`Robô ${i+1}`,cargo:CARGO_ROBO[id]||"Robô"}}
+    else{const x=(NOMES[id]||[])[i];sp.perfil={nome:x?x[0]:"Agente de IA",cargo:x?x[1]:sp.r.nome,id:x&&typeof x[2]==="string"?x[2]:null,humano:!!(x&&x[2]===1)};
+      sp.nd={e:.55+rnd()*.45,c:rnd()*.6,s:rnd()*.6}}}}
+  const porId=id=>SEATED.find(s=>s.perfil&&s.perfil.id===id);
+  const nomeCurto=s=>s.robot?s.perfil.nome.split(" · ")[0]:s.perfil.nome.split(" ")[0];
+  const esc=x=>String(x??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  function anota(sp,txt){if(!sp||!sp.perfil)return;const L=sp.log||(sp.log=[]);if(L[0]&&L[0].t===txt)return;L.unshift({h:relogio().txt,t:txt});if(L.length>6)L.length=6}
+  // necessidades: trabalhando cansa e dá vontade de café e de conversar; a folga, o café e a conversa repõem
+  function necessidades(dt){for(const sp of SEATED){const n=sp.nd;if(!n)continue;const b=sp.fora?BREAKS.find(x=>x.sp===sp):null;
+    if(b){if(b.fase!=="parado")continue;const a=b.alvo.acao;if(a==="cafe")n.c=Math.max(0,n.c-dt*.08);else if(a==="papo"||a==="festa")n.s=Math.max(0,n.s-dt*.04);else n.e=Math.min(1,n.e+dt*.03)}
+    else if(sp.trab){n.e=Math.max(0,n.e-dt*.0015);n.c=Math.min(1,n.c+dt*.003);n.s=Math.min(1,n.s+dt*.002)}
+    else{n.c=Math.min(1,n.c+dt*.002);n.s=Math.min(1,n.s+dt*.003);n.e=Math.min(1,n.e+dt*.001)}}}
+  // missão do cargo: vai até um lugar, fala o que veio fazer e volta
+  function missao(sp,alvo,fala,dur){if(!sp||sp.missao||REU||calm)return false;const b=levantar(sp,alvo,dur,{livre:true,missao:true,falaM:fala,vel:1.3});
+    if(!b)return false;sp.missao=true;anota(sp,fala);return true}
+  function ata(tema){missao(porId("compliance"),{p:[[2.1,8.8],[3.7,8.8],[8.6,8.8]],olhar:[9.4,8.8],acao:"ver"},`Ata registrada: ${tema}.`,16)}
+  const FEITO={},umaVez=k=>FEITO[k]?false:(FEITO[k]=1,true),pc=x=>x.toFixed(1).replace(".",",");
+  function rotinas(){if(calm||REU||(!MOD.ok&&stage.dataset.modelos!=="falhou"))return;const rl=relogio(),hoje=new Date().toDateString();
+    // Risco: perda do dia acima de 1,5% → vai até a carteira lembrar a trava (XForex01: Guardião 4,1% no dia)
+    for(const[id,m]of Object.entries(DIA.mesas||{})){if(!m||!(m.r<0)||!m.saldo||!INFO[id])continue;const p=-m.r/(m.saldo-m.r)*100;if(p<1.5)continue;
+      if(!umaVez(`risco-${id}-${DIA.pregao}-${p>=3?3:p>=2?2:1}`))continue;const d=doorOf(INFO[id]);
+      const quando=m.dia?`no pregão de ${m.dia.slice(8,10)}/${m.dia.slice(5,7)}`:"no dia";
+      missao(porId("risco"),{p:[d[1]],olhar:d[0],acao:"ver"},id==="xgold"?`Perda de ${pc(p)}% ${quando} na XForex01. A trava do Guardião é 4,1% no dia.`
+        :`Perda de ${pc(p)}% ${quando} na ${INFO[id].cur}. Conferindo o risco das estratégias.`,25);break}
+    // Financeiro: relatório do dia para a Presidência às 19:05 (dias úteis)
+    if(rl.util&&rl.h>=19.08&&rl.h<19.6&&umaVez("rel-"+hoje)){const f=DIA.mesas.xgold,c=DIA.mesas.xcrypto;
+      missao(porId("risco"),{p:[[2,-16.3],[1.2,-18.8]],olhar:[-.4,-21],acao:"ver"},`Relatório do dia para a Presidência: XForex01 ${f?fmt(f.r):"—"} · XCrypto ${c?fmt(c.r):"—"}.`,30)}
+    // TI: dados parados há mais de 75 min → confere o coletor no rack
+    const g=/^(\d\d)\/(\d\d)\/(\d{4}) (\d\d):(\d\d)$/.exec(DIA.gerado||"");
+    if(g&&Date.now()-Date.parse(`${g[3]}-${g[2]}-${g[1]}T${g[4]}:${g[5]}:00-03:00`)>75*60e3&&umaVez("ti-"+DIA.gerado))
+      missao(porId("ti"),{p:[[2.1,4.4],[3.8,4.4],[8.3,4.4]],olhar:[9.3,4.4],acao:"manut"},`Dados parados desde ${DIA.gerado}. Conferindo o coletor.`,30);
+    // Mineração parada: a Quant passa nas máquinas de tempos em tempos
+    if(DIA.minerando===false&&umaVez("min-"+Math.floor(Date.now()/720000)))
+      missao(porId("quant"),{p:[[2.1,0],[3.7,0],[8.6,-.4]],olhar:[9.4,-1],acao:"ver"},`Motor parado${DIA.ultima?" desde "+DIA.ultima:""}. Sem campanha nova, a sala fica de folga.`,20)}
+  setInterval(rotinas,15000);setTimeout(rotinas,9000);
+  // ficha: toque num personagem mostra quem é, o que está fazendo, as necessidades e o diário
+  const ESTADO_ACAO={...ACAO_TXT,ver:"dando uma volta"};
+  function estado(sp){const b=BREAKS.find(x=>x.sp===sp);
+    if(b){if(b.reu)return"Na reunião geral";if(b.social&&b.festa!==undefined)return"Comemorando";if(b.div)return"Discutindo uma divergência";
+      if(b.social)return"Conversando com colegas";if(b.missao)return b.falaM;if(b.fase==="volta")return"Voltando para a mesa";
+      const o=b.alvo.visita?"visitando a "+b.alvo.visita:ESTADO_ACAO[b.alvo.acao]||"no lazer";return(b.fase==="ida"?"A caminho: ":b.folga?"De folga: ":"")+o}
+    if(sp.robot)return sp.trab?"Operando, com posição aberta":"Na mesa, sem posição aberta";
+    return sp.perfil.humano?(sp.trab?"No escritório":"Fora do expediente"):sp.trab?"Trabalhando na mesa":"De folga na mesa"}
+  const WALK_P=[["Caio Albuquerque","Relações com investidores"],["Lívia Koury","Desenvolvimento dos robôs"],["Rafael Cabral","Macro: agenda e dados de impacto"],["Júlia Monteiro","Notícias do mercado"]];
+  const LAZER_T=["jogando ping pong","jogando ping pong","no sofá, conversando","no sofá, descansando","no sofá, conversando","tomando café","jogando pinball","jogando no arcade"];
+  function candidatos(){const out=[];
+    for(const sp of SEATED){const b=BREAKS.find(x=>x.sp===sp);let p;if(b)p=[b.pos[0],b.w.robo?.9:1.3,b.pos[1]];else{sp.p.g.getWorldPosition(wp);p=[wp.x,1.1,wp.z]}out.push({sp,pos:p})}
+    walkers.forEach((w,i)=>{const g=(w.m||w.p).g.position,x=WALK_P[i];if(x)out.push({extra:{nome:x[0],cargo:x[1],sala:"Corredor",estado:"Circulando pela sede"},pos:[g.x,1.3,g.z]})});
+    LAZER.forEach(([p],i)=>{const g=p.g.position;out.push({extra:{nome:"Agente de IA de folga",cargo:"Integrante de outra sala no intervalo",sala:"Espaço de lazer",estado:LAZER_T[i]||"no lazer"},pos:[g.x,1.2,g.z]})});
+    return out}
+  const fichaEl=document.createElement("div");fichaEl.className="ficha";fichaEl.hidden=true;stage.appendChild(fichaEl);let FICHA=null;
+  fichaEl.addEventListener("click",e=>{if(e.target.closest(".x")){FICHA=null;fichaEl.hidden=true}});
+  function desenharFicha(){if(!FICHA)return;const c=FICHA,sp=c.sp,P=sp?sp.perfil:c.extra;
+    const selo=P.humano?'<span class="selo h">humano · dono</span>':sp&&sp.robot?'<span class="selo">robô · agente de IA</span>':'<span class="selo">agente de IA</span>';
+    const bar=(n,x)=>`<div class="nd"><span>${n}</span><div class="barra"><i style="width:${Math.round(x*100)}%"></i></div></div>`;
+    const nd=sp&&sp.nd?bar("Energia",sp.nd.e)+bar("Vontade de café",sp.nd.c)+bar("Vontade de conversar",sp.nd.s):"";
+    const log=sp&&sp.log&&sp.log.length?`<ul>${sp.log.map(l=>`<li>${l.h} · ${esc(l.t)}</li>`).join("")}</ul>`:sp?'<ul><li>Ainda sem registro nesta visita.</li></ul>':"";
+    fichaEl.innerHTML=`<button type="button" class="x" aria-label="Fechar">×</button><b class="nome">${esc(P.nome)}</b>${selo}<div class="cargo">${esc(P.cargo)} · ${esc(sp?INFO[sp.r.id].nome:c.extra.sala)}</div>`+
+      `<div class="agora">Agora: ${esc(sp?estado(sp):c.extra.estado)}</div>${nd}${log}`;
+    fichaEl.style.bottom=modo==="passeio"?"122px":"10px"}
+  setInterval(desenharFicha,1000);
+  let toque0=null;
+  R.domElement.addEventListener("pointerdown",e=>{toque0={x:e.clientX,y:e.clientY,t:Date.now()}});
+  R.domElement.addEventListener("pointerup",e=>{if(!toque0)return;const d=Math.hypot(e.clientX-toque0.x,e.clientY-toque0.y),dur=Date.now()-toque0.t;toque0=null;if(d>8||dur>500)return;
+    const rc=R.domElement.getBoundingClientRect(),mx=e.clientX-rc.left,my=e.clientY-rc.top;let best=null,bd=modo==="aereo"?28:70;
+    for(const c of candidatos()){v.set(c.pos[0],c.pos[1],c.pos[2]).project(C);if(v.z>1)continue;const dd=Math.hypot((v.x+1)/2*W-mx,(-v.y+1)/2*H-my);if(dd<bd){bd=dd;best=c}}
+    if(best){FICHA=best;fichaEl.hidden=false;desenharFicha()}});
 
   // vida social: rodas de conversa no corredor e no lazer (com balão de fala) e comemoração quando a mesa ganha
   const falasEl=document.createElement("div");falasEl.className="falas";stage.appendChild(falasEl);
@@ -615,23 +709,25 @@ if(window.THREE){
     return PAPOS[Math.floor(rnd()*PAPOS.length)]}
   // chama alguém para um ponto: da mesa, ou de onde estiver na folga (aí caminha de lá e, no fim, volta para a mesa)
   function levantar(sp,alvo,espera,extra){sp.p.g.getWorldPosition(wp);const casa=[[wp.x,wp.z],...rota(sp.r,alvo.p)],k=BREAKS.findIndex(b=>b.sp===sp);
-    if(k>=0){const b0=BREAKS[k];if(b0.reu||b0.social)return null;const x=b0.pos,la=lane(x[0]),lb=lane(alvo.p[0][0]),ida=[[...x],[la,x[1]]];
+    if(k>=0){const b0=BREAKS[k];if(b0.reu||b0.social||b0.missao)return null;const x=b0.pos,la=lane(x[0]),lb=lane(alvo.p[0][0]),ida=[[...x],[la,x[1]]];
       if(la!==lb){const cz=Math.abs(x[1]+10.1)<Math.abs(x[1]-9.4)?-10.1:9.4;ida.push([la,cz],[lb,cz])}
       ida.push([lb,alvo.p[0][1]],...alvo.p);const b={sp,w:b0.w,ida,volta:[...casa].reverse(),fase:"ida",i:0,pos:[...x],espera,alvo,...extra};BREAKS[k]=b;return b}
     const w=sp.modelo?instancia(sp.robot?"robo":"pessoa",sp.k):pessoa({...sp.p.o,seated:false});
     S.add(w.g);sentar(sp,false);sp.fora=true;const b={sp,w,ida:casa,volta:[...casa].reverse(),fase:"ida",i:0,pos:[wp.x,wp.z],espera,alvo,...extra};BREAKS.push(b);return b}
   // quem pode interagir: pessoas (de folga ou, às vezes, trabalhando) e robôs que NÃO estão operando (na mesa ou já na folga)
-  const disponivel=(s,excl)=>!excl.has(s)&&s.r.id!=="pres"&&s.r.id!=="reu"&&!(s.robot&&s.trab)&&
-    (!s.fora||BREAKS.some(b=>b.sp===s&&!b.social&&!b.reu&&b.fase==="parado"));
+  const disponivel=(s,excl)=>!excl.has(s)&&s.r.id!=="pres"&&s.r.id!=="reu"&&!(s.robot&&s.trab)&&!s.missao&&
+    (!s.fora||BREAKS.some(b=>b.sp===s&&!b.social&&!b.reu&&!b.missao&&b.fase==="parado"));
   function quemLevanta(n,excl=new Set()){const pool=SEATED.filter(s=>disponivel(s,excl));
     const folga=pool.filter(s=>!s.trab),trab=pool.filter(s=>s.trab),out=[];
     while(out.length<n&&(folga.length||trab.length)){const L=folga.length&&(rnd()<.7||!trab.length)?folga:trab;out.push(L.splice(Math.floor(rnd()*L.length),1)[0])}return out}
   const circulo=(c,n,r)=>Array.from({length:n},(_,i)=>{const a=i/n*PI*2+.4;return[c[0]+Math.cos(a)*r,c[1]+Math.sin(a)*r]});
   const ocupado=p=>RODAS.some(r=>r.c===p)||FESTAS.some(f=>Math.hypot(f.c[0]-p[0],f.c[1]-p[1])<2.5);
-  function novaRoda(){const livre=PONTOS.filter(p=>!ocupado(p));if(!livre.length)return;
-    const c=livre[Math.floor(rnd()*livre.length)],quem=quemLevanta(2+Math.floor(rnd()*(lowEnd?2:3)));if(quem.length<2)return;
-    const pos=circulo(c,quem.length,.5+.08*quem.length);
-    RODAS.push({c,papo:escolherPapo(),linha:-1,tl:0,esp:0,bs:quem.map((sp,i)=>levantar(sp,{p:[pos[i]],olhar:c,acao:"papo"},Infinity,{livre:true,social:true})).filter(Boolean)})}
+  // conversa: quem está com vontade de conversar (ou a roda espontânea) chama colegas
+  function novaRoda(sp0){const livre=PONTOS.filter(p=>!ocupado(p));if(!livre.length)return;
+    const c=livre[Math.floor(rnd()*livre.length)],ex=new Set(sp0?[sp0]:[]),quem=[...(sp0?[sp0]:[]),...quemLevanta(1+Math.floor(rnd()*(lowEnd?2:3))+(sp0?0:1),ex)];if(quem.length<2)return;
+    const pos=circulo(c,quem.length,.5+.08*quem.length),papo=escolherPapo();
+    for(const s of quem)anota(s,`Conversou com ${quem.filter(x=>x!==s).map(nomeCurto).join(", ")}: “${papo.l[0]}”`);
+    RODAS.push({c,papo,linha:-1,tl:0,esp:0,bs:quem.map((sp,i)=>levantar(sp,{p:[pos[i]],olhar:c,acao:"papo"},Infinity,{livre:true,social:true})).filter(Boolean)})}
   // discussão: quando os dados mostram divergência (vivo × backtest, carteira × carteira), as duas salas se encontram no corredor e debatem
   let proxDiv=10,divI=0;
   function novaDiscussao(){const L=DIA.div||[];if(!L.length)return;const d=L[divI++%L.length];if(RODAS.some(r=>r.divId===d.id))return;
@@ -644,7 +740,8 @@ if(window.THREE){
     const quem=[A[0],B[0],A[1],B[1]].filter(Boolean),pos=circulo(c,quem.length,.5+.08*quem.length);
     const bs=quem.map((sp,i)=>levantar(sp,{p:[pos[i]],olhar:c,acao:"papo"},Infinity,{livre:true,social:true,div:true})).filter(Boolean);
     if(bs.length<2){liberar(bs);return}
-    RODAS.push({c,papo:{l:d.falas},linha:-1,tl:0,esp:0,div:true,divId:d.id,bs})}
+    for(const s of quem)anota(s,`Discutiu com ${quem.filter(x=>x!==s).map(nomeCurto).join(", ")}: ${d.tema}`);
+    RODAS.push({c,papo:{l:d.falas},linha:-1,tl:0,esp:0,div:true,divId:d.id,tema:d.tema,bs})}
   const ativo=b=>BREAKS.includes(b)&&b.fase!=="volta";
   function liberar(bs){for(const b of bs){b.fala=null;b.clip=null;b.gesto=null;if(BREAKS.includes(b))b.espera=0}}
   function comemorar(id,texto){if(calm)return;if(!MOD.ok&&stage.dataset.modelos!=="falhou"){setTimeout(()=>comemorar(id,texto),3000);return}
@@ -653,7 +750,7 @@ if(window.THREE){
     const fs=FESTAS.findIndex(f=>Math.hypot(f.c[0]-c[0],f.c[1]-c[1])<1);if(fs>=0){FESTAS[fs].t=Math.max(FESTAS[fs].t,18);FESTAS[fs].texto=texto;return}
     const da=r?SEATED.filter(s=>s.r.id===id&&(!s.fora||BREAKS.some(b=>b.sp===s&&!b.social&&!b.reu&&b.fase==="parado"))).slice(0,lowEnd?5:9):[],extra=quemLevanta(r?Math.max(2,5-da.length):(lowEnd?7:13),new Set(da)),quem=[...da,...extra];
     if(!r){const pres=SEATED.find(s=>s.r.id==="pres"&&!s.fora);if(pres)quem.unshift(pres)}
-    if(!quem.length)return;const pos=circulo(c,quem.length,Math.min(1.5,.45+.09*quem.length));
+    if(!quem.length)return;const pos=circulo(c,quem.length,Math.min(1.5,.45+.09*quem.length));for(const s of quem)anota(s,"Comemorou: "+texto);
     FESTAS.push({c,texto,t:20,ini:false,bs:quem.map((sp,i)=>levantar(sp,{p:[pos[i]],olhar:c,acao:"festa"},Infinity,{livre:true,social:true,festa:i,vel:1.7})).filter(Boolean)})}
   const CONF_GEO=new THREE.PlaneGeometry(.07,.11),CONF_MAT=[0xff7a1a,0x3cff9e,0x39d0ff,0xffd23c,0xff4fd8,0xffffff].map(c=>new THREE.MeshBasicMaterial({color:c,side:THREE.DoubleSide}));
   function confete(c){for(let i=0,n=lowEnd?45:100;i<n;i++){const m=new THREE.Mesh(CONF_GEO,CONF_MAT[i%CONF_MAT.length]);
@@ -668,7 +765,7 @@ if(window.THREE){
       if(r.linha<0){r.esp+=dt;if(la.length<2&&r.esp<45)continue;r.linha=0;r.tl=3.6}
       else{r.tl-=dt;if(r.tl<=0){r.linha++;r.tl=3.4+rnd()*.9}}
       if(r.linha>=r.papo.l.length){if(r.papo.fim&&!r.fez){r.fez=true;r.tl=2.6;for(const b of la){b.fala=null;b.clip=b.w.robo?"joinha":null;b.gesto=b.w.robo?null:"festa"}continue}
-        liberar(r.bs);RODAS.splice(k,1);continue}
+        if(r.div)ata(`discussão sobre ${r.tema}`);liberar(r.bs);RODAS.splice(k,1);continue}
       if(r.fez)continue;
       const fal=la.length?la[r.linha%la.length]:null,txt=r.papo.l[r.linha];
       for(const b of vivos){const eu=b===fal;b.fala=eu?txt:null;b.gesto=eu&&!b.w.robo?"falar":null;b.clip=eu&&b.w.robo?(/\bn[ãa]o\b|pior|desconfio/i.test(txt)?"nao":"trabalho"):null;
@@ -722,7 +819,7 @@ if(window.THREE){
     BREAKS.push({sp,w,ida,volta:[...ida].reverse(),fase:"ida",i:0,pos:[...ida[0]],espera:Infinity,vel:1.5,reu:true,alvo:{olhar:lugar.o,acao:"reuniao",pose}})}
   function reuniao(){
     if(REU){for(let k=BREAKS.length-1;k>=0;k--){const b=BREAKS[k];if(!b.reu)continue;b.espera=0;
-        if(calm){S.remove(b.w.g);soltar(b.w);sentar(b.sp,true);b.sp.fora=false;BREAKS.splice(k,1)}}REU=null;btnReu.textContent="Reunião";btnReu.classList.remove("on");cap.hidden=modo==="aereo";return}
+        if(calm){S.remove(b.w.g);soltar(b.w);sentar(b.sp,true);b.sp.fora=false;BREAKS.splice(k,1)}}REU=null;setTimeout(()=>ata("reunião geral"),15000);btnReu.textContent="Reunião";btnReu.classList.remove("on");cap.hidden=modo==="aereo";return}
     if(modo!=="aereo")setModo("aereo");
     const L=lugaresReu(),pres=SEATED.find(s=>s.r.id==="pres"),quem=ORDEM_REU.map(id=>[id,coordenador(id)]).filter(x=>x[1]);
     // reunião geral: depois dos coordenadores, todo o resto da equipe (pessoas primeiro, depois robôs) até lotar os 20 lugares
@@ -767,7 +864,8 @@ if(window.THREE){
       case"ti":return exp||sp===plantaoTI();
       default:return exp}}
   function atualizarExpediente(){const rl=relogio();let n=0;
-    for(const sp of SEATED){const antes=sp.trab;sp.trab=trabalhando(sp,rl);sp.p.A.trab=sp.trab;if(sp.trab)n++;if(antes!==sp.trab&&!sp.fora)postura(sp,.6)}
+    for(const sp of SEATED){const antes=sp.trab;sp.trab=trabalhando(sp,rl);sp.p.A.trab=sp.trab;if(sp.trab)n++;if(antes!==sp.trab&&!sp.fora)postura(sp,.6);
+      if(antes!==undefined&&antes!==sp.trab)anota(sp,sp.trab?(sp.robot?"Abriu posição: voltou a operar":"Começou a trabalhar"):(sp.robot?"Fechou a posição: ficou sem operação":"Encerrou o trabalho"))}
     if(calm)folgaParada();
     const mercado=rl.util?"mercado aberto":"mercado fechado";
     const f=DIA.mesas.xgold,c=DIA.mesas.xcrypto,ops=[f?`XForex01 ${f.abertas||0} aberta(s)`:"",c?`XCrypto ${c.abertas||0}`:"",
@@ -781,7 +879,7 @@ if(window.THREE){
     s.textContent=`${m.n} fechamentos hoje · ${m.g} ganhos · ${m.p} perdas · ${m.abertas?m.abertas+" aberta(s), "+fmt(m.a):"nada aberto"}`}
   function aplicarDados(j){if(j&&j.mesas){cartaoXForex01(j.mesas.xgold);cartaoXForex01(j.mesas.xcrypto,"xcrypto")}if(!j||!j.pregao||!j.mesas||(vivo&&j.gerado===vivo))return;vivo=j.gerado||"";
     const antes=DIA.mesas||{},prim=!DIA.lido;
-    DIA={pregao:j.pregao.slice(8,10)+"/"+j.pregao.slice(5,7)+"/"+j.pregao.slice(0,4),mesas:j.mesas,robos:j.robos_xgold,minerando:j.minerando,div:j.divergencias||[],lido:true};
+    DIA={pregao:j.pregao.slice(8,10)+"/"+j.pregao.slice(5,7)+"/"+j.pregao.slice(0,4),mesas:j.mesas,robos:j.robos_xgold,minerando:j.minerando,ultima:j.ultima_estrategia,gerado:j.gerado,div:j.divergencias||[],lido:true};
     trocarTelas();atualizarExpediente();
     // lucro: trade ganho desde a última leitura → a sala comemora; ao abrir a sede, carteira com o dia no lucro também comemora
     for(const[id,m]of Object.entries(j.mesas)){if(!m)continue;const a=antes[id],nome=INFO[id]?INFO[id].cur:id;
