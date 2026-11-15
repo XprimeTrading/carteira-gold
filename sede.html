@@ -189,7 +189,7 @@ const ROOMS=[
    items:[["est",-.4,-1,FN,{m:3,role:"chefe"}],["polt",2.2,-1.6,FW],["polt",2.2,-.5,FW],["reun",-.9,1.6,FN,{n:6}]]},
   {id:"fin",n:"02",nome:"Financeiro",cur:"Financeiro",tipo:"ctl",txt:"Colhe o resultado das carteiras, separa por conta e envia o relatório do dia para a Presidência. Cuida também de custos, impostos e da gestão de risco da empresa (Ricardo Menezes, agente de IA, desde 29/10).",ass:"1 estação: tesouraria e gestão de risco · 1 poltrona",x:[-3,1],z:[-16,-11],door:"s",cor:0x5dcaa5,
    items:[["est",0,-1.1,FN,{m:3}],["polt",-1.3,1.5,FN]]},
-  {id:"xgold",n:"03",nome:"Carteira XForex01",cur:"Carteira XForex01",tipo:"op",txt:"A carteira de ouro em conta real: 5 estratégias em 3 robôs (ciclos, rompimento de range e momentum de horário) e o supervisor, que acompanha a carteira e as travas do Guardião.",ass:"6 estações: 5 estratégias · 1 supervisor · telão",x:[-10,-3],z:[-11,0],door:"e",cor:0xe0a940,painel:true,
+  {id:"xgold",n:"03",nome:"Carteira XForex01",cur:"Carteira XForex01",tipo:"op",txt:"A carteira de ouro em conta real: 5 estratégias em 3 robôs e o supervisor, que acompanha a carteira e as travas do Guardião.",ass:"6 estações: 5 estratégias · 1 supervisor · telão",x:[-10,-3],z:[-11,0],door:"e",cor:0xe0a940,painel:true,
    items:[["est",-1.6,-2.2,FW,{robot:1}],["est",-1.6,0,FW,{robot:1}],["est",-1.6,2.2,FW,{robot:1}],["est",.3,-1.1,FW,{robot:1}],["est",.3,1.1,FW,{robot:1}],["est",2.1,0,FW,{m:3,role:"risk"}]]},
   {id:"xcrypto",n:"04",nome:"Carteira XCrypto",cur:"Carteira XCrypto",tipo:"op",txt:"A carteira de cripto em conta real: 12 operadores robôs rodando 24 horas por dia, acompanhados por um agente humano.",ass:"13 estações: 12 operadores robôs · 1 agente humano · telão do resultado do dia",x:[-10,-3],z:[0,11],door:"e",cor:0x6a5fd0,painel:true,
    items:[["est",-2,-3.6,FW,{robot:1}],["est",-2,-1.2,FW,{robot:1}],["est",-2,1.2,FW,{robot:1}],["est",-2,3.6,FW,{robot:1}],["est",-0.5,-3.6,FW,{robot:1}],["est",-0.5,-1.2,FW,{robot:1}],["est",-0.5,1.2,FW,{robot:1}],["est",-0.5,3.6,FW,{robot:1}],["est",1,-3.6,FW,{robot:1}],["est",1,-1.2,FW,{robot:1}],["est",1,1.2,FW,{robot:1}],["est",1,3.6,FW,{robot:1}],["est",2.6,0,FW,{m:3,role:"risk"}]]},
@@ -613,7 +613,7 @@ if(window.THREE){
     dev:[["Marina Tessler","Quant: comanda a mineração","quant"]],
     xgold:[["Otávio Lemos","Supervisor da XForex01 e das travas do Guardião","superv"]],
     xcrypto:[["Helena Duarte","Acompanha as ordens da XCrypto","cripto"]]};
-  const ROBOS={xgold:["XPrime001 · Ciclos","XPrime001 · Ciclos","XPrime002 · Fimathe S1","XPrime002 · Fimathe S2","XPrime003 · Momentum"],
+  const ROBOS={xgold:["XPrime001 · estratégia 1","XPrime001 · estratégia 2","XPrime002 · estratégia 1","XPrime002 · estratégia 2","XPrime003"],
     xcrypto:Array.from({length:12},(_,i)=>`Operador cripto ${String(i+1).padStart(2,"0")}`),dev:["Minerador 1","Minerador 2","Minerador 3","Minerador 4"]};
   const CARGO_ROBO={xgold:"Robô da Carteira XForex01 (HFM, conta real)",xcrypto:"Robô da Carteira XCrypto (Bybit, 165 estratégias)",dev:"Robô de mineração do motor"};
   {const cont={};for(const sp of SEATED){const id=sp.r.id,kk=id+(sp.robot?"R":"H"),i=cont[kk]=(cont[kk]??-1)+1;
@@ -695,12 +695,12 @@ if(window.THREE){
     {l:["A compra ganha. E a venda?","PF 0,9 vendido.","Não entra. Tem que ganhar nos dois lados.","Volta pra bancada, então."]},
     {l:["FR 7,4. Entra na carteira?","Não. Abaixo de 10 não entra.","Fica só para uso pessoal.","Isso. A régua é a mesma pra todo mundo."]},
     {l:["A cripto em papel está acertando 38%.","O backtest dizia 55%.","Amostra curta. Dia 15 a gente compara lado a lado.","E separa compra de venda."]},
-    {l:["QQQ virou gamma negativo.","Então o NQ tende a esticar o movimento.","Stop atrás do próximo nível, não colado.","E lote pelo risco de 0,5%."]},
+    {l:["O mercado abriu acelerado hoje.","Então o stop vai atrás do próximo nível, não colado.","E o lote sai do risco por trade, não da vontade.","Regra é regra."]},
     {l:["O placebo passou também.","Então a vantagem é acaso.","Encerra e registra no Arquivo.","Cemitério ganha mais um."]},
     {l:["O spread sobe na virada do dia.","Por isso nada abre entre 18h e 19h.","Custo come a vantagem de quem opera curto.","Anotado pro Comitê de Risco."]},
     {l:["Passou no teste cego!","Placebo: zero de trinta.","Agora MT5 com ticks reais.","Bateria completa, sem atalho. Boa!"],fim:"joinha"},
     {l:["Quanto o Guardião deixa perder hoje?","3% no dia, 1% por ideia.","Bateu na trava, desliga e vai pro café.","Melhor perder o trade que a conta."]},
-    {l:["O Liquid Map mostrou absorção no nível.","E o GloballView marca parede ali.","Os dois batendo, é nível de verdade.","Espera o gatilho de 30 minutos além do nível."]},
+    {l:["Esse nível segurou duas vezes.","Duas vezes não é estatística.","Então marca e espera o gatilho combinado.","Sem gatilho, sem entrada."]},
     {l:["Otimizei em seis anos e ficou lindo.","Lindo no passado. Otimiza em três e anda pra frente.","3 anos treina, 6 meses opera.","O que sobrar disso é robusto. Fechado!"],fim:"joinha"}];
   // com dado novo das mesas, o papo usa o resultado real do dia
   function escolherPapo(){const ms=Object.entries(DIA.mesas||{}).filter(([,m])=>m&&m.n);
