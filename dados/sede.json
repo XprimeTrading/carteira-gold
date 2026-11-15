@@ -1,0 +1,69 @@
+{
+  "pregao": "2026-11-15",
+  "gerado": "14/11/2026 22:47",
+  "mesas": {
+    "xgold": {
+      "r": -21.62,
+      "a": 0.0,
+      "n": 9,
+      "g": 3,
+      "p": 6,
+      "abertas": 0,
+      "pendentes": 0,
+      "saldo": 1065.3,
+      "corretora": "HFM",
+      "dia": "2026-11-13",
+      "por_agente": {}
+    },
+    "xcrypto": {
+      "r": 30.55,
+      "a": 77.39,
+      "n": 1,
+      "g": 1,
+      "p": 0,
+      "abertas": 1,
+      "pendentes": 0,
+      "saldo": 3027.01,
+      "corretora": "Bybit",
+      "dia": "2026-11-15",
+      "por_agente": {}
+    }
+  },
+  "robos_xgold": [
+    {
+      "nome": "XPrime001",
+      "abertas": 0
+    },
+    {
+      "nome": "XPrime002",
+      "abertas": 0
+    },
+    {
+      "nome": "XPrime003",
+      "abertas": 0
+    }
+  ],
+  "cripto": {
+    "estrategias": "165 estratégias",
+    "abertas": 1
+  },
+  "minerando": false,
+  "ultima_estrategia": "11/11 19:52",
+  "divergencias": [
+    {
+      "salas": [
+        "xgold",
+        "dev"
+      ],
+      "tema": "XPrime003 ao vivo × backtest",
+      "falas": [
+        "XPrime003: ao vivo o fator de lucro está 0,50, no backtest era 2,30.",
+        "Pior que o backtest. O mercado mudou ou o robô quebrou?",
+        "Ao vivo são só 13 trades. O backtest tem 588. Amostra curta não decide.",
+        "Acerto ao vivo 38%, no teste 65%. Não concordo que seja só acaso.",
+        "Então não mexe no robô. Revisa de novo quando dobrar a amostra."
+      ],
+      "id": "01b99e18"
+    }
+  ]
+}

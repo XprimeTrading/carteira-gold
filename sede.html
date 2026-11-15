@@ -33,6 +33,11 @@ section{margin-top:40px}
 .stage{position:relative;margin-top:22px;height:clamp(440px,78vh,860px);width:min(1440px,calc(100vw - 32px));margin-left:50%;transform:translateX(-50%);border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#07090a;touch-action:none}
 .stage canvas{display:block;width:100%;height:100%}
 .tags{position:absolute;inset:0;pointer-events:none}
+.falas{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:2}
+.fala{position:absolute;transform:translate(-50%,calc(-100% - 8px));max-width:210px;width:max-content;font:500 12px/1.3 var(--body);background:#f6f7f5;color:#15181a;border-radius:10px;padding:5px 9px;box-shadow:0 2px 10px rgba(0,0,0,.45);transition:opacity .25s}
+.fala::after{content:"";position:absolute;left:50%;bottom:-6px;margin-left:-6px;border:6px solid transparent;border-bottom:0;border-top-color:#f6f7f5}
+.fala.festa{background:#ffd23c;font-weight:700}.fala.festa::after{border-top-color:#ffd23c}
+.fala.diverge{background:#ffe3d8;box-shadow:0 0 0 2px #f08d68,0 2px 10px rgba(0,0,0,.45)}.fala.diverge::after{border-top-color:#ffe3d8}
 .tag{position:absolute;transform:translate(-50%,-100%);font:500 11px/1.2 var(--mono);background:rgba(8,10,10,.72);color:#eef1ee;border:1px solid rgba(255,255,255,.18);border-radius:6px;padding:3px 6px;white-space:nowrap;pointer-events:auto;cursor:pointer}
 .tag.on{border-color:#e0a940;color:#e0a940}
 .hud{position:absolute;top:10px;left:10px;display:flex;gap:6px;flex-wrap:wrap;z-index:2}
@@ -494,7 +499,7 @@ if(window.THREE){
     inner.rotation.y=PI;inner.scale.setScalar(tipo==="robo"?.19:1);inner.add(raiz);g.add(inner);
     raiz.traverse(o=>{if(o.isMesh)o.frustumCulled=false});
     const mixer=new THREE.AnimationMixer(raiz),acts={},clips=tipo==="robo"?src.animations:MOD.clips;
-    const nomes=tipo==="robo"?{andar:"Walking",parado:"Idle",sentado:"Sitting",trabalho:"Yes",dancar:"Dance",jogar:"Punch",acenar:"Wave"}
+    const nomes=tipo==="robo"?{andar:"Walking",parado:"Idle",sentado:"Sitting",trabalho:"Yes",dancar:"Dance",jogar:"Punch",acenar:"Wave",pular:"Jump",joinha:"ThumbsUp",nao:"No"}
       :{andar:"Walk",parado:"Idle",sentado:"Sitting",digitar:"Typing",conversar:"SittingTalking",beber:"Drinking"};
     for(const[n,c]of Object.entries(nomes)){const cl=clips.find(a=>a.name===c);if(cl)acts[n]=mixer.clipAction(cl)}
     if(tipo==="robo"&&acts.sentado){acts.sentado.setLoop(THREE.LoopOnce);acts.sentado.clampWhenFinished=true}
@@ -524,25 +529,34 @@ if(window.THREE){
     {p:[[1.0,-7.3]],olhar:[1.3,-8.4],acao:"cafe"},{p:[[1.75,-7.25]],olhar:[1.3,-8.4],acao:"cafe"},
     {p:[[1.6,-2.4]],olhar:[0,-3.2],acao:"ver"},{p:[[-1.6,-3.9]],olhar:[0,-3.2],acao:"ver"},
     {p:[[1.5,3.2]],olhar:[0,3.2],acao:"ver"},{p:[[1.9,6.9]],olhar:[1,8.2],acao:"ver"},{p:[[-1.9,6.6]],olhar:[-1.15,8.1],acao:"ver"}];
+  // visita: passa na porta de outra sala para ver como estão os colegas
+  const alvoVisita=sp=>{const rs=ROOMS.filter(r=>r.door&&!r.out&&!r.lounge&&r.id!==sp.r.id&&r.id!=="pres"&&r.id!=="reu"&&r.id!=="lazer");
+    const r=rs[Math.floor(rnd()*rs.length)],d=doorOf(r);return{p:[[d[1][0]*.85,d[1][1]]],olhar:d[0],acao:"ver"}};
   const alvoTI=()=>({p:[[2.1,4.4],[3.8,4.4],[8.3,4.4+(rnd()-.5)*2.2]],olhar:[9.3,4.4],acao:"manut"});
   const BREAKS=[],wp=new THREE.Vector3();let proxima=3;
-  // folga dos robôs da XForex01: com o forex fechado vão ao lazer até o mercado abrir — videogame, sofá, caminhada pelo corredor e dança
+  // folga dos robôs: robô sem posição aberta (ou mineração parada) sai da mesa até voltar a operar — videogame, sofá, ping pong, recarga na TI, caminhada
   const FOLGA=[
     {p:[[.55,7.5]],olhar:[.55,8.25],acao:"jogar"},          // arcade azul
     {p:[[1.75,7.5]],olhar:[1.45,8.25],acao:"jogar"},        // arcade verde
     {p:[[.5,1.75]],olhar:[.5,3.2],acao:"sofa"},             // sofá de frente para a mesinha
-    {p:[[1.6,-1.2]],olhar:[1.6,0],acao:"passear"},          // caminha pelo corredor
-    {p:[[0,1.75]],olhar:[0,3.2],acao:"sofa"}];
-  const alvoRecarga=sp=>{const i=Math.max(0,SEATED.filter(s=>s.robot&&s.r.id==="xgold").indexOf(sp));return FOLGA[i%FOLGA.length]};
+    {p:[[0,1.75]],olhar:[0,3.2],acao:"sofa"},
+    {p:[[1.35,-3.2]],olhar:[0,-3.2],acao:"ver"},            // assistindo o ping pong
+    {p:[[-1.35,-2.7]],olhar:[0,-3.2],acao:"ver"},
+    {p:[[-1.75,7.3]],olhar:[-1.15,8.1],acao:"ver"},         // olhando o pinball
+    {p:[[2.1,4.4],[3.8,4.4],[8.3,3.6]],olhar:[9.3,3.6],acao:"manut"},  // recarga nos racks da TI
+    {p:[[2.1,4.4],[3.8,4.4],[8.3,5.2]],olhar:[9.3,5.2],acao:"manut"}];
+  // pega um lugar livre; sem lugar, caminha pelo corredor
+  const alvoRecarga=sp=>{const usados=new Set(BREAKS.filter(b=>b.folga).map(b=>b.alvo)),livres=FOLGA.filter(f=>!usados.has(f));
+    return livres.length?livres[Math.floor(rnd()*livres.length)]:{p:[[rnd()<.5?-1.6:1.6,-8+rnd()*15]],olhar:[0,0],acao:"passear"}};
   const passeio=b=>{const x=b.pos[0]<0?-1.6:1.6,z=-8.5+rnd()*16;b.ida=[[b.pos[0],b.pos[1]],[x,z]];b.fase="ida";b.i=0;b.espera=0};
   function iniciar(sp,folga=false){
-    sp.p.g.getWorldPosition(wp);const alvo=folga?alvoRecarga(sp):sp.robot?alvoTI():ALVOS[Math.floor(rnd()*ALVOS.length)];
+    sp.p.g.getWorldPosition(wp);const alvo=folga?alvoRecarga(sp):sp.robot?alvoTI():rnd()<.3?alvoVisita(sp):ALVOS[Math.floor(rnd()*ALVOS.length)];
     const ida=[[wp.x,wp.z],...rota(sp.r,alvo.p)],w=sp.modelo?instancia(sp.robot?"robo":"pessoa",sp.k):pessoa({...sp.p.o,seated:false});
     S.add(w.g);sentar(sp,false);sp.fora=true;
     BREAKS.push({sp,w,ida,volta:[...ida].reverse(),fase:"ida",i:0,pos:[wp.x,wp.z],espera:folga?2:14+rnd()*22,alvo,folga})}
   // sem animação (reduzir movimento): o robô de folga aparece direto na recarga e volta direto para a mesa
   function folgaParada(){if(!MOD.ok&&stage.dataset.modelos!=="falhou")return;  // espera o modelo do robô
-    for(const sp of SEATED){if(!sp.robot||sp.r.id!=="xgold")continue;
+    for(const sp of SEATED){if(!sp.robot)continue;
       if(!sp.trab&&!sp.fora){iniciar(sp,true);const b=BREAKS[BREAKS.length-1],f=b.ida[b.ida.length-1],o=b.alvo.olhar;
         b.fase="parado";b.pos=[f[0],f[1]];b.w.g.rotation.y=Math.atan2(-(o[0]-f[0]),-(o[1]-f[1]));b.w.g.position.set(f[0],.06,f[1]);
         const ac=b.alvo.acao,y=ac==="sofa"&&b.w.modelo?.24:.06;b.w.g.position.y=y;
@@ -552,10 +566,14 @@ if(window.THREE){
   function vida(t,dt){
     proxima-=dt;
     if(proxima<=0){proxima=1.5+rnd()*2.5;
-      const folgado=SEATED.find(s=>s.robot&&s.r.id==="xgold"&&!s.trab&&!s.fora&&s.p.A.trab===false);
-      if(folgado)iniciar(folgado,true);
-      const robotFora=BREAKS.some(b=>b.sp.robot&&!b.folga),livres=SEATED.filter(s=>!s.fora&&!s.trab&&!(s.robot&&s.r.id==="xgold")&&(!s.robot||!robotFora));
-      if(BREAKS.filter(b=>!b.folga).length<(lowEnd?4:9)&&livres.length)iniciar(livres[Math.floor(rnd()*livres.length)])}
+      // robô sem operação sai para a folga (no máximo 10 de uma vez; o resto descansa na cadeira)
+      const fol=SEATED.filter(s=>s.robot&&!s.trab&&!s.fora&&s.p.A.trab===false);
+      if(fol.length&&BREAKS.filter(b=>b.folga).length<(lowEnd?5:10)&&!REU)iniciar(fol[Math.floor(rnd()*fol.length)],true);
+      // quem está de folga sai mais; quem está trabalhando também levanta quando quer (esticar as pernas, café, visitar outra sala)
+      const pool=SEATED.filter(s=>!s.fora&&!s.robot),
+        folgados=pool.filter(s=>!s.trab),querem=pool.filter(s=>s.trab&&s.r.id!=="pres"&&!s.robot),livres=rnd()<.3&&querem.length?querem:folgados;
+      if(BREAKS.filter(b=>!b.folga&&!b.social).length<(lowEnd?4:9)&&livres.length&&!REU){const sp=livres[Math.floor(rnd()*livres.length)];iniciar(sp);
+        if(sp.trab){const b=BREAKS[BREAKS.length-1];b.livre=true;b.espera=6+rnd()*10}}}
     for(let k=BREAKS.length-1;k>=0;k--){const b=BREAKS[k],A=b.w.A;
       if(b.fase!=="parado"){const pts=b[b.fase],alvo=pts[b.i+1];
         if(!alvo){if(b.fase==="ida")b.fase="parado";else{S.remove(b.w.g);soltar(b.w);sentar(b.sp,true);b.sp.fora=false;BREAKS.splice(k,1);continue}}
@@ -563,14 +581,125 @@ if(window.THREE){
           if(d<.03)b.i++;else{const st=Math.min(d,dt*(b.vel||1.05));b.pos[0]+=dx/d*st;b.pos[1]+=dz/d*st;b.w.g.rotation.y=Math.atan2(-dx,-dz)}
           if(b.w.modelo)b.w.tocar("andar");else{const sw=Math.sin(t*6.8+k);A.legs[0].rotation.x=sw*.45;A.legs[1].rotation.x=-sw*.45;A.arms[0].rotation.x=-sw*.35;A.arms[1].rotation.x=sw*.35}}}
       if(b.fase==="parado"&&b.folga&&b.alvo.acao==="passear"&&!b.sp.trab){passeio(b);continue}
-      if(b.fase==="parado"){b.espera-=b.sp.trab?dt*8:b.folga?0:dt;const o=b.alvo.olhar;b.w.g.rotation.y=Math.atan2(-(o[0]-b.pos[0]),-(o[1]-b.pos[1]));
-        if(b.w.modelo)b.w.tocar(b.alvo.acao==="reuniao"?b.alvo.pose:b.alvo.acao==="manut"?"trabalho":b.alvo.acao==="cafe"?"beber":b.alvo.acao==="sofa"?"sentado":b.alvo.acao==="jogar"?"jogar":b.alvo.acao==="passear"?"acenar":"parado");
+      if(b.fase==="parado"){b.espera-=b.sp.trab&&!b.livre?dt*8:b.folga?0:dt;const o=b.alvo.olhar;b.w.g.rotation.y=Math.atan2(-(o[0]-b.pos[0]),-(o[1]-b.pos[1]));
+        if(b.w.modelo)b.w.tocar(b.clip||(b.alvo.acao==="reuniao"?b.alvo.pose:b.alvo.acao==="manut"?"trabalho":b.alvo.acao==="cafe"?"beber":b.alvo.acao==="sofa"?"sentado":b.alvo.acao==="jogar"?"jogar":b.alvo.acao==="passear"?"acenar":"parado"));
         else{A.legs[0].rotation.x=A.legs[1].rotation.x=0;
         if(b.alvo.acao==="cafe"){A.arms[0].rotation.x=0;A.arms[1].rotation.x=.6+1.4*Math.max(0,Math.sin(t*1.3+k))}
         else if(b.alvo.acao==="manut"){A.arms[0].rotation.x=1.2+Math.sin(t*6)*.15;A.arms[1].rotation.x=1.2+Math.sin(t*6+2)*.15;A.head.rotation.x=.2}
         else{A.arms[0].rotation.x=A.arms[1].rotation.x=0;A.head.rotation.y=Math.sin(t*.8+k)*.45}}
         if(b.espera<=0){b.fase="volta";b.i=0;if(!b.w.modelo)A.head.rotation.set(0,0,0)}}
-      b.w.g.position.set(b.pos[0],b.reu&&b.fase==="parado"&&b.w.modelo?.14:b.folga&&b.alvo.acao==="sofa"&&b.fase==="parado"&&b.w.modelo?.24:.06,b.pos[1])}}
+      b.w.g.position.set(b.pos[0],b.reu&&b.fase==="parado"&&b.w.modelo?.14:b.folga&&b.alvo.acao==="sofa"&&b.fase==="parado"&&b.w.modelo?.24:.06,b.pos[1])}
+    social(t,dt)}
+
+  // vida social: rodas de conversa no corredor e no lazer (com balão de fala) e comemoração quando a mesa ganha
+  const falasEl=document.createElement("div");falasEl.className="falas";stage.appendChild(falasEl);
+  const RODAS=[],FESTAS=[],CONFETE=[],FALAS=new Map();let proxRoda=6;
+  const PONTOS=[[0,-6.1],[0,-.15],[-1.2,10.2],[1.2,10.2],[-1.3,-9.6]];
+  const PAPOS=[
+    {l:["O ouro rompeu a máxima de ontem.","Rompeu, mas sem continuidade. Já vi isso virar armadilha.","Por isso a regra pede fechamento acima, não pavio.","Combinado: espera o fechamento."]},
+    {l:["Essa estratégia deu PF 2 no backtest!","Em quantos anos?","Só em 2026...","Então é sobreajuste até provar o contrário. Manda pro walk-forward."]},
+    {l:["A compra ganha. E a venda?","PF 0,9 vendido.","Não entra. Tem que ganhar nos dois lados.","Volta pra bancada, então."]},
+    {l:["FR 7,4. Entra na carteira?","Não. Abaixo de 10 não entra.","Fica só para uso pessoal.","Isso. A régua é a mesma pra todo mundo."]},
+    {l:["A cripto em papel está acertando 38%.","O backtest dizia 55%.","Amostra curta. Dia 15 a gente compara lado a lado.","E separa compra de venda."]},
+    {l:["QQQ virou gamma negativo.","Então o NQ tende a esticar o movimento.","Stop atrás do próximo nível, não colado.","E lote pelo risco de 0,5%."]},
+    {l:["O placebo passou também.","Então a vantagem é acaso.","Encerra e registra no Arquivo.","Cemitério ganha mais um."]},
+    {l:["O spread sobe na virada do dia.","Por isso nada abre entre 18h e 19h.","Custo come a vantagem de quem opera curto.","Anotado pro Comitê de Risco."]},
+    {l:["Passou no teste cego!","Placebo: zero de trinta.","Agora MT5 com ticks reais.","Bateria completa, sem atalho. Boa!"],fim:"joinha"},
+    {l:["Quanto o Guardião deixa perder hoje?","3% no dia, 1% por ideia.","Bateu na trava, desliga e vai pro café.","Melhor perder o trade que a conta."]},
+    {l:["O Liquid Map mostrou absorção no nível.","E o GloballView marca parede ali.","Os dois batendo, é nível de verdade.","Espera o gatilho de 30 minutos além do nível."]},
+    {l:["Otimizei em seis anos e ficou lindo.","Lindo no passado. Otimiza em três e anda pra frente.","3 anos treina, 6 meses opera.","O que sobrar disso é robusto. Fechado!"],fim:"joinha"}];
+  // com dado novo das mesas, o papo usa o resultado real do dia
+  function escolherPapo(){const ms=Object.entries(DIA.mesas||{}).filter(([,m])=>m&&m.n);
+    if(ms.length&&rnd()<.35){const[id,m]=ms[Math.floor(rnd()*ms.length)],nome=INFO[id]?INFO[id].cur:id;
+      return{l:[`${nome} em ${DIA.pregao}: ${fmt(m.r)}, ${m.g} ganhos e ${m.p} perdas.`,m.r>=0?"Dia no azul. Sem relaxar na trava.":"Dentro do risco? Então é o jogo.","Conferiu se o backtest esperava isso?","Vou olhar a curva e te falo."]}}
+    return PAPOS[Math.floor(rnd()*PAPOS.length)]}
+  // chama alguém para um ponto: da mesa, ou de onde estiver na folga (aí caminha de lá e, no fim, volta para a mesa)
+  function levantar(sp,alvo,espera,extra){sp.p.g.getWorldPosition(wp);const casa=[[wp.x,wp.z],...rota(sp.r,alvo.p)],k=BREAKS.findIndex(b=>b.sp===sp);
+    if(k>=0){const b0=BREAKS[k];if(b0.reu||b0.social)return null;const x=b0.pos,la=lane(x[0]),lb=lane(alvo.p[0][0]),ida=[[...x],[la,x[1]]];
+      if(la!==lb){const cz=Math.abs(x[1]+10.1)<Math.abs(x[1]-9.4)?-10.1:9.4;ida.push([la,cz],[lb,cz])}
+      ida.push([lb,alvo.p[0][1]],...alvo.p);const b={sp,w:b0.w,ida,volta:[...casa].reverse(),fase:"ida",i:0,pos:[...x],espera,alvo,...extra};BREAKS[k]=b;return b}
+    const w=sp.modelo?instancia(sp.robot?"robo":"pessoa",sp.k):pessoa({...sp.p.o,seated:false});
+    S.add(w.g);sentar(sp,false);sp.fora=true;const b={sp,w,ida:casa,volta:[...casa].reverse(),fase:"ida",i:0,pos:[wp.x,wp.z],espera,alvo,...extra};BREAKS.push(b);return b}
+  // quem pode interagir: pessoas (de folga ou, às vezes, trabalhando) e robôs que NÃO estão operando (na mesa ou já na folga)
+  const disponivel=(s,excl)=>!excl.has(s)&&s.r.id!=="pres"&&s.r.id!=="reu"&&!(s.robot&&s.trab)&&
+    (!s.fora||BREAKS.some(b=>b.sp===s&&!b.social&&!b.reu&&b.fase==="parado"));
+  function quemLevanta(n,excl=new Set()){const pool=SEATED.filter(s=>disponivel(s,excl));
+    const folga=pool.filter(s=>!s.trab),trab=pool.filter(s=>s.trab),out=[];
+    while(out.length<n&&(folga.length||trab.length)){const L=folga.length&&(rnd()<.7||!trab.length)?folga:trab;out.push(L.splice(Math.floor(rnd()*L.length),1)[0])}return out}
+  const circulo=(c,n,r)=>Array.from({length:n},(_,i)=>{const a=i/n*PI*2+.4;return[c[0]+Math.cos(a)*r,c[1]+Math.sin(a)*r]});
+  const ocupado=p=>RODAS.some(r=>r.c===p)||FESTAS.some(f=>Math.hypot(f.c[0]-p[0],f.c[1]-p[1])<2.5);
+  function novaRoda(){const livre=PONTOS.filter(p=>!ocupado(p));if(!livre.length)return;
+    const c=livre[Math.floor(rnd()*livre.length)],quem=quemLevanta(2+Math.floor(rnd()*(lowEnd?2:3)));if(quem.length<2)return;
+    const pos=circulo(c,quem.length,.5+.08*quem.length);
+    RODAS.push({c,papo:escolherPapo(),linha:-1,tl:0,esp:0,bs:quem.map((sp,i)=>levantar(sp,{p:[pos[i]],olhar:c,acao:"papo"},Infinity,{livre:true,social:true})).filter(Boolean)})}
+  // discussão: quando os dados mostram divergência (vivo × backtest, carteira × carteira), as duas salas se encontram no corredor e debatem
+  let proxDiv=10,divI=0;
+  function novaDiscussao(){const L=DIA.div||[];if(!L.length)return;const d=L[divI++%L.length];if(RODAS.some(r=>r.divId===d.id))return;
+    const[a,b]=d.salas,ra=INFO[a],rb=INFO[b];if(!ra||!rb)return;
+    const porta=r=>r.door&&!r.lounge?doorOf(r)[1]:[0,0],pa=porta(ra),pb=porta(rb),m=[(pa[0]+pb[0])/2,(pa[1]+pb[1])/2];
+    const c=PONTOS.filter(p=>!ocupado(p)).sort((x,y)=>Math.hypot(x[0]-m[0],x[1]-m[1])-Math.hypot(y[0]-m[0],y[1]-m[1]))[0];if(!c)return;
+    const excl=new Set(),daSala=id=>{const pool=SEATED.filter(s=>s.r.id===id&&disponivel(s,excl));const out=[];
+      while(out.length<2&&pool.length){const s=pool.splice(Math.floor(rnd()*pool.length),1)[0];out.push(s);excl.add(s)}return out};
+    const A=daSala(a),B=daSala(b);if(!A.length||!B.length)return;
+    const quem=[A[0],B[0],A[1],B[1]].filter(Boolean),pos=circulo(c,quem.length,.5+.08*quem.length);
+    const bs=quem.map((sp,i)=>levantar(sp,{p:[pos[i]],olhar:c,acao:"papo"},Infinity,{livre:true,social:true,div:true})).filter(Boolean);
+    if(bs.length<2){liberar(bs);return}
+    RODAS.push({c,papo:{l:d.falas},linha:-1,tl:0,esp:0,div:true,divId:d.id,bs})}
+  const ativo=b=>BREAKS.includes(b)&&b.fase!=="volta";
+  function liberar(bs){for(const b of bs){b.fala=null;b.clip=null;b.gesto=null;if(BREAKS.includes(b))b.espera=0}}
+  function comemorar(id,texto){if(calm)return;if(!MOD.ok&&stage.dataset.modelos!=="falhou"){setTimeout(()=>comemorar(id,texto),3000);return}
+    const r=id&&INFO[id];let c=[0,-.15];
+    if(r&&r.door&&!r.lounge){const d=doorOf(r)[1];c=[Math.sign(d[0])*1.15,Math.max(-9.2,Math.min(9.8,d[1]))]}
+    const fs=FESTAS.findIndex(f=>Math.hypot(f.c[0]-c[0],f.c[1]-c[1])<1);if(fs>=0){FESTAS[fs].t=Math.max(FESTAS[fs].t,18);FESTAS[fs].texto=texto;return}
+    const da=r?SEATED.filter(s=>s.r.id===id&&(!s.fora||BREAKS.some(b=>b.sp===s&&!b.social&&!b.reu&&b.fase==="parado"))).slice(0,lowEnd?5:9):[],extra=quemLevanta(r?Math.max(2,5-da.length):(lowEnd?7:13),new Set(da)),quem=[...da,...extra];
+    if(!r){const pres=SEATED.find(s=>s.r.id==="pres"&&!s.fora);if(pres)quem.unshift(pres)}
+    if(!quem.length)return;const pos=circulo(c,quem.length,Math.min(1.5,.45+.09*quem.length));
+    FESTAS.push({c,texto,t:20,ini:false,bs:quem.map((sp,i)=>levantar(sp,{p:[pos[i]],olhar:c,acao:"festa"},Infinity,{livre:true,social:true,festa:i,vel:1.7})).filter(Boolean)})}
+  const CONF_GEO=new THREE.PlaneGeometry(.07,.11),CONF_MAT=[0xff7a1a,0x3cff9e,0x39d0ff,0xffd23c,0xff4fd8,0xffffff].map(c=>new THREE.MeshBasicMaterial({color:c,side:THREE.DoubleSide}));
+  function confete(c){for(let i=0,n=lowEnd?45:100;i<n;i++){const m=new THREE.Mesh(CONF_GEO,CONF_MAT[i%CONF_MAT.length]);
+    m.position.set(c[0]+(rnd()-.5)*2.6,2.3+rnd()*1.8,c[1]+(rnd()-.5)*2.6);m.rotation.set(rnd()*6,rnd()*6,rnd()*6);S.add(m);
+    CONFETE.push({m,vy:-(.3+rnd()*.45),vx:(rnd()-.5)*.35,vz:(rnd()-.5)*.35,gira:2+rnd()*5,vida:8+rnd()*3})}}
+  function social(t,dt){
+    proxRoda-=dt;if(proxRoda<=0){proxRoda=(lowEnd?28:16)+rnd()*18;if(RODAS.filter(r=>!r.div).length<(lowEnd?1:2)&&!REU)novaRoda()}
+    proxDiv-=dt;if(proxDiv<=0){proxDiv=45+rnd()*35;if(!RODAS.some(r=>r.div)&&!REU)novaDiscussao()}
+    // conversa: quem chegou fala em turnos; robô concorda (Yes) ou discorda (No) com a cabeça, pessoa gesticula
+    for(let k=RODAS.length-1;k>=0;k--){const r=RODAS[k],vivos=r.bs.filter(ativo),la=vivos.filter(b=>b.fase==="parado");
+      if(vivos.length<2||REU){liberar(r.bs);RODAS.splice(k,1);continue}
+      if(r.linha<0){r.esp+=dt;if(la.length<2&&r.esp<45)continue;r.linha=0;r.tl=3.6}
+      else{r.tl-=dt;if(r.tl<=0){r.linha++;r.tl=3.4+rnd()*.9}}
+      if(r.linha>=r.papo.l.length){if(r.papo.fim&&!r.fez){r.fez=true;r.tl=2.6;for(const b of la){b.fala=null;b.clip=b.w.robo?"joinha":null;b.gesto=b.w.robo?null:"festa"}continue}
+        liberar(r.bs);RODAS.splice(k,1);continue}
+      if(r.fez)continue;
+      const fal=la.length?la[r.linha%la.length]:null,txt=r.papo.l[r.linha];
+      for(const b of vivos){const eu=b===fal;b.fala=eu?txt:null;b.gesto=eu&&!b.w.robo?"falar":null;b.clip=eu&&b.w.robo?(/\bn[ãa]o\b|pior|desconfio/i.test(txt)?"nao":"trabalho"):null;
+        if(!eu&&fal&&b.fase==="parado")b.w.g.rotation.y=Math.atan2(-(fal.pos[0]-b.pos[0]),-(fal.pos[1]-b.pos[1]))}}
+    // comemoração: roda em volta do ponto, confete, robôs dançam/pulam, pessoas pulam de braços para cima
+    for(let k=FESTAS.length-1;k>=0;k--){const f=FESTAS[k],vivos=f.bs.filter(ativo),la=vivos.filter(b=>b.fase==="parado");
+      if(!vivos.length||REU){liberar(f.bs);FESTAS.splice(k,1);continue}
+      if(!f.ini){f.esp=(f.esp||0)+dt;if(la.length<Math.min(3,Math.ceil(vivos.length/2))&&f.esp<20)continue;f.ini=true;confete(f.c)}
+      f.t-=dt;if(f.t<=0){liberar(f.bs);FESTAS.splice(k,1);continue}
+      la.forEach((b,i)=>{b.fala=i===0?"🎉 "+f.texto:null;b.festaTxt=i===0;
+        if(b.w.robo)b.clip=["dancar","pular","joinha","dancar","acenar"][(b.festa+Math.floor(f.t/4))%5];else{b.gesto="festa";b.clip=null}})}
+    for(let k=CONFETE.length-1;k>=0;k--){const c=CONFETE[k],m=c.m;c.vida-=dt;
+      if(m.position.y>.03){m.position.x+=c.vx*dt;m.position.z+=c.vz*dt;m.position.y=Math.max(.03,m.position.y+c.vy*dt);m.rotation.x+=c.gira*dt;m.rotation.y+=c.gira*.7*dt}
+      if(c.vida<=0){S.remove(m);CONFETE.splice(k,1)}}}
+  // gestos das pessoas por cima da animação (osso a osso, depois do mixer)
+  function ossos(m){if(m.ossos!==undefined)return m.ossos;const ach=k=>{let r=null;m.g.traverse(x=>{if(!r&&x.isBone&&x.name.replace(/[:_]/g,"").endsWith(k))r=x});return r};
+    const o={ra:ach("RightArm"),rf:ach("RightForeArm"),la:ach("LeftArm"),lf:ach("LeftForeArm"),cab:ach("Head")};return m.ossos=o.ra&&o.la?o:null}
+  function gestos(t){for(const b of BREAKS){if(!b.gesto||b.fase!=="parado"||!b.w.modelo||b.w.robo)continue;const o=ossos(b.w);if(!o)continue;const k=BREAKS.indexOf(b);
+      if(b.gesto==="falar"){o.rf.rotation.x+=GESTO.falar[0]+Math.sin(t*4+k)*GESTO.falar[1];o.ra.rotation.x+=GESTO.falar[2];o.cab.rotation.y+=Math.sin(t*1.7+k)*.15}
+      else if(b.gesto==="festa"){const p=Math.abs(Math.sin(t*5+k*.7));o.ra.rotation.z+=GESTO.festa[0];o.la.rotation.z+=GESTO.festa[1];
+        o.rf.rotation.z+=GESTO.festa[2]*p;o.lf.rotation.z+=GESTO.festa[3]*p;b.w.g.position.y+=p*.16}}}
+  const GESTO={falar:[-.5,.25,-.25],festa:[-1.9,1.9,-.5,.5]};
+  function baloes(){const vivos=new Set();
+    for(const b of BREAKS){if(!b.fala||!b.w.g.visible||b.fase!=="parado")continue;
+      v.set(b.pos[0],b.w.robo?1.25:1.95,b.pos[1]).project(C);if(v.z>1||Math.abs(v.x)>1.05||Math.abs(v.y)>1.05)continue;vivos.add(b);
+      let el=FALAS.get(b);if(!el){el=document.createElement("div");el.className="fala";falasEl.appendChild(el);FALAS.set(b,el)}
+      if(el.textContent!==b.fala)el.textContent=b.fala;el.classList.toggle("festa",!!b.festaTxt);el.classList.toggle("diverge",!!b.div);
+      el.style.left=((v.x+1)/2*W)+"px";el.style.top=((-v.y+1)/2*H)+"px"}
+    for(const[b,el]of FALAS)if(!vivos.has(b)){el.remove();FALAS.delete(b)}}
+  const btnFesta=document.getElementById("btnFesta");
+  btnFesta&&btnFesta.addEventListener("click",()=>{if(modo!=="aereo")setModo("aereo");comemorar(null,"Comemoração geral da XPrime!")});
 
   // reunião: a Presidência chama um coordenador de cada setor; cada um caminha até a mesa de 20 lugares e senta, o Presidente na cabeceira
   const btnReu=document.getElementById("btnReu");let REU=null;
@@ -592,12 +721,21 @@ if(window.THREE){
     const w=sp.modelo?instancia("pessoa",sp.k):pessoa({...sp.p.o,seated:false});S.add(w.g);sentar(sp,false);sp.fora=true;
     BREAKS.push({sp,w,ida,volta:[...ida].reverse(),fase:"ida",i:0,pos:[...ida[0]],espera:Infinity,vel:1.5,reu:true,alvo:{olhar:lugar.o,acao:"reuniao",pose}})}
   function reuniao(){
-    if(REU){for(const b of BREAKS)if(b.reu)b.espera=0;REU=null;btnReu.textContent="Reunião";btnReu.classList.remove("on");cap.hidden=modo==="aereo";return}
+    if(REU){for(let k=BREAKS.length-1;k>=0;k--){const b=BREAKS[k];if(!b.reu)continue;b.espera=0;
+        if(calm){S.remove(b.w.g);soltar(b.w);sentar(b.sp,true);b.sp.fora=false;BREAKS.splice(k,1)}}REU=null;btnReu.textContent="Reunião";btnReu.classList.remove("on");cap.hidden=modo==="aereo";return}
     if(modo!=="aereo")setModo("aereo");
     const L=lugaresReu(),pres=SEATED.find(s=>s.r.id==="pres"),quem=ORDEM_REU.map(id=>[id,coordenador(id)]).filter(x=>x[1]);
+    // reunião geral: depois dos coordenadores, todo o resto da equipe (pessoas primeiro, depois robôs) até lotar os 20 lugares
+    const ja=new Set([pres,...quem.map(x=>x[1])]),resto=SEATED.filter(s=>!ja.has(s)&&s.r.id!=="pres"&&s.r.id!=="reu"&&!(s.robot&&s.r.id==="xcrypto"));  // os robôs da cripto seguem operando (24 h)
+    for(const s of [...resto.filter(s=>!s.robot),...resto.filter(s=>s.robot)]){if(quem.length>=L.ord.length)break;quem.push([s.r.id,s])}
+    const nCoord=ORDEM_REU.filter(id=>coordenador(id)).length;
     chamar(pres,L.cab,"conversar",L.porta);quem.forEach(([id,sp],i)=>chamar(sp,L.ord[i],i%3===1?"conversar":"sentado",L.porta));
+    // sem animação (reduzir movimento): todos aparecem direto sentados à mesa
+    if(calm)for(const b of BREAKS){if(!b.reu)continue;const f=b.ida[b.ida.length-1],o=b.alvo.olhar;b.fase="parado";b.pos=[f[0],f[1]];
+      b.w.g.rotation.y=Math.atan2(-(o[0]-f[0]),-(o[1]-f[1]));b.w.g.position.set(f[0],b.w.modelo?.14:.06,f[1]);
+      if(b.w.modelo){b.w.tocar(b.alvo.pose,0);b.w.mixer.update(2)}}
     REU={quem};btnReu.textContent="Encerrar reunião";btnReu.classList.add("on");
-    cap.innerHTML=`<b>Reunião de teste · Presidente + ${quem.length} coordenadores</b><span>${quem.map(([id])=>INFO[id].cur).join(" · ")}<br>Pauta: resultado de cada mesa → o que deu certo → o que deu errado → o que muda</span>`;cap.hidden=false;
+    cap.innerHTML=`<b>Reunião geral · Presidente + ${quem.length} da equipe (${nCoord} coordenadores)</b><span>${[...new Set(quem.map(([id])=>INFO[id].cur))].join(" · ")}<br>Pauta: resultado de cada mesa → o que deu certo → o que deu errado → o que muda</span>`;cap.hidden=false;
     O.autoRotate=false;document.getElementById("spin").textContent="Girar";
     voo={p0:C.position.clone(),t0:O.target.clone(),p1:new THREE.Vector3(-.5,9.5,-7.5),t1:new THREE.Vector3(6.5,.4,-15.5),k:0}}
   let voo=null;
@@ -613,8 +751,16 @@ if(window.THREE){
   const fxAberto=rl=>rl.wd==="Sat"?false:rl.wd==="Sun"?rl.h>=19:rl.wd==="Fri"?rl.h<18:!(rl.h>=18&&rl.h<19);
   function trabalhando(sp,rl){const m=DIA.mesas[sp.r.id],exp=rl.util&&rl.h>=9&&rl.h<18;
     switch(sp.r.id){
-      case"xgold":return sp.robot?fxAberto(rl):exp;
-      case"xcrypto":case"dev":return sp.robot?true:exp;  // cripto opera 24/7 e a mineração não para; os robôs da XForex01 só com o forex aberto
+      // autonomia: robô e supervisor trabalham só com posição aberta; sem posição, folgam (sem dado, vale o horário do mercado)
+      case"xgold":{if(!m)return sp.robot?fxAberto(rl):exp;if(!sp.robot)return m.abertas>0;
+        const rb=DIA.robos,est=SEATED.filter(s=>s.robot&&s.r.id==="xgold");
+        if(rb&&rb.length){const r=rb[Math.min(rb.length-1,Math.floor(est.indexOf(sp)*rb.length/est.length))];return(r.abertas||0)>0}
+        return m.abertas>0}
+      // cripto: tantas estações trabalhando quantas posições abertas (até 12); o agente humano acompanha enquanto houver posição
+      case"xcrypto":{if(!m)return sp.robot?true:exp;
+        return sp.robot?SEATED.filter(s=>s.robot&&s.r.id==="xcrypto").indexOf(sp)<Math.min(12,m.abertas):m.abertas>0}
+      // mineração: só trabalha enquanto o motor está gerando estratégias; parado, todo mundo da sala folga
+      case"dev":return DIA.minerando===undefined?(sp.robot?true:exp):!!DIA.minerando;
       case"xau":{if(!rl.util)return false;
         if((rl.h>=9&&rl.h<10.5)||(rl.h>=16.75&&rl.h<17.5))return true;
         return(sp.role==="risk"||sp.role==="chefe")&&!!(m&&(m.abertas||m.pendentes))}
@@ -624,7 +770,9 @@ if(window.THREE){
     for(const sp of SEATED){const antes=sp.trab;sp.trab=trabalhando(sp,rl);sp.p.A.trab=sp.trab;if(sp.trab)n++;if(antes!==sp.trab&&!sp.fora)postura(sp,.6)}
     if(calm)folgaParada();
     const mercado=rl.util?"mercado aberto":"mercado fechado";
-    placar.innerHTML=`${rl.txt} em Brasília · <i>${mercado}</i><br><b>${n} trabalhando</b> · ${SEATED.length-n} de folga`}
+    const f=DIA.mesas.xgold,c=DIA.mesas.xcrypto,ops=[f?`XForex01 ${f.abertas||0} aberta(s)`:"",c?`XCrypto ${c.abertas||0}`:"",
+      DIA.minerando===undefined?"":`mineração ${DIA.minerando?"ligada":"parada"}`].filter(Boolean).join(" · ");
+    placar.innerHTML=`${rl.txt} em Brasília · <i>${mercado}</i><br><b>${n} trabalhando</b> · ${SEATED.length-n} de folga${ops?"<br>"+ops:""}`}
   function trocarTelas(){for(const t of TELAS){const old=t.s.material.map;t.s.material.map=t.pres?telaPres(t.pres===true?undefined:t.pres):telaMesa(t.r);t.s.material.needsUpdate=true;old&&old.dispose()}}
   // telões: o arquivo publicado é só o retrato da publicação; o número vivo chega pelo banco do artefato (telao/sede), gravado pela tarefa agendada
   let vivo="";
@@ -632,15 +780,34 @@ if(window.THREE){
     v.textContent=(m.r>0?"+":m.r<0?"−":"")+Math.abs(m.r).toFixed(2).replace(".",",");v.className="v "+(m.r>0?"pos":m.r<0?"neg":"");
     s.textContent=`${m.n} fechamentos hoje · ${m.g} ganhos · ${m.p} perdas · ${m.abertas?m.abertas+" aberta(s), "+fmt(m.a):"nada aberto"}`}
   function aplicarDados(j){if(j&&j.mesas){cartaoXForex01(j.mesas.xgold);cartaoXForex01(j.mesas.xcrypto,"xcrypto")}if(!j||!j.pregao||!j.mesas||(vivo&&j.gerado===vivo))return;vivo=j.gerado||"";
-    DIA={pregao:j.pregao.slice(8,10)+"/"+j.pregao.slice(5,7)+"/"+j.pregao.slice(0,4),mesas:j.mesas};trocarTelas();atualizarExpediente()}
+    const antes=DIA.mesas||{},prim=!DIA.lido;
+    DIA={pregao:j.pregao.slice(8,10)+"/"+j.pregao.slice(5,7)+"/"+j.pregao.slice(0,4),mesas:j.mesas,robos:j.robos_xgold,minerando:j.minerando,div:j.divergencias||[],lido:true};
+    trocarTelas();atualizarExpediente();
+    // lucro: trade ganho desde a última leitura → a sala comemora; ao abrir a sede, carteira com o dia no lucro também comemora
+    for(const[id,m]of Object.entries(j.mesas)){if(!m)continue;const a=antes[id],nome=INFO[id]?INFO[id].cur:id;
+      if(a&&m.g>a.g)setTimeout(()=>comemorar(id,`Trade ganho na ${nome}! Dia ${fmt(m.r)}`),1500);
+      else if(prim&&m.n&&m.r>0)setTimeout(()=>comemorar(id,`${nome} no lucro: ${fmt(m.r)} no dia`),6000)}
+    if(prim&&DIA.div.length)proxDiv=Math.min(proxDiv,14)}
   // site público: os telões das Carteiras XForex01 e XCrypto leem os mesmos dados da página da carteira (dados/xm e dados/xcrypto), relidos a cada 2 min
   function lerSite(){const pg=(c,n)=>fetch(`dados/${c}/${n}.json?t=${Date.now()}`,{cache:"no-store"}).then(r=>r.json()).catch(()=>null);
     const mesa=(c,d)=>{const k=Array.isArray(c)?c[0]:c;if(!k||!Array.isArray(d))return null;const hoje=String(k.ultimo_preco).slice(0,10),x=d.find(z=>z.dia===hoje)||{realizado:0,fechadas:0};
       return{hoje,gerado:k.exportado,m:{r:x.realizado,a:+k.flutuante||0,n:x.fechadas,g:x.ganhos??0,p:x.perdas??0,abertas:k.abertas,pendentes:0,por_agente:{}}}};
-    Promise.all([pg("xm","conta"),pg("xm","dias"),pg("xcrypto","conta"),pg("xcrypto","dias")]).then(([cf,df,cc,dc])=>{const f=mesa(cf,df),c=mesa(cc,dc),ms={};
+    // dados/sede.json (estado_sede.py da TI): posição por robô, mineração ligada/parada e divergências para as discussões
+    const est=fetch(`dados/sede.json?t=${Date.now()}`,{cache:"no-store"}).then(r=>r.json()).catch(()=>null);
+    Promise.all([pg("xm","conta"),pg("xm","dias"),pg("xcrypto","conta"),pg("xcrypto","dias"),est]).then(([cf,df,cc,dc,s])=>{const f=mesa(cf,df),c=mesa(cc,dc),ms={};
       if(f)ms.xgold=f.m;if(c)ms.xcrypto=c.m;if(!f&&!c)return;const hs=[f,c].filter(Boolean);
-      aplicarDados({pregao:hs.map(z=>z.hoje).sort().pop(),gerado:hs.map(z=>z.gerado).join("|"),mesas:ms})})}
+      aplicarDados({pregao:hs.map(z=>z.hoje).sort().pop(),gerado:hs.map(z=>z.gerado).join("|")+(s?"|"+s.gerado:""),mesas:ms,
+        robos_xgold:s?s.robos_xgold:undefined,minerando:s?s.minerando:undefined,divergencias:s?s.divergencias:[]})})}
   lerSite();setInterval(()=>{if(!document.hidden)lerSite()},120000);
+  // convocação remota: o Claude grava comando/reuniao {em, ativa}; a sede aberta chama (ou encerra) a reunião geral na hora
+  if(window.claude&&claude.use&&btnReu)claude.use("db").then(db=>{if(!db)return;let visto=null;
+    db.doc("comando/reuniao").onSnapshot(s=>{const d=s&&(typeof s.data==="function"?s.data():s.data);if(!d||d.em===visto)return;visto=d.em;
+      const fresco=Date.now()-Date.parse(d.em)<2*3600e3,ir=()=>{if(d.ativa&&fresco&&!REU)reuniao();else if(!d.ativa&&REU)reuniao()};
+      if(MOD.ok||stage.dataset.modelos==="falhou")ir();else setTimeout(ir,4000)},()=>{})}).catch(()=>{});
+  // comemoração remota: o Claude grava comando/comemorar {em, sala, texto}; a sede aberta comemora na hora
+  if(window.claude&&claude.use)claude.use("db").then(db=>{if(!db)return;let visto=null;
+    db.doc("comando/comemorar").onSnapshot(s=>{const d=s&&(typeof s.data==="function"?s.data():s.data);if(!d||d.em===visto)return;visto=d.em;
+      if(Date.now()-Date.parse(d.em)<10*60e3)comemorar(d.sala||null,d.texto||"Comemoração!")},()=>{})}).catch(()=>{});
   atualizarExpediente();setInterval(atualizarExpediente,20000);
 
   // passeio: câmera na altura dos olhos, paredes de vidro como obstáculo; tour guiado pelo corredor
@@ -729,7 +896,9 @@ if(window.THREE){
         w.p.A.arms[0].rotation.x=-sw*.35;w.p.A.arms[1].rotation.x=sw*.35;w.p.A.head.rotation.y=Math.sin(t*.7+w.off)*.2}
       for(const f of anims)f(t)}
     for(const m of MIXERS)if(m.g.visible&&m.g.parent)m.mixer.update(calm?0:dt);
+    if(!calm)gestos(t);
     comp?comp.render():R.render(S,C);
+    baloes();
     if(modo==="aereo")for(const tg of tags){v.copy(tg.v).project(C);tg.el.style.left=((v.x+1)/2*W)+"px";tg.el.style.top=((-v.y+1)/2*H)+"px";tg.el.hidden=v.z>1}
   })();
   new ResizeObserver(()=>{W=stage.clientWidth;H=stage.clientHeight;R.setSize(W,H,false);comp&&comp.setSize(W,H);C.aspect=W/H;C.updateProjectionMatrix()}).observe(stage);
