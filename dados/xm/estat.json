@@ -7,25 +7,25 @@
     "nome": "XForex01",
     "tipo": "conta",
     "inicio": "2026-11-01 20:23:23",
-    "fim": "2026-11-13 16:22:16",
+    "fim": "2026-11-16 02:16:57",
     "dias": 14.2,
-    "resultado": 65.85,
-    "pct": 0.06584999999999998,
-    "fechamentos": 76,
+    "resultado": 65.79,
+    "pct": 0.06578999999999997,
+    "fechamentos": 77,
     "ganhos_n": 32,
-    "acerto": 0.42105263157894735,
+    "acerto": 0.4155844155844156,
     "soma_ganhos": 312.51,
-    "soma_perdas": -246.66,
-    "fl": 1.266966674774994,
-    "payoff": 1.623301052055461,
-    "por_fech": 0.8664473684210524,
+    "soma_perdas": -246.72,
+    "fl": 1.266658560311284,
+    "payoff": 1.6624893604085602,
+    "por_fech": 0.8544155844155841,
     "maior_ganho": 29.75,
     "maior_perda": -15.53,
     "queda": -61.85,
     "queda_pct": -0.057379558590234796,
     "taxas": 0.0,
-    "media_dia": 4.622768874360767,
-    "dias_operados": 11,
+    "media_dia": 4.617206422564529,
+    "dias_operados": 12,
     "dias_lucro": 4,
     "melhor_dia": {
      "dia": "2026-11-12",
@@ -339,6 +339,10 @@
      {
       "quando": "2026-11-13 16:22:16",
       "r": 65.85
+     },
+     {
+      "quando": "2026-11-16 02:16:57",
+      "r": 65.79
      }
     ],
     "barras": [
@@ -396,6 +400,11 @@
       "dia": "2026-11-13",
       "v": -21.63,
       "n": 9
+     },
+     {
+      "dia": "2026-11-16",
+      "v": -0.06,
+      "n": 1
      }
     ]
    },
@@ -421,7 +430,7 @@
     "queda": -30.85,
     "queda_pct": -0.030850000000000002,
     "taxas": 0.0,
-    "media_dia": 7.084662797787351,
+    "media_dia": 7.082521203615892,
     "dias_operados": 9,
     "dias_lucro": 6,
     "melhor_dia": {
@@ -644,7 +653,7 @@
     "queda": -28.14,
     "queda_pct": -0.027109304252326546,
     "taxas": 0.0,
-    "media_dia": 1.608597223006858,
+    "media_dia": 1.6081078166746583,
     "dias_operados": 7,
     "dias_lucro": 4,
     "melhor_dia": {
@@ -769,7 +778,7 @@
     "queda": -33.43,
     "queda_pct": -0.03343,
     "taxas": 0.0,
-    "media_dia": -2.004264168716077,
+    "media_dia": -2.00365424382591,
     "dias_operados": 7,
     "dias_lucro": 2,
     "melhor_dia": {
