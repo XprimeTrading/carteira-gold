@@ -6,45 +6,45 @@
     "id": "conta",
     "nome": "XCrypto01",
     "tipo": "conta",
-    "inicio": "2026-11-16 01:27:47",
-    "fim": "2026-11-16 01:27:47",
+    "inicio": "2026-11-16 01:33:46",
+    "fim": "2026-11-16 01:33:46",
     "dias": 0.0,
-    "resultado": 39.44,
-    "pct": 0.013162198060377911,
+    "resultado": 39.29,
+    "pct": 0.013112138990675664,
     "fechamentos": 1,
     "ganhos_n": 1,
     "acerto": 1.0,
-    "soma_ganhos": 39.44,
+    "soma_ganhos": 39.29,
     "soma_perdas": 0,
     "fl": null,
     "payoff": null,
-    "por_fech": 39.44,
-    "maior_ganho": 39.44,
+    "por_fech": 39.29,
+    "maior_ganho": 39.29,
     "maior_perda": null,
     "queda": -0.0,
     "queda_pct": -0.0,
     "taxas": 0.0,
-    "media_dia": 39.44,
+    "media_dia": 39.29,
     "dias_operados": 1,
     "dias_lucro": 1,
     "melhor_dia": {
      "dia": "2026-11-16",
-     "v": 39.44
+     "v": 39.29
     },
     "pior_dia": {
      "dia": "2026-11-16",
-     "v": 39.44
+     "v": 39.29
     },
     "curva": [
      {
-      "quando": "2026-11-16 01:27:47",
-      "r": 39.44
+      "quando": "2026-11-16 01:33:46",
+      "r": 39.29
      }
     ],
     "barras": [
      {
       "dia": "2026-11-16",
-      "v": 39.44,
+      "v": 39.29,
       "n": 1
      }
     ]
@@ -53,45 +53,45 @@
     "id": "robo_x1",
     "nome": "165 estratégias",
     "tipo": "robo",
-    "inicio": "2026-11-16 01:27:47",
-    "fim": "2026-11-16 01:27:47",
+    "inicio": "2026-11-16 01:33:46",
+    "fim": "2026-11-16 01:33:46",
     "dias": 0.0,
-    "resultado": 39.44,
-    "pct": 0.013162198060377911,
+    "resultado": 39.29,
+    "pct": 0.013112138990675664,
     "fechamentos": 1,
     "ganhos_n": 1,
     "acerto": 1.0,
-    "soma_ganhos": 39.44,
+    "soma_ganhos": 39.29,
     "soma_perdas": 0,
     "fl": null,
     "payoff": null,
-    "por_fech": 39.44,
-    "maior_ganho": 39.44,
+    "por_fech": 39.29,
+    "maior_ganho": 39.29,
     "maior_perda": null,
     "queda": -0.0,
     "queda_pct": -0.0,
     "taxas": 0.0,
-    "media_dia": 39.44,
+    "media_dia": 39.29,
     "dias_operados": 1,
     "dias_lucro": 1,
     "melhor_dia": {
      "dia": "2026-11-16",
-     "v": 39.44
+     "v": 39.29
     },
     "pior_dia": {
      "dia": "2026-11-16",
-     "v": 39.44
+     "v": 39.29
     },
     "curva": [
      {
-      "quando": "2026-11-16 01:27:47",
-      "r": 39.44
+      "quando": "2026-11-16 01:33:46",
+      "r": 39.29
      }
     ],
     "barras": [
      {
       "dia": "2026-11-16",
-      "v": 39.44,
+      "v": 39.29,
       "n": 1
      }
     ]
