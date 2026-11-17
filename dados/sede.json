@@ -1,10 +1,10 @@
 {
   "pregao": "2026-11-17",
-  "gerado": "16/11/2026 22:47",
+  "gerado": "16/11/2026 22:57",
   "mesas": {
     "xgold": {
       "r": -14.96,
-      "a": -1.35,
+      "a": -1.99,
       "n": 2,
       "g": 0,
       "p": 2,
@@ -16,14 +16,14 @@
       "por_agente": {}
     },
     "xcrypto": {
-      "r": 0.32,
-      "a": 36.7,
+      "r": 0.38,
+      "a": 38.11,
       "n": 1,
       "g": 1,
       "p": 0,
       "abertas": 1,
       "pendentes": 0,
-      "saldo": 3036.45,
+      "saldo": 3036.51,
       "corretora": "Bybit",
       "dia": "2026-11-17",
       "por_agente": {}
@@ -72,7 +72,7 @@
       ],
       "tema": "carteiras em direções opostas",
       "falas": [
-        "XCrypto fechou +0,32 hoje e a XForex01 −14,96.",
+        "XCrypto fechou +0,38 hoje e a XForex01 −14,96.",
         "Dia ruim faz parte, se estiver dentro do risco.",
         "Não concordo que seja só o dia. Quero ver se as perdas se repetem no mesmo horário.",
         "É para isso que temos duas carteiras: uma segura a outra.",
