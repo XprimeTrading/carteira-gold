@@ -1,30 +1,5 @@
 [
  {
-  "quando": "2026-11-13 07:36:21",
-  "saldo": 0.0,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-11-13 09:52:42",
-  "saldo": 0.0,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-11-13 10:00:23",
-  "saldo": 0.0,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-11-13 10:00:28",
-  "saldo": 0.0,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-11-13 10:02:17",
-  "saldo": 0.0,
-  "tipo": "saldo"
- },
- {
   "quando": "2026-11-13 11:09:33",
   "saldo": 0.0,
   "tipo": "saldo"
@@ -815,6 +790,11 @@
   "tipo": "saldo"
  },
  {
+  "quando": "2026-11-17 08:00:00",
+  "saldo": 0.0,
+  "tipo": "saldo"
+ },
+ {
   "quando": "2026-11-17 09:00:00",
   "saldo": 0.0,
   "tipo": "saldo"
@@ -825,13 +805,18 @@
   "tipo": "saldo"
  },
  {
-  "quando": "2026-11-17 11:57:48",
+  "quando": "2026-11-17 10:00:00",
   "saldo": 0.0,
   "tipo": "saldo"
  },
  {
-  "quando": "2026-11-17 11:57:48",
-  "saldo": 3062.51,
+  "quando": "2026-11-17 12:03:48",
+  "saldo": 0.0,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-11-17 12:03:48",
+  "saldo": 3064.11,
   "tipo": "patrimonio"
  }
 ]
