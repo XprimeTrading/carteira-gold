@@ -820,13 +820,38 @@
   "tipo": "saldo"
  },
  {
-  "quando": "2026-11-17 15:51:49",
+  "quando": "2026-11-17 15:48:51",
   "saldo": 0.0,
   "tipo": "saldo"
  },
  {
-  "quando": "2026-11-17 15:51:49",
-  "saldo": 3081.05,
+  "quando": "2026-11-17 15:49:09",
+  "saldo": 0.0,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-11-17 15:49:18",
+  "saldo": 0.0,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-11-17 15:49:22",
+  "saldo": 0.0,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-11-17 15:49:27",
+  "saldo": 0.0,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-11-17 15:57:49",
+  "saldo": 0.0,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-11-17 15:57:49",
+  "saldo": 3076.19,
   "tipo": "patrimonio"
  }
 ]
