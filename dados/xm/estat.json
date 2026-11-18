@@ -7,26 +7,26 @@
     "nome": "XForex01",
     "tipo": "conta",
     "inicio": "2026-11-01 20:23:23",
-    "fim": "2026-11-17 11:20:03",
+    "fim": "2026-11-18 02:34:05",
     "dias": 16.3,
-    "resultado": -15.75,
-    "pct": -0.01575000000000003,
-    "fechamentos": 92,
-    "ganhos_n": 33,
-    "acerto": 0.358695652173913,
-    "soma_ganhos": 313.89,
+    "resultado": -10.25,
+    "pct": -0.01025000000000003,
+    "fechamentos": 93,
+    "ganhos_n": 34,
+    "acerto": 0.3655913978494624,
+    "soma_ganhos": 319.39,
     "soma_perdas": -329.64,
-    "fl": 0.9522206042955952,
-    "payoff": 1.6158895103197979,
-    "por_fech": -0.17119565217391336,
+    "fl": 0.9689054726368159,
+    "payoff": 1.5958443078724025,
+    "por_fech": -0.11021505376344118,
     "maior_ganho": 29.75,
     "maior_perda": -15.53,
     "queda": -107.66,
     "queda_pct": -0.09859786978780304,
     "taxas": 0.0,
-    "media_dia": -0.968800474341682,
-    "dias_operados": 13,
-    "dias_lucro": 4,
+    "media_dia": -0.6303275965137811,
+    "dias_operados": 14,
+    "dias_lucro": 5,
     "melhor_dia": {
      "dia": "2026-11-12",
      "v": 71.42
@@ -403,6 +403,10 @@
      {
       "quando": "2026-11-17 11:20:03",
       "r": -15.75
+     },
+     {
+      "quando": "2026-11-18 02:34:05",
+      "r": -10.25
      }
     ],
     "barras": [
@@ -470,6 +474,11 @@
       "dia": "2026-11-17",
       "v": -49.75,
       "n": 10
+     },
+     {
+      "dia": "2026-11-18",
+      "v": 5.5,
+      "n": 1
      }
     ]
    },
@@ -495,7 +504,7 @@
     "queda": -30.85,
     "queda_pct": -0.030850000000000002,
     "taxas": 0.0,
-    "media_dia": 6.181699030381101,
+    "media_dia": 6.180067741353093,
     "dias_operados": 9,
     "dias_lucro": 6,
     "melhor_dia": {
@@ -718,7 +727,7 @@
     "queda": -28.14,
     "queda_pct": -0.027109304252326546,
     "taxas": 0.0,
-    "media_dia": 1.4024179278086693,
+    "media_dia": 1.4020457534382644,
     "dias_operados": 7,
     "dias_lucro": 4,
     "melhor_dia": {
@@ -843,7 +852,7 @@
     "queda": -33.43,
     "queda_pct": -0.03343,
     "taxas": 0.0,
-    "media_dia": -1.747319776866779,
+    "media_dia": -1.7468559799881247,
     "dias_operados": 7,
     "dias_lucro": 2,
     "melhor_dia": {
