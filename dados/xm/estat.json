@@ -7,26 +7,26 @@
     "nome": "XForex01",
     "tipo": "conta",
     "inicio": "2026-11-01 20:23:23",
-    "fim": "2026-11-18 15:10:19",
+    "fim": "2026-11-19 02:02:20",
     "dias": 17.2,
-    "resultado": 4.3,
-    "pct": 0.004299999999999972,
-    "fechamentos": 101,
-    "ganhos_n": 39,
-    "acerto": 0.38613861386138615,
-    "soma_ganhos": 347.33,
+    "resultado": 4.6,
+    "pct": 0.004599999999999972,
+    "fechamentos": 102,
+    "ganhos_n": 40,
+    "acerto": 0.39215686274509803,
+    "soma_ganhos": 347.63,
     "soma_perdas": -343.03,
-    "fl": 1.0125353467626739,
-    "payoff": 1.531784242538404,
-    "por_fech": 0.0425742574257423,
+    "fl": 1.0134099058391395,
+    "payoff": 1.4947796111127307,
+    "por_fech": 0.045098039215686,
     "maior_ganho": 29.75,
     "maior_perda": -15.53,
     "queda": -113.67,
     "queda_pct": -0.10410198642745283,
     "taxas": 0.0,
-    "media_dia": 0.24953271979773164,
-    "dias_operados": 14,
-    "dias_lucro": 5,
+    "media_dia": 0.2668774542177334,
+    "dias_operados": 15,
+    "dias_lucro": 6,
     "melhor_dia": {
      "dia": "2026-11-12",
      "v": 71.42
@@ -439,6 +439,10 @@
      {
       "quando": "2026-11-18 15:10:19",
       "r": 4.3
+     },
+     {
+      "quando": "2026-11-19 02:02:20",
+      "r": 4.6
      }
     ],
     "barras": [
@@ -511,6 +515,11 @@
       "dia": "2026-11-18",
       "v": 20.05,
       "n": 9
+     },
+     {
+      "dia": "2026-11-19",
+      "v": 0.3,
+      "n": 1
      }
     ]
    },
@@ -536,7 +545,7 @@
     "queda": -30.85,
     "queda_pct": -0.030850000000000002,
     "taxas": 0.0,
-    "media_dia": 5.82219702366138,
+    "media_dia": 5.820750487386484,
     "dias_operados": 9,
     "dias_lucro": 6,
     "melhor_dia": {
@@ -759,7 +768,7 @@
     "queda": -28.14,
     "queda_pct": -0.027109304252326546,
     "taxas": 0.0,
-    "media_dia": 1.3204252912948722,
+    "media_dia": 1.320095484479741,
     "dias_operados": 7,
     "dias_lucro": 4,
     "melhor_dia": {
@@ -884,7 +893,7 @@
     "queda": -33.43,
     "queda_pct": -0.03343,
     "taxas": 0.0,
-    "media_dia": -1.6451432398972008,
+    "media_dia": -1.644732250253479,
     "dias_operados": 7,
     "dias_lucro": 2,
     "melhor_dia": {
