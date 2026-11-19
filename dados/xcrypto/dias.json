@@ -86,13 +86,13 @@
  {
   "dia": "2026-11-19",
   "saldo_inicio": 3031.7,
-  "realizado": -0.77,
-  "saldo_fim": 3030.93,
-  "fechadas": 21,
-  "pct": -0.0002539829138767028,
-  "twr": 0.011503574217576418,
+  "realizado": 0.19,
+  "saldo_fim": 3031.89,
+  "fechadas": 22,
+  "pct": 6.267110861892673e-05,
+  "twr": 0.011823952263670723,
   "fluxo": 0.0,
-  "ganhos": 8,
+  "ganhos": 9,
   "perdas": 13
  }
 ]
