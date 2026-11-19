@@ -178,5 +178,17 @@
   "fluxo": 0.0,
   "ganhos": 8,
   "perdas": 5
+ },
+ {
+  "dia": "2026-11-20",
+  "saldo_inicio": 1033.38,
+  "realizado": -18.68,
+  "saldo_fim": 1014.7,
+  "fechadas": 4,
+  "pct": -0.018075410269466716,
+  "twr": 0.015252562928971924,
+  "fluxo": 0.0,
+  "ganhos": 0,
+  "perdas": 4
  }
 ]
