@@ -1,16 +1,16 @@
 {
   "pregao": "2026-11-20",
-  "gerado": "20/11/2026 05:37",
+  "gerado": "20/11/2026 05:42",
   "mesas": {
     "xcrypto": {
-      "r": 9.77,
-      "a": 40.48,
+      "r": 9.82,
+      "a": 40.72,
       "n": 16,
       "g": 9,
       "p": 7,
       "abertas": 1,
       "pendentes": 0,
-      "saldo": 3041.84,
+      "saldo": 3041.88,
       "corretora": "Bybit",
       "dia": "2026-11-20",
       "por_agente": {}
