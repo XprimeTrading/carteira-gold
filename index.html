@@ -3,7 +3,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>XPrime Trading · XPrime Quant Strategy</title>
-<meta name="description" content="XPrime Quant Strategy: duas carteiras de trading sistemático, ouro (XForex01) e cripto (XCrypto01), em contas reais. Risco de cada carteira em %, travas, resultado ao vivo e backtest mês a mês.">
+<meta name="description" content="XPrime Trading: carteira de trading sistemático em cripto (XCrypto01), em conta real. Risco em %, travas e resultado ao vivo.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23000'/%3E%3Cg transform='translate(5,4)'%3E%3Cline x1='20' y1='20' x2='80' y2='80' stroke='%23fff' stroke-width='15'/%3E%3Cline x1='20' y1='80' x2='66' y2='34' stroke='%23000' stroke-width='27'/%3E%3Cline x1='20' y1='80' x2='64' y2='36' stroke='%23FFB35C' stroke-width='15'/%3E%3Cpolygon points='56,14 86,14 86,44' fill='%23FFB35C'/%3E%3C/g%3E%3C/svg%3E">
 <link rel="apple-touch-icon" href="icone.png">
 <meta name="theme-color" content="#000000">
@@ -12,12 +12,7 @@
 <meta property="og:locale" content="pt_BR">
 <meta property="og:url" content="https://xprimetrading.github.io/carteira-gold/">
 <meta property="og:title" content="XPrime Trading · XPrime Quant Strategy">
-<meta property="og:description" content="XPrime Quant Strategy: duas carteiras de trading sistemático, ouro (XForex01) e cripto (XCrypto01), em contas reais. Risco de cada carteira em %, travas, resultado ao vivo e backtest mês a mês.">
-<meta property="og:image" content="https://xprimetrading.github.io/carteira-gold/dados/og_quant.png?v=20261113">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="XPrime Quant Strategy: saldo, retorno e travas das contas reais">
-<meta name="twitter:card" content="summary_large_image">
+<meta property="og:description" content="XPrime Trading: carteira de trading sistemático em cripto (XCrypto01), em conta real. Risco em %, travas e resultado ao vivo.">
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:ital@1&display=swap">
@@ -421,8 +416,6 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
   </header>
 
   <nav class="abas" role="tablist" aria-label="Contas da carteira">
-    <button type="button" role="tab" id="aba-fundo" data-aba="fundo" aria-selected="true">XPrime Quant Strategy</button>
-    <button type="button" role="tab" id="aba-xm" data-aba="xm" aria-selected="false">Carteira XForex01</button>
     <button type="button" role="tab" id="aba-xcrypto" data-aba="xcrypto" aria-selected="false">Carteira XCrypto01</button>
     <button type="button" role="tab" id="aba-quem" data-aba="quem" aria-selected="false" class="dir">Quem somos</button>
     <button type="button" role="tab" id="aba-mineracao" data-aba="mineracao" aria-selected="false">Como funciona a mineração</button>
@@ -474,7 +467,7 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
       <h2>A sede da XPrime em <em>3D</em></h2>
       <p class="note" style="margin-top:4px">As duas carteiras com os robôs e o supervisor, a Sala de Mineração e o resto da empresa. O telão da XForex01 mostra o resultado do dia da conta real.</p>
     </div>
-    <iframe class="sede3d" data-src="sede.html?embed=1&v=c0760eaa" title="Sede da XPrime em 3D" allow="fullscreen"></iframe>
+    <iframe class="sede3d" data-src="sede.html?embed=1&v=d736713f" title="Sede da XPrime em 3D" allow="fullscreen"></iframe>
     <div class="hint"><a href="sede.html" target="_blank" rel="noopener">Abrir a sede em tela cheia →</a><span>Arraste para girar, pinça ou roda para zoom, toque numa sala. Passeio e Tour guiado andam pelo corredor.</span></div>
   </section>
 
@@ -756,7 +749,7 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
       <h2>A sede da XPrime em <em>3D</em></h2>
       <p class="note" style="margin-top:4px">A Carteira XForex01 com os robôs e o supervisor, a Carteira XCrypto em incubação, a Sala de Mineração e o resto da empresa. O telão da XForex01 mostra o resultado do dia desta conta.</p>
     </div>
-    <iframe class="sede3d" id="sede3d" data-src="sede.html?embed=1&v=c0760eaa" title="Sede da XPrime em 3D" allow="fullscreen"></iframe>
+    <iframe class="sede3d" id="sede3d" data-src="sede.html?embed=1&v=d736713f" title="Sede da XPrime em 3D" allow="fullscreen"></iframe>
     <div class="hint"><a href="sede.html" target="_blank" rel="noopener" id="sede-cheia">Abrir a sede em tela cheia →</a><span>Arraste para girar, pinça ou roda para zoom, toque numa sala. Passeio e Tour guiado andam pelo corredor.</span></div>
   </section>
   <nav class="subabas" id="subabas" role="tablist" aria-label="Seções da carteira" hidden>
@@ -1793,7 +1786,7 @@ document.querySelectorAll(".abas [data-aba]").forEach(b=>b.addEventListener("cli
   try{history.replaceState(null,"","#"+b.dataset.aba)}catch(e){}carregar(b.dataset.aba)}));
 document.querySelector(".abas")?.addEventListener("keydown",e=>{if(e.key!=="ArrowRight"&&e.key!=="ArrowLeft")return;
   const bs=[...document.querySelectorAll(".abas [data-aba]")],i=bs.findIndex(b=>b.dataset.aba===ABA),n=bs[(i+(e.key==="ArrowRight"?1:bs.length-1))%bs.length];n.focus();n.click()});
-carregar(["xm","xcrypto","quem","mineracao"].includes(location.hash.slice(1))?location.hash.slice(1):"fundo");
+carregar(["xcrypto","quem","mineracao"].includes(location.hash.slice(1))?location.hash.slice(1):"xcrypto");
 document.getElementById("perfil-op").addEventListener("click",e=>{e.preventDefault();pagina("gestao");document.getElementById("subabas").scrollIntoView({behavior:"smooth"})});
 document.addEventListener("click",e=>{const a=e.target.closest("[data-ir]");if(!a)return;e.preventDefault();
   try{history.replaceState(null,"","#"+a.dataset.ir)}catch(_){}carregar(a.dataset.ir);window.scrollTo(0,0)});

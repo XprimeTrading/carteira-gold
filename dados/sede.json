@@ -1,84 +1,27 @@
 {
   "pregao": "2026-11-20",
-  "gerado": "20/11/2026 00:27",
+  "gerado": "20/11/2026 00:32",
   "mesas": {
-    "xgold": {
-      "r": -228.17,
-      "a": -196.86,
-      "n": 30,
-      "g": 2,
-      "p": 28,
-      "abertas": 5,
-      "pendentes": 0,
-      "saldo": 805.21,
-      "corretora": "HFM",
-      "dia": "2026-11-20",
-      "por_agente": {}
-    },
     "xcrypto": {
-      "r": 3.71,
-      "a": 49.98,
+      "r": 3.8,
+      "a": 52.02,
       "n": 11,
       "g": 6,
       "p": 5,
       "abertas": 1,
       "pendentes": 0,
-      "saldo": 3035.78,
+      "saldo": 3035.87,
       "corretora": "Bybit",
       "dia": "2026-11-20",
       "por_agente": {}
     }
   },
-  "robos_xgold": [
-    {
-      "nome": "XPrime001",
-      "abertas": 0
-    },
-    {
-      "nome": "XPrime002",
-      "abertas": 0
-    },
-    {
-      "nome": "XPrime003",
-      "abertas": 0
-    }
-  ],
+  "robos_xgold": [],
   "cripto": {
     "estrategias": "165 estratégias",
     "abertas": 1
   },
   "minerando": false,
   "ultima_estrategia": "11/11 19:52",
-  "divergencias": [
-    {
-      "salas": [
-        "xgold",
-        "dev"
-      ],
-      "tema": "XPrime003 ao vivo × backtest",
-      "falas": [
-        "XPrime003: ao vivo o fator de lucro está 0,50, no backtest era 2,30.",
-        "Pior que o backtest. O mercado mudou ou o robô quebrou?",
-        "Ao vivo são só 13 trades. O backtest tem 588. Amostra curta não decide.",
-        "Acerto ao vivo 38%, no teste 65%. Não concordo que seja só acaso.",
-        "Então não mexe no robô. Revisa de novo quando dobrar a amostra."
-      ],
-      "id": "01b99e18"
-    },
-    {
-      "salas": [
-        "xcrypto",
-        "xgold"
-      ],
-      "tema": "carteiras em direções opostas",
-      "falas": [
-        "XCrypto fechou +3,71 hoje e a XForex01 −228,17.",
-        "Dia ruim faz parte, se estiver dentro do risco.",
-        "Não concordo que seja só o dia. Quero ver se as perdas se repetem no mesmo horário.",
-        "É para isso que temos duas carteiras: uma segura a outra.",
-        "Combinado: se repetir amanhã, vai para o Comitê de Risco."
-      ],
-      "id": "53fded66"
-    }
-  ]
+  "divergencias": []
 }
