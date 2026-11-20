@@ -1,0 +1,104 @@
+[
+ {
+  "robo": "robo_x1",
+  "nome": "XPrime001",
+  "ref": {
+   "trades": 2165,
+   "por_mes": 63.7,
+   "acerto": 0.4471,
+   "payoff": 1.86,
+   "fl": 1.504,
+   "r_trade": 0.18,
+   "recorde_seq": 14,
+   "r_oos": 0.09,
+   "versao": "v1.08",
+   "obs": "ranges 1, 2, 3 e 5; o range 4 fica desligado"
+  },
+  "periodo_ref": "01/2024 a 10/2026",
+  "vivo": {
+   "trades": 59,
+   "acerto": 0.4067796610169492,
+   "payoff": 1.6583383749069247,
+   "fl": 1.1371463142218914,
+   "por_semana": 22.632012812594272,
+   "seq_atual": 3,
+   "seq_max": 9,
+   "desde": "2026-11-02 07:35:57"
+  },
+  "aberto": {
+   "posicoes": 0,
+   "sem_stop": 0,
+   "no_stop": 0,
+   "no_alvo": 0,
+   "flutuante": 0
+  }
+ },
+ {
+  "robo": "robo_x2",
+  "nome": "XPrime002",
+  "ref": {
+   "trades": 951,
+   "por_mes": 28.0,
+   "acerto": 0.47,
+   "payoff": 1.846,
+   "fl": 1.637,
+   "r_trade": 0.26,
+   "recorde_seq": 9,
+   "r_oos": 0.19,
+   "versao": "v1.32",
+   "obs": "setups 1 e 2 juntos"
+  },
+  "periodo_ref": "01/2024 a 10/2026",
+  "vivo": {
+   "trades": 23,
+   "acerto": 0.4782608695652174,
+   "payoff": 1.4798737949932856,
+   "fl": 1.3565509787438452,
+   "por_semana": 8.865744380335999,
+   "seq_atual": 0,
+   "seq_max": 6,
+   "desde": "2026-11-02 09:43:41"
+  },
+  "aberto": {
+   "posicoes": 2,
+   "sem_stop": 0,
+   "no_stop": -17.01,
+   "no_alvo": 34.53,
+   "flutuante": -8.31
+  }
+ },
+ {
+  "robo": "robo_x3",
+  "nome": "XPrime003",
+  "ref": {
+   "trades": 588,
+   "por_mes": 17.3,
+   "acerto": 0.6514,
+   "payoff": 1.229,
+   "fl": 2.296,
+   "r_trade": 0.43,
+   "recorde_seq": 7,
+   "r_oos": 0.23,
+   "versao": "v1.56.1",
+   "obs": "dois horários, filtro do dólar"
+  },
+  "periodo_ref": "01/2024 a 10/2026",
+  "vivo": {
+   "trades": 18,
+   "acerto": 0.3333333333333333,
+   "payoff": 0.9186368477103303,
+   "fl": 0.45931842385516514,
+   "por_semana": 6.939602836956541,
+   "seq_atual": 2,
+   "seq_max": 3,
+   "desde": "2026-11-02 09:48:11"
+  },
+  "aberto": {
+   "posicoes": 0,
+   "sem_stop": 0,
+   "no_stop": 0,
+   "no_alvo": 0,
+   "flutuante": 0
+  }
+ }
+]
