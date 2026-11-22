@@ -1,6 +1,10 @@
 {
   "pregao": "2026-11-21",
+<<<<<<< Updated upstream
   "gerado": "22/11/2026 08:47",
+=======
+  "gerado": "21/11/2026 09:27",
+>>>>>>> Stashed changes
   "mesas": {
     "xcrypto": {
       "r": 38.53,

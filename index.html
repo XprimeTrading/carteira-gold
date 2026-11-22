@@ -3,7 +3,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>XPrime Trading · XPrime Quant Strategy</title>
-<meta name="description" content="XPrime Trading: trading sistemático em cripto (XCrypto01, conta real) e ouro (XForex01, conta real até 12/11/2026 e demo depois). Risco em %, travas e resultado ao vivo.">
+<meta name="description" content="XPrime Trading: trading sistemático em cripto (XCrypto01, conta real) e ouro (XForex01). Risco em %, travas e resultado ao vivo.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23000'/%3E%3Cg transform='translate(5,4)'%3E%3Cline x1='20' y1='20' x2='80' y2='80' stroke='%23fff' stroke-width='15'/%3E%3Cline x1='20' y1='80' x2='66' y2='34' stroke='%23000' stroke-width='27'/%3E%3Cline x1='20' y1='80' x2='64' y2='36' stroke='%23FFB35C' stroke-width='15'/%3E%3Cpolygon points='56,14 86,14 86,44' fill='%23FFB35C'/%3E%3C/g%3E%3C/svg%3E">
 <link rel="apple-touch-icon" href="icone.png">
 <meta name="theme-color" content="#000000">
@@ -12,7 +12,7 @@
 <meta property="og:locale" content="pt_BR">
 <meta property="og:url" content="https://xprimetrading.github.io/carteira-gold/">
 <meta property="og:title" content="XPrime Trading · XPrime Quant Strategy">
-<meta property="og:description" content="XPrime Trading: trading sistemático em cripto (XCrypto01, conta real) e ouro (XForex01, conta real até 12/11/2026 e demo depois). Risco em %, travas e resultado ao vivo.">
+<meta property="og:description" content="XPrime Trading: trading sistemático em cripto (XCrypto01, conta real) e ouro (XForex01). Risco em %, travas e resultado ao vivo.">
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:ital@1&display=swap">
@@ -841,7 +841,7 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
       <dt>Robôs</dt><dd>3 (XPrime001, 002 e 003)</dd>
       <dt>Travas</dt><dd>US$ 50 ao dia (5%) · US$ 190 no total (19%)</dd>
       <dt>Base dos números</dt><dd>US$ 1.000</dd>
-      <dt>Conta</dt><dd>real de 01 a 12/11/2026; demo Exness desde 13/11/2026</dd>
+      <dt>Conta</dt><dd>XM e Exness, desde 01/11/2026</dd>
     </dl>
   </section>
   <!--mensal-->
@@ -1596,7 +1596,7 @@ function vitrine(V,est,dias,bt){
   VT_EXP=parseT(c.exportado).getTime();vtAtual();
   const set=(id,txt,cls)=>{const e=document.getElementById(id);if(!e)return;e.textContent=txt;if(cls!==undefined){e.classList.remove("pos","neg");if(cls)e.classList.add(cls)}};
   set("vt-ret",pctBR(V.resultado_pct),V.resultado>=0?"pos":"neg");
-  set("vt-ret-s",`${V.resultado>0?"+":""}${usdBR(V.resultado)} de resultado · ${ABA==="xm"?"desde 01/11/2026 (real até 12/11, demo depois)":`conta real desde ${diaBR(c.inicio)}/${String(c.inicio).slice(0,4)}`}`);
+  set("vt-ret-s",`${V.resultado>0?"+":""}${usdBR(V.resultado)} de resultado · ${ABA==="xm"?"desde 01/11/2026":`conta real desde ${diaBR(c.inicio)}/${String(c.inicio).slice(0,4)}`}`);
   const rh=+V.resultado_dia||0;
   set("vt-hoje",pctBR(rh/(ini+ap)),rh>0?"pos":rh<0?"neg":"");
   set("vt-hoje-s",`${rh>0?"+":""}${usdBR(rh)} no dia · ${V.fech_hoje||0} fechamento${V.fech_hoje===1?"":"s"}${+c.flutuante?" · com o aberto":""}`);
@@ -1775,7 +1775,7 @@ function carregar(id){
   Promise.all([...["conta","curva","dias","robos","estat"].map(pega),...["aderencia","backtest","mercado","fases"].map(n=>pega(n).catch(()=>null)),...extra])
     .then(([conta,curva,dias,robos,est,ader,bt,merc,fz,fech,ativos])=>{FASES=fz;BTF=bt?(Array.isArray(bt)?bt[0]:bt):null;if(ABA!==id)return;MERC=merc&&merc[0]||null;opcoesGrafico();
       document.getElementById("aviso").hidden=true;document.getElementById("conteudo").hidden=false;
-      {const sl=document.getElementById("vt-selo"),av=document.getElementById("vt-aviso");if(sl)sl.lastChild.textContent=id==="xm"?"Real até 12/11 · demo desde 13/11":"Conta real · ao vivo";if(av)av.textContent=id==="xm"?"De 01 a 12/11/2026 conta real (XM e Exness). Desde 13/11 os mesmos robôs operam numa conta demo da Exness, inclusive com operações manuais; o resultado entra pelo % de cada dia sobre o saldo de 12/11. Base de US$ 1.000. Meses positivos vêm do backtest (simulado). Não é recomendação de investimento; resultados passados não garantem resultados futuros.":"Números da conta real. Não é recomendação de investimento; resultados passados não garantem resultados futuros."}
+      {const sl=document.getElementById("vt-selo"),av=document.getElementById("vt-aviso");if(sl)sl.lastChild.textContent=id==="xm"?"Exness · ao vivo":"Conta real · ao vivo";if(av)av.textContent=id==="xm"?"Desde 13/11/2026 os robôs seguem em outra conta da Exness, inclusive com operações manuais; o resultado entra pelo % de cada dia sobre o saldo de 12/11. Base de US$ 1.000. Meses positivos vêm do backtest (simulado). Não é recomendação de investimento; resultados passados não garantem resultados futuros.":"Números da conta real. Não é recomendação de investimento; resultados passados não garantem resultados futuros."}
       document.getElementById("salas").hidden=id!=="xm";document.getElementById("sede").hidden=true;document.getElementById("perfil-op").hidden=true;document.getElementById("descr").hidden=id!=="xm";document.getElementById("mensal").hidden=id!=="xm";["vitrine","simular"].forEach(n=>document.getElementById(n).hidden=id!=="xm"&&id!=="xcrypto");["aporte","fases","faixa"].forEach(n=>document.getElementById(n).hidden=id!=="xm");document.getElementById("titulo-cart").textContent=id==="xm"?"Carteira XForex01":id==="xcrypto"?"Carteira XCrypto01":"Bybit · monitor";
       MOEDA=conta[0].moeda==="USC"?"USC ":"US$ ";
       DADOS={conta,curva,dias,robos};XT.V=situacao(conta,dias);XT.robos=robos;EST=est[0];

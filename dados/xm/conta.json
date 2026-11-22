@@ -2,7 +2,7 @@
  {
   "conta": null,
   "servidor": null,
-  "programa": "Real até 12/11, demo depois",
+  "programa": "Exness",
   "moeda": "USD",
   "alavancagem": "1:500",
   "inicio": "2026-11-01 19:42:46",
@@ -16,7 +16,11 @@
   "abertas": 0,
   "fechadas": 118,
   "ultimo_preco": "2026-11-20 23:28:02",
+<<<<<<< Updated upstream
   "exportado": "2026-11-22T11:51:45+00:00",
+=======
+  "exportado": "2026-11-22T11:57:16+00:00",
+>>>>>>> Stashed changes
   "modo": "conta",
   "casa": "da casa",
   "corretora": "Exness",
