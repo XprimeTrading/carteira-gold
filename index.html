@@ -842,7 +842,7 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
       <dt>Robôs</dt><dd>3 (XPrime001, 002 e 003)</dd>
       <dt>Travas</dt><dd>US$ 50 ao dia (5%) · US$ 190 no total (19%)</dd>
       <dt>Base dos números</dt><dd>US$ 1.000</dd>
-      <dt>Conta</dt><dd>real (XM e Exness) de 01 a 12/11/2026; demo Exness desde 13/11/2026 · só robôs</dd>
+      <dt>Conta</dt><dd>real (XM e Exness) de 01 a 12/11/2026; demo Exness desde 13/11; + 2ª Exness real desde 22/11 · só robôs</dd>
     </dl>
   </section>
   <!--mensal-->
@@ -1776,7 +1776,7 @@ function carregar(id){
   Promise.all([...["conta","curva","dias","robos","estat"].map(pega),...["aderencia","backtest","mercado","fases"].map(n=>pega(n).catch(()=>null)),...extra])
     .then(([conta,curva,dias,robos,est,ader,bt,merc,fz,fech,ativos])=>{FASES=fz;BTF=bt?(Array.isArray(bt)?bt[0]:bt):null;if(ABA!==id)return;MERC=merc&&merc[0]||null;opcoesGrafico();
       document.getElementById("aviso").hidden=true;document.getElementById("conteudo").hidden=false;
-      {const sl=document.getElementById("vt-selo"),av=document.getElementById("vt-aviso");if(sl)sl.lastChild.textContent=id==="xm"?"Exness · só robôs":"Conta real · ao vivo";if(av)av.textContent=id==="xm"?"Só o resultado dos robôs (pelo número de cada robô), sobre a base de US$ 1.000: conta real na XM e na Exness até 12/11/2026 e, desde 13/11, os mesmos robôs numa conta demo da Exness, ligada pelo % de cada dia. Operações feitas à mão ficam de fora. Meses positivos vêm do backtest (simulado). Não é recomendação de investimento; resultados passados não garantem resultados futuros.":"Números da conta real. Não é recomendação de investimento; resultados passados não garantem resultados futuros."}
+      {const sl=document.getElementById("vt-selo"),av=document.getElementById("vt-aviso");if(sl)sl.lastChild.textContent=id==="xm"?"Exness · só robôs":"Conta real · ao vivo";if(av)av.textContent=id==="xm"?"Só o resultado dos robôs (pelo número de cada robô), sobre a base de US$ 1.000: conta real na XM e na Exness até 12/11/2026; desde 13/11, os mesmos robôs numa conta demo da Exness, ligada pelo % de cada dia; e, desde 22/11, somado em dólar, o resultado dos robôs de uma segunda conta real da Exness. Operações feitas à mão ficam de fora. Meses positivos vêm do backtest (simulado). Não é recomendação de investimento; resultados passados não garantem resultados futuros.":"Números da conta real. Não é recomendação de investimento; resultados passados não garantem resultados futuros."}
       document.getElementById("salas").hidden=id!=="xm";document.getElementById("sede").hidden=true;document.getElementById("perfil-op").hidden=true;document.getElementById("descr").hidden=id!=="xm";document.getElementById("mensal").hidden=id!=="xm";["vitrine","simular"].forEach(n=>document.getElementById(n).hidden=id!=="xm"&&id!=="xcrypto");["aporte","fases","faixa"].forEach(n=>document.getElementById(n).hidden=id!=="xm");document.getElementById("titulo-cart").textContent=id==="xm"?"Carteira XForex01":id==="xcrypto"?"Carteira XCrypto01":"Bybit · monitor";
       MOEDA=conta[0].moeda==="USC"?"USC ":"US$ ";
       DADOS={conta,curva,dias,robos};XT.V=situacao(conta,dias);XT.robos=robos;EST=est[0];
