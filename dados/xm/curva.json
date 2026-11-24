@@ -1,10 +1,5 @@
 [
  {
-  "quando": "2026-11-01 20:23:23",
-  "saldo": 0.0,
-  "tipo": "saldo"
- },
- {
   "quando": "2026-11-02 07:35:57",
   "saldo": 0.0,
   "tipo": "saldo"
@@ -300,27 +295,7 @@
   "tipo": "saldo"
  },
  {
-  "quando": "2026-11-12 20:46:16",
-  "saldo": 0.0,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-11-12 22:27:03",
-  "saldo": 0.0,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-11-12 22:28:31",
-  "saldo": 0.0,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-11-12 22:36:09",
-  "saldo": 0.0,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-11-12 22:37:59",
+  "quando": "2026-11-13 02:05:00",
   "saldo": 0.0,
   "tipo": "saldo"
  },
@@ -330,7 +305,37 @@
   "tipo": "saldo"
  },
  {
-  "quando": "2026-11-13 07:42:55",
+  "quando": "2026-11-13 04:35:00",
+  "saldo": 0.0,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-11-13 05:05:00",
+  "saldo": 0.0,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-11-13 05:05:00",
+  "saldo": 0.0,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-11-13 07:30:00",
+  "saldo": 0.0,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-11-13 07:43:00",
+  "saldo": 0.0,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-11-13 07:43:00",
+  "saldo": 0.0,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-11-13 07:45:00",
   "saldo": 0.0,
   "tipo": "saldo"
  },
@@ -345,22 +350,47 @@
   "tipo": "saldo"
  },
  {
-  "quando": "2026-11-13 14:20:42",
+  "quando": "2026-11-13 14:15:48",
   "saldo": 0.0,
   "tipo": "saldo"
  },
  {
-  "quando": "2026-11-13 14:20:43",
+  "quando": "2026-11-13 14:15:48",
   "saldo": 0.0,
   "tipo": "saldo"
  },
  {
-  "quando": "2026-11-13 14:20:43",
+  "quando": "2026-11-13 15:51:00",
   "saldo": 0.0,
   "tipo": "saldo"
  },
  {
-  "quando": "2026-11-16 02:16:57",
+  "quando": "2026-11-16 01:45:00",
+  "saldo": 0.0,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-11-16 05:36:00",
+  "saldo": 0.0,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-11-16 07:47:00",
+  "saldo": 0.0,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-11-16 07:50:00",
+  "saldo": 0.0,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-11-16 07:50:00",
+  "saldo": 0.0,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-11-16 07:50:00",
   "saldo": 0.0,
   "tipo": "saldo"
  },
@@ -380,7 +410,7 @@
   "tipo": "saldo"
  },
  {
-  "quando": "2026-11-16 14:00:01",
+  "quando": "2026-11-16 14:00:00",
   "saldo": 0.0,
   "tipo": "saldo"
  },
@@ -390,7 +420,12 @@
   "tipo": "saldo"
  },
  {
-  "quando": "2026-11-17 03:43:13",
+  "quando": "2026-11-17 03:05:01",
+  "saldo": 0.0,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-11-17 03:05:02",
   "saldo": 0.0,
   "tipo": "saldo"
  },
@@ -400,17 +435,62 @@
   "tipo": "saldo"
  },
  {
-  "quando": "2026-11-17 05:06:58",
+  "quando": "2026-11-17 03:43:13",
   "saldo": 0.0,
   "tipo": "saldo"
  },
  {
-  "quando": "2026-11-17 06:39:57",
+  "quando": "2026-11-17 03:45:00",
+  "saldo": 0.0,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-11-17 03:45:00",
+  "saldo": 0.0,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-11-17 04:36:00",
+  "saldo": 0.0,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-11-17 05:06:57",
+  "saldo": 0.0,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-11-17 05:10:00",
+  "saldo": 0.0,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-11-17 05:10:01",
+  "saldo": 0.0,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-11-17 06:31:01",
+  "saldo": 0.0,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-11-17 06:39:56",
+  "saldo": 0.0,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-11-17 07:30:01",
   "saldo": 0.0,
   "tipo": "saldo"
  },
  {
   "quando": "2026-11-17 08:46:56",
+  "saldo": 0.0,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-11-17 10:01:00",
   "saldo": 0.0,
   "tipo": "saldo"
  },
@@ -425,12 +505,12 @@
   "tipo": "saldo"
  },
  {
-  "quando": "2026-11-17 10:01:02",
+  "quando": "2026-11-17 10:01:03",
   "saldo": 0.0,
   "tipo": "saldo"
  },
  {
-  "quando": "2026-11-17 10:01:03",
+  "quando": "2026-11-17 11:20:01",
   "saldo": 0.0,
   "tipo": "saldo"
  },
@@ -440,7 +520,32 @@
   "tipo": "saldo"
  },
  {
+  "quando": "2026-11-18 02:05:01",
+  "saldo": 0.0,
+  "tipo": "saldo"
+ },
+ {
   "quando": "2026-11-18 02:34:05",
+  "saldo": 0.0,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-11-18 04:05:00",
+  "saldo": 0.0,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-11-18 04:05:01",
+  "saldo": 0.0,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-11-18 07:06:01",
+  "saldo": 0.0,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-11-18 07:30:01",
   "saldo": 0.0,
   "tipo": "saldo"
  },
@@ -450,12 +555,22 @@
   "tipo": "saldo"
  },
  {
+  "quando": "2026-11-18 09:03:01",
+  "saldo": 0.0,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-11-18 09:40:00",
+  "saldo": 0.0,
+  "tipo": "saldo"
+ },
+ {
   "quando": "2026-11-18 09:53:11",
   "saldo": 0.0,
   "tipo": "saldo"
  },
  {
-  "quando": "2026-11-18 09:54:59",
+  "quando": "2026-11-18 09:54:58",
   "saldo": 0.0,
   "tipo": "saldo"
  },
@@ -465,7 +580,7 @@
   "tipo": "saldo"
  },
  {
-  "quando": "2026-11-18 09:59:40",
+  "quando": "2026-11-18 09:59:39",
   "saldo": 0.0,
   "tipo": "saldo"
  },
@@ -475,17 +590,37 @@
   "tipo": "saldo"
  },
  {
-  "quando": "2026-11-18 15:00:39",
+  "quando": "2026-11-18 15:00:00",
   "saldo": 0.0,
   "tipo": "saldo"
  },
  {
-  "quando": "2026-11-19 02:02:20",
+  "quando": "2026-11-18 15:03:53",
   "saldo": 0.0,
   "tipo": "saldo"
  },
  {
-  "quando": "2026-11-19 05:06:58",
+  "quando": "2026-11-19 01:31:02",
+  "saldo": 0.0,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-11-19 04:44:00",
+  "saldo": 0.0,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-11-19 04:45:00",
+  "saldo": 0.0,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-11-19 04:55:00",
+  "saldo": 0.0,
+  "tipo": "saldo"
+ },
+ {
+  "quando": "2026-11-19 05:06:57",
   "saldo": 0.0,
   "tipo": "saldo"
  },
@@ -495,343 +630,123 @@
   "tipo": "saldo"
  },
  {
+  "quando": "2026-11-19 07:33:00",
+  "saldo": 0.0,
+  "tipo": "saldo"
+ },
+ {
   "quando": "2026-11-19 13:59:47",
   "saldo": 0.0,
   "tipo": "saldo"
  },
  {
-  "quando": "2026-11-19 19:20:13",
+  "quando": "2026-11-19 22:57:18",
   "saldo": 0.0,
   "tipo": "saldo"
  },
  {
-  "quando": "2026-11-22 23:40:57",
+  "quando": "2026-11-20 04:05:00",
   "saldo": 0.0,
   "tipo": "saldo"
  },
  {
-  "quando": "2026-11-23 03:15:12",
+  "quando": "2026-11-20 04:05:01",
   "saldo": 0.0,
   "tipo": "saldo"
  },
  {
-  "quando": "2026-11-23 09:43:19",
+  "quando": "2026-11-20 05:12:00",
   "saldo": 0.0,
   "tipo": "saldo"
  },
  {
-  "quando": "2026-11-23 10:11:01",
+  "quando": "2026-11-20 06:37:00",
   "saldo": 0.0,
   "tipo": "saldo"
  },
  {
-  "quando": "2026-11-23 10:55:00",
+  "quando": "2026-11-20 07:30:00",
   "saldo": 0.0,
   "tipo": "saldo"
  },
  {
-  "quando": "2026-11-23 10:55:10",
+  "quando": "2026-11-20 07:47:47",
   "saldo": 0.0,
   "tipo": "saldo"
  },
  {
-  "quando": "2026-11-23 10:59:36",
+  "quando": "2026-11-20 07:53:03",
   "saldo": 0.0,
   "tipo": "saldo"
  },
  {
-  "quando": "2026-11-23 10:59:36",
+  "quando": "2026-11-20 08:08:21",
   "saldo": 0.0,
   "tipo": "saldo"
  },
  {
-  "quando": "2026-11-23 11:00:00",
+  "quando": "2026-11-20 15:00:01",
   "saldo": 0.0,
   "tipo": "saldo"
  },
  {
-  "quando": "2026-11-23 11:00:00",
+  "quando": "2026-11-20 15:50:55",
   "saldo": 0.0,
   "tipo": "saldo"
  },
  {
-  "quando": "2026-11-23 11:02:13",
+  "quando": "2026-11-20 23:28:01",
   "saldo": 0.0,
   "tipo": "saldo"
  },
  {
-  "quando": "2026-11-23 11:02:13",
+  "quando": "2026-11-20 23:28:02",
   "saldo": 0.0,
   "tipo": "saldo"
  },
  {
-  "quando": "2026-11-23 11:03:43",
+  "quando": "2026-11-23 07:30:00",
   "saldo": 0.0,
   "tipo": "saldo"
  },
  {
-  "quando": "2026-11-23 11:03:43",
+  "quando": "2026-11-23 09:15:00",
   "saldo": 0.0,
   "tipo": "saldo"
  },
  {
-  "quando": "2026-11-23 11:05:00",
+  "quando": "2026-11-23 09:15:01",
   "saldo": 0.0,
   "tipo": "saldo"
  },
  {
-  "quando": "2026-11-23 11:05:00",
+  "quando": "2026-11-23 09:49:16",
   "saldo": 0.0,
   "tipo": "saldo"
  },
  {
-  "quando": "2026-11-23 11:05:42",
+  "quando": "2026-11-23 15:00:01",
   "saldo": 0.0,
   "tipo": "saldo"
  },
  {
-  "quando": "2026-11-23 11:05:43",
+  "quando": "2026-11-23 15:43:52",
   "saldo": 0.0,
   "tipo": "saldo"
  },
  {
-  "quando": "2026-11-23 11:05:43",
+  "quando": "2026-11-23 15:43:53",
   "saldo": 0.0,
   "tipo": "saldo"
  },
  {
-  "quando": "2026-11-23 11:08:56",
+  "quando": "2026-11-23 15:43:55",
   "saldo": 0.0,
   "tipo": "saldo"
  },
  {
-  "quando": "2026-11-23 11:13:37",
-  "saldo": 0.0,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-11-23 12:00:00",
-  "saldo": 0.0,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-11-23 12:00:15",
-  "saldo": 0.0,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-11-23 12:08:19",
-  "saldo": 0.0,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-11-23 12:08:19",
-  "saldo": 0.0,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-11-23 12:08:39",
-  "saldo": 0.0,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-11-23 12:18:13",
-  "saldo": 0.0,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-11-23 15:33:16",
-  "saldo": 0.0,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-11-23 17:10:15",
-  "saldo": 0.0,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-11-23 17:10:15",
-  "saldo": 0.0,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-11-24 01:02:08",
-  "saldo": 0.0,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-11-24 01:02:08",
-  "saldo": 0.0,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-11-24 01:55:03",
-  "saldo": 0.0,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-11-24 08:05:04",
-  "saldo": 0.0,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-11-24 11:55:36",
-  "saldo": 0.0,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-11-24 11:56:09",
-  "saldo": 0.0,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-11-24 11:56:22",
-  "saldo": 0.0,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-11-24 12:00:00",
-  "saldo": 0.0,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-11-24 12:45:00",
-  "saldo": 0.0,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-11-24 16:36:01",
-  "saldo": 0.0,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-11-24 16:36:02",
-  "saldo": 0.0,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-11-24 16:36:02",
-  "saldo": 0.0,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-11-24 16:36:02",
-  "saldo": 0.0,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-11-24 16:36:02",
-  "saldo": 0.0,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-11-24 16:36:03",
-  "saldo": 0.0,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-11-24 16:36:03",
-  "saldo": 0.0,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-11-24 16:36:03",
-  "saldo": 0.0,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-11-24 16:36:03",
-  "saldo": 0.0,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-11-24 16:36:03",
-  "saldo": 0.0,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-11-24 16:36:03",
-  "saldo": 0.0,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-11-24 16:36:03",
-  "saldo": 0.0,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-11-24 16:36:03",
-  "saldo": 0.0,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-11-24 16:36:03",
-  "saldo": 0.0,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-11-24 16:36:03",
-  "saldo": 0.0,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-11-24 16:36:03",
-  "saldo": 0.0,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-11-24 16:36:03",
-  "saldo": 0.0,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-11-24 16:36:04",
-  "saldo": 0.0,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-11-24 16:36:04",
-  "saldo": 0.0,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-11-24 16:36:04",
-  "saldo": 0.0,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-11-24 16:36:04",
-  "saldo": 0.0,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-11-24 16:36:06",
-  "saldo": 0.0,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-11-24 16:36:06",
-  "saldo": 0.0,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-11-24 16:36:06",
-  "saldo": 0.0,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-11-24 18:02:46",
-  "saldo": 0.0,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-11-24 18:02:46",
-  "saldo": 0.0,
-  "tipo": "saldo"
- },
- {
-  "quando": "2026-11-24 18:24:40",
-  "saldo": 1462.86,
+  "quando": "2026-11-23 15:43:55",
+  "saldo": 1015.14,
   "tipo": "patrimonio"
  }
 ]

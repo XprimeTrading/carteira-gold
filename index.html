@@ -3,7 +3,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>XPrime Trading · XPrime Quant Strategy</title>
-<meta name="description" content="XPrime Trading: trading sistemático em cripto (XCrypto01) e ouro (XForex01), em contas reais. Risco em %, travas e resultado ao vivo.">
+<meta name="description" content="XPrime Quant Strategy: trading sistemático em cripto (XCrypto01, conta real) e ouro (XForex01, conta real até 12/11/2026 e demo Exness depois, só robôs). Risco em %, travas e resultado ao vivo.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%23000'/%3E%3Cg transform='translate(5,4)'%3E%3Cline x1='20' y1='20' x2='80' y2='80' stroke='%23fff' stroke-width='15'/%3E%3Cline x1='20' y1='80' x2='66' y2='34' stroke='%23000' stroke-width='27'/%3E%3Cline x1='20' y1='80' x2='64' y2='36' stroke='%23FFB35C' stroke-width='15'/%3E%3Cpolygon points='56,14 86,14 86,44' fill='%23FFB35C'/%3E%3C/g%3E%3C/svg%3E">
 <link rel="apple-touch-icon" href="icone.png">
 <meta name="theme-color" content="#000000">
@@ -12,7 +12,7 @@
 <meta property="og:locale" content="pt_BR">
 <meta property="og:url" content="https://xprimetrading.github.io/carteira-gold/">
 <meta property="og:title" content="XPrime Trading · XPrime Quant Strategy">
-<meta property="og:description" content="XPrime Trading: trading sistemático em cripto (XCrypto01) e ouro (XForex01), em contas reais. Risco em %, travas e resultado ao vivo.">
+<meta property="og:description" content="XPrime Quant Strategy: trading sistemático em cripto (XCrypto01, conta real) e ouro (XForex01, conta real até 12/11/2026 e demo Exness depois, só robôs). Risco em %, travas e resultado ao vivo.">
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:ital@1&display=swap">
@@ -416,6 +416,7 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
   </header>
 
   <nav class="abas" role="tablist" aria-label="Contas da carteira">
+    <button type="button" role="tab" id="aba-fundo" data-aba="fundo" aria-selected="true">XPrime Quant Strategy</button>
     <button type="button" role="tab" id="aba-xm" data-aba="xm" aria-selected="false">Carteira XForex01</button>
     <button type="button" role="tab" id="aba-xcrypto" data-aba="xcrypto" aria-selected="false">Carteira XCrypto01</button>
     <button type="button" role="tab" id="aba-quem" data-aba="quem" aria-selected="false" class="dir">Quem somos</button>
@@ -439,7 +440,7 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
 
   <section class="bloco ouro" id="fd-unif" aria-label="Resultado da estratégia ao vivo">
     <div class="cab-mensal"><div><p class="sec"><b>Ao vivo</b></p><h2>Resultado da <em>estratégia</em></h2>
-      <p class="note" id="fd-u-sub">Contas reais, lidas direto da corretora. O % de cada carteira é sobre os US$ 4.000 da estratégia; o patrimônio é o saldo de cada conta agora.</p></div>
+      <p class="note" id="fd-u-sub">Lidas direto da corretora: a XCrypto01 em conta real; a XForex01 em conta real até 12/11/2026 e numa demo da Exness desde 13/11, só com os robôs. O % de cada carteira é sobre os US$ 4.000 da estratégia; o patrimônio é o saldo de cada conta agora.</p></div>
 </div>
     <div class="vt-hero">
       <div class="vt-k saldo"><p class="k">Saldo total agora</p><p class="v" id="fd-u-saldo">—</p><p class="s">as duas contas somadas</p></div>
@@ -841,7 +842,7 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
       <dt>Robôs</dt><dd>3 (XPrime001, 002 e 003)</dd>
       <dt>Travas</dt><dd>US$ 50 ao dia (5%) · US$ 190 no total (19%)</dd>
       <dt>Base dos números</dt><dd>US$ 1.000</dd>
-      <dt>Conta</dt><dd>real: XM e Exness desde 01/11/2026, HFM desde 13/11/2026 (só robôs)</dd>
+      <dt>Conta</dt><dd>real (XM e Exness) de 01 a 12/11/2026; demo Exness desde 13/11/2026 · só robôs</dd>
     </dl>
   </section>
   <!--mensal-->
@@ -1775,7 +1776,7 @@ function carregar(id){
   Promise.all([...["conta","curva","dias","robos","estat"].map(pega),...["aderencia","backtest","mercado","fases"].map(n=>pega(n).catch(()=>null)),...extra])
     .then(([conta,curva,dias,robos,est,ader,bt,merc,fz,fech,ativos])=>{FASES=fz;BTF=bt?(Array.isArray(bt)?bt[0]:bt):null;if(ABA!==id)return;MERC=merc&&merc[0]||null;opcoesGrafico();
       document.getElementById("aviso").hidden=true;document.getElementById("conteudo").hidden=false;
-      {const sl=document.getElementById("vt-selo"),av=document.getElementById("vt-aviso");if(sl)sl.lastChild.textContent=id==="xm"?"Conta real · só robôs":"Conta real · ao vivo";if(av)av.textContent=id==="xm"?"Conta real (XM, Exness e, desde 13/11/2026, HFM) sobre a base de US$ 1.000, só com o resultado dos robôs: operações feitas à mão ficam de fora, e depósitos não contam como resultado. Meses positivos vêm do backtest (simulado). Não é recomendação de investimento; resultados passados não garantem resultados futuros.":"Números da conta real. Não é recomendação de investimento; resultados passados não garantem resultados futuros."}
+      {const sl=document.getElementById("vt-selo"),av=document.getElementById("vt-aviso");if(sl)sl.lastChild.textContent=id==="xm"?"Exness · só robôs":"Conta real · ao vivo";if(av)av.textContent=id==="xm"?"Só o resultado dos robôs (pelo número de cada robô), sobre a base de US$ 1.000: conta real na XM e na Exness até 12/11/2026 e, desde 13/11, os mesmos robôs numa conta demo da Exness, ligada pelo % de cada dia. Operações feitas à mão ficam de fora. Meses positivos vêm do backtest (simulado). Não é recomendação de investimento; resultados passados não garantem resultados futuros.":"Números da conta real. Não é recomendação de investimento; resultados passados não garantem resultados futuros."}
       document.getElementById("salas").hidden=id!=="xm";document.getElementById("sede").hidden=true;document.getElementById("perfil-op").hidden=true;document.getElementById("descr").hidden=id!=="xm";document.getElementById("mensal").hidden=id!=="xm";["vitrine","simular"].forEach(n=>document.getElementById(n).hidden=id!=="xm"&&id!=="xcrypto");["aporte","fases","faixa"].forEach(n=>document.getElementById(n).hidden=id!=="xm");document.getElementById("titulo-cart").textContent=id==="xm"?"Carteira XForex01":id==="xcrypto"?"Carteira XCrypto01":"Bybit · monitor";
       MOEDA=conta[0].moeda==="USC"?"USC ":"US$ ";
       DADOS={conta,curva,dias,robos};XT.V=situacao(conta,dias);XT.robos=robos;EST=est[0];
@@ -1787,7 +1788,7 @@ document.querySelectorAll(".abas [data-aba]").forEach(b=>b.addEventListener("cli
   try{history.replaceState(null,"","#"+b.dataset.aba)}catch(e){}carregar(b.dataset.aba)}));
 document.querySelector(".abas")?.addEventListener("keydown",e=>{if(e.key!=="ArrowRight"&&e.key!=="ArrowLeft")return;
   const bs=[...document.querySelectorAll(".abas [data-aba]")],i=bs.findIndex(b=>b.dataset.aba===ABA),n=bs[(i+(e.key==="ArrowRight"?1:bs.length-1))%bs.length];n.focus();n.click()});
-carregar(["xm","xcrypto","quem","mineracao"].includes(location.hash.slice(1))?location.hash.slice(1):"xcrypto");
+carregar(["xm","xcrypto","quem","mineracao"].includes(location.hash.slice(1))?location.hash.slice(1):"fundo");
 document.getElementById("perfil-op").addEventListener("click",e=>{e.preventDefault();pagina("gestao");document.getElementById("subabas").scrollIntoView({behavior:"smooth"})});
 document.addEventListener("click",e=>{const a=e.target.closest("[data-ir]");if(!a)return;e.preventDefault();
   try{history.replaceState(null,"","#"+a.dataset.ir)}catch(_){}carregar(a.dataset.ir);window.scrollTo(0,0)});
