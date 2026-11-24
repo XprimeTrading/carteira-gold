@@ -4,38 +4,38 @@
   "nome": "XPrime001",
   "magic": null,
   "status": "ativo",
-  "resultado": 29.47,
-  "fechadas": 59,
+  "resultado": 97.61,
+  "fechadas": 35,
   "hoje": 0,
-  "ganhos": 24,
+  "ganhos": 17,
   "abertas": 0,
   "flutuante": 0,
-  "ultima": "2026-11-20 08:08:21"
+  "ultima": "2026-11-12 10:55:14"
  },
  {
   "robo": "robo_x2",
   "nome": "XPrime002",
   "magic": null,
   "status": "ativo",
-  "resultado": 38.27,
-  "fechadas": 25,
+  "resultado": 22.02,
+  "fechadas": 13,
   "hoje": 0,
-  "ganhos": 13,
+  "ganhos": 7,
   "abertas": 0,
   "flutuante": 0,
-  "ultima": "2026-11-20 23:28:02"
+  "ultima": "2026-11-12 15:04:18"
  },
  {
   "robo": "robo_x3",
   "nome": "XPrime003",
   "magic": null,
   "status": "ativo",
-  "resultado": -48.55,
-  "fechadas": 19,
+  "resultado": -27.43,
+  "fechadas": 13,
   "hoje": 0,
-  "ganhos": 7,
+  "ganhos": 5,
   "abertas": 0,
   "flutuante": 0,
-  "ultima": "2026-11-20 15:50:55"
+  "ultima": "2026-11-12 15:18:23"
  }
 ]
