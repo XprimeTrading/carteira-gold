@@ -1,16 +1,16 @@
 {
   "pregao": "2026-11-24",
-  "gerado": "24/11/2026 17:22",
+  "gerado": "24/11/2026 17:27",
   "mesas": {
     "xcrypto": {
-      "r": -10.97,
-      "a": 10.31,
+      "r": -11.01,
+      "a": 9.87,
       "n": 21,
       "g": 5,
       "p": 16,
       "abertas": 1,
       "pendentes": 0,
-      "saldo": 3485.75,
+      "saldo": 3485.71,
       "corretora": "Bybit",
       "dia": "2026-11-24",
       "por_agente": {}
@@ -21,7 +21,7 @@
     "estrategias": "165 estratégias",
     "abertas": 1
   },
-  "minerando": true,
+  "minerando": false,
   "ultima_estrategia": "24/11 16:56",
   "divergencias": []
 }
