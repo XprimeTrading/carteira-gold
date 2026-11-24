@@ -1,10 +1,10 @@
 {
   "pregao": "2026-11-24",
-  "gerado": "24/11/2026 16:10",
+  "gerado": "24/11/2026 16:12",
   "mesas": {
     "xcrypto": {
-      "r": -7.34,
-      "a": 8.5,
+      "r": -7.35,
+      "a": 7.98,
       "n": 15,
       "g": 2,
       "p": 13,
@@ -22,6 +22,6 @@
     "abertas": 1
   },
   "minerando": true,
-  "ultima_estrategia": "24/11 16:09",
+  "ultima_estrategia": "24/11 16:11",
   "divergencias": []
 }
