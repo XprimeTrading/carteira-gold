@@ -29,13 +29,13 @@
   "robo": "robo_x3",
   "nome": "XPrime003",
   "magic": null,
-  "status": "ativo",
+  "status": "operando",
   "resultado": -39.68,
   "fechadas": 24,
   "hoje": 2.4,
   "ganhos": 12,
-  "abertas": 0,
-  "flutuante": 0,
-  "ultima": "2026-11-25 10:34:27"
+  "abertas": 1,
+  "flutuante": 1.31,
+  "ultima": "2026-11-25 15:00:00"
  }
 ]
