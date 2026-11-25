@@ -1602,6 +1602,10 @@ function vitrine(V,est,dias,bt){
   set("vt-hoje",pctBR(rh/(ini+ap)),rh>0?"pos":rh<0?"neg":"");
   set("vt-hoje-s",`${rh>0?"+":""}${usdBR(rh)} no dia · ${V.fech_hoje||0} fechamento${V.fech_hoje===1?"":"s"}${+c.flutuante?" · com o aberto":""}`);
   set("vt-saldo",usdBR(+c.patrimonio));set("vt-saldo-s",`começou com ${usdBR(ini)}${ap?` · ${ap>0?"+":"−"}${usdBR(Math.abs(ap))} de ${ap>0?"aporte":"saque"}`:""}${+c.flutuante?` · ${usdBR(+c.flutuante)} em aberto`:""}`);
+  // 25/11/2026 (pedido do usuário): na XForex01 o saldo é o real da Exness + HFM somado, como se fosse uma conta só
+  if(ABA==="xm")fetch(`dados/saldos.json?t=${Date.now()}`,{cache:"no-store"}).then(r=>r.ok?r.json():null).then(R=>{
+    if(!R||!(R.hfm||R.exness)||ABA!=="xm")return;const v=(k,c)=>R[k]?+R[k][c]:0,pat=v("hfm","patrimonio")+v("exness","patrimonio"),sal=v("hfm","saldo")+v("exness","saldo"),ab=pat-sal;
+    set("vt-saldo",usdBR(pat));set("vt-saldo-s",`saldo real Exness + HFM, como uma conta só${Math.abs(ab)>=.01?` · ${ab>0?"+":"−"}${usdBR(Math.abs(ab))} em aberto`:""}`)}).catch(()=>{});
   if(S){set("vt-queda",pctBR(S.queda_pct));set("vt-queda-s",`${usdBR(S.queda)} do pico ao fundo`);
     const pd=S.pior_dia,md=S.melhor_dia,e=document.getElementById("vt-dia");
     if(pd&&md){e.innerHTML="";const a=el("span","neg",pctBR(pd.v/ini,1)),b=el("span","pos",pctBR(md.v/ini,1));e.append(a,el("span",null," / "),b);
