@@ -440,10 +440,10 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
 
   <section class="bloco ouro" id="fd-unif" aria-label="Resultado da estratégia ao vivo">
     <div class="cab-mensal"><div><p class="sec"><b>Ao vivo</b></p><h2>Resultado da <em>estratégia</em></h2>
-      <p class="note" id="fd-u-sub">Lidas direto da corretora: a XCrypto01 em conta real; a XForex01 em conta real até 12/11/2026 e numa demo da Exness desde 13/11, só com os robôs. O % de cada carteira é sobre os US$ 4.000 da estratégia; o patrimônio é o saldo de cada conta agora.</p></div>
+      <p class="note" id="fd-u-sub">Lidas direto da corretora: a XCrypto01 em conta real; a XForex01 em conta real até 12/11/2026, numa demo da Exness desde 13/11 (só robôs), mais a 2ª Exness real desde 22/11 (só robôs) e a HFM real desde 25/11. O saldo total é o saldo real de todas as contas agora. O % de cada carteira é sobre os US$ 4.000 da estratégia; o patrimônio é o saldo de cada conta agora.</p></div>
 </div>
     <div class="vt-hero">
-      <div class="vt-k saldo"><p class="k">Saldo total agora</p><p class="v" id="fd-u-saldo">—</p><p class="s">as duas contas somadas</p></div>
+      <div class="vt-k saldo"><p class="k">Saldo total agora</p><p class="v" id="fd-u-saldo">—</p><p class="s" id="fd-u-saldo-s">saldo real das contas: HFM + Exness + Bybit</p></div>
       <div class="vt-k"><p class="k">Resultado de hoje</p><p class="v" id="fd-u-hoje">—</p><p class="s" id="fd-u-hoje-s">—</p></div>
       <div class="vt-k"><p class="k">Retorno sobre US$ 4.000</p><p class="v" id="fd-u-pct">—</p><p class="s" id="fd-u-usd">—</p></div>
     </div>
@@ -1733,7 +1733,10 @@ function fundoVivo(){  // resultado unificado do total (12/11/2026): US$ das dua
     const fx=real(df)+fl(cf),cr=real(dc)+fl(cc),tot=fx+cr,cor=(el,v)=>{el.classList.remove("pos","neg");if(v)el.classList.add(v>0?"pos":"neg")};
     const $=id=>document.getElementById(id),put=(id,txt,v)=>{const e=$(id);e.textContent=txt;if(v!==undefined)cor(e,v)};
     put("fd-u-pct",pctBR(tot/BASE),tot);const pat=c=>c?(+c.patrimonio||0):0,pf=pat(cf),pc=pat(cc);put("fd-u-usd",`${tot>=0?"+":"−"}${usdBR(Math.abs(tot))} de resultado`);
-    put("fd-u-saldo",usdBR(pf+pc));put("fd-u-fx",usdBR(pf));put("fd-u-cr",cc?usdBR(pc):"—");
+    put("fd-u-saldo",usdBR(pf+pc));put("fd-u-fx",usdBR(pf));
+    // 25/11/2026 (pedido do usuário): o saldo total é o REAL das contas (HFM + Exness + Bybit, dados/saldos.json)
+    pega("saldos").then(S=>{if(!S||!(+S.total))return;put("fd-u-saldo",usdBR(+S.total));
+      const p=k=>S[k]?usdBR(+S[k].patrimonio):null;put("fd-u-saldo-s","saldo real: "+[["HFM","hfm"],["Exness","exness"],["Bybit","bybit"]].filter(([,k])=>S[k]).map(([n,k])=>n+" "+p(k)).join(" + "))});put("fd-u-cr",cc?usdBR(pc):"—");
     const linha=(id,v,txt)=>{const e=$(id);e.textContent="";const b=el("b",v>0?"pos":v<0?"neg":"",pctBR(v/BASE));e.append(b,document.createTextNode(" do total · "+txt))};
     linha("fd-u-fx-s",fx,`${fx>=0?"+":"−"}${usdBR(Math.abs(fx))} desde 01/11`);
     if(cc)linha("fd-u-cr-s",cr,`${cr>=0?"+":"−"}${usdBR(Math.abs(cr))} desde 12/11`);else put("fd-u-cr-s","conta real desde 12/11 · sem operações fechadas ainda");
