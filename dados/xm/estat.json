@@ -7,24 +7,24 @@
     "nome": "XForex01",
     "tipo": "conta",
     "inicio": "2026-11-02 07:35:57",
-    "fim": "2026-11-25 15:23:43",
+    "fim": "2026-11-25 15:28:31",
     "dias": 23.3,
-    "resultado": 19.61,
-    "pct": 0.01961,
-    "fechamentos": 187,
+    "resultado": 19.01,
+    "pct": 0.01901,
+    "fechamentos": 188,
     "ganhos_n": 90,
-    "acerto": 0.48128342245989303,
+    "acerto": 0.4787234042553192,
     "soma_ganhos": 457.13,
-    "soma_perdas": -437.52,
-    "fl": 1.0448208081916255,
-    "payoff": 1.0680390483736617,
-    "por_fech": 0.1048663101604278,
+    "soma_perdas": -438.12,
+    "fl": 1.0433899388295444,
+    "payoff": 1.078169603457196,
+    "por_fech": 0.10111702127659573,
     "maior_ganho": 29.75,
     "maior_perda": -15.53,
     "queda": -112.16,
     "queda_pct": -0.1026955757398183,
     "taxas": 1.43,
-    "media_dia": 0.8406330995311625,
+    "media_dia": 0.8147670246045322,
     "dias_operados": 18,
     "dias_lucro": 7,
     "melhor_dia": {
@@ -783,6 +783,10 @@
      {
       "quando": "2026-11-25 15:23:43",
       "r": 19.61
+     },
+     {
+      "quando": "2026-11-25 15:28:31",
+      "r": 19.01
      }
     ],
     "barras": [
@@ -873,8 +877,8 @@
      },
      {
       "dia": "2026-11-25",
-      "v": -7.67,
-      "n": 13
+      "v": -8.27,
+      "n": 14
      }
     ]
    },
@@ -900,7 +904,7 @@
     "queda": -80.41,
     "queda_pct": -0.0728397633907947,
     "taxas": 0.83,
-    "media_dia": 1.1231304032491831,
+    "media_dia": 1.1229298287553269,
     "dias_operados": 18,
     "dias_lucro": 8,
     "melhor_dia": {
@@ -1296,7 +1300,7 @@
     "queda": -54.9,
     "queda_pct": -0.052889154351553926,
     "taxas": 0.23,
-    "media_dia": 1.5895725026871468,
+    "media_dia": 1.5892875451657877,
     "dias_operados": 16,
     "dias_lucro": 8,
     "melhor_dia": {
@@ -1546,7 +1550,7 @@
     "queda": -50.76,
     "queda_pct": -0.05076,
     "taxas": 0.37,
-    "media_dia": -1.6599365733875124,
+    "media_dia": -1.6596389619133953,
     "dias_operados": 13,
     "dias_lucro": 5,
     "melhor_dia": {
