@@ -448,7 +448,7 @@ button:focus-visible,.tag:focus-visible,.sala:focus-visible{outline:2px solid va
       <div class="vt-k"><p class="k">Retorno sobre US$ 4.000</p><p class="v" id="fd-u-pct">—</p><p class="s" id="fd-u-usd">—</p></div>
     </div>
     <div class="vt-kpis fd-k2">
-      <a class="vt-k fd-lk" href="#xm" data-ir="xm"><p class="k">XForex01 · ouro · saldo</p><p class="v" id="fd-u-fx">—</p><p class="s" id="fd-u-fx-s">—</p></a>
+      <a class="vt-k fd-lk" href="#xm" data-ir="xm"><p class="k">XForex01 · saldo real Exness + HFM</p><p class="v" id="fd-u-fx">—</p><p class="s" id="fd-u-fx-s">—</p></a>
       <a class="vt-k fd-lk" href="#xcrypto" data-ir="xcrypto"><p class="k">XCrypto01 · cripto · saldo</p><p class="v" id="fd-u-cr">—</p><p class="s" id="fd-u-cr-s">—</p></a>
     </div>
     <div class="fd-gbox"><div id="fd-u-g" class="fd-ug"></div>
@@ -1736,7 +1736,9 @@ function fundoVivo(){  // resultado unificado do total (12/11/2026): US$ das dua
     put("fd-u-saldo",usdBR(pf+pc));put("fd-u-fx",usdBR(pf));
     // 25/11/2026 (pedido do usuário): o saldo total é o REAL das contas (HFM + Exness + Bybit, dados/saldos.json)
     pega("saldos").then(S=>{if(!S||!(+S.total))return;put("fd-u-saldo",usdBR(+S.total));
-      const p=k=>S[k]?usdBR(+S[k].patrimonio):null;put("fd-u-saldo-s","saldo real: "+[["HFM","hfm"],["Exness","exness"],["Bybit","bybit"]].filter(([,k])=>S[k]).map(([n,k])=>n+" "+p(k)).join(" + "))});put("fd-u-cr",cc?usdBR(pc):"—");
+      const p=k=>S[k]?usdBR(+S[k].patrimonio):null,v=k=>S[k]?+S[k].patrimonio:0;
+      if(S.hfm||S.exness)put("fd-u-fx",usdBR(v("hfm")+v("exness")));if(S.bybit)put("fd-u-cr",usdBR(v("bybit")));  /* XForex01 = Exness + HFM reais */
+      put("fd-u-saldo-s","saldo real: "+[["HFM","hfm"],["Exness","exness"],["Bybit","bybit"]].filter(([,k])=>S[k]).map(([n,k])=>n+" "+p(k)).join(" + "))});put("fd-u-cr",cc?usdBR(pc):"—");
     const linha=(id,v,txt)=>{const e=$(id);e.textContent="";const b=el("b",v>0?"pos":v<0?"neg":"",pctBR(v/BASE));e.append(b,document.createTextNode(" do total · "+txt))};
     linha("fd-u-fx-s",fx,`${fx>=0?"+":"−"}${usdBR(Math.abs(fx))} desde 01/11`);
     if(cc)linha("fd-u-cr-s",cr,`${cr>=0?"+":"−"}${usdBR(Math.abs(cr))} desde 12/11`);else put("fd-u-cr-s","conta real desde 12/11 · sem operações fechadas ainda");
