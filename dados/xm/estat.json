@@ -7,24 +7,24 @@
     "nome": "XForex01",
     "tipo": "conta",
     "inicio": "2026-11-02 07:35:57",
-    "fim": "2026-11-26 12:24:00",
+    "fim": "2026-11-26 14:08:11",
     "dias": 24.3,
     "resultado": 15.32,
     "pct": 0.015320000000000007,
-    "fechamentos": 281,
+    "fechamentos": 282,
     "ganhos_n": 117,
-    "acerto": 0.41637010676156583,
+    "acerto": 0.4148936170212766,
     "soma_ganhos": 550.17,
     "soma_perdas": -534.85,
     "fl": 1.028643544919136,
     "payoff": 1.3891083768993464,
-    "por_fech": 0.05451957295373668,
+    "por_fech": 0.0543262411347518,
     "maior_ganho": 29.75,
     "maior_perda": -15.53,
     "queda": -151.67,
     "queda_pct": -0.1388715939056548,
     "taxas": 1.43,
-    "media_dia": 0.6312495465858693,
+    "media_dia": 0.6311412123113868,
     "dias_operados": 19,
     "dias_lucro": 7,
     "melhor_dia": {
@@ -1159,6 +1159,10 @@
      {
       "quando": "2026-11-26 12:24:00",
       "r": 15.32
+     },
+     {
+      "quando": "2026-11-26 14:08:11",
+      "r": 15.32
      }
     ],
     "barras": [
@@ -1255,7 +1259,7 @@
      {
       "dia": "2026-11-26",
       "v": -11.0,
-      "n": 5
+      "n": 6
      }
     ]
    },
@@ -1281,7 +1285,7 @@
     "queda": -88.87,
     "queda_pct": -0.08050329278124518,
     "taxas": 0.83,
-    "media_dia": 0.6205364341764492,
+    "media_dia": 0.6204299384732047,
     "dias_operados": 19,
     "dias_lucro": 8,
     "melhor_dia": {
@@ -1698,7 +1702,7 @@
     "queda": -54.9,
     "queda_pct": -0.052889154351553926,
     "taxas": 0.23,
-    "media_dia": 1.5276696376283474,
+    "media_dia": 1.5274064992367078,
     "dias_operados": 16,
     "dias_lucro": 8,
     "melhor_dia": {
@@ -1948,7 +1952,7 @@
     "queda": -50.76,
     "queda_pct": -0.05076,
     "taxas": 0.37,
-    "media_dia": -1.5952851587172145,
+    "media_dia": -1.5950103381612075,
     "dias_operados": 13,
     "dias_lucro": 5,
     "melhor_dia": {
