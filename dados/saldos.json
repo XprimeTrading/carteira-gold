@@ -1,17 +1,17 @@
 {
- "exportado": "2026-11-26T00:04:22+00:00",
+ "exportado": "2026-11-26T00:10:25+00:00",
  "hfm": {
   "saldo": 1372.32,
-  "patrimonio": 1459.56
+  "patrimonio": 1459.46
  },
  "exness": {
   "saldo": 1227.28,
   "patrimonio": 1227.28
  },
  "bybit": {
-  "saldo": 3479.04,
-  "patrimonio": 3478.83,
-  "exportado": "2026-11-26T00:04:22+00:00"
+  "saldo": 3479.05,
+  "patrimonio": 3477.17,
+  "exportado": "2026-11-26T00:10:25+00:00"
  },
- "total": 6165.67
+ "total": 6163.91
 }
