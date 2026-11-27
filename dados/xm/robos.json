@@ -3,14 +3,14 @@
   "robo": "robo_x1",
   "nome": "XPrime001",
   "magic": null,
-  "status": "operando",
-  "resultado": 3.68,
-  "fechadas": 73,
-  "hoje": -11.38,
-  "ganhos": 27,
-  "abertas": 2,
-  "flutuante": 21.03,
-  "ultima": "2026-11-27 03:30:00"
+  "status": "ativo",
+  "resultado": 29.09,
+  "fechadas": 75,
+  "hoje": 14.03,
+  "ganhos": 29,
+  "abertas": 0,
+  "flutuante": 0,
+  "ultima": "2026-11-27 04:05:31"
  },
  {
   "robo": "robo_x2",
