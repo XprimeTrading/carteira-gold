@@ -1,5 +1,5 @@
 {
- "exportado": "2026-11-27T17:10:26+00:00",
+ "exportado": "2026-11-27T17:16:25+00:00",
  "hfm": {
   "saldo": 1470.65,
   "patrimonio": 1470.65
@@ -9,9 +9,9 @@
   "patrimonio": 1235.52
  },
  "bybit": {
-  "saldo": 3466.75,
-  "patrimonio": 3465.32,
-  "exportado": "2026-11-27T17:10:26+00:00"
+  "saldo": 3466.93,
+  "patrimonio": 3463.74,
+  "exportado": "2026-11-27T17:16:25+00:00"
  },
- "total": 6171.49
+ "total": 6169.91
 }
