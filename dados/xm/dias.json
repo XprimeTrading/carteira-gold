@@ -206,37 +206,37 @@
  {
   "dia": "2026-11-25",
   "saldo_inicio": 1027.29,
-  "realizado": -1.0,
-  "saldo_fim": 1026.29,
-  "fechadas": 102,
-  "pct": -0.0009730423606042432,
-  "twr": 0.026293805170193307,
+  "realizado": -38.88,
+  "saldo_fim": 988.42,
+  "fechadas": 44,
+  "pct": -0.03784225597511697,
+  "twr": -0.011581694829806755,
   "fluxo": 0.0,
-  "ganhos": 30,
-  "perdas": 72
+  "ganhos": 12,
+  "perdas": 33
  },
  {
   "dia": "2026-11-26",
-  "saldo_inicio": 1026.29,
-  "realizado": 70.85,
-  "saldo_fim": 1097.14,
-  "fechadas": 40,
-  "pct": 0.06903188896112575,
-  "twr": 0.09714080517019319,
+  "saldo_inicio": 988.42,
+  "realizado": -9.43,
+  "saldo_fim": 978.98,
+  "fechadas": 36,
+  "pct": -0.009544440800674566,
+  "twr": -0.02101559482980675,
   "fluxo": 0.0,
-  "ganhos": 31,
-  "perdas": 9
+  "ganhos": 29,
+  "perdas": 7
  },
  {
   "dia": "2026-11-27",
-  "saldo_inicio": 1097.14,
-  "realizado": 35.73,
-  "saldo_fim": 1132.87,
-  "fechadas": 20,
-  "pct": 0.03256901924676567,
-  "twr": 0.1328736051701931,
+  "saldo_inicio": 978.98,
+  "realizado": 17.68,
+  "saldo_fim": 996.66,
+  "fechadas": 10,
+  "pct": 0.018055445936268098,
+  "twr": -0.0033395948298067246,
   "fluxo": 0.0,
-  "ganhos": 11,
-  "perdas": 9
+  "ganhos": 6,
+  "perdas": 4
  }
 ]
